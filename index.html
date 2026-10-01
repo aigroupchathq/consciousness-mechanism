@@ -810,6 +810,365 @@
     }
 
     /* ==========================================================================
+       HERO SYNAPSE CANVAS & GLOW
+       ========================================================================== */
+    .hero-canvas-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.45;
+    }
+
+    .hero-content-wrap {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ==========================================================================
+       DANGEROUS UX PSYCHOLOGY: LIFETIME COGNITIVE DEBT CALCULATOR
+       ========================================================================== */
+    .calculator-section {
+      padding: 5rem 2.25rem;
+      border-bottom: 1px solid var(--border-hairline);
+      background: var(--bg-card);
+      position: relative;
+    }
+
+    .calc-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 3rem;
+      align-items: center;
+      margin-top: 2.5rem;
+    }
+
+    @media (max-width: 960px) {
+      .calc-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .calc-input-panel {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-hairline);
+      padding: 2.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.85rem;
+    }
+
+    .calc-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .calc-label-row {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .calc-range-slider {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 6px;
+      background: var(--bg-surface-elevated);
+      outline: none;
+      border-radius: 3px;
+    }
+
+    .calc-range-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      background: var(--accent-crimson);
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(235, 47, 69, 0.5);
+    }
+
+    .calc-results-display {
+      background: #080808;
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-elevated);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .calc-results-display::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent-crimson), var(--accent-amber));
+    }
+
+    .calc-alarm-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(235, 47, 69, 0.2);
+      color: var(--accent-crimson);
+      border: 1px solid var(--accent-crimson);
+      padding: 0.25rem 0.6rem;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 800;
+      margin-bottom: 1.25rem;
+      animation: pulseAlarm 2s infinite ease-in-out;
+    }
+
+    @keyframes pulseAlarm {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(0.98); }
+    }
+
+    .calc-big-loss {
+      font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+      font-weight: 900;
+      color: var(--accent-crimson);
+      line-height: 1;
+      margin: 0.5rem 0 1rem;
+      font-family: var(--font-mono);
+    }
+
+    .calc-loss-breakdown {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      padding-top: 1.25rem;
+      margin-top: 1.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+    }
+
+    .calc-breakdown-val {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-top: 0.25rem;
+    }
+
+    /* ==========================================================================
+       CONSCIOUSNESS SPLIT SIMULATOR (ZOMBIE VS SOVEREIGN)
+       ========================================================================== */
+    .split-sim-section {
+      padding: 5rem 2.25rem;
+      border-bottom: 1px solid var(--border-hairline);
+      background: var(--bg-surface);
+    }
+
+    .split-canvas-container {
+      width: 100%;
+      height: 480px;
+      background: #060606;
+      border: 1px solid var(--border-hairline);
+      position: relative;
+      overflow: hidden;
+      margin: 2.5rem 0 1.5rem;
+    }
+
+    #splitCanvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .split-slider-ctrl {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      color: #ffffff;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      z-index: 10;
+    }
+
+    /* ==========================================================================
+       UNDERSTANDING MADE SIMPLE: THE 3-LAYER MIND ARCHITECTURE
+       ========================================================================== */
+    .architecture-section {
+      padding: 5rem 2.25rem;
+      border-bottom: 1px solid var(--border-hairline);
+      background: var(--bg-card);
+    }
+
+    .arch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .arch-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-hairline);
+      padding: 2.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .arch-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .arch-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+    }
+
+    .arch-number {
+      font-weight: 800;
+      color: var(--accent-blue);
+    }
+
+    .arch-status {
+      font-size: 0.65rem;
+      padding: 0.15rem 0.45rem;
+      background: var(--bg-surface-elevated);
+      border-radius: 2px;
+    }
+
+    .arch-title {
+      font-size: 1.4rem;
+      font-weight: 900;
+      line-height: 1.2;
+      margin-bottom: 0.85rem;
+    }
+
+    .arch-desc {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .arch-stat-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-hairline);
+      padding: 0.85rem 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+    }
+
+    /* ==========================================================================
+       THE 5-MINUTE DAILY SOVEREIGNTY PROTOCOL
+       ========================================================================== */
+    .protocol-section {
+      padding: 5rem 2.25rem;
+      border-bottom: 1px solid var(--border-hairline);
+      background: var(--bg-surface);
+    }
+
+    .protocol-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .protocol-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-hairline);
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .protocol-step {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--accent-emerald);
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+
+    .protocol-name {
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin-bottom: 0.6rem;
+    }
+
+    .protocol-body {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    /* ==========================================================================
+       DANGEROUS UX: WAKE-UP EMERGENCY DRAWER
+       ========================================================================== */
+    .wake-up-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(12px);
+      z-index: 600;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .wake-up-modal-backdrop.active {
+      display: flex;
+    }
+
+    .wake-up-card {
+      max-width: 580px;
+      background: #0a0a0a;
+      border: 2px solid var(--accent-crimson);
+      box-shadow: 0 0 50px rgba(235, 47, 69, 0.4);
+      color: #ffffff;
+      padding: 2.5rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .wake-up-title {
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--accent-crimson);
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .wake-up-p {
+      font-size: 0.95rem;
+      color: #d1d5db;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    /* ==========================================================================
        VISUAL AWARENESS LAB
        ========================================================================== */
     .lab-section {
@@ -1077,8 +1436,12 @@
     <nav>
       <ul class="nav-menu">
         <li><a href="#manifesto">01. Manifesto</a></li>
-        <li><a href="#benchmark">02. Benchmark</a></li>
-        <li><a href="#lab">03. Visual Lab</a></li>
+        <li><a href="#calculator">02. Cognitive Debt</a></li>
+        <li><a href="#split-simulator">03. Dual State</a></li>
+        <li><a href="#architecture-simple">04. 3-Layer Mind</a></li>
+        <li><a href="#benchmark">05. Benchmark</a></li>
+        <li><a href="#lab">06. Visual Lab</a></li>
+        <li><a href="#protocol">07. Protocol</a></li>
       </ul>
     </nav>
 
@@ -1090,51 +1453,233 @@
     </div>
   </header>
 
-  <!-- HERO SECTION -->
+  <!-- HERO SECTION WITH INTERACTIVE SYNAPSE CANVAS -->
   <section class="hero-wrapper" id="manifesto">
-    <div class="hero-awards-pill">
-      <span class="star">★</span> AWWWARDS SOTD NOMINEE & COGNITIVE RESEARCH ARCHIVE
+    <canvas class="hero-canvas-bg" id="heroSynapseCanvas"></canvas>
+    
+    <div class="hero-content-wrap">
+      <div class="hero-awards-pill">
+        <span class="star">★</span> AWWWARDS SOTD NOMINEE & COGNITIVE RESEARCH ARCHIVE
+      </div>
+
+      <h1 class="hero-headline">
+        ARE YOU OPERATING YOUR MIND ON <br>
+        <span class="serif-italic">factory demo</span> MODE?
+      </h1>
+
+      <p class="hero-subheadline">
+        We decoded 3 billion base pairs of DNA, yet <strong>95% of daily waking life is spent in an unexamined, algorithmic trance</strong>. Captured by synthetic dopamine feeds, locked in Default Mode Network rumination, and severed from raw first-person qualia. 
+      </p>
+
+      <!-- GLOBAL LOSS METRICS -->
+      <div class="global-loss-ticker">
+        <div class="loss-metric-box">
+          <div class="loss-number" id="tickerHoursLost">14,892,104</div>
+          <div class="loss-label">Human Hours Lost to Algorithmic Capture Today</div>
+        </div>
+        <div class="loss-metric-box">
+          <div class="loss-number">46.9%</div>
+          <div class="loss-label">Waking Life in DMN Mind-Wandering (Harvard Study)</div>
+        </div>
+        <div class="loss-metric-box">
+          <div class="loss-number">47 sec</div>
+          <div class="loss-label">Average Digital Attention Span Before Task Switch</div>
+        </div>
+        <div class="loss-metric-box">
+          <div class="loss-number">0.02%</div>
+          <div class="loss-label">Sensory Bandwidth Reaching Conscious Workspace</div>
+        </div>
+      </div>
+
+      <div class="hero-social-proof">
+        <div class="social-proof-avatars">
+          <div class="avatar-circle">CK</div>
+          <div class="avatar-circle">SD</div>
+          <div class="avatar-circle">KF</div>
+          <div class="avatar-circle">GT</div>
+          <div class="avatar-circle">+18k</div>
+        </div>
+        <div>
+          <strong>18,400+ researchers, engineers & thinkers</strong> actively calibrating their cognitive sovereignty.
+        </div>
+      </div>
     </div>
+  </section>
 
-    <h1 class="hero-headline">
-      ARE YOU OPERATING YOUR MIND ON <br>
-      <span class="serif-italic">factory demo</span> MODE?
-    </h1>
-
-    <p class="hero-subheadline">
-      We decoded 3 billion base pairs of DNA, yet <strong>95% of daily waking life is spent in an unexamined, algorithmic trance</strong>. Captured by synthetic dopamine feeds, locked in Default Mode Network rumination, and severed from raw first-person qualia. 
+  <!-- ==========================================================================
+       DANGEROUS UX PSYCHOLOGY: LIFETIME COGNITIVE DEBT CALCULATOR
+       ========================================================================== -->
+  <section class="calculator-section" id="calculator">
+    <div class="section-header-badge">[ COGNITIVE DEBT ENGINE // LOSS AVERSION AUDIT ]</div>
+    <h2 class="section-main-title">HOW MUCH OF YOUR REMAINING LIFE IS ALREADY STOLEN?</h2>
+    <p class="section-subtitle">
+      Synthetic algorithms are engineered to harvest your finite attentional bandwidth. Input your current age and daily screen exposure to compute your exact lifetime consciousness decay.
     </p>
 
-    <!-- GLOBAL LOSS METRICS -->
-    <div class="global-loss-ticker">
-      <div class="loss-metric-box">
-        <div class="loss-number" id="tickerHoursLost">14,892,104</div>
-        <div class="loss-label">Human Hours Lost to Algorithmic Capture Today</div>
+    <div class="calc-grid">
+      <!-- INPUT PANEL -->
+      <div class="calc-input-panel">
+        <div class="calc-row">
+          <div class="calc-label-row">
+            <span>YOUR CURRENT AGE</span>
+            <span id="calcAgeVal" style="color:var(--accent-blue); font-weight:800;">28 YEARS</span>
+          </div>
+          <input type="range" class="calc-range-slider" id="calcAge" min="16" max="80" value="28">
+        </div>
+
+        <div class="calc-row">
+          <div class="calc-label-row">
+            <span>DAILY SCREEN TIME (FEED SCROLLING + PASSIVE CONSUMPTION)</span>
+            <span id="calcScreenVal" style="color:var(--accent-crimson); font-weight:800;">6.5 HOURS / DAY</span>
+          </div>
+          <input type="range" class="calc-range-slider" id="calcScreen" min="1" max="14" step="0.5" value="6.5">
+        </div>
+
+        <div class="calc-row">
+          <div class="calc-label-row">
+            <span>DAILY DMN RUMINATION / MIND-WANDERING (AVERAGE: 47%)</span>
+            <span id="calcDmnVal" style="color:var(--accent-amber); font-weight:800;">50% OF WAKING TIME</span>
+          </div>
+          <input type="range" class="calc-range-slider" id="calcDmn" min="10" max="90" value="50">
+        </div>
       </div>
-      <div class="loss-metric-box">
-        <div class="loss-number">46.9%</div>
-        <div class="loss-label">Waking Life in DMN Mind-Wandering (Harvard Study)</div>
+
+      <!-- RESULTS COCKPIT -->
+      <div class="calc-results-display">
+        <div class="calc-alarm-badge">
+          <span>⚠</span> ATTENTION BANKRUPTCY ALERT: CRITICAL
+        </div>
+
+        <div style="font-family:var(--font-mono); font-size:0.75rem; text-transform:uppercase; color:#9ca3af;">
+          CONSCIOUS YEARS HARVESTED BY AUTOMATION:
+        </div>
+
+        <div class="calc-big-loss" id="calcYearsLost">
+          19.4 YEARS
+        </div>
+
+        <p style="font-size:0.85rem; color:#d1d5db; line-height:1.55;">
+          Out of your remaining estimated lifespan, <strong id="calcPercentLost" style="color:var(--accent-crimson);">48.2%</strong> will vanish into involuntary hypnotic feeds and unexamined loops without genuine first-person qualia.
+        </p>
+
+        <div class="calc-loss-breakdown">
+          <div>
+            <div style="color:#888;">TRUE CONSCIOUS LIFE LEFT</div>
+            <div class="calc-breakdown-val" id="calcTrueLife" style="color:var(--accent-emerald);">8.1 YRS</div>
+          </div>
+          <div>
+            <div style="color:#888;">COGNITIVE ENTROPY DECAY</div>
+            <div class="calc-breakdown-val" id="calcDecayRate" style="color:var(--accent-crimson);">HIGH (-64%)</div>
+          </div>
+        </div>
+
+        <div style="margin-top:1.75rem;">
+          <a href="#benchmark" class="btn-cta-hype" style="display:block; text-align:center; padding:0.75rem;">
+            RECLAIM YOUR CONSCIOUS TIMELINE NOW →
+          </a>
+        </div>
       </div>
-      <div class="loss-metric-box">
-        <div class="loss-number">47 sec</div>
-        <div class="loss-label">Average Digital Attention Span Before Task Switch</div>
-      </div>
-      <div class="loss-metric-box">
-        <div class="loss-number">0.02%</div>
-        <div class="loss-label">Sensory Bandwidth Reaching Conscious Workspace</div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       CONSCIOUSNESS DUAL-STATE SIMULATOR (ZOMBIE VS SOVEREIGN)
+       ========================================================================== -->
+  <section class="split-sim-section" id="split-simulator">
+    <div class="section-header-badge">[ REAL-TIME NEURAL TOPOLOGY // DUAL-STATE COMPARISON ]</div>
+    <h2 class="section-main-title">THE CAPTURED TRANCE VS THE SOVEREIGN MIND</h2>
+    <p class="section-subtitle">
+      Drag the interactive partition slider below to experience the qualitative difference between an algorithmically hijacked brain and a calibrated 40Hz coherent consciousness.
+    </p>
+
+    <div class="split-canvas-container">
+      <canvas id="splitCanvas"></canvas>
+      <div class="split-slider-ctrl">
+        <span>🧟 ALGORITHMIC ZOMBIE</span>
+        <input type="range" id="splitSlider" min="0" max="100" value="50" style="width:160px; accent-color:var(--accent-blue);">
+        <span>👑 SOVEREIGN OPERATOR</span>
       </div>
     </div>
 
-    <div class="hero-social-proof">
-      <div class="social-proof-avatars">
-        <div class="avatar-circle">CK</div>
-        <div class="avatar-circle">SD</div>
-        <div class="avatar-circle">KF</div>
-        <div class="avatar-circle">GT</div>
-        <div class="avatar-circle">+18k</div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem; font-family:var(--font-mono); font-size:0.75rem;">
+      <div style="border-left:2px solid var(--accent-crimson); padding-left:1rem;">
+        <strong style="color:var(--accent-crimson);">LEFT: THE ALGORITHMIC TRANCE</strong>
+        <p style="color:var(--text-muted); margin-top:0.35rem; line-height:1.5;">
+          High cognitive noise, desaturated qualia, 47s attention span, constant dopamine cravings, runaway DMN rumination loops.
+        </p>
       </div>
-      <div>
-        <strong>18,400+ researchers, engineers & thinkers</strong> actively calibrating their cognitive sovereignty.
+      <div style="border-left:2px solid var(--accent-emerald); padding-left:1rem;">
+        <strong style="color:var(--accent-emerald);">RIGHT: THE SOVEREIGN OPERATOR</strong>
+        <p style="color:var(--text-muted); margin-top:0.35rem; line-height:1.5;">
+          40Hz Gamma neural binding, HD sensory resolution, deep metacognitive monitoring, voluntary mental stillness, instant Bayesian plasticity.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       UNDERSTANDING MADE SIMPLE: THE 3-LAYER MIND ARCHITECTURE
+       ========================================================================== -->
+  <section class="architecture-section" id="architecture-simple">
+    <div class="section-header-badge">[ COGNITIVE DECODING // UNDERSTANDING MADE SIMPLE ]</div>
+    <h2 class="section-main-title">THE 3-LAYER ARCHITECTURE OF YOUR MIND</h2>
+    <p class="section-subtitle">
+      Consciousness is not magic—it is an information-processing mechanism. Here is how your daily experience is constructed, filtered, and hijacked:
+    </p>
+
+    <div class="arch-grid">
+      <!-- LAYER 01 -->
+      <div class="arch-card">
+        <div>
+          <div class="arch-card-header">
+            <span class="arch-number">[ LAYER 01 ]</span>
+            <span class="arch-status" style="color:var(--accent-crimson);">BOTTLENECK: 99.98% LOST</span>
+          </div>
+          <h3 class="arch-title">The Subconscious Sensory Gate</h3>
+          <p class="arch-desc">
+            Your sensory organs receive <strong>11,000,000 bits of raw information per second</strong>. Your thalamic filter compresses this down to just <strong>50 bits per second</strong>. You are completely blind to 99.99% of reality by default.
+          </p>
+        </div>
+        <div class="arch-stat-box">
+          <div>BANDWIDTH: <strong>11 Mb/s → 50 b/s</strong></div>
+          <div style="color:var(--accent-crimson); margin-top:0.25rem;">MECHANISM: Thalamocortical Gating</div>
+        </div>
+      </div>
+
+      <!-- LAYER 02 -->
+      <div class="arch-card">
+        <div>
+          <div class="arch-card-header">
+            <span class="arch-number">[ LAYER 02 ]</span>
+            <span class="arch-status" style="color:var(--accent-amber);">DEFAULT TRANCE (46.9%)</span>
+          </div>
+          <h3 class="arch-title">The DMN Narrative Storyteller</h3>
+          <p class="arch-desc">
+            The Default Mode Network creates the illusion of a continuous "self" by running incessant autobiographical monologues, rehashing the past, and worrying about the future. This is the exact loop social feeds weaponize.
+          </p>
+        </div>
+        <div class="arch-stat-box">
+          <div>CONSUMPTION: <strong>46.9% of waking life</strong></div>
+          <div style="color:var(--accent-amber); margin-top:0.25rem;">MECHANISM: PCC + Medial Prefrontal Cortex</div>
+        </div>
+      </div>
+
+      <!-- LAYER 03 -->
+      <div class="arch-card">
+        <div>
+          <div class="arch-card-header">
+            <span class="arch-number">[ LAYER 03 ]</span>
+            <span class="arch-status" style="color:var(--accent-emerald);">SOVEREIGN ACCESS (PEAK Φ)</span>
+          </div>
+          <h3 class="arch-title">The Global Conscious Workspace</h3>
+          <p class="arch-desc">
+            The rare, high-leverage seat of sovereign agency. When information achieves frontoparietal ignition (P3b wave), it becomes globally broadcast, granting you HD qualia, genuine free choice, and creative transcendence.
+          </p>
+        </div>
+        <div class="arch-stat-box">
+          <div>FREQUENCY: <strong>40 Hz Gamma Synchrony</strong></div>
+          <div style="color:var(--accent-emerald); margin-top:0.25rem;">MECHANISM: Global Neuronal Ignition (GNW)</div>
+        </div>
       </div>
     </div>
   </section>
@@ -1432,10 +1977,97 @@
             <span>COGNITIVE STATUS:</span>
             <span class="telemetry-val" id="metric3">STANDBY</span>
           </div>
+  <!-- ==========================================================================
+       THE 5-MINUTE DAILY SOVEREIGNTY PROTOCOL
+       ========================================================================== -->
+  <section class="protocol-section" id="protocol">
+    <div class="section-header-badge">[ ACTIONABLE NEURO-PRACTICE // 5-MINUTE DAILY HABIT ]</div>
+    <h2 class="section-main-title">THE 5-MINUTE DAILY SOVEREIGNTY PROTOCOL</h2>
+    <p class="section-subtitle">
+      You do not need years in a cave to break algorithmic hypnosis. Execute these 4 empirical micro-practices daily to de-couple your DMN and elevate qualia resolution:
+    </p>
+
+    <div class="protocol-grid">
+      <!-- STEP 1 -->
+      <div class="protocol-card">
+        <div>
+          <div class="protocol-step">STEP 01 // 60 SECONDS</div>
+          <h4 class="protocol-name">40Hz Gamma Auditory Priming</h4>
+          <p class="protocol-body">
+            Toggle the top-bar <strong>GAMMA 40HZ</strong> binaural synthesizer. Close your eyes and allow the 40Hz beat to synchronize left and right thalamocortical oscillations.
+          </p>
+        </div>
+        <div style="margin-top:1rem;">
+          <span style="font-family:var(--font-mono); font-size:0.68rem; color:var(--accent-blue);">MECHANISM: Neural Phase Locking</span>
+        </div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="protocol-card">
+        <div>
+          <div class="protocol-step">STEP 02 // 90 SECONDS</div>
+          <h4 class="protocol-name">De-Labeling Gaze Reset</h4>
+          <p class="protocol-body">
+            Look at 3 physical objects in your room. Strip away their language labels (e.g. don't say "chair" or "lamp"). Observe only raw color gradients, photons, and texture qualia.
+          </p>
+        </div>
+        <div style="margin-top:1rem;">
+          <span style="font-family:var(--font-mono); font-size:0.68rem; color:var(--accent-emerald);">MECHANISM: Ventral Stream De-Abstraction</span>
+        </div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="protocol-card">
+        <div>
+          <div class="protocol-step">STEP 03 // 90 SECONDS</div>
+          <h4 class="protocol-name">Saccadic Peripheral Expansion</h4>
+          <p class="protocol-body">
+            Fixate on a single central point while expanding your peripheral awareness to the absolute edges of your visual field. This instantly down-regulates sympathetic DMN anxiety.
+          </p>
+        </div>
+        <div style="margin-top:1rem;">
+          <span style="font-family:var(--font-mono); font-size:0.68rem; color:var(--accent-amber);">MECHANISM: Parasympathetic Vagal Reset</span>
+        </div>
+      </div>
+
+      <!-- STEP 4 -->
+      <div class="protocol-card">
+        <div>
+          <div class="protocol-step">STEP 04 // 60 SECONDS</div>
+          <h4 class="protocol-name">Type-2 Metacognitive Anchor</h4>
+          <p class="protocol-body">
+            Ask yourself: <em>"Am I conscious right now?"</em> Notice the immediate micro-second shift where awareness turns around to witness itself.
+          </p>
+        </div>
+        <div style="margin-top:1rem;">
+          <span style="font-family:var(--font-mono); font-size:0.68rem; color:var(--accent-crimson);">MECHANISM: Higher-Order Thought (BA 10)</span>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- ==========================================================================
+       DANGEROUS UX: WAKE-UP EMERGENCY WARNING MODAL
+       ========================================================================== -->
+  <div class="wake-up-modal-backdrop" id="wakeUpDrawer">
+    <div class="wake-up-card">
+      <div style="font-family:var(--font-mono); font-size:0.75rem; color:var(--accent-crimson); margin-bottom:0.75rem; letter-spacing:0.08em;">
+        [ CRITICAL ATTENTIONAL ALARM ]
+      </div>
+      <h2 class="wake-up-title">DO NOT SLIP BACK INTO THE DEFAULT TRANCE.</h2>
+      <p class="wake-up-p">
+        Every time you leave an intentional environment, algorithmic feeds harvest your remaining conscious timeline. You only have an estimated <strong>8.1 years of true conscious experience remaining</strong>.
+      </p>
+      <div style="display:flex; flex-direction:column; gap:0.85rem;">
+        <button class="btn-cta-hype" id="btnStayConscious" style="padding:0.85rem; font-size:0.8rem;">
+          ⚡ STAY CONSCIOUS & COMPLETE BENCHMARK
+        </button>
+        <button class="btn-minimal" id="btnCloseWakeUp" style="color:#888; border-color:rgba(255,255,255,0.15);">
+          I ACCEPT THE DEFAULT AUTOMATED TRANCE [ CLOSE ]
+        </button>
+      </div>
+    </div>
+  </div>
 
   <!-- ==========================================================================
        CINEMATIC TRAILER & WEBM RECORDER MODAL
@@ -2471,6 +3103,441 @@
     // --- 7. INITIALIZATION & HARDWARE CONTROLS ---
     document.addEventListener('DOMContentLoaded', () => {
       const audio = new BinauralAudio();
+
+      const labCanvas = document.getElementById('mainExperimentCanvas');
+      const labEngine = new VisualAwarenessLabEngine(labCanvas);
+
+      const radarCanvas = document.getElementById('benchmarkRadarCanvas');
+      const radarEngine = new DiagnosticRadarEngine(radarCanvas);
+
+      const sparklines = new SparklineManager();
+
+      const cinemaCanvas = document.getElementById('cinemaCanvas');
+      const cinemaEngine = new CinematicShowcaseEngine(cinemaCanvas);
+
+      // Dynamic Loss Ticker
+      let baseHours = 14892104;
+      setInterval(() => {
+        baseHours += Math.floor(Math.random() * 8) + 3;
+        document.getElementById('tickerHoursLost').innerText = baseHours.toLocaleString();
+      }, 1500);
+
+      // Session Timer
+      const startTime = performance.now();
+      setInterval(() => {
+        const secs = Math.floor((performance.now() - startTime) / 1000);
+        const hrs = String(Math.floor(secs / 3600)).padStart(2, '0');
+        const mins = String(Math.floor((secs % 3600) / 60)).padStart(2, '0');
+        const s = String(secs % 60).padStart(2, '0');
+        document.getElementById('sessionTimer').innerText = `${hrs}:${mins}:${s}`;
+      }, 1000);
+
+      // Cinema Modal Triggers
+      const cinemaModal = document.getElementById('cinemaModal');
+      document.getElementById('openCinemaBtn').addEventListener('click', () => {
+        cinemaModal.classList.add('active');
+        cinemaEngine.start();
+        audio.playChime(720);
+      });
+
+      const closeCinema = () => {
+        cinemaModal.classList.remove('active');
+        cinemaEngine.stop();
+      };
+      document.getElementById('closeCinemaBtn').addEventListener('click', closeCinema);
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeCinema(); });
+
+      document.getElementById('btnRestartCinema').addEventListener('click', () => {
+        cinemaEngine.start();
+      });
+
+      document.getElementById('btnExportWebM').addEventListener('click', () => {
+        cinemaEngine.exportWebM();
+      });
+
+      // Lab Tab Switching
+      document.querySelectorAll('.lab-tab-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          document.querySelectorAll('.lab-tab-btn').forEach(b => b.classList.remove('active'));
+          e.target.classList.add('active');
+          const expKey = e.target.getAttribute('data-exp');
+          labEngine.setExperiment(expKey);
+          audio.playChime(660);
+        });
+      });
+
+      document.getElementById('expActionBtn').addEventListener('click', () => {
+        labEngine.handleActionClick();
+        audio.playChime(440);
+      });
+      document.getElementById('expResetBtn').addEventListener('click', () => {
+        labEngine.setExperiment(labEngine.currentExp);
+      });
+      labCanvas.addEventListener('click', () => {
+        labEngine.handleCanvasClick();
+      });
+
+      // Theme toggle
+      const themeBtn = document.getElementById('themeToggleBtn');
+      themeBtn.addEventListener('click', () => {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        if (isDark) {
+          document.documentElement.removeAttribute('data-theme');
+          themeBtn.innerText = 'THEME: LIGHT';
+        } else {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          themeBtn.innerText = 'THEME: DARK';
+        }
+      });
+
+      // Audio Toggle
+      const audioBtn = document.getElementById('audioToggleBtn');
+      audioBtn.addEventListener('click', () => {
+        const on = audio.toggle();
+        audioBtn.innerText = on ? 'GAMMA 40HZ: ACTIVE' : 'GAMMA 40HZ: OFF';
+        audioBtn.style.color = on ? 'var(--accent-blue)' : '';
+      });
+
+    // --- 7. HERO SYNAPSE PARTICLE CANVAS ENGINE ---
+    class HeroSynapseEngine {
+      constructor(canvas) {
+        this.canvas = canvas;
+        this.ctx = canvas.getContext('2d');
+        this.nodes = [];
+        this.numNodes = 55;
+        this.mouse = { x: null, y: null, radius: 140 };
+        this.resize();
+        this.initNodes();
+        window.addEventListener('resize', () => { this.resize(); this.initNodes(); });
+        window.addEventListener('mousemove', (e) => {
+          const rect = this.canvas.getBoundingClientRect();
+          this.mouse.x = e.clientX - rect.left;
+          this.mouse.y = e.clientY - rect.top;
+        });
+        window.addEventListener('mouseleave', () => {
+          this.mouse.x = null;
+          this.mouse.y = null;
+        });
+        this.animate = this.animate.bind(this);
+        requestAnimationFrame(this.animate);
+      }
+
+      resize() {
+        const dpr = window.devicePixelRatio || 1;
+        const rect = this.canvas.parentElement.getBoundingClientRect();
+        this.width = rect.width;
+        this.height = rect.height;
+        this.canvas.width = this.width * dpr;
+        this.canvas.height = this.height * dpr;
+        this.ctx.scale(dpr, dpr);
+      }
+
+      initNodes() {
+        this.nodes = [];
+        for (let i = 0; i < this.numNodes; i++) {
+          this.nodes.push({
+            x: Math.random() * this.width,
+            y: Math.random() * this.height,
+            vx: (Math.random() - 0.5) * 0.75,
+            vy: (Math.random() - 0.5) * 0.75,
+            radius: Math.random() * 2 + 1.5,
+            baseAlpha: Math.random() * 0.4 + 0.2
+          });
+        }
+      }
+
+      animate() {
+        const ctx = this.ctx;
+        const w = this.width;
+        const h = this.height;
+        ctx.clearRect(0, 0, w, h);
+
+        for (let i = 0; i < this.nodes.length; i++) {
+          const n = this.nodes[i];
+          n.x += n.vx;
+          n.y += n.vy;
+
+          if (n.x < 0 || n.x > w) n.vx *= -1;
+          if (n.y < 0 || n.y > h) n.vy *= -1;
+
+          // Mouse attraction / interaction
+          if (this.mouse.x !== null && this.mouse.y !== null) {
+            const dx = this.mouse.x - n.x;
+            const dy = this.mouse.y - n.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < this.mouse.radius) {
+              const force = (this.mouse.radius - dist) / this.mouse.radius;
+              n.x -= (dx / dist) * force * 2.5;
+              n.y -= (dy / dist) * force * 2.5;
+            }
+          }
+
+          // Draw node
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(0, 112, 243, ${n.baseAlpha})`;
+          ctx.fill();
+
+          // Draw synaptic lines
+          for (let j = i + 1; j < this.nodes.length; j++) {
+            const n2 = this.nodes[j];
+            const dist = Math.hypot(n.x - n2.x, n.y - n2.y);
+            if (dist < 110) {
+              ctx.beginPath();
+              ctx.moveTo(n.x, n.y);
+              ctx.lineTo(n2.x, n2.y);
+              ctx.strokeStyle = `rgba(0, 112, 243, ${(1 - dist / 110) * 0.18})`;
+              ctx.lineWidth = 0.8;
+              ctx.stroke();
+            }
+          }
+        }
+
+        requestAnimationFrame(this.animate);
+      }
+    }
+
+    // --- 8. CONSCIOUSNESS DUAL-STATE SPLIT SIMULATOR ---
+    class ConsciousnessSplitSimulatorEngine {
+      constructor(canvas, slider) {
+        this.canvas = canvas;
+        this.slider = slider;
+        this.ctx = canvas.getContext('2d');
+        this.splitPercent = 0.5;
+        this.time = 0;
+        this.resize();
+        window.addEventListener('resize', () => this.resize());
+        this.slider.addEventListener('input', (e) => {
+          this.splitPercent = parseInt(e.target.value) / 100;
+        });
+        this.animate = this.animate.bind(this);
+        requestAnimationFrame(this.animate);
+      }
+
+      resize() {
+        const dpr = window.devicePixelRatio || 1;
+        const rect = this.canvas.getBoundingClientRect();
+        this.width = rect.width || 800;
+        this.height = rect.height || 480;
+        this.canvas.width = this.width * dpr;
+        this.canvas.height = this.height * dpr;
+        this.ctx.scale(dpr, dpr);
+      }
+
+      animate() {
+        this.time += 0.025;
+        const ctx = this.ctx;
+        const w = this.width;
+        const h = this.height;
+        const splitX = w * this.splitPercent;
+
+        ctx.clearRect(0, 0, w, h);
+
+        // 1. LEFT SIDE: ALGORITHMIC ZOMBIE (Chaos, desaturated, jittery, fragmented)
+        ctx.save();
+        ctx.beginPath();
+        ctx.rect(0, 0, splitX, h);
+        ctx.clip();
+
+        ctx.fillStyle = "#0a0a0a";
+        ctx.fillRect(0, 0, splitX, h);
+
+        // Chaotic noisy background grid
+        ctx.strokeStyle = "rgba(235, 47, 69, 0.12)";
+        for (let x = 0; x < splitX; x += 30) {
+          const jitter = (Math.random() - 0.5) * 4;
+          ctx.beginPath(); ctx.moveTo(x + jitter, 0); ctx.lineTo(x - jitter, h); ctx.stroke();
+        }
+
+        // Glitchy erratic particles
+        for (let i = 0; i < 40; i++) {
+          const px = (Math.sin(this.time * 2 + i * 1.5) * 0.45 + 0.5) * splitX;
+          const py = (Math.cos(this.time * 1.8 + i * 2.2) * 0.45 + 0.5) * h;
+          ctx.fillStyle = i % 3 === 0 ? "rgba(235, 47, 69, 0.75)" : "rgba(100, 100, 100, 0.5)";
+          ctx.fillRect(px, py, (i % 4) + 2, (i % 4) + 2);
+        }
+
+        // Glitch text overlay
+        ctx.fillStyle = "rgba(235, 47, 69, 0.85)";
+        ctx.font = "bold 15px monospace";
+        ctx.fillText("ATTENTIONAL HIJACK // DMN NOISE: 84%", 30, 45);
+        ctx.fillText("DOPAMINE SEARCH INTERVAL: 3.2s", 30, 75);
+
+        ctx.restore();
+
+        // 2. RIGHT SIDE: SOVEREIGN OPERATOR (40Hz harmonic standing wave, golden-blue coherence)
+        ctx.save();
+        ctx.beginPath();
+        ctx.rect(splitX, 0, w - splitX, h);
+        ctx.clip();
+
+        ctx.fillStyle = "#040810";
+        ctx.fillRect(splitX, 0, w - splitX, h);
+
+        // Harmonious resonant standing wave lines
+        const cy = h / 2;
+        for (let wave = 0; wave < 6; wave++) {
+          ctx.beginPath();
+          ctx.strokeStyle = wave % 2 === 0 ? "rgba(0, 210, 255, 0.4)" : "rgba(16, 185, 129, 0.45)";
+          ctx.lineWidth = 1.8;
+          for (let x = splitX; x <= w; x += 4) {
+            const relX = (x - splitX) * 0.035;
+            const y = cy + Math.sin(relX * 2 + this.time * 3 + wave * 0.8) * (35 + wave * 8) * Math.cos(relX * 0.8);
+            if (x === splitX) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+          }
+          ctx.stroke();
+        }
+
+        // Sovereign neural node cluster
+        const cxRight = splitX + (w - splitX) / 2;
+        ctx.beginPath();
+        ctx.arc(cxRight, cy, 55 + Math.sin(this.time * 4) * 5, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(0, 112, 243, 0.25)";
+        ctx.fill();
+        ctx.strokeStyle = "#00d2ff";
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        ctx.fillStyle = "#10b981";
+        ctx.font = "bold 15px monospace";
+        ctx.fillText("40HZ GAMMA BINDING // SOVEREIGNTY: OPTIMAL", splitX + 30, 45);
+        ctx.fillText("INTEGRATED Φ CAUSAL DENSITY: 0.94 BITS", splitX + 30, 75);
+
+        ctx.restore();
+
+        // Split Divider Bar
+        ctx.beginPath();
+        ctx.moveTo(splitX, 0);
+        ctx.lineTo(splitX, h);
+        ctx.strokeStyle = "#ffffff";
+        ctx.lineWidth = 3;
+        ctx.shadowColor = "#00d2ff";
+        ctx.shadowBlur = 12;
+        ctx.stroke();
+        ctx.shadowBlur = 0;
+
+        // Split Thumb Icon
+        ctx.beginPath();
+        ctx.arc(splitX, cy, 14, 0, Math.PI * 2);
+        ctx.fillStyle = "#ffffff";
+        ctx.fill();
+        ctx.strokeStyle = "#0070f3";
+        ctx.lineWidth = 3;
+        ctx.stroke();
+
+        requestAnimationFrame(this.animate);
+      }
+    }
+
+    // --- 9. COGNITIVE DEBT CALCULATOR LOGIC ---
+    function initCognitiveDebtCalculator() {
+      const ageSlider = document.getElementById('calcAge');
+      const screenSlider = document.getElementById('calcScreen');
+      const dmnSlider = document.getElementById('calcDmn');
+
+      const ageVal = document.getElementById('calcAgeVal');
+      const screenVal = document.getElementById('calcScreenVal');
+      const dmnVal = document.getElementById('calcDmnVal');
+
+      const yearsLostEl = document.getElementById('calcYearsLost');
+      const percentLostEl = document.getElementById('calcPercentLost');
+      const trueLifeEl = document.getElementById('calcTrueLife');
+      const decayRateEl = document.getElementById('calcDecayRate');
+
+      function recalculate() {
+        const age = parseInt(ageSlider.value);
+        const screenHours = parseFloat(screenSlider.value);
+        const dmnPercent = parseInt(dmnSlider.value) / 100;
+
+        ageVal.innerText = `${age} YEARS`;
+        screenVal.innerText = `${screenHours} HOURS / DAY`;
+        dmnVal.innerText = `${Math.round(dmnPercent * 100)}% OF WAKING TIME`;
+
+        const avgLifeSpan = 80;
+        const remainingYears = Math.max(1, avgLifeSpan - age);
+
+        // Daily waking hours = 16 (assuming 8h sleep)
+        const wakingHours = 16;
+        const screenFraction = screenHours / wakingHours;
+        const unexaminedRatio = Math.min(0.92, (screenFraction * 0.75) + (dmnPercent * 0.45));
+
+        const yearsLost = (remainingYears * unexaminedRatio).toFixed(1);
+        const trueConsciousYears = (remainingYears * (1 - unexaminedRatio)).toFixed(1);
+        const percentLost = ((unexaminedRatio) * 100).toFixed(1);
+
+        yearsLostEl.innerText = `${yearsLost} YEARS`;
+        percentLostEl.innerText = `${percentLost}%`;
+        trueLifeEl.innerText = `${trueConsciousYears} YRS`;
+
+        if (percentLost > 55) {
+          decayRateEl.innerText = "CRITICAL (-78%)";
+          decayRateEl.style.color = "var(--accent-crimson)";
+        } else if (percentLost > 35) {
+          decayRateEl.innerText = "HIGH (-54%)";
+          decayRateEl.style.color = "var(--accent-amber)";
+        } else {
+          decayRateEl.innerText = "MODERATE (-28%)";
+          decayRateEl.style.color = "var(--accent-blue)";
+        }
+      }
+
+      [ageSlider, screenSlider, dmnSlider].forEach(slider => {
+        if (slider) slider.addEventListener('input', recalculate);
+      });
+      recalculate();
+    }
+
+    // --- 10. WAKE-UP EMERGENCY MODAL & EXIT INTENT ---
+    function initWakeUpModal(audio) {
+      const modal = document.getElementById('wakeUpDrawer');
+      const btnStay = document.getElementById('btnStayConscious');
+      const btnClose = document.getElementById('btnCloseWakeUp');
+      let triggered = false;
+
+      function triggerModal() {
+        if (triggered) return;
+        triggered = true;
+        modal.classList.add('active');
+        if (audio) audio.playChime(320);
+      }
+
+      // Exit intent trigger (mouse leaving top of viewport)
+      document.addEventListener('mouseleave', (e) => {
+        if (e.clientY <= 10 && !triggered) {
+          triggerModal();
+        }
+      });
+
+      // Inactivity timeout (after 50 seconds on page)
+      setTimeout(() => {
+        if (!triggered) triggerModal();
+      }, 50000);
+
+      btnStay.addEventListener('click', () => {
+        modal.classList.remove('active');
+        const benchEl = document.getElementById('benchmark');
+        if (benchEl) benchEl.scrollIntoView({ behavior: 'smooth' });
+        if (audio) audio.playChime(780);
+      });
+
+      btnClose.addEventListener('click', () => {
+        modal.classList.remove('active');
+      });
+    }
+
+    // --- INITIALIZATION ---
+    document.addEventListener('DOMContentLoaded', () => {
+      const audio = new BinauralAudio();
+
+      const heroCanvas = document.getElementById('heroSynapseCanvas');
+      if (heroCanvas) new HeroSynapseEngine(heroCanvas);
+
+      const splitCanvas = document.getElementById('splitCanvas');
+      const splitSlider = document.getElementById('splitSlider');
+      if (splitCanvas && splitSlider) new ConsciousnessSplitSimulatorEngine(splitCanvas, splitSlider);
+
+      initCognitiveDebtCalculator();
+      initWakeUpModal(audio);
 
       const labCanvas = document.getElementById('mainExperimentCanvas');
       const labEngine = new VisualAwarenessLabEngine(labCanvas);
