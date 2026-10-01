@@ -18,13 +18,13 @@
        DESIGN SYSTEM: HUMAN EDITORIAL BRUTALISM (Awwwards SOTD / Sleutelaar)
        ========================================================================== */
     :root {
-      --bg-base: #f9f8f4;
-      --bg-surface: #f0ece1;
-      --bg-surface-elevated: #e5dfd2;
+      --bg-base: #fbfaf6;
+      --bg-surface: #f2eee3;
+      --bg-surface-elevated: #e7e1d2;
       --bg-card: #ffffff;
       --text-primary: #0a0a0a;
-      --text-secondary: #383632;
-      --text-muted: #6e6b63;
+      --text-secondary: #33312b;
+      --text-muted: #69655b;
       --text-dim: #99958a;
       --accent-blue: #0070f3;
       --accent-cyan: #00d2ff;
@@ -36,27 +36,27 @@
       --border-medium: rgba(10, 10, 10, 0.22);
       --border-strong: rgba(10, 10, 10, 0.9);
       --font-sans: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
-      --font-mono: "SF Mono", "Fira Code", "Inconsolata", Monaco, monospace;
+      --font-mono: "SF Mono", "Fira Code", "Inconsolata", Monaco, ui-monospace, monospace;
       --font-serif: "Newsreader", "Cardo", "Playfair Display", "Times New Roman", Georgia, serif;
       --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.04);
-      --shadow-elevated: 0 12px 36px rgba(0, 0, 0, 0.09);
+      --shadow-elevated: 0 16px 40px rgba(0, 0, 0, 0.09);
     }
 
     [data-theme="dark"] {
-      --bg-base: #080808;
-      --bg-surface: #121212;
-      --bg-surface-elevated: #1a1a1a;
-      --bg-card: #141414;
-      --text-primary: #f5f4ef;
-      --text-secondary: #c4c0b4;
-      --text-muted: #858176;
-      --text-dim: #545148;
-      --border-hairline: rgba(245, 244, 239, 0.1);
-      --border-medium: rgba(245, 244, 239, 0.22);
-      --border-strong: rgba(245, 244, 239, 0.9);
+      --bg-base: #070707;
+      --bg-surface: #111111;
+      --bg-surface-elevated: #181818;
+      --bg-card: #131313;
+      --text-primary: #f6f5ef;
+      --text-secondary: #c8c4b7;
+      --text-muted: #8a867a;
+      --text-dim: #57544a;
+      --border-hairline: rgba(246, 245, 239, 0.1);
+      --border-medium: rgba(246, 245, 239, 0.22);
+      --border-strong: rgba(246, 245, 239, 0.9);
       --accent-blue: #3291ff;
-      --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.4);
-      --shadow-elevated: 0 12px 36px rgba(0, 0, 0, 0.7);
+      --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.5);
+      --shadow-elevated: 0 16px 40px rgba(0, 0, 0, 0.85);
     }
 
     *, *::before, *::after {
@@ -80,6 +80,120 @@
       line-height: 1.55;
       overflow-x: hidden;
       transition: background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.25s ease;
+    }
+
+    /* ==========================================================================
+       00. CYBERNETIC SPLASH SCREEN / BOOT GATEWAY
+       ========================================================================== */
+    .splash-overlay {
+      position: fixed;
+      inset: 0;
+      background: #050505;
+      color: #ffffff;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s ease;
+    }
+
+    .splash-overlay.dismissed {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .splash-box {
+      max-width: 680px;
+      width: 100%;
+      background: #0d0d0d;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: 0 30px 100px rgba(0, 0, 0, 0.95);
+      padding: 3rem 2.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .splash-box::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan), var(--accent-emerald));
+    }
+
+    .splash-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      color: var(--accent-cyan);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 1.5rem;
+    }
+
+    .splash-pulse-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent-cyan);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent-cyan);
+      animation: pulseDot 1.5s infinite ease-in-out;
+    }
+
+    .splash-title {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: 1rem;
+    }
+
+    .splash-log-terminal {
+      background: #050505;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 1rem 1.25rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: #9ca3af;
+      margin: 1.5rem 0 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      line-height: 1.45;
+    }
+
+    .splash-log-line {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .btn-splash-enter {
+      width: 100%;
+      background: var(--accent-blue);
+      color: #ffffff;
+      border: 1px solid var(--accent-blue);
+      padding: 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      box-shadow: 0 0 25px rgba(0, 112, 243, 0.4);
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-splash-enter:hover {
+      background: #005bb5;
+      box-shadow: 0 0 35px rgba(0, 112, 243, 0.7);
+      transform: translateY(-2px);
     }
 
     /* TOP ANNOUNCEMENT BANNER */
@@ -156,8 +270,12 @@
 
     .nav-menu {
       display: flex;
-      gap: 1.85rem;
+      gap: 1.65rem;
       list-style: none;
+    }
+
+    @media (max-width: 980px) {
+      .nav-menu { display: none; }
     }
 
     .nav-menu a {
@@ -236,11 +354,29 @@
       50% { box-shadow: 0 0 22px rgba(235, 47, 69, 0.75); }
     }
 
-    /* HERO SECTION */
+    /* ==========================================================================
+       01. HERO SECTION & INTERACTIVE SYNAPSE CANVAS
+       ========================================================================== */
     .hero-wrapper {
       padding: 4.5rem 2.25rem 3rem;
       border-bottom: 1px solid var(--border-hairline);
       position: relative;
+      overflow: hidden;
+    }
+
+    .hero-canvas-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.35;
+    }
+
+    .hero-content-wrap {
+      position: relative;
+      z-index: 1;
     }
 
     .hero-awards-pill {
@@ -261,7 +397,7 @@
     }
 
     .hero-headline {
-      font-size: clamp(3rem, 7.8vw, 7.5rem);
+      font-size: clamp(2.8rem, 7.5vw, 7rem);
       font-weight: 900;
       line-height: 0.92;
       letter-spacing: -0.045em;
@@ -277,46 +413,12 @@
     }
 
     .hero-subheadline {
-      font-size: clamp(1.2rem, 2vw, 1.8rem);
-      line-height: 1.4;
+      font-size: clamp(1.15rem, 1.8vw, 1.7rem);
+      line-height: 1.45;
       color: var(--text-secondary);
       max-width: 950px;
       margin: 2rem 0 2.5rem;
       font-weight: 400;
-    }
-
-    .hero-social-proof {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 2rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid var(--border-hairline);
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-    }
-
-    .social-proof-avatars {
-      display: flex;
-      align-items: center;
-    }
-
-    .avatar-circle {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: var(--bg-surface-elevated);
-      border: 2px solid var(--bg-base);
-      margin-left: -8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.65rem;
-      font-weight: 700;
-    }
-
-    .avatar-circle:first-child {
-      margin-left: 0;
     }
 
     /* REAL-TIME GLOBAL ATTENTION LOSS TICKER */
@@ -354,14 +456,396 @@
       margin-top: 0.35rem;
     }
 
+    .hero-social-proof {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-hairline);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+    }
+
+    .social-proof-avatars {
+      display: flex;
+      align-items: center;
+    }
+
+    .avatar-circle {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: var(--bg-surface-elevated);
+      border: 2px solid var(--bg-base);
+      margin-left: -8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      font-weight: 700;
+    }
+
+    .avatar-circle:first-child {
+      margin-left: 0;
+    }
+
     /* ==========================================================================
-       CONSCIOUSNESS BENCHMARK SECTION (ELITE NEURO-ENGINEERING CONSOLE)
+       02. INLINE CINEMATIC FILM THEATER (DIRECT PAGE FLOW)
+       ========================================================================== */
+    .theater-section {
+      padding: 5rem 2.25rem;
+      border-bottom: 1px solid var(--border-hairline);
+      background: #080808;
+      color: #ffffff;
+    }
+
+    .theater-wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      background: #000000;
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.95);
+    }
+
+    .theater-header {
+      padding: 0.85rem 1.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      background: #111111;
+    }
+
+    .theater-canvas-container {
+      width: 100%;
+      height: 480px;
+      background: #000000;
+      position: relative;
+    }
+
+    #cinemaCanvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .theater-controls {
+      padding: 1rem 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      background: #111111;
+    }
+
+    .scene-navigator {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-scene-jump {
+      background: #1a1a1a;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #bbb;
+      padding: 0.3rem 0.6rem;
+      font-size: 0.68rem;
+      cursor: pointer;
+    }
+
+    .btn-scene-jump.active, .btn-scene-jump:hover {
+      background: var(--accent-blue);
+      color: #fff;
+      border-color: var(--accent-blue);
+    }
+
+    /* ==========================================================================
+       03. DANGEROUS UX: LIFETIME COGNITIVE DEBT CALCULATOR
+       ========================================================================== */
+    .calculator-section {
+      padding: 5rem 2.25rem;
+      border-bottom: 1px solid var(--border-hairline);
+      background: var(--bg-card);
+      position: relative;
+    }
+
+    .calc-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 3rem;
+      align-items: center;
+      margin-top: 2.5rem;
+    }
+
+    @media (max-width: 960px) {
+      .calc-grid { grid-template-columns: 1fr; }
+    }
+
+    .calc-input-panel {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-hairline);
+      padding: 2.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.85rem;
+    }
+
+    .calc-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+
+    .calc-label-row {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .calc-range-slider {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 6px;
+      background: var(--bg-surface-elevated);
+      outline: none;
+      border-radius: 3px;
+    }
+
+    .calc-range-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      background: var(--accent-crimson);
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 0 10px rgba(235, 47, 69, 0.5);
+    }
+
+    .calc-results-display {
+      background: #080808;
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-elevated);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .calc-results-display::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent-crimson), var(--accent-amber));
+    }
+
+    .calc-alarm-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: rgba(235, 47, 69, 0.2);
+      color: var(--accent-crimson);
+      border: 1px solid var(--accent-crimson);
+      padding: 0.25rem 0.6rem;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 800;
+      margin-bottom: 1.25rem;
+      animation: pulseAlarm 2s infinite ease-in-out;
+    }
+
+    @keyframes pulseAlarm {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(0.98); }
+    }
+
+    .calc-big-loss {
+      font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+      font-weight: 900;
+      color: var(--accent-crimson);
+      line-height: 1;
+      margin: 0.5rem 0 1rem;
+      font-family: var(--font-mono);
+    }
+
+    .calc-loss-breakdown {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      padding-top: 1.25rem;
+      margin-top: 1.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+    }
+
+    .calc-breakdown-val {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-top: 0.25rem;
+    }
+
+    /* ==========================================================================
+       04. CONSCIOUSNESS DUAL-STATE SPLIT SIMULATOR
+       ========================================================================== */
+    .split-sim-section {
+      padding: 5rem 2.25rem;
+      border-bottom: 1px solid var(--border-hairline);
+      background: var(--bg-surface);
+    }
+
+    .split-canvas-container {
+      width: 100%;
+      height: 480px;
+      background: #060606;
+      border: 1px solid var(--border-hairline);
+      position: relative;
+      overflow: hidden;
+      margin: 2.5rem 0 1.5rem;
+    }
+
+    #splitCanvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .split-slider-ctrl {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(10, 10, 10, 0.88);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      color: #ffffff;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      z-index: 10;
+    }
+
+    /* ==========================================================================
+       05. UNDERSTANDING MADE SIMPLE: THE 3-LAYER MIND ARCHITECTURE
+       ========================================================================== */
+    .architecture-section {
+      padding: 5rem 2.25rem;
+      border-bottom: 1px solid var(--border-hairline);
+      background: var(--bg-card);
+    }
+
+    .arch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .arch-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-hairline);
+      padding: 2.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .arch-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .arch-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+    }
+
+    .arch-number {
+      font-weight: 800;
+      color: var(--accent-blue);
+    }
+
+    .arch-status {
+      font-size: 0.65rem;
+      padding: 0.15rem 0.45rem;
+      background: var(--bg-surface-elevated);
+      border-radius: 2px;
+    }
+
+    .arch-title {
+      font-size: 1.4rem;
+      font-weight: 900;
+      line-height: 1.2;
+      margin-bottom: 0.85rem;
+    }
+
+    .arch-desc {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .arch-stat-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-hairline);
+      padding: 0.85rem 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+    }
+
+    /* ==========================================================================
+       06. CONSCIOUSNESS BENCHMARK SECTION (ELITE NEURO-ENGINEERING CONSOLE)
        ========================================================================== */
     .benchmark-section {
       padding: 5rem 2.25rem;
       border-bottom: 1px solid var(--border-hairline);
       background: var(--bg-surface);
       position: relative;
+    }
+
+    .section-header-badge {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--accent-blue);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-main-title {
+      font-size: clamp(2.2rem, 4.5vw, 4rem);
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.035em;
+    }
+
+    .section-subtitle {
+      max-width: 820px;
+      color: var(--text-muted);
+      font-size: 1.15rem;
+      line-height: 1.55;
+      margin-bottom: 2rem;
     }
 
     .benchmark-mode-nav {
@@ -404,9 +888,7 @@
     }
 
     @media (max-width: 1020px) {
-      .benchmark-grid {
-        grid-template-columns: 1fr;
-      }
+      .benchmark-grid { grid-template-columns: 1fr; }
     }
 
     /* HARDWARE INSTRUMENT RACK */
@@ -610,7 +1092,7 @@
     }
 
     .probe-prompt-text {
-      font-size: 1.85rem;
+      font-size: 2rem;
       font-weight: 900;
       letter-spacing: -0.02em;
       margin-bottom: 1.5rem;
@@ -810,366 +1292,7 @@
     }
 
     /* ==========================================================================
-       HERO SYNAPSE CANVAS & GLOW
-       ========================================================================== */
-    .hero-canvas-bg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.45;
-    }
-
-    .hero-content-wrap {
-      position: relative;
-      z-index: 1;
-    }
-
-    /* ==========================================================================
-       DANGEROUS UX PSYCHOLOGY: LIFETIME COGNITIVE DEBT CALCULATOR
-       ========================================================================== */
-    .calculator-section {
-      padding: 5rem 2.25rem;
-      border-bottom: 1px solid var(--border-hairline);
-      background: var(--bg-card);
-      position: relative;
-    }
-
-    .calc-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 3rem;
-      align-items: center;
-      margin-top: 2.5rem;
-    }
-
-    @media (max-width: 960px) {
-      .calc-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .calc-input-panel {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-hairline);
-      padding: 2.25rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.85rem;
-    }
-
-    .calc-row {
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-    }
-
-    .calc-label-row {
-      display: flex;
-      justify-content: space-between;
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      font-weight: 700;
-    }
-
-    .calc-range-slider {
-      -webkit-appearance: none;
-      width: 100%;
-      height: 6px;
-      background: var(--bg-surface-elevated);
-      outline: none;
-      border-radius: 3px;
-    }
-
-    .calc-range-slider::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      width: 20px;
-      height: 20px;
-      background: var(--accent-crimson);
-      border-radius: 50%;
-      cursor: pointer;
-      box-shadow: 0 0 10px rgba(235, 47, 69, 0.5);
-    }
-
-    .calc-results-display {
-      background: #080808;
-      color: #ffffff;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      padding: 2.5rem;
-      box-shadow: var(--shadow-elevated);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .calc-results-display::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--accent-crimson), var(--accent-amber));
-    }
-
-    .calc-alarm-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      background: rgba(235, 47, 69, 0.2);
-      color: var(--accent-crimson);
-      border: 1px solid var(--accent-crimson);
-      padding: 0.25rem 0.6rem;
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      font-weight: 800;
-      margin-bottom: 1.25rem;
-      animation: pulseAlarm 2s infinite ease-in-out;
-    }
-
-    @keyframes pulseAlarm {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.6; transform: scale(0.98); }
-    }
-
-    .calc-big-loss {
-      font-size: clamp(2.4rem, 4.5vw, 3.8rem);
-      font-weight: 900;
-      color: var(--accent-crimson);
-      line-height: 1;
-      margin: 0.5rem 0 1rem;
-      font-family: var(--font-mono);
-    }
-
-    .calc-loss-breakdown {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.12);
-      padding-top: 1.25rem;
-      margin-top: 1.5rem;
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-    }
-
-    .calc-breakdown-val {
-      font-size: 1.15rem;
-      font-weight: 800;
-      color: #ffffff;
-      margin-top: 0.25rem;
-    }
-
-    /* ==========================================================================
-       CONSCIOUSNESS SPLIT SIMULATOR (ZOMBIE VS SOVEREIGN)
-       ========================================================================== */
-    .split-sim-section {
-      padding: 5rem 2.25rem;
-      border-bottom: 1px solid var(--border-hairline);
-      background: var(--bg-surface);
-    }
-
-    .split-canvas-container {
-      width: 100%;
-      height: 480px;
-      background: #060606;
-      border: 1px solid var(--border-hairline);
-      position: relative;
-      overflow: hidden;
-      margin: 2.5rem 0 1.5rem;
-    }
-
-    #splitCanvas {
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
-
-    .split-slider-ctrl {
-      position: absolute;
-      bottom: 1.5rem;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(10, 10, 10, 0.85);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      padding: 0.75rem 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 1.25rem;
-      color: #ffffff;
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      z-index: 10;
-    }
-
-    /* ==========================================================================
-       UNDERSTANDING MADE SIMPLE: THE 3-LAYER MIND ARCHITECTURE
-       ========================================================================== */
-    .architecture-section {
-      padding: 5rem 2.25rem;
-      border-bottom: 1px solid var(--border-hairline);
-      background: var(--bg-card);
-    }
-
-    .arch-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 3rem;
-    }
-
-    .arch-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-hairline);
-      padding: 2.25rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      position: relative;
-      transition: transform 0.2s, box-shadow 0.2s;
-    }
-
-    .arch-card:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-subtle);
-    }
-
-    .arch-card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1.5rem;
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-    }
-
-    .arch-number {
-      font-weight: 800;
-      color: var(--accent-blue);
-    }
-
-    .arch-status {
-      font-size: 0.65rem;
-      padding: 0.15rem 0.45rem;
-      background: var(--bg-surface-elevated);
-      border-radius: 2px;
-    }
-
-    .arch-title {
-      font-size: 1.4rem;
-      font-weight: 900;
-      line-height: 1.2;
-      margin-bottom: 0.85rem;
-    }
-
-    .arch-desc {
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
-    }
-
-    .arch-stat-box {
-      background: var(--bg-card);
-      border: 1px solid var(--border-hairline);
-      padding: 0.85rem 1rem;
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-    }
-
-    /* ==========================================================================
-       THE 5-MINUTE DAILY SOVEREIGNTY PROTOCOL
-       ========================================================================== */
-    .protocol-section {
-      padding: 5rem 2.25rem;
-      border-bottom: 1px solid var(--border-hairline);
-      background: var(--bg-surface);
-    }
-
-    .protocol-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
-      margin-top: 3rem;
-    }
-
-    .protocol-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-hairline);
-      padding: 1.75rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .protocol-step {
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      color: var(--accent-emerald);
-      font-weight: 800;
-      margin-bottom: 0.5rem;
-    }
-
-    .protocol-name {
-      font-size: 1.15rem;
-      font-weight: 800;
-      margin-bottom: 0.6rem;
-    }
-
-    .protocol-body {
-      font-size: 0.82rem;
-      color: var(--text-secondary);
-      line-height: 1.55;
-    }
-
-    /* ==========================================================================
-       DANGEROUS UX: WAKE-UP EMERGENCY DRAWER
-       ========================================================================== */
-    .wake-up-modal-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.88);
-      backdrop-filter: blur(12px);
-      z-index: 600;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-    }
-
-    .wake-up-modal-backdrop.active {
-      display: flex;
-    }
-
-    .wake-up-card {
-      max-width: 580px;
-      background: #0a0a0a;
-      border: 2px solid var(--accent-crimson);
-      box-shadow: 0 0 50px rgba(235, 47, 69, 0.4);
-      color: #ffffff;
-      padding: 2.5rem;
-      text-align: center;
-      position: relative;
-    }
-
-    .wake-up-title {
-      font-size: 2rem;
-      font-weight: 900;
-      color: var(--accent-crimson);
-      margin-bottom: 1rem;
-      letter-spacing: -0.02em;
-    }
-
-    .wake-up-p {
-      font-size: 0.95rem;
-      color: #d1d5db;
-      line-height: 1.6;
-      margin-bottom: 2rem;
-    }
-
-    /* ==========================================================================
-       VISUAL AWARENESS LAB
+       07. VISUAL AWARENESS LAB
        ========================================================================== */
     .lab-section {
       padding: 5rem 2.25rem;
@@ -1215,9 +1338,7 @@
     }
 
     @media (max-width: 960px) {
-      .experiment-viewport {
-        grid-template-columns: 1fr;
-      }
+      .experiment-viewport { grid-template-columns: 1fr; }
     }
 
     .canvas-container {
@@ -1319,69 +1440,93 @@
     }
 
     /* ==========================================================================
-       CINEMATIC FILM TRAILER & WEBM VIDEO RECORDER MODAL
+       08. THE 5-MINUTE DAILY SOVEREIGNTY PROTOCOL
        ========================================================================== */
-    .cinema-modal-backdrop {
+    .protocol-section {
+      padding: 5rem 2.25rem;
+      border-bottom: 1px solid var(--border-hairline);
+      background: var(--bg-surface);
+    }
+
+    .protocol-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .protocol-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-hairline);
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .protocol-step {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--accent-emerald);
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+
+    .protocol-name {
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin-bottom: 0.6rem;
+    }
+
+    .protocol-body {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    /* ==========================================================================
+       DANGEROUS UX: WAKE-UP EMERGENCY WARNING MODAL
+       ========================================================================== */
+    .wake-up-modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.94);
-      backdrop-filter: blur(16px);
-      z-index: 500;
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(12px);
+      z-index: 600;
       display: none;
       align-items: center;
       justify-content: center;
-      padding: 2rem;
+      padding: 1.5rem;
     }
 
-    .cinema-modal-backdrop.active {
+    .wake-up-modal-backdrop.active {
       display: flex;
     }
 
-    .cinema-player-box {
-      width: min(1000px, 95vw);
-      background: #090909;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.95);
-      display: flex;
-      flex-direction: column;
+    .wake-up-card {
+      max-width: 580px;
+      background: #0a0a0a;
+      border: 2px solid var(--accent-crimson);
+      box-shadow: 0 0 50px rgba(235, 47, 69, 0.4);
+      color: #ffffff;
+      padding: 2.5rem;
+      text-align: center;
       position: relative;
     }
 
-    .cinema-header {
-      padding: 0.85rem 1.5rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      color: #ffffff;
-      background: #111111;
+    .wake-up-title {
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--accent-crimson);
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
     }
 
-    .cinema-canvas-wrap {
-      width: 100%;
-      height: 500px;
-      background: #000000;
-      position: relative;
-    }
-
-    #cinemaCanvas {
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
-
-    .cinema-controls {
-      padding: 1rem 1.5rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.12);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      background: #111111;
-      color: #ffffff;
+    .wake-up-p {
+      font-size: 0.95rem;
+      color: #d1d5db;
+      line-height: 1.6;
+      margin-bottom: 2rem;
     }
 
     /* FOOTER */
@@ -1400,9 +1545,7 @@
     }
 
     @media (max-width: 800px) {
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
+      .footer-grid { grid-template-columns: 1fr; }
     }
 
     .footer-bottom {
@@ -1415,6 +1558,33 @@
   </style>
 </head>
 <body>
+
+  <!-- ==========================================================================
+       00. CYBERNETIC SPLASH SCREEN / BOOT GATEWAY
+       ========================================================================== -->
+  <div class="splash-overlay" id="splashScreen">
+    <div class="splash-box">
+      <div class="splash-badge">
+        <span class="splash-pulse-dot"></span>
+        <span>NEURO-DIAGNOSTIC CALIBRATION GATEWAY // VER 4.0</span>
+      </div>
+
+      <h1 class="splash-title">THE UNEXPLORED INTERIOR</h1>
+      <p style="color: #d1d5db; font-size: 1rem; line-height: 1.6;">
+        You are about to initiate an empirical phenomenological audit of your attentional sovereignty, qualia resolution, and cognitive gating.
+      </p>
+
+      <div class="splash-log-terminal">
+        <div class="splash-log-line"><span>[STATUS] THALAMIC GATE SAMPLING</span><span style="color:var(--accent-emerald);">ONLINE (1000 HZ)</span></div>
+        <div class="splash-log-line"><span>[DIAGNOSTIC] DEFAULT MODE NETWORK</span><span style="color:var(--accent-amber);">HYPER-REACTIVE (46.9%)</span></div>
+        <div class="splash-log-line"><span>[SECURITY] ATTENTIONAL SOVEREIGNTY</span><span style="color:var(--accent-crimson);">UNVERIFIED</span></div>
+      </div>
+
+      <button class="btn-splash-enter" id="btnEnterPlatform">
+        ⚡ INITIALIZE CONSCIOUSNESS DIAGNOSTIC →
+      </button>
+    </div>
+  </div>
 
   <!-- ANNOUNCEMENT BAR -->
   <div class="announcement-bar">
@@ -1436,24 +1606,27 @@
     <nav>
       <ul class="nav-menu">
         <li><a href="#manifesto">01. Manifesto</a></li>
-        <li><a href="#calculator">02. Cognitive Debt</a></li>
-        <li><a href="#split-simulator">03. Dual State</a></li>
-        <li><a href="#architecture-simple">04. 3-Layer Mind</a></li>
-        <li><a href="#benchmark">05. Benchmark</a></li>
-        <li><a href="#lab">06. Visual Lab</a></li>
-        <li><a href="#protocol">07. Protocol</a></li>
+        <li><a href="#theater">02. Cinema Showcase</a></li>
+        <li><a href="#calculator">03. Cognitive Debt</a></li>
+        <li><a href="#split-simulator">04. Dual State</a></li>
+        <li><a href="#architecture-simple">05. 3-Layer Mind</a></li>
+        <li><a href="#benchmark">06. Benchmark</a></li>
+        <li><a href="#lab">07. Visual Lab</a></li>
+        <li><a href="#protocol">08. Protocol</a></li>
       </ul>
     </nav>
 
     <div class="action-group">
-      <button class="btn-minimal btn-trailer-watch" id="openCinemaBtn">▶ WATCH TRAILER (60 FPS)</button>
+      <button class="btn-minimal btn-trailer-watch" id="openCinemaBtn">▶ CINEMA THEATER</button>
       <button class="btn-minimal" id="audioToggleBtn">GAMMA 40HZ : OFF</button>
       <button class="btn-minimal" id="themeToggleBtn">THEME: LIGHT</button>
       <a href="#benchmark" class="btn-cta-hype">START BENCHMARK →</a>
     </div>
   </header>
 
-  <!-- HERO SECTION WITH INTERACTIVE SYNAPSE CANVAS -->
+  <!-- ==========================================================================
+       01. HERO SECTION WITH INTERACTIVE SYNAPSE CANVAS
+       ========================================================================== -->
   <section class="hero-wrapper" id="manifesto">
     <canvas class="hero-canvas-bg" id="heroSynapseCanvas"></canvas>
     
@@ -1507,7 +1680,46 @@
   </section>
 
   <!-- ==========================================================================
-       DANGEROUS UX PSYCHOLOGY: LIFETIME COGNITIVE DEBT CALCULATOR
+       02. INLINE CINEMATIC FILM THEATER
+       ========================================================================== -->
+  <section class="theater-section" id="theater">
+    <div style="max-width:1100px; margin:0 auto 1.5rem;">
+      <div class="section-header-badge" style="color:var(--accent-cyan);">[ CINEMATIC SHOWCASE // 60 FPS TYPOGRAPHIC FILM ]</div>
+      <h2 style="font-size:clamp(1.8rem, 3.5vw, 2.8rem); font-weight:900; letter-spacing:-0.03em;">THE CONSCIOUSNESS CRISIS IN 6 ACTS</h2>
+      <p style="color:#aaa; font-size:1rem; margin-top:0.35rem;">
+        Watch the generative neuro-typographic trailer or record and download the high-definition video directly in your browser.
+      </p>
+    </div>
+
+    <div class="theater-wrapper">
+      <div class="theater-header">
+        <div id="cinemaTimeDisplay">SCENE: 01 // THE MANIFESTO</div>
+        <div style="display:flex; gap:0.5rem;">
+          <button class="btn-minimal" id="btnRestartCinema" style="color:#fff; border-color:rgba(255,255,255,0.3);">↺ REPLAY FILM</button>
+          <button class="btn-minimal btn-trailer-watch" id="btnExportWebM">⏺ EXPORT HD VIDEO (WEBM)</button>
+        </div>
+      </div>
+
+      <div class="theater-canvas-container">
+        <canvas id="cinemaCanvas"></canvas>
+      </div>
+
+      <div class="theater-controls">
+        <div class="scene-navigator">
+          <button class="btn-scene-jump active" data-scene="0">01. Manifesto</button>
+          <button class="btn-scene-jump" data-scene="1">02. 95% Trance</button>
+          <button class="btn-scene-jump" data-scene="2">03. Ignition Gating</button>
+          <button class="btn-scene-jump" data-scene="3">04. MIB Blindness</button>
+          <button class="btn-scene-jump" data-scene="4">05. Necker Rivalry</button>
+          <button class="btn-scene-jump" data-scene="5">06. Phi Density</button>
+        </div>
+        <div style="color:#888; font-size:0.7rem;">RENDER: 60FPS CANVASES // AUDIO SYNCHRONIZED</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       03. DANGEROUS UX PSYCHOLOGY: LIFETIME COGNITIVE DEBT CALCULATOR
        ========================================================================== -->
   <section class="calculator-section" id="calculator">
     <div class="section-header-badge">[ COGNITIVE DEBT ENGINE // LOSS AVERSION AUDIT ]</div>
@@ -1583,7 +1795,7 @@
   </section>
 
   <!-- ==========================================================================
-       CONSCIOUSNESS DUAL-STATE SIMULATOR (ZOMBIE VS SOVEREIGN)
+       04. CONSCIOUSNESS DUAL-STATE SIMULATOR (ZOMBIE VS SOVEREIGN)
        ========================================================================== -->
   <section class="split-sim-section" id="split-simulator">
     <div class="section-header-badge">[ REAL-TIME NEURAL TOPOLOGY // DUAL-STATE COMPARISON ]</div>
@@ -1618,7 +1830,7 @@
   </section>
 
   <!-- ==========================================================================
-       UNDERSTANDING MADE SIMPLE: THE 3-LAYER MIND ARCHITECTURE
+       05. UNDERSTANDING MADE SIMPLE: THE 3-LAYER MIND ARCHITECTURE
        ========================================================================== -->
   <section class="architecture-section" id="architecture-simple">
     <div class="section-header-badge">[ COGNITIVE DECODING // UNDERSTANDING MADE SIMPLE ]</div>
@@ -1685,7 +1897,7 @@
   </section>
 
   <!-- ==========================================================================
-       CONSCIOUSNESS BENCHMARK ENGINE (ADVANCED NEURO-ENGINEERING CONSOLE)
+       06. CONSCIOUSNESS BENCHMARK ENGINE (ADVANCED NEURO-ENGINEERING CONSOLE)
        ========================================================================== -->
   <section class="benchmark-section" id="benchmark">
     <div class="section-header-badge">[ SYSTEM DIAGNOSTIC // NEURO-PHENOMENOLOGICAL AUDIT ]</div>
@@ -1921,9 +2133,8 @@
   </section>
 
   <!-- ==========================================================================
-       VISUAL AWARENESS LAB
-       ========================================================================== */
-  -->
+       07. VISUAL AWARENESS LAB
+       ========================================================================== -->
   <section class="lab-section" id="lab">
     <div class="section-header-badge">[ EMPIRICAL NEURO-PHENOMENOLOGY // SECTION 03 ]</div>
     <h2 class="section-main-title">VISUAL AWARENESS LABORATORY</h2>
@@ -1977,8 +2188,13 @@
             <span>COGNITIVE STATUS:</span>
             <span class="telemetry-val" id="metric3">STANDBY</span>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ==========================================================================
-       THE 5-MINUTE DAILY SOVEREIGNTY PROTOCOL
+       08. THE 5-MINUTE DAILY SOVEREIGNTY PROTOCOL
        ========================================================================== -->
   <section class="protocol-section" id="protocol">
     <div class="section-header-badge">[ ACTIONABLE NEURO-PRACTICE // 5-MINUTE DAILY HABIT ]</div>
@@ -2065,30 +2281,6 @@
         <button class="btn-minimal" id="btnCloseWakeUp" style="color:#888; border-color:rgba(255,255,255,0.15);">
           I ACCEPT THE DEFAULT AUTOMATED TRANCE [ CLOSE ]
         </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- ==========================================================================
-       CINEMATIC TRAILER & WEBM RECORDER MODAL
-       ========================================================================== -->
-  <div class="cinema-modal-backdrop" id="cinemaModal">
-    <div class="cinema-player-box">
-      <div class="cinema-header">
-        <div>▶ THE UNEXPLORED INTERIOR // CINEMATIC FILM TRAILER (60 FPS)</div>
-        <button class="btn-minimal" id="closeCinemaBtn" style="color:#fff; border-color:rgba(255,255,255,0.3);">[ ESC / CLOSE ]</button>
-      </div>
-
-      <div class="cinema-canvas-wrap">
-        <canvas id="cinemaCanvas"></canvas>
-      </div>
-
-      <div class="cinema-controls">
-        <div id="cinemaTimeDisplay">ACT: 01 // THE DEFAULT TRANCE</div>
-        <div style="display:flex; gap:0.75rem;">
-          <button class="btn-minimal" id="btnRestartCinema" style="color:#fff; border-color:rgba(255,255,255,0.3);">↺ REPLAY</button>
-          <button class="btn-minimal btn-trailer-watch" id="btnExportWebM">⏺ EXPORT HD VIDEO (WEBM)</button>
-        </div>
       </div>
     </div>
   </div>
@@ -2699,7 +2891,7 @@
         ctx.shadowBlur = 0;
 
         // User Coordinate Node Points
-        userNodes.forEach((n, idx) => {
+        userNodes.forEach((n) => {
           ctx.beginPath();
           ctx.arc(n.x, n.y, 4, 0, Math.PI * 2);
           ctx.fillStyle = "#ffffff";
@@ -2830,7 +3022,7 @@
         }
       }
 
-      handleResponse(selectedColor) {
+      handleResponse() {
         const rt = Math.round(performance.now() - this.startTime);
         this.reactionTimes.push(rt);
         this.statusEl.innerText = `Trial ${this.trial} Latency: ${rt}ms (Recorded)`;
@@ -2861,14 +3053,14 @@
       }
     }
 
-    // --- 6. CINEMATIC SHOWCASE TRAILER WITH HUMAN PACING ---
+    // --- 6. CINEMATIC SHOWCASE TRAILER ENGINE ---
     class CinematicShowcaseEngine {
       constructor(canvas) {
         this.canvas = canvas;
         this.ctx = canvas.getContext('2d');
         this.sceneTime = 0;
         this.currentScene = 0;
-        this.isPlaying = false;
+        this.isPlaying = true;
         this.mediaRecorder = null;
         this.recordedChunks = [];
 
@@ -2884,26 +3076,23 @@
         this.resize();
         window.addEventListener('resize', () => this.resize());
         this.loop = this.loop.bind(this);
+        requestAnimationFrame(this.loop);
       }
 
       resize() {
         const rect = this.canvas.getBoundingClientRect();
         this.width = rect.width || 960;
-        this.height = rect.height || 500;
+        this.height = rect.height || 480;
         this.canvas.width = this.width;
         this.canvas.height = this.height;
       }
 
-      start() {
-        this.isPlaying = true;
+      jumpToScene(index) {
+        this.currentScene = index % this.scenes.length;
         this.sceneTime = 0;
-        this.currentScene = 0;
-        this.resize();
-        requestAnimationFrame(this.loop);
-      }
-
-      stop() {
-        this.isPlaying = false;
+        document.querySelectorAll('.btn-scene-jump').forEach((btn, idx) => {
+          btn.classList.toggle('active', idx === this.currentScene);
+        });
       }
 
       exportWebM() {
@@ -2933,7 +3122,6 @@
         };
 
         this.mediaRecorder.start();
-        this.start();
         document.getElementById('btnExportWebM').innerText = "⏺ RECORDING 60FPS...";
 
         const totalDuration = this.scenes.reduce((acc, s) => acc + s.duration, 0) * 1000;
@@ -2952,6 +3140,9 @@
         if (this.sceneTime >= currentDuration) {
           this.sceneTime = 0;
           this.currentScene = (this.currentScene + 1) % this.scenes.length;
+          document.querySelectorAll('.btn-scene-jump').forEach((btn, idx) => {
+            btn.classList.toggle('active', idx === this.currentScene);
+          });
         }
 
         const ctx = this.ctx;
@@ -2960,16 +3151,19 @@
         const cx = w / 2;
         const cy = h / 2;
 
-        ctx.fillStyle = "#0a0a0a";
+        ctx.fillStyle = "#070707";
         ctx.fillRect(0, 0, w, h);
 
         // Subtle Film Grain
-        for (let i = 0; i < 300; i++) {
-          ctx.fillStyle = `rgba(255, 255, 255, ${Math.random() * 0.04})`;
+        for (let i = 0; i < 260; i++) {
+          ctx.fillStyle = `rgba(255, 255, 255, ${Math.random() * 0.035})`;
           ctx.fillRect(Math.random() * w, Math.random() * h, 1.5, 1.5);
         }
 
-        document.getElementById('cinemaTimeDisplay').innerText = `SCENE: ${this.scenes[this.currentScene].name} (${this.sceneTime.toFixed(1)}s / ${currentDuration}s)`;
+        const timeDisplay = document.getElementById('cinemaTimeDisplay');
+        if (timeDisplay) {
+          timeDisplay.innerText = `SCENE: ${this.scenes[this.currentScene].name} (${this.sceneTime.toFixed(1)}s / ${currentDuration}s)`;
+        }
 
         if (this.currentScene === 0) {
           ctx.fillStyle = "#3291ff";
@@ -2986,12 +3180,12 @@
           ctx.fillText("An Empirical Instrument for Human Consciousness & Qualia", cx, cy + 35);
         } else if (this.currentScene === 1) {
           ctx.fillStyle = "#eb2f45";
-          ctx.font = "900 56px monospace";
+          ctx.font = "900 52px monospace";
           ctx.textAlign = "center";
           ctx.fillText("95.0% AUTOMATED TRANCE", cx, cy - 25);
 
           ctx.fillStyle = "#ffffff";
-          ctx.font = "19px sans-serif";
+          ctx.font = "18px sans-serif";
           ctx.fillText("46.9% of waking life consumed by Default Mode Network rumination.", cx, cy + 25);
 
           ctx.fillStyle = "#888888";
@@ -3100,111 +3294,13 @@
       }
     }
 
-    // --- 7. INITIALIZATION & HARDWARE CONTROLS ---
-    document.addEventListener('DOMContentLoaded', () => {
-      const audio = new BinauralAudio();
-
-      const labCanvas = document.getElementById('mainExperimentCanvas');
-      const labEngine = new VisualAwarenessLabEngine(labCanvas);
-
-      const radarCanvas = document.getElementById('benchmarkRadarCanvas');
-      const radarEngine = new DiagnosticRadarEngine(radarCanvas);
-
-      const sparklines = new SparklineManager();
-
-      const cinemaCanvas = document.getElementById('cinemaCanvas');
-      const cinemaEngine = new CinematicShowcaseEngine(cinemaCanvas);
-
-      // Dynamic Loss Ticker
-      let baseHours = 14892104;
-      setInterval(() => {
-        baseHours += Math.floor(Math.random() * 8) + 3;
-        document.getElementById('tickerHoursLost').innerText = baseHours.toLocaleString();
-      }, 1500);
-
-      // Session Timer
-      const startTime = performance.now();
-      setInterval(() => {
-        const secs = Math.floor((performance.now() - startTime) / 1000);
-        const hrs = String(Math.floor(secs / 3600)).padStart(2, '0');
-        const mins = String(Math.floor((secs % 3600) / 60)).padStart(2, '0');
-        const s = String(secs % 60).padStart(2, '0');
-        document.getElementById('sessionTimer').innerText = `${hrs}:${mins}:${s}`;
-      }, 1000);
-
-      // Cinema Modal Triggers
-      const cinemaModal = document.getElementById('cinemaModal');
-      document.getElementById('openCinemaBtn').addEventListener('click', () => {
-        cinemaModal.classList.add('active');
-        cinemaEngine.start();
-        audio.playChime(720);
-      });
-
-      const closeCinema = () => {
-        cinemaModal.classList.remove('active');
-        cinemaEngine.stop();
-      };
-      document.getElementById('closeCinemaBtn').addEventListener('click', closeCinema);
-      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeCinema(); });
-
-      document.getElementById('btnRestartCinema').addEventListener('click', () => {
-        cinemaEngine.start();
-      });
-
-      document.getElementById('btnExportWebM').addEventListener('click', () => {
-        cinemaEngine.exportWebM();
-      });
-
-      // Lab Tab Switching
-      document.querySelectorAll('.lab-tab-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          document.querySelectorAll('.lab-tab-btn').forEach(b => b.classList.remove('active'));
-          e.target.classList.add('active');
-          const expKey = e.target.getAttribute('data-exp');
-          labEngine.setExperiment(expKey);
-          audio.playChime(660);
-        });
-      });
-
-      document.getElementById('expActionBtn').addEventListener('click', () => {
-        labEngine.handleActionClick();
-        audio.playChime(440);
-      });
-      document.getElementById('expResetBtn').addEventListener('click', () => {
-        labEngine.setExperiment(labEngine.currentExp);
-      });
-      labCanvas.addEventListener('click', () => {
-        labEngine.handleCanvasClick();
-      });
-
-      // Theme toggle
-      const themeBtn = document.getElementById('themeToggleBtn');
-      themeBtn.addEventListener('click', () => {
-        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-        if (isDark) {
-          document.documentElement.removeAttribute('data-theme');
-          themeBtn.innerText = 'THEME: LIGHT';
-        } else {
-          document.documentElement.setAttribute('data-theme', 'dark');
-          themeBtn.innerText = 'THEME: DARK';
-        }
-      });
-
-      // Audio Toggle
-      const audioBtn = document.getElementById('audioToggleBtn');
-      audioBtn.addEventListener('click', () => {
-        const on = audio.toggle();
-        audioBtn.innerText = on ? 'GAMMA 40HZ: ACTIVE' : 'GAMMA 40HZ: OFF';
-        audioBtn.style.color = on ? 'var(--accent-blue)' : '';
-      });
-
     // --- 7. HERO SYNAPSE PARTICLE CANVAS ENGINE ---
     class HeroSynapseEngine {
       constructor(canvas) {
         this.canvas = canvas;
         this.ctx = canvas.getContext('2d');
         this.nodes = [];
-        this.numNodes = 55;
+        this.numNodes = 50;
         this.mouse = { x: null, y: null, radius: 140 };
         this.resize();
         this.initNodes();
@@ -3224,7 +3320,7 @@
 
       resize() {
         const dpr = window.devicePixelRatio || 1;
-        const rect = this.canvas.parentElement.getBoundingClientRect();
+        const rect = this.canvas.parentElement ? this.canvas.parentElement.getBoundingClientRect() : { width: window.innerWidth, height: 500 };
         this.width = rect.width;
         this.height = rect.height;
         this.canvas.width = this.width * dpr;
@@ -3260,7 +3356,6 @@
           if (n.x < 0 || n.x > w) n.vx *= -1;
           if (n.y < 0 || n.y > h) n.vy *= -1;
 
-          // Mouse attraction / interaction
           if (this.mouse.x !== null && this.mouse.y !== null) {
             const dx = this.mouse.x - n.x;
             const dy = this.mouse.y - n.y;
@@ -3272,13 +3367,11 @@
             }
           }
 
-          // Draw node
           ctx.beginPath();
           ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);
           ctx.fillStyle = `rgba(0, 112, 243, ${n.baseAlpha})`;
           ctx.fill();
 
-          // Draw synaptic lines
           for (let j = i + 1; j < this.nodes.length; j++) {
             const n2 = this.nodes[j];
             const dist = Math.hypot(n.x - n2.x, n.y - n2.y);
@@ -3333,23 +3426,21 @@
 
         ctx.clearRect(0, 0, w, h);
 
-        // 1. LEFT SIDE: ALGORITHMIC ZOMBIE (Chaos, desaturated, jittery, fragmented)
+        // 1. LEFT SIDE: ALGORITHMIC ZOMBIE
         ctx.save();
         ctx.beginPath();
         ctx.rect(0, 0, splitX, h);
         ctx.clip();
 
-        ctx.fillStyle = "#0a0a0a";
+        ctx.fillStyle = "#090909";
         ctx.fillRect(0, 0, splitX, h);
 
-        // Chaotic noisy background grid
         ctx.strokeStyle = "rgba(235, 47, 69, 0.12)";
         for (let x = 0; x < splitX; x += 30) {
           const jitter = (Math.random() - 0.5) * 4;
           ctx.beginPath(); ctx.moveTo(x + jitter, 0); ctx.lineTo(x - jitter, h); ctx.stroke();
         }
 
-        // Glitchy erratic particles
         for (let i = 0; i < 40; i++) {
           const px = (Math.sin(this.time * 2 + i * 1.5) * 0.45 + 0.5) * splitX;
           const py = (Math.cos(this.time * 1.8 + i * 2.2) * 0.45 + 0.5) * h;
@@ -3357,7 +3448,6 @@
           ctx.fillRect(px, py, (i % 4) + 2, (i % 4) + 2);
         }
 
-        // Glitch text overlay
         ctx.fillStyle = "rgba(235, 47, 69, 0.85)";
         ctx.font = "bold 15px monospace";
         ctx.fillText("ATTENTIONAL HIJACK // DMN NOISE: 84%", 30, 45);
@@ -3365,7 +3455,7 @@
 
         ctx.restore();
 
-        // 2. RIGHT SIDE: SOVEREIGN OPERATOR (40Hz harmonic standing wave, golden-blue coherence)
+        // 2. RIGHT SIDE: SOVEREIGN OPERATOR
         ctx.save();
         ctx.beginPath();
         ctx.rect(splitX, 0, w - splitX, h);
@@ -3374,7 +3464,6 @@
         ctx.fillStyle = "#040810";
         ctx.fillRect(splitX, 0, w - splitX, h);
 
-        // Harmonious resonant standing wave lines
         const cy = h / 2;
         for (let wave = 0; wave < 6; wave++) {
           ctx.beginPath();
@@ -3388,7 +3477,6 @@
           ctx.stroke();
         }
 
-        // Sovereign neural node cluster
         const cxRight = splitX + (w - splitX) / 2;
         ctx.beginPath();
         ctx.arc(cxRight, cy, 55 + Math.sin(this.time * 4) * 5, 0, Math.PI * 2);
@@ -3456,7 +3544,6 @@
         const avgLifeSpan = 80;
         const remainingYears = Math.max(1, avgLifeSpan - age);
 
-        // Daily waking hours = 16 (assuming 8h sleep)
         const wakingHours = 16;
         const screenFraction = screenHours / wakingHours;
         const unexaminedRatio = Math.min(0.92, (screenFraction * 0.75) + (dmnPercent * 0.45));
@@ -3501,17 +3588,15 @@
         if (audio) audio.playChime(320);
       }
 
-      // Exit intent trigger (mouse leaving top of viewport)
       document.addEventListener('mouseleave', (e) => {
         if (e.clientY <= 10 && !triggered) {
           triggerModal();
         }
       });
 
-      // Inactivity timeout (after 50 seconds on page)
       setTimeout(() => {
         if (!triggered) triggerModal();
-      }, 50000);
+      }, 55000);
 
       btnStay.addEventListener('click', () => {
         modal.classList.remove('active');
@@ -3525,9 +3610,20 @@
       });
     }
 
-    // --- INITIALIZATION ---
+    // --- 11. INITIALIZATION ---
     document.addEventListener('DOMContentLoaded', () => {
       const audio = new BinauralAudio();
+
+      // Splash Screen Handler
+      const splash = document.getElementById('splashScreen');
+      const btnEnter = document.getElementById('btnEnterPlatform');
+      if (btnEnter) {
+        btnEnter.addEventListener('click', () => {
+          splash.classList.add('dismissed');
+          audio.init();
+          audio.playChime(720);
+        });
+      }
 
       const heroCanvas = document.getElementById('heroSynapseCanvas');
       if (heroCanvas) new HeroSynapseEngine(heroCanvas);
@@ -3550,6 +3646,32 @@
       const cinemaCanvas = document.getElementById('cinemaCanvas');
       const cinemaEngine = new CinematicShowcaseEngine(cinemaCanvas);
 
+      // Cinema Jump Buttons
+      document.querySelectorAll('.btn-scene-jump').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const sceneIndex = parseInt(e.target.getAttribute('data-scene'));
+          cinemaEngine.jumpToScene(sceneIndex);
+          audio.playChime(520);
+        });
+      });
+
+      const openCinemaBtn = document.getElementById('openCinemaBtn');
+      if (openCinemaBtn) {
+        openCinemaBtn.addEventListener('click', () => {
+          document.getElementById('theater').scrollIntoView({ behavior: 'smooth' });
+          audio.playChime(660);
+        });
+      }
+
+      document.getElementById('btnRestartCinema').addEventListener('click', () => {
+        cinemaEngine.jumpToScene(0);
+        audio.playChime(440);
+      });
+
+      document.getElementById('btnExportWebM').addEventListener('click', () => {
+        cinemaEngine.exportWebM();
+      });
+
       // Dynamic Loss Ticker
       let baseHours = 14892104;
       setInterval(() => {
@@ -3566,29 +3688,6 @@
         const s = String(secs % 60).padStart(2, '0');
         document.getElementById('sessionTimer').innerText = `${hrs}:${mins}:${s}`;
       }, 1000);
-
-      // Cinema Modal Triggers
-      const cinemaModal = document.getElementById('cinemaModal');
-      document.getElementById('openCinemaBtn').addEventListener('click', () => {
-        cinemaModal.classList.add('active');
-        cinemaEngine.start();
-        audio.playChime(720);
-      });
-
-      const closeCinema = () => {
-        cinemaModal.classList.remove('active');
-        cinemaEngine.stop();
-      };
-      document.getElementById('closeCinemaBtn').addEventListener('click', closeCinema);
-      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeCinema(); });
-
-      document.getElementById('btnRestartCinema').addEventListener('click', () => {
-        cinemaEngine.start();
-      });
-
-      document.getElementById('btnExportWebM').addEventListener('click', () => {
-        cinemaEngine.exportWebM();
-      });
 
       // Lab Tab Switching
       document.querySelectorAll('.lab-tab-btn').forEach(btn => {
