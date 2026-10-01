@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>THE UNEXPLORED INTERIOR // Consciousness Crisis & Visual Awareness Laboratory</title>
+  <title>THE UNEXPLORED INTERIOR // Consciousness Mechanism & Empirical Visual Lab</title>
   <meta name="description" content="A high-end analytical platform and visual awareness laboratory testing human perceptual gating, motion-induced blindness, bistable rivalry, and metacognitive calibration.">
   <style>
     /* ==========================================================================
@@ -71,7 +71,6 @@
       transition: background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.25s ease;
     }
 
-    /* TYPOGRAPHY */
     h1, h2, h3, h4 {
       font-weight: 900;
       letter-spacing: -0.04em;
@@ -193,7 +192,21 @@
       color: #fff;
     }
 
-    /* HERO SECTION */
+    .btn-video-glow {
+      background: var(--accent-crimson);
+      color: #ffffff;
+      border: 1px solid var(--accent-crimson);
+      font-weight: 700;
+      box-shadow: 0 0 12px rgba(224, 36, 56, 0.4);
+      animation: glowBtn 2.5s infinite ease-in-out;
+    }
+
+    @keyframes glowBtn {
+      0%, 100% { box-shadow: 0 0 10px rgba(224, 36, 56, 0.3); }
+      50% { box-shadow: 0 0 20px rgba(224, 36, 56, 0.7); }
+    }
+
+    /* HERO */
     .hero-container {
       min-height: 90vh;
       padding: 6rem 2.25rem 2.25rem;
@@ -246,6 +259,35 @@
       font-weight: 400;
     }
 
+    .hero-banner-frame {
+      margin-top: 2rem;
+      border: 1px solid var(--border-hairline);
+      position: relative;
+      overflow: hidden;
+      max-height: 380px;
+    }
+
+    .hero-banner-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: contrast(1.05);
+    }
+
+    .banner-overlay-badge {
+      position: absolute;
+      bottom: 1.25rem;
+      left: 1.25rem;
+      background: rgba(10, 10, 10, 0.85);
+      color: #fff;
+      padding: 0.4rem 0.85rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(8px);
+    }
+
     .kpi-strip {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -277,7 +319,7 @@
       text-transform: uppercase;
     }
 
-    /* SECTION LAYOUT */
+    /* LAB SECTION */
     .lab-section {
       padding: 4.5rem 2.25rem;
       border-bottom: 1px solid var(--border-hairline);
@@ -304,9 +346,6 @@
       line-height: 1.5;
     }
 
-    /* ==========================================================================
-       VISUAL AWARENESS LABORATORY (MINIMALIST & INTERACTIVE)
-       ========================================================================== */
     .lab-tab-nav {
       display: flex;
       flex-wrap: wrap;
@@ -448,9 +487,7 @@
       color: var(--accent-blue);
     }
 
-    /* ==========================================================================
-       THE PHENOMENAL AUDIT ENGINE
-       ========================================================================== */
+    /* AUDIT ENGINE */
     .diagnostic-layout {
       display: grid;
       grid-template-columns: 1.15fr 0.85fr;
@@ -567,6 +604,71 @@
       line-height: 1.55;
     }
 
+    /* ==========================================================================
+       CINEMATIC TEASER & WEBM VIDEO RECORDER MODAL
+       ========================================================================== */
+    .cinema-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.92);
+      backdrop-filter: blur(12px);
+      z-index: 500;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .cinema-modal-backdrop.active {
+      display: flex;
+    }
+
+    .cinema-player-box {
+      width: min(960px, 95vw);
+      background: #0d0d0d;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .cinema-header {
+      padding: 0.75rem 1.25rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: #ffffff;
+    }
+
+    .cinema-canvas-wrap {
+      width: 100%;
+      height: 480px;
+      background: #000000;
+      position: relative;
+    }
+
+    #cinemaCanvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .cinema-controls {
+      padding: 1rem 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      background: #111111;
+      color: #ffffff;
+    }
+
     /* FOOTER */
     .footer-container {
       padding: 4.5rem 2.25rem 2.25rem;
@@ -611,13 +713,14 @@
     </nav>
 
     <div class="action-group">
+      <button class="btn-minimal btn-video-glow" id="openCinemaBtn">▶ WATCH BRAG TRAILER</button>
       <button class="btn-minimal" id="audioToggleBtn">GAMMA 40HZ : OFF</button>
       <button class="btn-minimal" id="themeToggleBtn">THEME: LIGHT</button>
       <a href="#lab" class="btn-primary-pill">LAUNCH LAB →</a>
     </div>
   </header>
 
-  <!-- HERO SECTION -->
+  <!-- HERO -->
   <section class="hero-container" id="manifesto">
     <div class="hero-telemetry-strip">
       <div>INVESTIGATION // THE ATTENTIONAL BLINDSPOT</div>
@@ -634,6 +737,11 @@
       <p class="hero-manifesto">
         Civilization has decoded 3 billion base pairs of DNA, yet <strong>over 95% of daily human waking life is spent in an automated, unexamined trance</strong>. Captured by synthetic dopamine loops, trapped in Default Mode Network rumination, and severed from first-person qualia—we possess the universe's most complex organ, but operate it on factory demo mode.
       </p>
+    </div>
+
+    <div class="hero-banner-frame">
+      <img src="assets/banner.jpg" alt="The Unexplored Interior Showcase Banner" onerror="this.style.display='none'">
+      <div class="banner-overlay-badge">ARCHIVAL EXHIBITION POSTER // Φ = 1.618 // HIGH RESOLUTION QUALIA</div>
     </div>
 
     <div class="kpi-strip">
@@ -656,9 +764,7 @@
     </div>
   </section>
 
-  <!-- ==========================================================================
-       EXPANDED VISUAL AWARENESS & PERCEPTUAL LAB
-       ========================================================================== -->
+  <!-- VISUAL AWARENESS LAB -->
   <section class="lab-section" id="lab">
     <div class="section-tag">[ EMPIRICAL NEURO-PHENOMENOLOGY // SECTION 02 ]</div>
     <h2 class="section-title">THE VISUAL AWARENESS LAB</h2>
@@ -666,7 +772,7 @@
       Five high-precision interactive experiments demonstrating inattentional blindness, motion-induced qualia disappearance, bistable rivalry switching, flash suppression gating, and saccadic time dilation.
     </p>
 
-    <!-- EXPERIMENT TAB SWITCHER -->
+    <!-- TABS -->
     <div class="lab-tab-nav">
       <button class="lab-tab-btn active" data-exp="flicker">01. Perceptual Flicker & Gating</button>
       <button class="lab-tab-btn" data-exp="mib">02. Motion-Induced Blindness (MIB)</button>
@@ -675,7 +781,7 @@
       <button class="lab-tab-btn" data-exp="chronostasis">05. Chronostasis (Time Dilation)</button>
     </div>
 
-    <!-- EXPERIMENT INTERACTIVE VIEWPORT -->
+    <!-- EXPERIMENT VIEWPORT -->
     <div class="experiment-viewport">
       <div class="canvas-container">
         <canvas class="exp-canvas" id="mainExperimentCanvas"></canvas>
@@ -718,9 +824,7 @@
     </div>
   </section>
 
-  <!-- ==========================================================================
-       THE PHENOMENAL AUDIT ENGINE
-       ========================================================================== -->
+  <!-- AUDIT ENGINE -->
   <section class="lab-section" id="audit" style="background: var(--bg-surface);">
     <div class="section-tag">[ ANALYTICAL PRODUCT // SECTION 03 ]</div>
     <h2 class="section-title">THE PHENOMENAL AUDIT ENGINE</h2>
@@ -731,7 +835,6 @@
     <div class="diagnostic-layout">
       <!-- FORM -->
       <div class="diagnostic-form-box">
-        <!-- V1: Attentional Agency -->
         <div class="diag-question">
           <div class="diag-meta">[ VECTOR 01 // ATTENTIONAL SOVEREIGNTY ]</div>
           <div class="diag-text">Resistance to external algorithmic distraction and internal urge hijack:</div>
@@ -745,7 +848,6 @@
           </div>
         </div>
 
-        <!-- V2: Phenomenological Granularity -->
         <div class="diag-question">
           <div class="diag-meta">[ VECTOR 02 // PHENOMENOLOGICAL QUALIA RESOLUTION ]</div>
           <div class="diag-text">Vividness of raw sensory perception without automatic conceptual labeling:</div>
@@ -759,7 +861,6 @@
           </div>
         </div>
 
-        <!-- V3: Metacognitive Decentering -->
         <div class="diag-question">
           <div class="diag-meta">[ VECTOR 03 // METACOGNITIVE MONITORING (HOT) ]</div>
           <div class="diag-text">Ability to observe emotions as physiological events without 'becoming' them:</div>
@@ -773,7 +874,6 @@
           </div>
         </div>
 
-        <!-- V4: DMN Quiescence -->
         <div class="diag-question">
           <div class="diag-meta">[ VECTOR 04 // DMN PLASTICITY & EGO DE-COUPLING ]</div>
           <div class="diag-text">Ease of voluntarily quieting the internal narrative monologue:</div>
@@ -787,7 +887,6 @@
           </div>
         </div>
 
-        <!-- V5: Predictive Plasticity -->
         <div class="diag-question">
           <div class="diag-meta">[ VECTOR 05 // BAYESIAN PREDICTIVE PLASTICITY ]</div>
           <div class="diag-text">Flexibility in updating core worldview models upon disconfirming evidence:</div>
@@ -801,7 +900,6 @@
           </div>
         </div>
 
-        <!-- V6: State Space Range -->
         <div class="diag-question">
           <div class="diag-meta">[ VECTOR 06 // STATE-SPACE REPERTOIRE (ENTROPIC DEPTH) ]</div>
           <div class="diag-text">Frequency of accessing non-ordinary states of consciousness (flow, lucid hypnagogia, awe):</div>
@@ -816,7 +914,7 @@
         </div>
       </div>
 
-      <!-- RADAR & PROFILE -->
+      <!-- RADAR -->
       <div class="diagnostic-result-panel">
         <div style="font-family:var(--font-mono); font-size:0.7rem; color:var(--accent-crimson);">[ REAL-TIME COGNITIVE TOPOLOGY ]</div>
         <h3 id="diagProfileTitle" style="font-size:1.6rem; font-weight:900; margin:0.35rem 0 0.5rem;">AUTOMATED REACTIVE AGENT</h3>
@@ -845,6 +943,30 @@
     </div>
   </section>
 
+  <!-- ==========================================================================
+       CINEMATIC TRAILER & WEBM RECORDER MODAL
+       ========================================================================== -->
+  <div class="cinema-modal-backdrop" id="cinemaModal">
+    <div class="cinema-player-box">
+      <div class="cinema-header">
+        <div>▶ THE UNEXPLORED INTERIOR // CINEMATIC BRAG SHOWCASE (60 FPS)</div>
+        <button class="btn-minimal" id="closeCinemaBtn" style="color:#fff; border-color:rgba(255,255,255,0.3);">[ ESC / CLOSE ]</button>
+      </div>
+
+      <div class="cinema-canvas-wrap">
+        <canvas id="cinemaCanvas"></canvas>
+      </div>
+
+      <div class="cinema-controls">
+        <div id="cinemaTimeDisplay">SCENE: 01 // THE MANIFESTO</div>
+        <div style="display:flex; gap:0.75rem;">
+          <button class="btn-minimal" id="btnRestartCinema" style="color:#fff; border-color:rgba(255,255,255,0.3);">↺ REPLAY</button>
+          <button class="btn-minimal btn-video-glow" id="btnExportWebM">⏺ EXPORT HD VIDEO (WEBM)</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- FOOTER -->
   <footer class="footer-container">
     <div class="footer-top">
@@ -870,7 +992,7 @@
   </footer>
 
   <!-- ==========================================================================
-       JAVASCRIPT: MULTI-EXPERIMENT ENGINE + AUDIT RADAR + AUDIO
+       JAVASCRIPT: LAB ENGINE + AUDIT RADAR + CINEMA TRAILER ENGINE
        ========================================================================== -->
   <script>
     // --- 1. AUDIO BINAURAL SYNTHESIZER ---
@@ -948,33 +1070,25 @@
         this.time = 0;
         this.running = true;
 
-        // Flicker state
         this.flickerAngle = 0;
         this.hasAnomaly = false;
         this.anomalyStart = 0;
         this.waitingFlickerResponse = false;
 
-        // MIB state
         this.mibAngle = 0;
 
-        // Bistable state
         this.cubeAngleX = 0.5;
         this.cubeAngleY = 0.5;
         this.cubeReversals = 0;
         this.lastSwitchTime = performance.now();
-        this.switchIntervals = [];
 
-        // CFS state
         this.cfsMondrian = [];
         this.cfsTargetAlpha = 0;
         this.cfsTargetVisible = false;
         this.cfsStartTime = 0;
         this.initMondrian();
 
-        // Chronostasis state
-        this.clockSeconds = 0;
         this.clockDialationActive = false;
-        this.clockStartTime = performance.now();
 
         this.resize();
         window.addEventListener('resize', () => this.resize());
@@ -1027,7 +1141,6 @@
             m2.innerText = "-- ms";
             m3.innerText = "STANDBY";
             actionBtn.innerText = "TRIGGER ANOMALY";
-            actionBtn.style.display = "block";
             break;
 
           case 'mib':
@@ -1039,7 +1152,6 @@
             m2.innerText = "ACTIVE";
             m3.innerText = "QUALIA SUPPRESSED";
             actionBtn.innerText = "RESET FIXATION POINT";
-            actionBtn.style.display = "block";
             break;
 
           case 'bistable':
@@ -1051,7 +1163,6 @@
             m2.innerText = `${this.cubeReversals} flips`;
             m3.innerText = "RIVALRY ENGAGED";
             actionBtn.innerText = "LOG PERCEPTUAL FLIP";
-            actionBtn.style.display = "block";
             break;
 
           case 'cfs':
@@ -1063,7 +1174,6 @@
             m2.innerText = "-- ms";
             m3.innerText = "SUBLIMINAL GATED";
             actionBtn.innerText = "INJECT SUBLIMINAL TARGET";
-            actionBtn.style.display = "block";
             break;
 
           case 'chronostasis':
@@ -1075,7 +1185,6 @@
             m2.innerText = "+180 ms (Estimated)";
             m3.innerText = "SACCADIC ACTIVE";
             actionBtn.innerText = "TRIGGER SACCADIC SHIFT";
-            actionBtn.style.display = "block";
             break;
         }
       }
@@ -1118,14 +1227,12 @@
       }
 
       handleCanvasClick() {
-        if (this.currentExp === 'flicker') {
-          if (this.waitingFlickerResponse) {
-            const latency = (performance.now() - this.anomalyStart).toFixed(0);
-            this.waitingFlickerResponse = false;
-            this.hasAnomaly = false;
-            document.getElementById('metric2').innerText = `${latency} ms`;
-            document.getElementById('metric3').innerHTML = `<span style="color:var(--accent-emerald); font-weight:700;">IGNITION DETECTED</span> (${latency < 320 ? 'Optimal Ignition' : 'Lagged Attentional Gating'})`;
-          }
+        if (this.currentExp === 'flicker' && this.waitingFlickerResponse) {
+          const latency = (performance.now() - this.anomalyStart).toFixed(0);
+          this.waitingFlickerResponse = false;
+          this.hasAnomaly = false;
+          document.getElementById('metric2').innerText = `${latency} ms`;
+          document.getElementById('metric3').innerHTML = `<span style="color:var(--accent-emerald); font-weight:700;">IGNITION DETECTED</span> (${latency < 320 ? 'Optimal Ignition' : 'Lagged Attentional Gating'})`;
         } else if (this.currentExp === 'bistable') {
           this.handleActionClick();
         } else if (this.currentExp === 'cfs' && this.cfsTargetVisible) {
@@ -1137,7 +1244,6 @@
         }
       }
 
-      // --- RENDERING ROUTINES ---
       drawFlicker(ctx, w, h) {
         this.flickerAngle += 0.025;
         const cx = w / 2;
@@ -1169,7 +1275,6 @@
         const cx = w / 2;
         const cy = h / 2;
 
-        // Rotating blue grid distractors
         ctx.save();
         ctx.translate(cx, cy);
         ctx.rotate(this.mibAngle);
@@ -1183,7 +1288,6 @@
         }
         ctx.restore();
 
-        // 3 Peripheral Yellow Dots (Target qualia that disappear)
         const yellowTargets = [
           { x: cx - 75, y: cy - 65 },
           { x: cx + 75, y: cy - 65 },
@@ -1194,13 +1298,9 @@
           ctx.beginPath();
           ctx.arc(t.x, t.y, 6.5, 0, Math.PI * 2);
           ctx.fillStyle = "#ffcc00";
-          ctx.shadowColor = "#ffcc00";
-          ctx.shadowBlur = 8;
           ctx.fill();
-          ctx.shadowBlur = 0;
         });
 
-        // Blinking Green Center Fixation Point
         const blink = Math.sin(this.time * 6) > 0;
         ctx.beginPath();
         ctx.arc(cx, cy, 4.5, 0, Math.PI * 2);
@@ -1215,12 +1315,10 @@
         const cy = h / 2;
         const size = 65;
 
-        // 3D Necker cube vertices
         const nodes = [
           [-1, -1, -1], [1, -1, -1], [1, 1, -1], [-1, 1, -1],
           [-1, -1, 1], [1, -1, 1], [1, 1, 1], [-1, 1, 1]
         ];
-
         const edges = [
           [0, 1], [1, 2], [2, 3], [3, 0],
           [4, 5], [5, 6], [6, 7], [7, 4],
@@ -1228,12 +1326,9 @@
         ];
 
         const projected = nodes.map(n => {
-          // Rotate Y
           let x1 = n[0] * Math.cos(this.cubeAngleY) + n[2] * Math.sin(this.cubeAngleY);
           let z1 = -n[0] * Math.sin(this.cubeAngleY) + n[2] * Math.cos(this.cubeAngleY);
-          // Rotate X
           let y2 = n[1] * Math.cos(this.cubeAngleX) - z1 * Math.sin(this.cubeAngleX);
-          let z2 = n[1] * Math.sin(this.cubeAngleX) + z1 * Math.cos(this.cubeAngleX);
           return { x: cx + x1 * size, y: cy + y2 * size };
         });
 
@@ -1245,22 +1340,12 @@
           ctx.lineTo(projected[b].x, projected[b].y);
           ctx.stroke();
         });
-
-        // Center indicator
-        ctx.fillStyle = "var(--accent-blue)";
-        ctx.beginPath();
-        ctx.arc(cx, cy, 3, 0, Math.PI * 2);
-        ctx.fill();
       }
 
       drawCFS(ctx, w, h) {
         const cx = w / 2;
         const cy = h / 2;
-
-        // Rapid Mondrian Masking (flashes at ~10Hz)
-        if (Math.random() < 0.35) {
-          this.initMondrian();
-        }
+        if (Math.random() < 0.35) this.initMondrian();
 
         ctx.save();
         ctx.beginPath();
@@ -1272,7 +1357,6 @@
           ctx.fillRect(cx - 130 + (m.x % 260), cy - 100 + (m.y % 200), m.w, m.h);
         });
 
-        // Subliminal Target
         if (this.cfsTargetVisible) {
           this.cfsTargetAlpha = Math.min(0.85, this.cfsTargetAlpha + 0.003);
           ctx.fillStyle = `rgba(0, 0, 0, ${this.cfsTargetAlpha})`;
@@ -1280,7 +1364,6 @@
           ctx.textAlign = "center";
           ctx.fillText("QUALIA", cx, cy + 10);
         }
-
         ctx.restore();
       }
 
@@ -1289,20 +1372,17 @@
         const cy = h / 2;
         const r = 90;
 
-        // Clock Dial
         ctx.strokeStyle = "var(--border-medium)";
         ctx.lineWidth = 1.5;
         ctx.beginPath();
         ctx.arc(cx, cy, r, 0, Math.PI * 2);
         ctx.stroke();
 
-        // Left Saccade Target Point
         ctx.beginPath();
         ctx.arc(cx - 140, cy, 5, 0, Math.PI * 2);
         ctx.fillStyle = "var(--accent-crimson)";
         ctx.fill();
 
-        // Ticking Hand
         const now = performance.now();
         let speed = this.clockDialationActive ? 0.0005 : 0.003;
         const angle = ((now * speed) % (Math.PI * 2)) - Math.PI / 2;
@@ -1313,12 +1393,6 @@
         ctx.strokeStyle = "var(--accent-blue)";
         ctx.lineWidth = 2.5;
         ctx.stroke();
-
-        // Center pivot
-        ctx.beginPath();
-        ctx.arc(cx, cy, 4, 0, Math.PI * 2);
-        ctx.fillStyle = "var(--text-primary)";
-        ctx.fill();
       }
 
       loop() {
@@ -1330,17 +1404,11 @@
 
         ctx.clearRect(0, 0, w, h);
 
-        // Subtle background grid
         ctx.strokeStyle = "rgba(150, 150, 150, 0.08)";
         ctx.lineWidth = 1;
-        for (let x = 0; x < w; x += 35) {
-          ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
-        }
-        for (let y = 0; y < h; y += 35) {
-          ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
-        }
+        for (let x = 0; x < w; x += 35) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke(); }
+        for (let y = 0; y < h; y += 35) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke(); }
 
-        // Render current experiment
         if (this.currentExp === 'flicker') this.drawFlicker(ctx, w, h);
         else if (this.currentExp === 'mib') this.drawMIB(ctx, w, h);
         else if (this.currentExp === 'bistable') this.drawBistable(ctx, w, h);
@@ -1351,7 +1419,7 @@
       }
     }
 
-    // --- 3. DIAGNOSTIC RADAR CHART ---
+    // --- 3. DIAGNOSTIC RADAR ENGINE ---
     class DiagnosticRadarEngine {
       constructor(canvas) {
         this.canvas = canvas;
@@ -1389,7 +1457,6 @@
 
         ctx.clearRect(0, 0, w, h);
 
-        // Webs
         for (let level = 1; level <= 5; level++) {
           const r = (radius / 5) * level;
           ctx.beginPath();
@@ -1404,7 +1471,6 @@
           ctx.stroke();
         }
 
-        // Axes & Text
         ctx.font = "9px ui-monospace, SFMono-Regular, monospace";
         ctx.fillStyle = "rgba(120, 120, 120, 0.85)";
         ctx.textAlign = "center";
@@ -1415,18 +1481,12 @@
           const x = cx + radius * Math.cos(angle);
           const y = cy + radius * Math.sin(angle);
 
-          ctx.beginPath();
-          ctx.moveTo(cx, cy);
-          ctx.lineTo(x, y);
-          ctx.strokeStyle = "rgba(120, 120, 120, 0.2)";
-          ctx.stroke();
+          ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(x, y);
+          ctx.strokeStyle = "rgba(120, 120, 120, 0.2)"; ctx.stroke();
 
-          const lx = cx + (radius + 20) * Math.cos(angle);
-          const ly = cy + (radius + 12) * Math.sin(angle);
-          ctx.fillText(this.labels[i], lx, ly);
+          ctx.fillText(this.labels[i], cx + (radius + 20) * Math.cos(angle), cy + (radius + 12) * Math.sin(angle));
         }
 
-        // Polygon
         ctx.beginPath();
         for (let i = 0; i < numAxes; i++) {
           const angle = (Math.PI * 2 / numAxes) * i - Math.PI / 2;
@@ -1441,35 +1501,248 @@
         ctx.strokeStyle = "#0077cc";
         ctx.lineWidth = 2;
         ctx.stroke();
-
-        // Dots
-        for (let i = 0; i < numAxes; i++) {
-          const angle = (Math.PI * 2 / numAxes) * i - Math.PI / 2;
-          const r = radius * (this.scores[i] / 10);
-          const x = cx + r * Math.cos(angle);
-          const y = cy + r * Math.sin(angle);
-          ctx.beginPath();
-          ctx.arc(x, y, 4, 0, Math.PI * 2);
-          ctx.fillStyle = "#0077cc";
-          ctx.fill();
-          ctx.strokeStyle = "#ffffff";
-          ctx.lineWidth = 1.5;
-          ctx.stroke();
-        }
       }
     }
 
-    // --- 4. APP INITIALIZATION ---
+    // --- 4. CINEMATIC SHOWCASE TRAILER & WEBM RECORDER ENGINE ---
+    class CinematicShowcaseEngine {
+      constructor(canvas) {
+        this.canvas = canvas;
+        this.ctx = canvas.getContext('2d');
+        this.sceneTime = 0;
+        this.currentScene = 0;
+        this.isPlaying = false;
+        this.mediaRecorder = null;
+        this.recordedChunks = [];
+        this.isRecording = false;
+
+        this.scenes = [
+          { name: "01 // THE MANIFESTO", duration: 4.5 },
+          { name: "02 // 95% AUTOMATED TRANCE", duration: 4.5 },
+          { name: "03 // VISUAL IGNITION GATING", duration: 5.0 },
+          { name: "04 // MOTION-INDUCED QUALIA BLINDNESS", duration: 5.0 },
+          { name: "05 // BISTABLE CORTICAL REVERSALS", duration: 5.0 },
+          { name: "06 // PHENOMENAL AUDIT & PHI DENSITY", duration: 5.0 }
+        ];
+
+        this.resize();
+        window.addEventListener('resize', () => this.resize());
+        this.loop = this.loop.bind(this);
+      }
+
+      resize() {
+        const dpr = 1;
+        const rect = this.canvas.getBoundingClientRect();
+        this.width = rect.width || 900;
+        this.height = rect.height || 480;
+        this.canvas.width = this.width;
+        this.canvas.height = this.height;
+      }
+
+      start() {
+        this.isPlaying = true;
+        this.sceneTime = 0;
+        this.currentScene = 0;
+        this.resize();
+        requestAnimationFrame(this.loop);
+      }
+
+      stop() {
+        this.isPlaying = false;
+      }
+
+      exportWebM() {
+        if (!this.canvas.captureStream) {
+          alert("Your browser does not support Canvas Stream Capture.");
+          return;
+        }
+
+        const stream = this.canvas.captureStream(60);
+        this.recordedChunks = [];
+        this.mediaRecorder = new MediaRecorder(stream, { mimeType: 'video/webm;codecs=vp9' });
+
+        this.mediaRecorder.ondataavailable = (e) => {
+          if (e.data.size > 0) this.recordedChunks.push(e.data);
+        };
+
+        this.mediaRecorder.onstop = () => {
+          const blob = new Blob(this.recordedChunks, { type: 'video/webm' });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = `THE_UNEXPLORED_INTERIOR_SHOWCASE_TRAILER_${Date.now()}.webm`;
+          a.click();
+          URL.revokeObjectURL(url);
+          document.getElementById('btnExportWebM').innerText = "✓ WEBM EXPORT COMPLETE!";
+          setTimeout(() => { document.getElementById('btnExportWebM').innerText = "⏺ EXPORT HD VIDEO (WEBM)"; }, 3500);
+        };
+
+        this.mediaRecorder.start();
+        this.start();
+        document.getElementById('btnExportWebM').innerText = "⏺ RECORDING 60FPS...";
+
+        // Total trailer runtime: ~28s
+        const totalDuration = this.scenes.reduce((acc, s) => acc + s.duration, 0) * 1000;
+        setTimeout(() => {
+          if (this.mediaRecorder && this.mediaRecorder.state === 'recording') {
+            this.mediaRecorder.stop();
+          }
+        }, totalDuration);
+      }
+
+      loop() {
+        if (!this.isPlaying) return;
+        this.sceneTime += 0.016;
+
+        const currentDuration = this.scenes[this.currentScene].duration;
+        if (this.sceneTime >= currentDuration) {
+          this.sceneTime = 0;
+          this.currentScene = (this.currentScene + 1) % this.scenes.length;
+        }
+
+        const ctx = this.ctx;
+        const w = this.width;
+        const h = this.height;
+        const cx = w / 2;
+        const cy = h / 2;
+
+        ctx.fillStyle = "#0a0a0a";
+        ctx.fillRect(0, 0, w, h);
+
+        // Update Time Display
+        document.getElementById('cinemaTimeDisplay').innerText = `SCENE: ${this.scenes[this.currentScene].name} (${this.sceneTime.toFixed(1)}s / ${currentDuration}s)`;
+
+        // Scene Renderings
+        if (this.currentScene === 0) {
+          // TITLE MANIFESTO
+          ctx.fillStyle = "#0099ff";
+          ctx.font = "bold 14px monospace";
+          ctx.textAlign = "center";
+          ctx.fillText("COGNITIVE RESEARCH INITIATIVE // 2026", cx, cy - 70);
+
+          ctx.fillStyle = "#ffffff";
+          ctx.font = "900 48px sans-serif";
+          ctx.fillText("THE UNEXPLORED INTERIOR", cx, cy - 10);
+
+          ctx.fillStyle = "#a0a0a0";
+          ctx.font = "18px serif";
+          ctx.fillText("An Empirical Instrument for Human Consciousness & Qualia", cx, cy + 35);
+        } else if (this.currentScene === 1) {
+          // 95% AUTOMATED
+          ctx.fillStyle = "#e02438";
+          ctx.font = "900 64px monospace";
+          ctx.textAlign = "center";
+          ctx.fillText("95.0% AUTOMATED TRANCE", cx, cy - 20);
+
+          ctx.fillStyle = "#ffffff";
+          ctx.font = "20px sans-serif";
+          ctx.fillText("46.9% of waking life consumed by Default Mode Network rumination.", cx, cy + 30);
+        } else if (this.currentScene === 2) {
+          // FLICKER GATING
+          ctx.fillStyle = "#0099ff";
+          ctx.font = "bold 18px monospace";
+          ctx.textAlign = "center";
+          ctx.fillText("[ EXPERIMENT 01 // FRONTOPARIETAL IGNITION GATING ]", cx, 60);
+
+          for (let r = 30; r <= 130; r += 25) {
+            const count = r / 3;
+            for (let i = 0; i < count; i++) {
+              const a = (this.sceneTime * 2) * (r % 50 === 0 ? 1 : -1) + (Math.PI * 2 / count) * i;
+              const x = cx + r * Math.cos(a);
+              const y = cy + r * Math.sin(a);
+
+              if (this.sceneTime > 2.0 && i === 2 && r === 80) {
+                ctx.fillStyle = "#e02438"; ctx.fillRect(x - 6, y - 6, 12, 12);
+              } else {
+                ctx.fillStyle = "#ffffff"; ctx.beginPath(); ctx.arc(x, y, 3, 0, Math.PI * 2); ctx.fill();
+              }
+            }
+          }
+        } else if (this.currentScene === 3) {
+          // MIB
+          ctx.fillStyle = "#ffcc00";
+          ctx.font = "bold 18px monospace";
+          ctx.textAlign = "center";
+          ctx.fillText("[ EXPERIMENT 02 // MOTION-INDUCED QUALIA DISAPPEARANCE ]", cx, 60);
+
+          ctx.save();
+          ctx.translate(cx, cy);
+          ctx.rotate(this.sceneTime * 1.5);
+          ctx.strokeStyle = "rgba(0, 153, 255, 0.35)";
+          for (let x = -150; x <= 150; x += 30) { ctx.beginPath(); ctx.moveTo(x, -150); ctx.lineTo(x, 150); ctx.stroke(); }
+          for (let y = -150; y <= 150; y += 30) { ctx.beginPath(); ctx.moveTo(-150, y); ctx.lineTo(150, y); ctx.stroke(); }
+          ctx.restore();
+
+          if (Math.sin(this.sceneTime * 3) > -0.2) {
+            [{x: cx - 80, y: cy - 60}, {x: cx + 80, y: cy - 60}, {x: cx, y: cy + 90}].forEach(p => {
+              ctx.fillStyle = "#ffcc00"; ctx.beginPath(); ctx.arc(p.x, p.y, 7, 0, Math.PI * 2); ctx.fill();
+            });
+          }
+
+          ctx.fillStyle = "#059669"; ctx.beginPath(); ctx.arc(cx, cy, 5, 0, Math.PI * 2); ctx.fill();
+        } else if (this.currentScene === 4) {
+          // NECKER
+          ctx.fillStyle = "#00d2ff";
+          ctx.font = "bold 18px monospace";
+          ctx.textAlign = "center";
+          ctx.fillText("[ EXPERIMENT 03 // BISTABLE CORTICAL REVERSALS ]", cx, 60);
+
+          const s = 70;
+          const a = this.sceneTime * 1.2;
+          const nodes = [[-1,-1,-1],[1,-1,-1],[1,1,-1],[-1,1,-1],[-1,-1,1],[1,-1,1],[1,1,1],[-1,1,1]];
+          const edges = [[0,1],[1,2],[2,3],[3,0],[4,5],[5,6],[6,7],[7,4],[0,4],[1,5],[2,6],[3,7]];
+          const proj = nodes.map(n => {
+            let x1 = n[0]*Math.cos(a*0.6) + n[2]*Math.sin(a*0.6);
+            let z1 = -n[0]*Math.sin(a*0.6) + n[2]*Math.cos(a*0.6);
+            let y2 = n[1]*Math.cos(a*0.4) - z1*Math.sin(a*0.4);
+            return { x: cx + x1 * s, y: cy + y2 * s };
+          });
+          ctx.strokeStyle = "#00d2ff"; ctx.lineWidth = 2.5;
+          edges.forEach(([p1,p2]) => {
+            ctx.beginPath(); ctx.moveTo(proj[p1].x, proj[p1].y); ctx.lineTo(proj[p2].x, proj[p2].y); ctx.stroke();
+          });
+        } else if (this.currentScene === 5) {
+          // RADAR
+          ctx.fillStyle = "#059669";
+          ctx.font = "bold 18px monospace";
+          ctx.textAlign = "center";
+          ctx.fillText("[ PHENOMENAL AUDIT ENGINE // INTEGRATED PHI = 0.88 BITS ]", cx, 60);
+
+          ctx.strokeStyle = "#ffffff";
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.arc(cx, cy, 80, 0, Math.PI * 2);
+          ctx.stroke();
+
+          ctx.fillStyle = "rgba(0, 153, 255, 0.45)";
+          ctx.beginPath();
+          for (let i = 0; i < 6; i++) {
+            const angle = (Math.PI * 2 / 6) * i - Math.PI / 2;
+            const r = 40 + Math.sin(this.sceneTime * 4 + i) * 35;
+            const x = cx + r * Math.cos(angle);
+            const y = cy + r * Math.sin(angle);
+            if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+          }
+          ctx.closePath();
+          ctx.fill();
+        }
+
+        requestAnimationFrame(this.loop);
+      }
+    }
+
+    // --- 5. APP INITIALIZATION ---
     document.addEventListener('DOMContentLoaded', () => {
       const audio = new BinauralAudio();
 
-      // Lab Engine
       const labCanvas = document.getElementById('mainExperimentCanvas');
       const labEngine = new VisualAwarenessLabEngine(labCanvas);
 
-      // Radar Engine
       const radarCanvas = document.getElementById('diagnosticRadarCanvas');
       const radarEngine = new DiagnosticRadarEngine(radarCanvas);
+
+      const cinemaCanvas = document.getElementById('cinemaCanvas');
+      const cinemaEngine = new CinematicShowcaseEngine(cinemaCanvas);
 
       // Session Timer
       const startTime = performance.now();
@@ -1481,7 +1754,30 @@
         document.getElementById('sessionTimer').innerText = `OBS: ${hrs}:${mins}:${s}`;
       }, 1000);
 
-      // Tab Switching
+      // Cinema Modal Triggers
+      const cinemaModal = document.getElementById('cinemaModal');
+      document.getElementById('openCinemaBtn').addEventListener('click', () => {
+        cinemaModal.classList.add('active');
+        cinemaEngine.start();
+        audio.playChime(720);
+      });
+
+      const closeCinema = () => {
+        cinemaModal.classList.remove('active');
+        cinemaEngine.stop();
+      };
+      document.getElementById('closeCinemaBtn').addEventListener('click', closeCinema);
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeCinema(); });
+
+      document.getElementById('btnRestartCinema').addEventListener('click', () => {
+        cinemaEngine.start();
+      });
+
+      document.getElementById('btnExportWebM').addEventListener('click', () => {
+        cinemaEngine.exportWebM();
+      });
+
+      // Lab Tab Switching
       document.querySelectorAll('.lab-tab-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
           document.querySelectorAll('.lab-tab-btn').forEach(b => b.classList.remove('active'));
@@ -1492,7 +1788,6 @@
         });
       });
 
-      // Lab Actions
       document.getElementById('expActionBtn').addEventListener('click', () => {
         labEngine.handleActionClick();
         audio.playChime(440);
