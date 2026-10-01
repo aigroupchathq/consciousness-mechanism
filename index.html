@@ -355,117 +355,292 @@
     }
 
     /* ==========================================================================
-       CONSCIOUSNESS BENCHMARK SECTION (VIRAL EVALUATION)
+       CONSCIOUSNESS BENCHMARK SECTION (ELITE NEURO-ENGINEERING CONSOLE)
        ========================================================================== */
     .benchmark-section {
       padding: 5rem 2.25rem;
       border-bottom: 1px solid var(--border-hairline);
       background: var(--bg-surface);
+      position: relative;
     }
 
-    .section-header-badge {
+    .benchmark-mode-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin: 2rem 0 2.5rem;
+      border-bottom: 1px solid var(--border-hairline);
+      padding-bottom: 0.85rem;
+    }
+
+    .benchmark-mode-btn {
+      background: transparent;
+      border: 1px solid var(--border-hairline);
+      color: var(--text-muted);
+      padding: 0.55rem 1.1rem;
       font-family: var(--font-mono);
       font-size: 0.72rem;
-      color: var(--accent-blue);
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 0.5rem;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .section-main-title {
-      font-size: clamp(2.2rem, 4.5vw, 4rem);
-      margin-bottom: 0.75rem;
-      letter-spacing: -0.035em;
-    }
-
-    .section-subtitle {
-      max-width: 820px;
-      color: var(--text-muted);
-      font-size: 1.15rem;
-      line-height: 1.55;
-      margin-bottom: 3rem;
+    .benchmark-mode-btn.active, .benchmark-mode-btn:hover {
+      background: var(--text-primary);
+      color: var(--bg-base);
+      border-color: var(--text-primary);
     }
 
     .benchmark-grid {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
+      grid-template-columns: 1.25fr 0.85fr;
       gap: 2.5rem;
       align-items: start;
     }
 
-    @media (max-width: 960px) {
+    @media (max-width: 1020px) {
       .benchmark-grid {
         grid-template-columns: 1fr;
       }
     }
 
-    .benchmark-card {
+    /* HARDWARE INSTRUMENT RACK */
+    .instrument-rack {
       background: var(--bg-card);
       border: 1px solid var(--border-hairline);
       box-shadow: var(--shadow-subtle);
-      padding: 2.5rem;
+      position: relative;
+      overflow: hidden;
     }
 
-    .vector-question {
-      margin-bottom: 2rem;
+    .rack-header {
+      background: var(--bg-surface);
       border-bottom: 1px solid var(--border-hairline);
-      padding-bottom: 1.75rem;
+      padding: 0.85rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
     }
 
-    .vector-question:last-child {
+    .rack-status-dot {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      background: var(--accent-emerald);
+      border-radius: 50%;
+      margin-right: 0.4rem;
+      box-shadow: 0 0 8px var(--accent-emerald);
+    }
+
+    .vector-module {
+      padding: 1.75rem 1.5rem;
+      border-bottom: 1px solid var(--border-hairline);
+      transition: background-color 0.2s ease;
+      position: relative;
+    }
+
+    .vector-module:last-child {
       border-bottom: none;
-      margin-bottom: 0;
-      padding-bottom: 0;
     }
 
-    .vector-tag {
+    .vector-module:hover {
+      background: rgba(0, 112, 243, 0.02);
+    }
+
+    .vector-meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.6rem;
       font-family: var(--font-mono);
       font-size: 0.68rem;
+    }
+
+    .vector-code {
       color: var(--accent-blue);
-      text-transform: uppercase;
-      margin-bottom: 0.35rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .vector-substrate {
+      color: var(--text-dim);
+      font-size: 0.64rem;
     }
 
     .vector-title {
-      font-size: 1.12rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
+      font-size: 1.08rem;
+      font-weight: 800;
+      letter-spacing: -0.015em;
+      margin-bottom: 0.4rem;
       line-height: 1.35;
     }
 
-    .slider-container {
-      display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
+    .vector-desc {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+      margin-bottom: 1.15rem;
     }
 
-    .slider-endpoints {
+    /* TACTILE STEPPER & LED LEVEL CONTROLS */
+    .tactile-control-panel {
+      display: grid;
+      grid-template-columns: auto 1fr auto auto;
+      gap: 1rem;
+      align-items: center;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-hairline);
+      padding: 0.75rem 1rem;
+      border-radius: 2px;
+    }
+
+    .step-btn {
+      width: 32px;
+      height: 32px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-hairline);
+      color: var(--text-primary);
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s;
+    }
+
+    .step-btn:hover {
+      background: var(--text-primary);
+      color: var(--bg-base);
+    }
+
+    .led-meter-track {
+      display: flex;
+      gap: 4px;
+      height: 14px;
+      align-items: center;
+    }
+
+    .led-segment {
+      flex: 1;
+      height: 100%;
+      background: var(--bg-surface-elevated);
+      border-radius: 1px;
+      transition: background-color 0.15s, box-shadow 0.15s;
+      cursor: pointer;
+    }
+
+    .led-segment.active-low {
+      background: var(--accent-blue);
+      box-shadow: 0 0 6px rgba(0, 112, 243, 0.4);
+    }
+
+    .led-segment.active-mid {
+      background: var(--accent-cyan);
+      box-shadow: 0 0 6px rgba(0, 210, 255, 0.4);
+    }
+
+    .led-segment.active-high {
+      background: var(--accent-emerald);
+      box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+    }
+
+    .score-digital-readout {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--accent-blue);
+      min-width: 46px;
+      text-align: right;
+    }
+
+    .vector-sparkline-canvas {
+      width: 68px;
+      height: 24px;
+      background: rgba(0, 0, 0, 0.05);
+      border: 1px solid var(--border-hairline);
+      border-radius: 2px;
+    }
+
+    /* EMPIRICAL PROBE INTERACTIVE CARD */
+    .probe-container-card {
+      display: none;
+      background: var(--bg-card);
+      border: 1px solid var(--border-hairline);
+      padding: 2rem;
+    }
+
+    .probe-container-card.active {
+      display: block;
+    }
+
+    .probe-stage-header {
       display: flex;
       justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
       font-family: var(--font-mono);
-      font-size: 0.7rem;
-      color: var(--text-muted);
+      font-size: 0.72rem;
+      border-bottom: 1px solid var(--border-hairline);
+      padding-bottom: 0.75rem;
     }
 
-    .custom-range {
-      -webkit-appearance: none;
-      width: 100%;
-      height: 4px;
-      background: var(--bg-surface-elevated);
-      outline: none;
+    .probe-interactive-arena {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-hairline);
+      min-height: 260px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      position: relative;
+      text-align: center;
+      margin-bottom: 1.5rem;
     }
 
-    .custom-range::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      width: 18px;
-      height: 18px;
-      background: var(--text-primary);
+    .probe-prompt-text {
+      font-size: 1.85rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+    }
+
+    .probe-actions-row {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-probe-choice {
+      padding: 0.75rem 1.75rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-medium);
+      color: var(--text-primary);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
       cursor: pointer;
-      border: 2px solid var(--bg-card);
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      transition: all 0.15s;
     }
 
-    /* BENCHMARK RESULTS / SHARE CARD */
+    .btn-probe-choice:hover {
+      background: var(--text-primary);
+      color: var(--bg-base);
+    }
+
+    /* BENCHMARK RESULTS / HOLOGRAPHIC COCKPIT */
     .benchmark-result-card {
       background: var(--bg-card);
       border: 1px solid var(--border-hairline);
@@ -480,32 +655,41 @@
       font-size: 0.68rem;
       color: var(--accent-crimson);
       text-transform: uppercase;
-      font-weight: 700;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     .phenotype-title {
-      font-size: 1.85rem;
+      font-size: clamp(1.6rem, 2.8vw, 2.2rem);
       font-weight: 900;
       line-height: 1.1;
-      margin: 0.5rem 0;
+      margin: 0.65rem 0 0.4rem;
+      letter-spacing: -0.025em;
     }
 
     .percentile-badge {
       display: inline-block;
       background: var(--accent-emerald);
       color: #ffffff;
-      padding: 0.25rem 0.65rem;
+      padding: 0.28rem 0.75rem;
       font-family: var(--font-mono);
       font-size: 0.72rem;
       font-weight: 800;
       text-transform: uppercase;
-      margin-bottom: 1rem;
+      letter-spacing: 0.04em;
+      margin-bottom: 1.15rem;
     }
 
     .radar-box {
       width: 100%;
-      height: 270px;
+      height: 290px;
       margin: 1.25rem 0;
+      position: relative;
+      background: radial-gradient(circle at center, rgba(0, 112, 243, 0.04) 0%, transparent 70%);
+      border: 1px solid var(--border-hairline);
     }
 
     #benchmarkRadarCanvas {
@@ -514,18 +698,63 @@
       display: block;
     }
 
+    .radar-legend {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      color: var(--text-muted);
+      margin-top: 0.4rem;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .legend-dot-user {
+      width: 8px;
+      height: 8px;
+      background: var(--accent-blue);
+      border-radius: 50%;
+    }
+
+    .legend-dot-median {
+      width: 8px;
+      height: 8px;
+      background: rgba(140, 140, 140, 0.5);
+      border-radius: 50%;
+    }
+
     .metrics-score-table {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0.75rem;
+      gap: 0.85rem;
       font-family: var(--font-mono);
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       border-top: 1px solid var(--border-hairline);
       padding-top: 1.25rem;
-      margin-top: 1rem;
+      margin-top: 1.15rem;
     }
 
-    .metrics-score-table strong {
+    .metric-cell {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-hairline);
+      padding: 0.6rem 0.8rem;
+    }
+
+    .metric-cell-label {
+      font-size: 0.62rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 0.25rem;
+    }
+
+    .metric-cell-val {
+      font-size: 0.92rem;
+      font-weight: 800;
       color: var(--accent-blue);
     }
 
@@ -535,36 +764,49 @@
       padding-top: 1.25rem;
       display: flex;
       flex-direction: column;
-      gap: 0.75rem;
+      gap: 0.65rem;
     }
 
     .btn-share-x {
       background: #000000;
       color: #ffffff;
       border: 1px solid #000000;
-      padding: 0.65rem;
+      padding: 0.68rem;
       font-family: var(--font-mono);
-      font-size: 0.75rem;
-      font-weight: 700;
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.03em;
       text-align: center;
       cursor: pointer;
       text-decoration: none;
       transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
     }
 
     .btn-share-x:hover {
       background: #222222;
+      transform: translateY(-1px);
     }
 
-    .btn-copy-link {
+    .btn-download-cert {
       background: transparent;
       border: 1px solid var(--border-hairline);
       color: var(--text-primary);
-      padding: 0.5rem;
+      padding: 0.55rem;
       font-family: var(--font-mono);
-      font-size: 0.72rem;
+      font-size: 0.7rem;
+      font-weight: 700;
       cursor: pointer;
       text-align: center;
+      transition: all 0.15s;
+    }
+
+    .btn-download-cert:hover {
+      background: var(--bg-surface);
+      border-color: var(--border-medium);
     }
 
     /* ==========================================================================
@@ -898,129 +1140,234 @@
   </section>
 
   <!-- ==========================================================================
-       CONSCIOUSNESS BENCHMARK ENGINE
+       CONSCIOUSNESS BENCHMARK ENGINE (ADVANCED NEURO-ENGINEERING CONSOLE)
        ========================================================================== -->
   <section class="benchmark-section" id="benchmark">
-    <div class="section-header-badge">[ COGNITIVE BENCHMARK & AUDIT ENGINE ]</div>
+    <div class="section-header-badge">[ SYSTEM DIAGNOSTIC // NEURO-PHENOMENOLOGICAL AUDIT ]</div>
     <h2 class="section-main-title">CONSCIOUSNESS PHENOTYPE BENCHMARK</h2>
     <p class="section-subtitle">
-      Benchmark your attentional agency, qualia resolution, and metacognitive monitoring against empirical population baselines.
+      Calibrate your attentional agency, qualia resolution, and metacognitive monitoring against empirical population baselines using hardware-style attenuator encoders or active millisecond-precision neuro-probes.
     </p>
 
+    <!-- BENCHMARK MODE SELECTOR -->
+    <div class="benchmark-mode-nav">
+      <button class="benchmark-mode-btn active" id="btnModeAttenuators">
+        <span>🎛</span> 01. TACTILE VECTOR ATTENUATORS
+      </button>
+      <button class="benchmark-mode-btn" id="btnModeProbes">
+        <span>⚡</span> 02. ACTIVE EMPIRICAL CALIBRATION PROBE (3-STEP TEST)
+      </button>
+    </div>
+
     <div class="benchmark-grid">
-      <!-- FORM -->
-      <div class="benchmark-card">
-        <!-- V1 -->
-        <div class="vector-question">
-          <div class="vector-tag">[ VECTOR 01 // ATTENTIONAL SOVEREIGNTY ]</div>
-          <div class="vector-title">Resistance to algorithmic hijack and involuntary urge triggers:</div>
-          <div class="slider-container">
-            <input type="range" class="custom-range" id="v1" min="1" max="10" value="4">
-            <div class="slider-endpoints">
-              <span>1: Constant Reactivity</span>
-              <span id="v1_val" style="color:var(--accent-blue); font-weight:700;">Score: 4/10</span>
-              <span>10: Sovereign Focus</span>
-            </div>
-          </div>
+      <!-- MODE 1: HARDWARE INSTRUMENT RACK -->
+      <div class="instrument-rack" id="attenuatorRack">
+        <div class="rack-header">
+          <div><span class="rack-status-dot"></span> NEURAL VECTOR ATTENUATION MATRIX // 6-AXIS TELEMETRY</div>
+          <div style="color:var(--text-muted); font-size:0.65rem;">SAMPLING: 1000 HZ REAL-TIME</div>
         </div>
 
-        <!-- V2 -->
-        <div class="vector-question">
-          <div class="vector-tag">[ VECTOR 02 // PHENOMENOLOGICAL QUALIA RESOLUTION ]</div>
-          <div class="vector-title">Vividness of raw sensory perception without automatic conceptual reduction:</div>
-          <div class="slider-container">
-            <input type="range" class="custom-range" id="v2" min="1" max="10" value="5">
-            <div class="slider-endpoints">
-              <span>1: Conceptual Numbness</span>
-              <span id="v2_val" style="color:var(--accent-blue); font-weight:700;">Score: 5/10</span>
-              <span>10: HD First-Person Qualia</span>
-            </div>
+        <!-- VECTOR 01 -->
+        <div class="vector-module" data-vec="1">
+          <div class="vector-meta-row">
+            <span class="vector-code">[ V01 // ATTENTIONAL SOVEREIGNTY ]</span>
+            <span class="vector-substrate">SUBSTRATE: Frontoparietal dlPFC + FEF</span>
           </div>
+          <div class="vector-title">Top-Down Attentional Gating & Urge Resistance</div>
+          <div class="vector-desc">
+            Capacity to maintain sovereign cognitive agency against algorithmic feeds, stimulus-driven distraction, and involuntary dopamine triggers.
+          </div>
+          <div class="tactile-control-panel">
+            <button class="step-btn" data-action="dec" data-id="v1">−</button>
+            <div class="led-meter-track" data-id="v1"></div>
+            <button class="step-btn" data-action="inc" data-id="v1">+</button>
+            <canvas class="vector-sparkline-canvas" id="spark_v1"></canvas>
+            <div class="score-digital-readout" id="v1_val">4 / 10</div>
+          </div>
+          <input type="hidden" id="v1" value="4">
         </div>
 
-        <!-- V3 -->
-        <div class="vector-question">
-          <div class="vector-tag">[ VECTOR 03 // METACOGNITIVE MONITORING (HOT) ]</div>
-          <div class="vector-title">Ability to observe emotions as physiological events without 'becoming' them:</div>
-          <div class="slider-container">
-            <input type="range" class="custom-range" id="v3" min="1" max="10" value="3">
-            <div class="slider-endpoints">
-              <span>1: Total Psychological Fusion</span>
-              <span id="v3_val" style="color:var(--accent-blue); font-weight:700;">Score: 3/10</span>
-              <span>10: Decentered Observer</span>
-            </div>
+        <!-- VECTOR 02 -->
+        <div class="vector-module" data-vec="2">
+          <div class="vector-meta-row">
+            <span class="vector-code">[ V02 // QUALIA RESOLUTION ]</span>
+            <span class="vector-substrate">SUBSTRATE: Primary Sensory Cortices (V1–V4, A1)</span>
           </div>
+          <div class="vector-title">Phenomenological Granularity & Direct Sensory Qualia</div>
+          <div class="vector-desc">
+            Direct experiential vividness of sensory inputs before automated cognitive labeling, conceptual abstraction, and narrative reduction.
+          </div>
+          <div class="tactile-control-panel">
+            <button class="step-btn" data-action="dec" data-id="v2">−</button>
+            <div class="led-meter-track" data-id="v2"></div>
+            <button class="step-btn" data-action="inc" data-id="v2">+</button>
+            <canvas class="vector-sparkline-canvas" id="spark_v2"></canvas>
+            <div class="score-digital-readout" id="v2_val">5 / 10</div>
+          </div>
+          <input type="hidden" id="v2" value="5">
         </div>
 
-        <!-- V4 -->
-        <div class="vector-question">
-          <div class="vector-tag">[ VECTOR 04 // DMN PLASTICITY & NARRATIVE DE-COUPLING ]</div>
-          <div class="vector-title">Ease of voluntarily quieting the internal narrative monologue:</div>
-          <div class="slider-container">
-            <input type="range" class="custom-range" id="v4" min="1" max="10" value="3">
-            <div class="slider-endpoints">
-              <span>1: Incessant Rumination</span>
-              <span id="v4_val" style="color:var(--accent-blue); font-weight:700;">Score: 3/10</span>
-              <span>10: Voluntary Stillness</span>
-            </div>
+        <!-- VECTOR 03 -->
+        <div class="vector-module" data-vec="3">
+          <div class="vector-meta-row">
+            <span class="vector-code">[ V03 // METACOGNITIVE MONITORING ]</span>
+            <span class="vector-substrate">SUBSTRATE: Rostrolateral Prefrontal Cortex (BA 10)</span>
           </div>
+          <div class="vector-title">Higher-Order Thought (HOT) & Decentered Observer</div>
+          <div class="vector-desc">
+            Real-time awareness of cognitive states as objective neural events without psychological fusion or identity entanglement.
+          </div>
+          <div class="tactile-control-panel">
+            <button class="step-btn" data-action="dec" data-id="v3">−</button>
+            <div class="led-meter-track" data-id="v3"></div>
+            <button class="step-btn" data-action="inc" data-id="v3">+</button>
+            <canvas class="vector-sparkline-canvas" id="spark_v3"></canvas>
+            <div class="score-digital-readout" id="v3_val">3 / 10</div>
+          </div>
+          <input type="hidden" id="v3" value="3">
         </div>
 
-        <!-- V5 -->
-        <div class="vector-question">
-          <div class="vector-tag">[ VECTOR 05 // BAYESIAN PREDICTIVE PLASTICITY ]</div>
-          <div class="vector-title">Flexibility in updating core worldview models upon disconfirming evidence:</div>
-          <div class="slider-container">
-            <input type="range" class="custom-range" id="v5" min="1" max="10" value="6">
-            <div class="slider-endpoints">
-              <span>1: Defensive Calcification</span>
-              <span id="v5_val" style="color:var(--accent-blue); font-weight:700;">Score: 6/10</span>
-              <span>10: Instant Model Updating</span>
-            </div>
+        <!-- VECTOR 04 -->
+        <div class="vector-module" data-vec="4">
+          <div class="vector-meta-row">
+            <span class="vector-code">[ V04 // DMN ENTROPIC DECOUPLING ]</span>
+            <span class="vector-substrate">SUBSTRATE: Posterior Cingulate Cortex (PCC) + mPFC</span>
           </div>
+          <div class="vector-title">Default Mode Network Stillness & Narrative Quieting</div>
+          <div class="vector-desc">
+            Capacity to intentionally cease the internal autobiographical monologue and dissolve recursive self-referential loops.
+          </div>
+          <div class="tactile-control-panel">
+            <button class="step-btn" data-action="dec" data-id="v4">−</button>
+            <div class="led-meter-track" data-id="v4"></div>
+            <button class="step-btn" data-action="inc" data-id="v4">+</button>
+            <canvas class="vector-sparkline-canvas" id="spark_v4"></canvas>
+            <div class="score-digital-readout" id="v4_val">3 / 10</div>
+          </div>
+          <input type="hidden" id="v4" value="3">
         </div>
 
-        <!-- V6 -->
-        <div class="vector-question">
-          <div class="vector-tag">[ VECTOR 06 // STATE-SPACE RANGE & ENTROPY ]</div>
-          <div class="vector-title">Frequency of accessing non-ordinary states of consciousness (flow, lucid awe):</div>
-          <div class="slider-container">
-            <input type="range" class="custom-range" id="v6" min="1" max="10" value="4">
-            <div class="slider-endpoints">
-              <span>1: Rigid Monomodal Trance</span>
-              <span id="v6_val" style="color:var(--accent-blue); font-weight:700;">Score: 4/10</span>
-              <span>10: Multi-Dimensional Mastery</span>
-            </div>
+        <!-- VECTOR 05 -->
+        <div class="vector-module" data-vec="5">
+          <div class="vector-meta-row">
+            <span class="vector-code">[ V05 // BAYESIAN PREDICTIVE PLASTICITY ]</span>
+            <span class="vector-substrate">SUBSTRATE: Insular & Anterior Cingulate Hierarchies</span>
           </div>
+          <div class="vector-title">Free Energy Minimization & Belief Updating Rate</div>
+          <div class="vector-desc">
+            Speed and cognitive agility in relinquishing entrenched generative models when disconfirming sensory evidence occurs.
+          </div>
+          <div class="tactile-control-panel">
+            <button class="step-btn" data-action="dec" data-id="v5">−</button>
+            <div class="led-meter-track" data-id="v5"></div>
+            <button class="step-btn" data-action="inc" data-id="v5">+</button>
+            <canvas class="vector-sparkline-canvas" id="spark_v5"></canvas>
+            <div class="score-digital-readout" id="v5_val">6 / 10</div>
+          </div>
+          <input type="hidden" id="v5" value="6">
+        </div>
+
+        <!-- VECTOR 06 -->
+        <div class="vector-module" data-vec="6">
+          <div class="vector-meta-row">
+            <span class="vector-code">[ V06 // PHENOMENAL STATE-SPACE ENTROPY ]</span>
+            <span class="vector-substrate">SUBSTRATE: Global Thalamocortical Recurrence Matrix</span>
+          </div>
+          <div class="vector-title">Conscious Repertoire Breadth & Non-Ordinary States</div>
+          <div class="vector-desc">
+            Fluency in accessing high-entropy, flow, contemplative stillness, and multi-dimensional phenomenal states beyond baseline waking trance.
+          </div>
+          <div class="tactile-control-panel">
+            <button class="step-btn" data-action="dec" data-id="v6">−</button>
+            <div class="led-meter-track" data-id="v6"></div>
+            <button class="step-btn" data-action="inc" data-id="v6">+</button>
+            <canvas class="vector-sparkline-canvas" id="spark_v6"></canvas>
+            <div class="score-digital-readout" id="v6_val">4 / 10</div>
+          </div>
+          <input type="hidden" id="v6" value="4">
         </div>
       </div>
 
-      <!-- RESULTS & SHARE CARD -->
-      <div class="benchmark-result-card">
-        <div class="result-badge">[ YOUR CONSCIOUSNESS PHENOTYPE ]</div>
-        <h3 class="phenotype-title" id="phenoTitle">AUTOMATED REACTIVE AGENT</h3>
-        <div class="percentile-badge" id="percentileBadge">TOP 78% ATTENTION CAPTURE RISK</div>
+      <!-- MODE 2: EMPIRICAL PROBE TESTING ARENA -->
+      <div class="probe-container-card" id="empiricalProbeCard">
+        <div class="probe-stage-header">
+          <div id="probeStepIndicator" style="font-weight:800; color:var(--accent-blue);">PROBE 01/03: INHIBITORY GATING TEST</div>
+          <div style="color:var(--text-muted);">EMPIRICAL NEURO-SAMPLING</div>
+        </div>
 
-        <p id="phenoDesc" style="font-size:0.88rem; color:var(--text-secondary); line-height:1.55;">
-          High vulnerability to synthetic dopamine capture. DMN dominance suppresses raw sensory qualia.
+        <div class="probe-interactive-arena" id="probeArena">
+          <div style="font-family:var(--font-mono); font-size:0.75rem; color:var(--accent-crimson); margin-bottom:0.75rem;" id="probeInstruction">
+            IDENTIFY INK COLOR (IGNORE THE WORD MEANING):
+          </div>
+          <div class="probe-prompt-text" id="probeWordDisplay" style="color: #0070f3;">
+            RED
+          </div>
+          <div class="probe-actions-row" id="probeButtonsRow">
+            <button class="btn-probe-choice" data-color="blue">BLUE</button>
+            <button class="btn-probe-choice" data-color="red">RED</button>
+            <button class="btn-probe-choice" data-color="green">GREEN</button>
+            <button class="btn-probe-choice" data-color="amber">AMBER</button>
+          </div>
+        </div>
+
+        <div style="font-family:var(--font-mono); font-size:0.72rem; color:var(--text-muted); display:flex; justify-content:space-between; align-items:center;">
+          <span id="probeTelemetryStatus">Awaiting first response...</span>
+          <button class="btn-minimal" id="btnRestartProbe">↺ RESTART PROBE</button>
+        </div>
+      </div>
+
+      <!-- RESULTS & HOLOGRAPHIC COCKPIT -->
+      <div class="benchmark-result-card">
+        <div class="result-badge">
+          <span>[ CONSCIOUSNESS PHENOTYPE ]</span>
+          <span style="color:var(--accent-blue); font-size:0.64rem;">IIT 4.0 // PHI</span>
+        </div>
+        <h3 class="phenotype-title" id="phenoTitle">AUTOMATED REACTIVE AGENT</h3>
+        <div class="percentile-badge" id="percentileBadge">TOP 84% ATTENTION CAPTURE RISK</div>
+
+        <p id="phenoDesc" style="font-size:0.86rem; color:var(--text-secondary); line-height:1.55;">
+          High vulnerability to synthetic dopamine capture. DMN dominance suppresses raw sensory qualia. Metacognitive monitoring dormant.
         </p>
 
+        <!-- HOLOGRAPHIC RADAR CANVAS -->
         <div class="radar-box">
           <canvas id="benchmarkRadarCanvas"></canvas>
         </div>
 
-        <div class="metrics-score-table">
-          <div>TOTAL SCORE: <strong id="scoreVal">25 / 60</strong></div>
-          <div>IGNITION LATENCY: <strong id="latencyVal">420 ms</strong></div>
-          <div>DMN RUMINATION: <strong id="dmnVal">78%</strong></div>
-          <div>INTEGRATED Φ (PHI): <strong id="phiVal">0.41 bits</strong></div>
+        <div class="radar-legend">
+          <div class="legend-item"><span class="legend-dot-user"></span> <span>YOUR PHENOTYPE</span></div>
+          <div class="legend-item"><span class="legend-dot-median"></span> <span>POPULATION MEDIAN</span></div>
         </div>
 
+        <!-- TELEMETRY METRIC CELLS -->
+        <div class="metrics-score-table">
+          <div class="metric-cell">
+            <div class="metric-cell-label">TOTAL INTEGRATED SCORE</div>
+            <div class="metric-cell-val" id="scoreVal">25 / 60</div>
+          </div>
+          <div class="metric-cell">
+            <div class="metric-cell-label">P3b IGNITION LATENCY</div>
+            <div class="metric-cell-val" id="latencyVal">420 ms</div>
+          </div>
+          <div class="metric-cell">
+            <div class="metric-cell-label">DMN RUMINATION RATIO</div>
+            <div class="metric-cell-val" id="dmnVal">78%</div>
+          </div>
+          <div class="metric-cell">
+            <div class="metric-cell-label">INTEGRATED Φ (PHI) DENSITY</div>
+            <div class="metric-cell-val" id="phiVal">0.41 bits</div>
+          </div>
+        </div>
+
+        <!-- ACTIONS -->
         <div class="share-action-box">
           <a class="btn-share-x" id="btnShareTwitter" href="#" target="_blank">
-            𝕏 POST MY PHENOTYPE TO X / TWITTER
+            <span>𝕏</span> POST PHENOTYPE CERTIFICATE TO X
           </a>
-          <button class="btn-copy-link" id="btnCopyBenchmarkLink">
+          <button class="btn-download-cert" id="btnDownloadReport">
+            📥 EXPORT NEURO-DIAGNOSTIC REPORT (PNG)
+          </button>
+          <button class="btn-download-cert" id="btnCopyBenchmarkLink">
             📋 COPY SHAREABLE LINK
           </button>
         </div>
@@ -1572,31 +1919,46 @@
       }
     }
 
-    // --- 3. DIAGNOSTIC RADAR ENGINE ---
+    // --- 3. DUAL-POLYGON HOLOGRAPHIC RADAR ENGINE WITH PHOSPHOR SCAN ---
     class DiagnosticRadarEngine {
       constructor(canvas) {
         this.canvas = canvas;
         this.ctx = canvas.getContext('2d');
         this.scores = [4, 5, 3, 3, 6, 4];
-        this.labels = ["Agency", "Qualia", "Metacog", "DMN Stillness", "Plasticity", "State Space"];
+        this.medianScores = [3.8, 4.2, 3.1, 2.9, 4.0, 3.5];
+        this.labels = [
+          "Attentional Agency",
+          "Qualia Resolution",
+          "Metacognition (HOT)",
+          "DMN Stillness",
+          "Bayesian Plasticity",
+          "State-Space Entropy"
+        ];
+        this.scanAngle = 0;
         this.resize();
         window.addEventListener('resize', () => this.resize());
+        this.animate = this.animate.bind(this);
+        requestAnimationFrame(this.animate);
       }
 
       resize() {
         const dpr = window.devicePixelRatio || 1;
         const rect = this.canvas.getBoundingClientRect();
-        this.width = rect.width || 320;
-        this.height = rect.height || 260;
+        this.width = rect.width || 340;
+        this.height = rect.height || 290;
         this.canvas.width = this.width * dpr;
         this.canvas.height = this.height * dpr;
         this.ctx.scale(dpr, dpr);
-        this.draw();
       }
 
       update(scores) {
         this.scores = scores;
+      }
+
+      animate() {
+        this.scanAngle += 0.025;
         this.draw();
+        requestAnimationFrame(this.animate);
       }
 
       draw() {
@@ -1605,11 +1967,12 @@
         const h = this.height;
         const cx = w / 2;
         const cy = h / 2;
-        const radius = Math.min(cx, cy) - 34;
+        const radius = Math.min(cx, cy) - 44;
         const numAxes = this.labels.length;
 
         ctx.clearRect(0, 0, w, h);
 
+        // Radar Background Grid Rings
         for (let level = 1; level <= 5; level++) {
           const r = (radius / 5) * level;
           ctx.beginPath();
@@ -1620,12 +1983,27 @@
             if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
           }
           ctx.closePath();
-          ctx.strokeStyle = "rgba(120, 120, 120, 0.18)";
+          ctx.strokeStyle = level === 5 ? "rgba(120, 120, 120, 0.28)" : "rgba(120, 120, 120, 0.12)";
+          ctx.lineWidth = 1;
           ctx.stroke();
         }
 
-        ctx.font = "9px ui-monospace, SFMono-Regular, monospace";
-        ctx.fillStyle = "rgba(120, 120, 120, 0.85)";
+        // Phosphor Scanner Sweep Line
+        ctx.save();
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.arc(cx, cy, radius, this.scanAngle, this.scanAngle + 0.35);
+        ctx.closePath();
+        const sweepGrad = ctx.createRadialGradient(cx, cy, 0, cx, cy, radius);
+        sweepGrad.addColorStop(0, "rgba(0, 112, 243, 0.15)");
+        sweepGrad.addColorStop(1, "rgba(0, 210, 255, 0.0)");
+        ctx.fillStyle = sweepGrad;
+        ctx.fill();
+        ctx.restore();
+
+        // Radial Axis Spokes & Axis Labels
+        ctx.font = "8.5px ui-monospace, SFMono-Regular, monospace";
+        ctx.fillStyle = "rgba(130, 130, 130, 0.9)";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
 
@@ -1634,30 +2012,224 @@
           const x = cx + radius * Math.cos(angle);
           const y = cy + radius * Math.sin(angle);
 
-          ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(x, y);
-          ctx.strokeStyle = "rgba(120, 120, 120, 0.2)"; ctx.stroke();
+          ctx.beginPath();
+          ctx.moveTo(cx, cy);
+          ctx.lineTo(x, y);
+          ctx.strokeStyle = "rgba(120, 120, 120, 0.16)";
+          ctx.stroke();
 
-          ctx.fillText(this.labels[i], cx + (radius + 20) * Math.cos(angle), cy + (radius + 12) * Math.sin(angle));
+          const lx = cx + (radius + 26) * Math.cos(angle);
+          const ly = cy + (radius + 14) * Math.sin(angle);
+          ctx.fillText(this.labels[i], lx, ly);
         }
 
+        // 1. Population Median Polygon (Baseline Overlay)
         ctx.beginPath();
         for (let i = 0; i < numAxes; i++) {
           const angle = (Math.PI * 2 / numAxes) * i - Math.PI / 2;
-          const r = radius * (this.scores[i] / 10);
+          const r = radius * (this.medianScores[i] / 10);
           const x = cx + r * Math.cos(angle);
           const y = cy + r * Math.sin(angle);
           if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
         }
         ctx.closePath();
-        ctx.fillStyle = "rgba(0, 112, 243, 0.35)";
+        ctx.fillStyle = "rgba(150, 150, 150, 0.12)";
         ctx.fill();
-        ctx.strokeStyle = "#0070f3";
-        ctx.lineWidth = 2;
+        ctx.strokeStyle = "rgba(150, 150, 150, 0.45)";
+        ctx.setLineDash([3, 3]);
+        ctx.lineWidth = 1.2;
         ctx.stroke();
+        ctx.setLineDash([]);
+
+        // 2. User Phenotype Active Polygon
+        ctx.beginPath();
+        const userNodes = [];
+        for (let i = 0; i < numAxes; i++) {
+          const angle = (Math.PI * 2 / numAxes) * i - Math.PI / 2;
+          const r = radius * (this.scores[i] / 10);
+          const x = cx + r * Math.cos(angle);
+          const y = cy + r * Math.sin(angle);
+          userNodes.push({ x, y });
+          if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+        }
+        ctx.closePath();
+        const fillGrad = ctx.createRadialGradient(cx, cy, 10, cx, cy, radius);
+        fillGrad.addColorStop(0, "rgba(0, 112, 243, 0.42)");
+        fillGrad.addColorStop(1, "rgba(0, 210, 255, 0.15)");
+        ctx.fillStyle = fillGrad;
+        ctx.fill();
+
+        ctx.strokeStyle = "#0070f3";
+        ctx.lineWidth = 2.2;
+        ctx.shadowColor = "#00d2ff";
+        ctx.shadowBlur = 8;
+        ctx.stroke();
+        ctx.shadowBlur = 0;
+
+        // User Coordinate Node Points
+        userNodes.forEach((n, idx) => {
+          ctx.beginPath();
+          ctx.arc(n.x, n.y, 4, 0, Math.PI * 2);
+          ctx.fillStyle = "#ffffff";
+          ctx.fill();
+          ctx.strokeStyle = "#0070f3";
+          ctx.lineWidth = 2;
+          ctx.stroke();
+        });
       }
     }
 
-    // --- 4. CINEMATIC SHOWCASE TRAILER WITH HUMAN PACING ---
+    // --- 4. HARDWARE VECTOR SPARKLINE OSCILLOSCOPES ---
+    class SparklineManager {
+      constructor() {
+        this.canvases = {};
+        this.ctxs = {};
+        this.phase = 0;
+        ['v1', 'v2', 'v3', 'v4', 'v5', 'v6'].forEach(id => {
+          const el = document.getElementById(`spark_${id}`);
+          if (el) {
+            this.canvases[id] = el;
+            this.ctxs[id] = el.getContext('2d');
+            const dpr = window.devicePixelRatio || 1;
+            el.width = 68 * dpr;
+            el.height = 24 * dpr;
+            this.ctxs[id].scale(dpr, dpr);
+          }
+        });
+        this.animate = this.animate.bind(this);
+        requestAnimationFrame(this.animate);
+      }
+
+      animate() {
+        this.phase += 0.08;
+        ['v1', 'v2', 'v3', 'v4', 'v5', 'v6'].forEach((id, idx) => {
+          const ctx = this.ctxs[id];
+          if (!ctx) return;
+          const scoreEl = document.getElementById(id);
+          const score = scoreEl ? parseInt(scoreEl.value) : 5;
+          const w = 68;
+          const h = 24;
+
+          ctx.clearRect(0, 0, w, h);
+          ctx.beginPath();
+          ctx.strokeStyle = score > 6 ? '#10b981' : (score > 3 ? '#0070f3' : '#eb2f45');
+          ctx.lineWidth = 1.4;
+
+          const freq = 0.2 + (score / 10) * 0.4;
+          const amp = 3 + (score / 10) * 7;
+          for (let x = 0; x < w; x++) {
+            const y = (h / 2) + Math.sin(x * freq + this.phase + idx) * amp * Math.cos(x * 0.05);
+            if (x === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+          }
+          ctx.stroke();
+        });
+        requestAnimationFrame(this.animate);
+      }
+    }
+
+    // --- 5. ACTIVE EMPIRICAL PROBE ENGINE ---
+    class EmpiricalProbeEngine {
+      constructor(onComplete) {
+        this.onComplete = onComplete;
+        this.stage = 1;
+        this.trial = 0;
+        this.reactionTimes = [];
+        this.startTime = 0;
+        this.currentStimulus = null;
+
+        this.wordEl = document.getElementById('probeWordDisplay');
+        this.instructionEl = document.getElementById('probeInstruction');
+        this.indicatorEl = document.getElementById('probeStepIndicator');
+        this.statusEl = document.getElementById('probeTelemetryStatus');
+
+        this.bindEvents();
+      }
+
+      bindEvents() {
+        document.querySelectorAll('.btn-probe-choice').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            const color = e.target.getAttribute('data-color');
+            this.handleResponse(color);
+          });
+        });
+
+        document.getElementById('btnRestartProbe').addEventListener('click', () => {
+          this.start();
+        });
+      }
+
+      start() {
+        this.stage = 1;
+        this.trial = 0;
+        this.reactionTimes = [];
+        this.nextTrial();
+      }
+
+      nextTrial() {
+        this.trial++;
+        this.indicatorEl.innerText = `PROBE 0${this.stage}/03: ${this.stage === 1 ? 'INHIBITORY GATING (STROOP)' : (this.stage === 2 ? 'METACOGNITIVE CONFIDENCE' : 'TEMPORAL DISCRIMINATION')}`;
+
+        if (this.stage === 1) {
+          const colors = [
+            { text: "RED", ink: "#0070f3", val: "blue" },
+            { text: "GREEN", ink: "#eb2f45", val: "red" },
+            { text: "BLUE", ink: "#10b981", val: "green" },
+            { text: "AMBER", ink: "#0070f3", val: "blue" },
+            { text: "GREEN", ink: "#e67e22", val: "amber" }
+          ];
+          this.currentStimulus = colors[Math.floor(Math.random() * colors.length)];
+          this.instructionEl.innerText = "CLICK INK COLOR (IGNORE TEXT MEANING):";
+          this.wordEl.innerText = this.currentStimulus.text;
+          this.wordEl.style.color = this.currentStimulus.ink;
+          this.startTime = performance.now();
+        } else if (this.stage === 2) {
+          this.instructionEl.innerText = "IS THIS FLASH HIGHER OR LOWER DENSITY THAN BASELINE?";
+          const isHigh = Math.random() > 0.5;
+          this.currentStimulus = { val: isHigh ? 'red' : 'blue' };
+          this.wordEl.innerText = isHigh ? "▲ HIGH DENSITY FLUX" : "▼ LOW DENSITY FLUX";
+          this.wordEl.style.color = isHigh ? "#eb2f45" : "#0070f3";
+          this.startTime = performance.now();
+        } else if (this.stage === 3) {
+          this.instructionEl.innerText = "CHRONOMETRIC JITTER: PRESS ANY COLOR ON PULSE:";
+          this.currentStimulus = { val: 'any' };
+          this.wordEl.innerText = "⚡ PULSE SYNCHRONY";
+          this.wordEl.style.color = "#10b981";
+          this.startTime = performance.now();
+        }
+      }
+
+      handleResponse(selectedColor) {
+        const rt = Math.round(performance.now() - this.startTime);
+        this.reactionTimes.push(rt);
+        this.statusEl.innerText = `Trial ${this.trial} Latency: ${rt}ms (Recorded)`;
+
+        if (this.trial < 4) {
+          setTimeout(() => this.nextTrial(), 200);
+        } else if (this.stage < 3) {
+          this.stage++;
+          this.trial = 0;
+          setTimeout(() => this.nextTrial(), 300);
+        } else {
+          // Finished all 3 stages! Calculate empirical calibration
+          const avgRT = Math.round(this.reactionTimes.reduce((a, b) => a + b, 0) / this.reactionTimes.length);
+          this.statusEl.innerHTML = `<span style="color:var(--accent-emerald); font-weight:700;">✓ EMPIRICAL CALIBRATION COMPLETE</span> (Mean Latency: ${avgRT}ms)`;
+          
+          // Compute empirical scores
+          const v1 = Math.min(10, Math.max(2, Math.round(11 - (avgRT / 120))));
+          const v2 = Math.min(10, Math.max(3, Math.round(10 - (avgRT / 160))));
+          const v3 = Math.min(10, Math.max(2, Math.round(11 - (avgRT / 140))));
+          const v4 = Math.min(10, Math.max(2, Math.round(9 - (avgRT / 180))));
+          const v5 = Math.min(10, Math.max(3, Math.round(10 - (avgRT / 150))));
+          const v6 = Math.min(10, Math.max(3, Math.round(10 - (avgRT / 160))));
+
+          if (this.onComplete) {
+            this.onComplete([v1, v2, v3, v4, v5, v6]);
+          }
+        }
+      }
+    }
+
+    // --- 6. CINEMATIC SHOWCASE TRAILER WITH HUMAN PACING ---
     class CinematicShowcaseEngine {
       constructor(canvas) {
         this.canvas = canvas;
@@ -1896,7 +2468,7 @@
       }
     }
 
-    // --- 5. INITIALIZATION ---
+    // --- 7. INITIALIZATION & HARDWARE CONTROLS ---
     document.addEventListener('DOMContentLoaded', () => {
       const audio = new BinauralAudio();
 
@@ -1905,6 +2477,8 @@
 
       const radarCanvas = document.getElementById('benchmarkRadarCanvas');
       const radarEngine = new DiagnosticRadarEngine(radarCanvas);
+
+      const sparklines = new SparklineManager();
 
       const cinemaCanvas = document.getElementById('cinemaCanvas');
       const cinemaEngine = new CinematicShowcaseEngine(cinemaCanvas);
@@ -1982,7 +2556,6 @@
           document.documentElement.setAttribute('data-theme', 'dark');
           themeBtn.innerText = 'THEME: DARK';
         }
-        radarEngine.draw();
       });
 
       // Audio Toggle
@@ -1993,14 +2566,53 @@
         audioBtn.style.color = on ? 'var(--accent-blue)' : '';
       });
 
-      // Diagnostic Sliders & Benchmark Calculation
-      const sliders = ['v1', 'v2', 'v3', 'v4', 'v5', 'v6'];
-      function updateBenchmark() {
-        const scores = sliders.map(id => parseInt(document.getElementById(id).value));
-        scores.forEach((s, idx) => {
-          document.getElementById(`v${idx+1}_val`).innerText = `Score: ${s}/10`;
-        });
+      // Vector Attenuator State & LED Renderers
+      const vectors = ['v1', 'v2', 'v3', 'v4', 'v5', 'v6'];
 
+      function renderLedMeters() {
+        vectors.forEach(id => {
+          const track = document.querySelector(`.led-meter-track[data-id="${id}"]`);
+          if (!track) return;
+          const currentVal = parseInt(document.getElementById(id).value);
+          track.innerHTML = '';
+          for (let seg = 1; seg <= 10; seg++) {
+            const segDiv = document.createElement('div');
+            segDiv.className = 'led-segment';
+            if (seg <= currentVal) {
+              if (seg <= 4) segDiv.classList.add('active-low');
+              else if (seg <= 7) segDiv.classList.add('active-mid');
+              else segDiv.classList.add('active-high');
+            }
+            segDiv.addEventListener('click', () => {
+              document.getElementById(id).value = seg;
+              renderLedMeters();
+              updateBenchmark();
+              audio.playChime(350 + seg * 45);
+            });
+            track.appendChild(segDiv);
+          }
+          document.getElementById(`${id}_val`).innerText = `${currentVal} / 10`;
+        });
+      }
+
+      // Stepper button clicks
+      document.querySelectorAll('.step-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const action = e.target.getAttribute('data-action');
+          const id = e.target.getAttribute('data-id');
+          const input = document.getElementById(id);
+          let val = parseInt(input.value);
+          if (action === 'inc' && val < 10) val++;
+          else if (action === 'dec' && val > 1) val--;
+          input.value = val;
+          renderLedMeters();
+          updateBenchmark();
+          audio.playChime(350 + val * 45);
+        });
+      });
+
+      function updateBenchmark() {
+        const scores = vectors.map(id => parseInt(document.getElementById(id).value));
         radarEngine.update(scores);
 
         const total = scores.reduce((a, b) => a + b, 0);
@@ -2052,14 +2664,101 @@
         badgeEl.innerText = percentileTxt;
 
         // Twitter Share Link
-        const shareTxt = encodeURIComponent(`I just benchmarked my consciousness architecture on The Unexplored Interior.\n\nMy Phenotype: ${phenotypeName}\nIntegrated Φ: ${phi} bits\nLatency: ${latency}ms\n\nBenchmark your attentional sovereignty here: https://aigroupchathq.github.io/consciousness-mechanism/`);
+        const shareTxt = encodeURIComponent(`I just calibrated my consciousness architecture on The Unexplored Interior.\n\nPhenotype: ${phenotypeName}\nIntegrated Φ: ${phi} bits\nP3b Ignition: ${latency}ms\n\nRun your neural calibration benchmark: https://aigroupchathq.github.io/consciousness-mechanism/`);
         document.getElementById('btnShareTwitter').href = `https://twitter.com/intent/tweet?text=${shareTxt}`;
       }
 
-      sliders.forEach(id => {
-        document.getElementById(id).addEventListener('input', updateBenchmark);
-      });
+      renderLedMeters();
       updateBenchmark();
+
+      // Benchmark Mode Switcher
+      const btnModeAttenuators = document.getElementById('btnModeAttenuators');
+      const btnModeProbes = document.getElementById('btnModeProbes');
+      const attenuatorRack = document.getElementById('attenuatorRack');
+      const empiricalProbeCard = document.getElementById('empiricalProbeCard');
+
+      const probeEngine = new EmpiricalProbeEngine((calibratedScores) => {
+        calibratedScores.forEach((s, idx) => {
+          document.getElementById(`v${idx+1}`).value = s;
+        });
+        renderLedMeters();
+        updateBenchmark();
+        audio.playChime(880);
+      });
+
+      btnModeAttenuators.addEventListener('click', () => {
+        btnModeAttenuators.classList.add('active');
+        btnModeProbes.classList.remove('active');
+        attenuatorRack.style.display = 'block';
+        empiricalProbeCard.classList.remove('active');
+        audio.playChime(520);
+      });
+
+      btnModeProbes.addEventListener('click', () => {
+        btnModeProbes.classList.add('active');
+        btnModeAttenuators.classList.remove('active');
+        attenuatorRack.style.display = 'none';
+        empiricalProbeCard.classList.add('active');
+        probeEngine.start();
+        audio.playChime(640);
+      });
+
+      // Export Diagnostic Report (PNG)
+      document.getElementById('btnDownloadReport').addEventListener('click', () => {
+        const offCanvas = document.createElement('canvas');
+        offCanvas.width = 1200;
+        offCanvas.height = 680;
+        const octx = offCanvas.getContext('2d');
+
+        // Dark brushed background
+        octx.fillStyle = "#0c0c0c";
+        octx.fillRect(0, 0, 1200, 680);
+
+        // Border frame
+        octx.strokeStyle = "rgba(255, 255, 255, 0.15)";
+        octx.lineWidth = 2;
+        octx.strokeRect(25, 25, 1150, 630);
+
+        // Header Title
+        octx.fillStyle = "#3291ff";
+        octx.font = "bold 14px monospace";
+        octx.fillText("NEURO-PHENOMENOLOGICAL DIAGNOSTIC REPORT // ARCHIVE VERIFIED", 50, 65);
+
+        octx.fillStyle = "#ffffff";
+        octx.font = "900 36px sans-serif";
+        octx.fillText("THE UNEXPLORED INTERIOR", 50, 115);
+
+        const pheno = document.getElementById('phenoTitle').innerText;
+        const score = document.getElementById('scoreVal').innerText;
+        const latency = document.getElementById('latencyVal').innerText;
+        const dmn = document.getElementById('dmnVal').innerText;
+        const phi = document.getElementById('phiVal').innerText;
+
+        octx.fillStyle = "#10b981";
+        octx.font = "bold 26px monospace";
+        octx.fillText(`PHENOTYPE: ${pheno}`, 50, 175);
+
+        octx.fillStyle = "#d1d5db";
+        octx.font = "16px monospace";
+        octx.fillText(`TOTAL INTEGRATED SCORE: ${score}`, 50, 230);
+        octx.fillText(`P3b IGNITION LATENCY:   ${latency}`, 50, 265);
+        octx.fillText(`DMN RUMINATION RATIO:   ${dmn}`, 50, 300);
+        octx.fillText(`INTEGRATED Φ (PHI):     ${phi}`, 50, 335);
+
+        // Stamp
+        octx.fillStyle = "#888888";
+        octx.font = "12px monospace";
+        octx.fillText(`SERIAL: 0xSOVEREIGN-${Date.now().toString(16).toUpperCase()}`, 50, 610);
+        octx.fillText(`TIMESTAMP: ${new Date().toISOString()}`, 50, 630);
+
+        // Draw Radar Image onto Report
+        octx.drawImage(radarCanvas, 680, 120, 460, 420);
+
+        const link = document.createElement('a');
+        link.download = `PHENOTYPE_DIAGNOSTIC_REPORT_${Date.now()}.png`;
+        link.href = offCanvas.toDataURL('image/png');
+        link.click();
+      });
 
       // Copy Link
       document.getElementById('btnCopyBenchmarkLink').addEventListener('click', (e) => {
