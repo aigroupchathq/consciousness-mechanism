@@ -3,47 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>THE UNEXPLORED INTERIOR // Consciousness Crisis & Diagnostic Engine</title>
-  <meta name="description" content="An analytical platform and diagnostic instrument investigating the modern atrophy of human consciousness, algorithmic attention capture, and metacognitive calibration.">
+  <title>THE UNEXPLORED INTERIOR // Consciousness Crisis & Visual Awareness Laboratory</title>
+  <meta name="description" content="A high-end analytical platform and visual awareness laboratory testing human perceptual gating, motion-induced blindness, bistable rivalry, and metacognitive calibration.">
   <style>
     /* ==========================================================================
-       DESIGN SYSTEM: AVANT-GARDE SWISS BRUTALIST & EDITORIAL
-       Inspired by high-contrast archival typography (sleutelaar.xyz)
+       DESIGN SYSTEM: ULTRA-MINIMALIST AVANT-GARDE (Sleutelaar.xyz DNA)
        ========================================================================== */
     :root {
-      --bg-base: #f7f5f0;
-      --bg-surface: #ece8df;
-      --bg-surface-elevated: #e2ddd2;
-      --bg-dark: #0a0a0a;
+      --bg-base: #f9f8f5;
+      --bg-surface: #f1eee6;
+      --bg-surface-elevated: #e6e2d6;
+      --bg-card: #ffffff;
       --text-primary: #0a0a0a;
-      --text-secondary: #4a4843;
-      --text-muted: #7a776f;
-      --text-dim: #a6a39a;
-      --accent-blue: #0088cc;
-      --accent-cyan: #00d2ff;
-      --accent-crimson: #d92534;
+      --text-secondary: #3d3b37;
+      --text-muted: #737067;
+      --text-dim: #9e9a8f;
+      --accent-blue: #0077cc;
+      --accent-cyan: #00bcd4;
+      --accent-crimson: #e02438;
       --accent-amber: #d97706;
       --accent-emerald: #059669;
-      --border-hairline: rgba(10, 10, 10, 0.12);
+      --accent-purple: #7c3aed;
+      --border-hairline: rgba(10, 10, 10, 0.1);
+      --border-medium: rgba(10, 10, 10, 0.22);
       --border-strong: rgba(10, 10, 10, 0.85);
-      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      --font-mono: "SF Mono", Monaco, Inconsolata, "Fira Code", "Liberation Mono", Consolas, monospace;
-      --font-serif: "Cardo", "Georgia", "Times New Roman", serif;
-      --radius-none: 0px;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      --font-mono: "SF Mono", "Fira Code", "Inconsolata", Monaco, "Liberation Mono", Consolas, monospace;
+      --font-serif: "Cardo", "Playfair Display", "Times New Roman", serif;
+      --grid-gap: 1.5rem;
     }
 
     [data-theme="dark"] {
-      --bg-base: #0a0a0a;
-      --bg-surface: #141414;
-      --bg-surface-elevated: #1f1f1f;
-      --bg-dark: #f7f5f0;
-      --text-primary: #f7f5f0;
-      --text-secondary: #b8b4aa;
-      --text-muted: #807c74;
-      --text-dim: #54524c;
-      --border-hairline: rgba(247, 245, 240, 0.14);
-      --border-strong: rgba(247, 245, 240, 0.85);
-      --accent-blue: #00a8ff;
+      --bg-base: #080808;
+      --bg-surface: #121212;
+      --bg-surface-elevated: #1a1a1a;
+      --bg-card: #141414;
+      --text-primary: #f5f4ef;
+      --text-secondary: #c2beb2;
+      --text-muted: #827e73;
+      --text-dim: #545148;
+      --border-hairline: rgba(245, 244, 239, 0.1);
+      --border-medium: rgba(245, 244, 239, 0.22);
+      --border-strong: rgba(245, 244, 239, 0.85);
+      --accent-blue: #0099ff;
     }
 
     *, *::before, *::after {
@@ -57,23 +59,24 @@
       background-color: var(--bg-base);
       color: var(--text-primary);
       -webkit-font-smoothing: antialiased;
+      font-size: 15px;
     }
 
     body {
       font-family: var(--font-sans);
       background-color: var(--bg-base);
       color: var(--text-primary);
-      line-height: 1.6;
+      line-height: 1.55;
       overflow-x: hidden;
-      transition: background-color 0.25s ease, color 0.25s ease;
+      transition: background-color 0.25s cubic-bezier(0.16, 1, 0.3, 1), color 0.25s ease;
     }
 
     /* TYPOGRAPHY */
     h1, h2, h3, h4 {
       font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1.02;
       text-transform: uppercase;
-      letter-spacing: -0.035em;
-      line-height: 1.05;
     }
 
     .mono {
@@ -85,97 +88,106 @@
       font-family: var(--font-serif);
       font-style: italic;
       font-weight: 400;
-      text-transform: none;
+      text-transform: lowercase;
     }
 
-    /* TOP BAR / METADATA HEADER */
-    .header-bar {
+    /* TOP BAR */
+    .top-header {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      z-index: 200;
+      z-index: 300;
       background-color: var(--bg-base);
       border-bottom: 1px solid var(--border-hairline);
-      backdrop-filter: blur(12px);
-      padding: 0.65rem 1.5rem;
+      backdrop-filter: blur(16px);
+      padding: 0.65rem 1.75rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-family: var(--font-mono);
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       text-transform: uppercase;
     }
 
-    .brand-cluster {
+    .brand-mark {
       display: flex;
       align-items: center;
-      gap: 0.85rem;
+      gap: 0.65rem;
       font-weight: 700;
+      letter-spacing: 0.04em;
     }
 
-    .radar-pulse-dot {
-      width: 8px;
-      height: 8px;
+    .live-dot {
+      width: 7px;
+      height: 7px;
       background-color: var(--accent-crimson);
       border-radius: 50%;
-      animation: pulse 1.8s infinite ease-in-out;
+      box-shadow: 0 0 8px var(--accent-crimson);
+      animation: blink 1.6s infinite ease-in-out;
     }
 
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(0.75); opacity: 0.35; }
+    @keyframes blink {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.25; transform: scale(0.8); }
     }
 
-    .nav-links {
+    .nav-menu {
       display: flex;
-      gap: 1.5rem;
+      gap: 1.75rem;
       list-style: none;
     }
 
-    .nav-links a {
+    .nav-menu a {
       color: var(--text-primary);
       text-decoration: none;
-      opacity: 0.65;
+      opacity: 0.6;
       transition: opacity 0.2s, color 0.2s;
     }
 
-    .nav-links a:hover {
+    .nav-menu a:hover {
       opacity: 1;
       color: var(--accent-blue);
     }
 
-    .header-actions {
+    .action-group {
       display: flex;
       align-items: center;
-      gap: 0.65rem;
+      gap: 0.6rem;
     }
 
-    .btn-action {
+    .btn-minimal {
       background: transparent;
       border: 1px solid var(--border-hairline);
       color: var(--text-primary);
       padding: 0.35rem 0.65rem;
       font-family: var(--font-mono);
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       text-transform: uppercase;
       cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-minimal:hover {
+      background: var(--text-primary);
+      color: var(--bg-base);
+    }
+
+    .btn-primary-pill {
+      background: var(--text-primary);
+      color: var(--bg-base);
+      border: 1px solid var(--text-primary);
+      padding: 0.35rem 0.85rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
       transition: all 0.2s;
     }
 
-    .btn-action:hover {
-      background: var(--text-primary);
-      color: var(--bg-base);
-    }
-
-    .btn-primary {
-      background: var(--text-primary);
-      color: var(--bg-base);
-      border-color: var(--text-primary);
-      font-weight: 700;
-    }
-
-    .btn-primary:hover {
+    .btn-primary-pill:hover {
       background: var(--accent-blue);
       border-color: var(--accent-blue);
       color: #fff;
@@ -183,28 +195,28 @@
 
     /* HERO SECTION */
     .hero-container {
-      min-height: 94vh;
-      padding: 6rem 2rem 2rem;
+      min-height: 90vh;
+      padding: 6rem 2.25rem 2.25rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       border-bottom: 1px solid var(--border-hairline);
     }
 
-    .hero-meta-grid {
+    .hero-telemetry-strip {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
+      gap: 1.5rem;
       border-bottom: 1px solid var(--border-hairline);
-      padding-bottom: 0.85rem;
+      padding-bottom: 0.75rem;
       font-family: var(--font-mono);
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       color: var(--text-muted);
       text-transform: uppercase;
     }
 
     @media (max-width: 800px) {
-      .hero-meta-grid {
+      .hero-telemetry-strip {
         grid-template-columns: 1fr 1fr;
       }
     }
@@ -214,31 +226,27 @@
     }
 
     .hero-headline {
-      font-size: clamp(2.6rem, 7.5vw, 7.8rem);
-      line-height: 0.92;
-      text-transform: uppercase;
-      font-weight: 900;
-      letter-spacing: -0.04em;
+      font-size: clamp(2.8rem, 8vw, 8.2rem);
+      line-height: 0.9;
+      letter-spacing: -0.045em;
     }
 
     .hero-headline .serif-accent {
-      font-family: var(--font-serif);
-      font-style: italic;
       color: var(--accent-blue);
+      font-family: var(--font-serif);
       font-weight: 400;
-      text-transform: lowercase;
     }
 
     .hero-manifesto {
-      font-size: clamp(1.15rem, 2vw, 1.7rem);
-      line-height: 1.4;
+      font-size: clamp(1.15rem, 1.8vw, 1.65rem);
+      line-height: 1.45;
       color: var(--text-secondary);
-      max-width: 1050px;
-      margin-top: 1.5rem;
+      max-width: 1020px;
+      margin-top: 1.75rem;
       font-weight: 400;
     }
 
-    .crisis-kpi-bar {
+    .kpi-strip {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       border-top: 1px solid var(--border-hairline);
@@ -246,259 +254,208 @@
       font-family: var(--font-mono);
     }
 
-    .kpi-block {
+    .kpi-cell {
       padding: 1.25rem 1rem;
       border-right: 1px solid var(--border-hairline);
     }
 
-    .kpi-block:last-child {
+    .kpi-cell:last-child {
       border-right: none;
     }
 
-    .kpi-number {
-      font-size: 1.8rem;
+    .kpi-metric {
+      font-size: 1.85rem;
       font-weight: 900;
       color: var(--accent-crimson);
       line-height: 1;
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.35rem;
     }
 
-    .kpi-label {
-      font-size: 0.72rem;
+    .kpi-sub {
+      font-size: 0.7rem;
       color: var(--text-muted);
       text-transform: uppercase;
     }
 
-    /* THE CORE INQUIRY / EDITORIAL INVESTIGATION */
-    .investigation-layout {
-      display: grid;
-      grid-template-columns: 340px 1fr;
+    /* SECTION LAYOUT */
+    .lab-section {
+      padding: 4.5rem 2.25rem;
       border-bottom: 1px solid var(--border-hairline);
     }
 
+    .section-tag {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--accent-blue);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.05em;
+    }
+
+    .section-title {
+      font-size: clamp(2.2rem, 4vw, 3.8rem);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-desc {
+      max-width: 840px;
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      line-height: 1.5;
+    }
+
+    /* ==========================================================================
+       VISUAL AWARENESS LABORATORY (MINIMALIST & INTERACTIVE)
+       ========================================================================== */
+    .lab-tab-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 2.5rem 0 2rem;
+      border-bottom: 1px solid var(--border-hairline);
+      padding-bottom: 0.75rem;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+    }
+
+    .lab-tab-btn {
+      background: transparent;
+      border: 1px solid var(--border-hairline);
+      color: var(--text-secondary);
+      padding: 0.45rem 0.9rem;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: all 0.2s ease;
+    }
+
+    .lab-tab-btn.active, .lab-tab-btn:hover {
+      background: var(--text-primary);
+      color: var(--bg-base);
+      border-color: var(--text-primary);
+    }
+
+    .experiment-viewport {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 2rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-hairline);
+      padding: 2.25rem;
+      min-height: 520px;
+    }
+
     @media (max-width: 960px) {
-      .investigation-layout {
+      .experiment-viewport {
         grid-template-columns: 1fr;
       }
     }
 
-    .investigation-rail {
-      padding: 3rem 2rem;
-      border-right: 1px solid var(--border-hairline);
-      position: sticky;
-      top: 3.5rem;
-      height: calc(100vh - 3.5rem);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-    }
-
-    @media (max-width: 960px) {
-      .investigation-rail {
-        position: relative;
-        height: auto;
-        border-right: none;
-        border-bottom: 1px solid var(--border-hairline);
-      }
-    }
-
-    .rail-title {
-      color: var(--text-dim);
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-      font-weight: 700;
-    }
-
-    .rail-index-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .rail-index-list a {
-      color: var(--text-primary);
-      text-decoration: none;
-      display: flex;
-      justify-content: space-between;
-      opacity: 0.6;
-      transition: opacity 0.2s, color 0.2s;
-    }
-
-    .rail-index-list a:hover, .rail-index-list a.active {
-      opacity: 1;
-      color: var(--accent-blue);
-      font-weight: 700;
-    }
-
-    .investigation-article {
-      padding: 4rem 3.5rem;
-      max-width: 920px;
-    }
-
-    @media (max-width: 600px) {
-      .investigation-article {
-        padding: 2.5rem 1.25rem;
-      }
-    }
-
-    .article-section-tag {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      color: var(--accent-blue);
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
-    }
-
-    .article-title {
-      font-size: clamp(2rem, 3.5vw, 3.2rem);
-      margin-bottom: 1.5rem;
-      letter-spacing: -0.03em;
-    }
-
-    .article-lead {
-      font-size: 1.35rem;
-      line-height: 1.45;
-      font-weight: 500;
-      color: var(--text-primary);
-      margin-bottom: 2.5rem;
-    }
-
-    .article-p {
-      font-size: 1.08rem;
-      line-height: 1.8;
-      color: var(--text-secondary);
-      margin-bottom: 2rem;
-    }
-
-    .article-p strong {
-      color: var(--text-primary);
-      font-weight: 700;
-    }
-
-    .highlight-card {
-      background: var(--bg-surface);
-      border-left: 3px solid var(--accent-blue);
-      padding: 1.5rem;
-      margin: 2rem 0;
-      font-family: var(--font-sans);
-    }
-
-    .highlight-card-title {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      color: var(--accent-blue);
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
-    }
-
-    .interactive-term {
-      text-decoration: underline;
-      text-decoration-color: var(--accent-blue);
-      text-underline-offset: 3px;
-      font-weight: 600;
-      color: var(--text-primary);
-      cursor: pointer;
-      transition: background-color 0.15s;
-    }
-
-    .interactive-term:hover {
-      background-color: rgba(0, 136, 204, 0.12);
-    }
-
-    /* THE 5 REALITY TRAPS: BRUTALIST GRID */
-    .traps-section {
-      padding: 4rem 2rem;
-      border-bottom: 1px solid var(--border-hairline);
-    }
-
-    .traps-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2.5rem;
-    }
-
-    .trap-card {
-      background-color: var(--bg-surface);
+    .canvas-container {
+      background: var(--bg-base);
       border: 1px solid var(--border-hairline);
-      padding: 2rem;
+      position: relative;
+      min-height: 380px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .exp-canvas {
+      width: 100%;
+      height: 100%;
+      min-height: 380px;
+      display: block;
+      cursor: crosshair;
+    }
+
+    .canvas-hud {
+      position: absolute;
+      top: 0.85rem;
+      left: 0.85rem;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      background: var(--bg-surface);
+      padding: 0.25rem 0.6rem;
+      border: 1px solid var(--border-hairline);
+      pointer-events: none;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .exp-sidebar {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      min-height: 320px;
-      position: relative;
-      transition: transform 0.2s, border-color 0.2s;
+      gap: 1.25rem;
     }
 
-    .trap-card:hover {
-      border-color: var(--accent-crimson);
-      transform: translateY(-3px);
+    .exp-info-card {
+      background: var(--bg-base);
+      border: 1px solid var(--border-hairline);
+      padding: 1.5rem;
     }
 
-    .trap-number {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      color: var(--accent-crimson);
-      text-transform: uppercase;
-      margin-bottom: 0.75rem;
-    }
-
-    .trap-name {
-      font-size: 1.45rem;
+    .exp-title {
+      font-size: 1.35rem;
       font-weight: 800;
-      margin-bottom: 0.75rem;
-      line-height: 1.15;
+      margin-bottom: 0.35rem;
     }
 
-    .trap-sub {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-bottom: 1rem;
-    }
-
-    .trap-desc {
-      font-size: 0.95rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-    }
-
-    .trap-footer {
-      border-top: 1px solid var(--border-hairline);
-      padding-top: 1rem;
-      margin-top: 1.5rem;
+    .exp-origin {
       font-family: var(--font-mono);
       font-size: 0.72rem;
       color: var(--accent-blue);
+      text-transform: uppercase;
+      margin-bottom: 0.85rem;
+    }
+
+    .exp-instructions {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+    }
+
+    .exp-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+    }
+
+    .exp-telemetry-box {
+      background: var(--bg-surface-elevated);
+      padding: 1rem;
+      border: 1px solid var(--border-hairline);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+    }
+
+    .telemetry-row {
       display: flex;
       justify-content: space-between;
+      margin-bottom: 0.35rem;
     }
 
-    /* THE ANALYTICAL PRODUCT / DIAGNOSTIC ENGINE */
-    .diagnostic-section {
-      padding: 5rem 2rem;
-      border-bottom: 1px solid var(--border-hairline);
-      background-color: var(--bg-surface);
+    .telemetry-row:last-child {
+      margin-bottom: 0;
     }
 
-    .diagnostic-container {
-      max-width: 1200px;
-      margin: 0 auto;
+    .telemetry-val {
+      font-weight: 700;
+      color: var(--accent-blue);
     }
 
-    .diagnostic-header {
-      margin-bottom: 3rem;
-      text-align: left;
-    }
-
+    /* ==========================================================================
+       THE PHENOMENAL AUDIT ENGINE
+       ========================================================================== */
     .diagnostic-layout {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 2.5rem;
-      align-items: start;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 2.25rem;
+      margin-top: 2.5rem;
     }
 
     @media (max-width: 960px) {
@@ -507,274 +464,117 @@
       }
     }
 
-    .diagnostic-form-card {
-      background: var(--bg-base);
+    .diagnostic-form-box {
+      background: var(--bg-surface);
       border: 1px solid var(--border-hairline);
-      padding: 2.5rem;
+      padding: 2.25rem;
     }
 
-    .question-block {
-      margin-bottom: 2.5rem;
+    .diag-question {
+      margin-bottom: 2.25rem;
       border-bottom: 1px solid var(--border-hairline);
-      padding-bottom: 2rem;
+      padding-bottom: 1.75rem;
     }
 
-    .question-block:last-child {
+    .diag-question:last-child {
       border-bottom: none;
       margin-bottom: 0;
       padding-bottom: 0;
     }
 
-    .q-meta {
+    .diag-meta {
       font-family: var(--font-mono);
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       color: var(--accent-blue);
       text-transform: uppercase;
       margin-bottom: 0.35rem;
     }
 
-    .q-text {
-      font-size: 1.15rem;
+    .diag-text {
+      font-size: 1.05rem;
       font-weight: 700;
-      margin-bottom: 1.25rem;
-      line-height: 1.35;
+      margin-bottom: 1rem;
     }
 
-    .q-slider-wrap {
+    .diag-slider-wrap {
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: 0.4rem;
     }
 
-    .q-slider-labels {
+    .diag-slider-endpoints {
       display: flex;
       justify-content: space-between;
       font-family: var(--font-mono);
-      font-size: 0.72rem;
+      font-size: 0.7rem;
       color: var(--text-muted);
     }
 
-    .diagnostic-range {
+    .minimal-range {
       -webkit-appearance: none;
       width: 100%;
-      height: 6px;
+      height: 4px;
       background: var(--bg-surface-elevated);
       outline: none;
     }
 
-    .diagnostic-range::-webkit-slider-thumb {
+    .minimal-range::-webkit-slider-thumb {
       -webkit-appearance: none;
-      width: 18px;
-      height: 18px;
+      width: 16px;
+      height: 16px;
       background: var(--text-primary);
       cursor: pointer;
       border: 2px solid var(--bg-base);
     }
 
-    .diagnostic-results-panel {
-      background: var(--bg-base);
+    .diagnostic-result-panel {
+      background: var(--bg-surface);
       border: 1px solid var(--border-hairline);
-      padding: 2.5rem;
+      padding: 2.25rem;
       position: sticky;
-      top: 4.5rem;
+      top: 4rem;
     }
 
-    .results-badge {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      color: var(--accent-crimson);
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
-    }
-
-    .profile-title {
-      font-size: 1.8rem;
-      font-weight: 900;
-      line-height: 1.1;
-      margin-bottom: 0.5rem;
-    }
-
-    .profile-summary {
-      font-size: 0.95rem;
-      color: var(--text-secondary);
-      line-height: 1.55;
-      margin-bottom: 1.5rem;
-    }
-
-    .radar-canvas-box {
+    .radar-canvas-wrap {
       width: 100%;
-      height: 280px;
-      position: relative;
-      margin: 1.5rem 0;
+      height: 270px;
+      margin: 1.25rem 0;
     }
 
-    #radarCanvas {
+    #diagnosticRadarCanvas {
       width: 100%;
       height: 100%;
       display: block;
     }
 
-    .score-breakdown-grid {
+    .result-metric-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 0.75rem;
       font-family: var(--font-mono);
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       border-top: 1px solid var(--border-hairline);
       padding-top: 1.25rem;
       margin-top: 1.25rem;
     }
 
-    .score-item-label {
-      color: var(--text-muted);
-    }
-
-    .score-item-val {
-      font-weight: 700;
-      color: var(--text-primary);
-    }
-
-    .prescription-box {
-      background: var(--bg-surface);
+    .prescription-card {
+      background: var(--bg-base);
       border-left: 3px solid var(--accent-emerald);
       padding: 1.25rem;
       margin-top: 1.5rem;
       font-size: 0.88rem;
-      line-height: 1.5;
-    }
-
-    .prescription-title {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      color: var(--accent-emerald);
-      font-weight: 700;
-      text-transform: uppercase;
-      margin-bottom: 0.35rem;
-    }
-
-    /* EMPIRICAL REACTION & METAGOGNITIVE PROBE */
-    .lab-probe-section {
-      padding: 5rem 2rem;
-      border-bottom: 1px solid var(--border-hairline);
-    }
-
-    .probe-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      margin-top: 2.5rem;
-    }
-
-    @media (max-width: 900px) {
-      .probe-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .probe-card {
-      background: var(--bg-surface);
-      border: 1px solid var(--border-hairline);
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: 420px;
-    }
-
-    .probe-interactive-area {
-      background: var(--bg-base);
-      border: 1px solid var(--border-hairline);
-      min-height: 220px;
-      margin: 1.25rem 0;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    #visualGatingCanvas {
-      width: 100%;
-      height: 220px;
-      display: block;
-      cursor: crosshair;
-    }
-
-    /* STATE SPACE ATLAS */
-    .atlas-section {
-      padding: 5rem 2rem;
-      border-bottom: 1px solid var(--border-hairline);
-    }
-
-    .atlas-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
-      margin-top: 2rem;
-    }
-
-    .atlas-table th {
-      text-align: left;
-      padding: 0.85rem 1rem;
-      border-bottom: 2px solid var(--text-primary);
-      color: var(--text-muted);
-      text-transform: uppercase;
-    }
-
-    .atlas-table td {
-      padding: 1.15rem 1rem;
-      border-bottom: 1px solid var(--border-hairline);
-      vertical-align: top;
-    }
-
-    .atlas-table tr:hover {
-      background-color: var(--bg-surface);
-    }
-
-    /* HOVER POPOVER */
-    .popover-box {
-      position: fixed;
-      width: 300px;
-      background: var(--bg-surface-elevated);
-      border: 1px solid var(--text-primary);
-      padding: 1rem;
-      z-index: 300;
-      pointer-events: none;
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 0.15s, transform 0.15s;
-      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.15);
-    }
-
-    .popover-box.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .popover-title {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      color: var(--accent-blue);
-      font-weight: 700;
-      text-transform: uppercase;
-      margin-bottom: 0.35rem;
-    }
-
-    .popover-text {
-      font-size: 0.82rem;
-      line-height: 1.45;
-      color: var(--text-primary);
+      line-height: 1.55;
     }
 
     /* FOOTER */
-    .footer-bar {
-      padding: 4rem 2rem 2rem;
+    .footer-container {
+      padding: 4.5rem 2.25rem 2.25rem;
       font-family: var(--font-mono);
-      font-size: 0.75rem;
+      font-size: 0.72rem;
     }
 
-    .footer-top-grid {
+    .footer-top {
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
@@ -782,7 +582,7 @@
       margin-bottom: 3rem;
     }
 
-    .footer-bottom-grid {
+    .footer-bottom {
       border-top: 1px solid var(--border-hairline);
       padding-top: 1.5rem;
       display: flex;
@@ -793,39 +593,37 @@
 </head>
 <body>
 
-  <!-- TOP BAR -->
-  <header class="header-bar">
-    <div class="brand-cluster">
-      <span class="radar-pulse-dot"></span>
-      <span>THE UNEXPLORED INTERIOR // ATTENTION & CONSCIOUSNESS AUDIT</span>
-      <span style="opacity: 0.3;">|</span>
-      <span id="sessionTimer" class="mono" style="color: var(--accent-blue);">OBSERVATION: 00:00:00</span>
+  <!-- TOP HEADER -->
+  <header class="top-header">
+    <div class="brand-mark">
+      <span class="live-dot"></span>
+      <span>THE UNEXPLORED INTERIOR // PHENOMENAL LAB</span>
+      <span style="opacity: 0.25;">|</span>
+      <span id="sessionTimer" style="color: var(--accent-blue);">OBS: 00:00:00</span>
     </div>
 
     <nav>
-      <ul class="nav-links mono">
-        <li><a href="#manifesto">01. The Blindspot</a></li>
-        <li><a href="#traps">02. The 5 Traps</a></li>
-        <li><a href="#diagnostic">03. Audit Engine</a></li>
-        <li><a href="#probes">04. Empirical Probes</a></li>
-        <li><a href="#statespace">05. State Atlas</a></li>
+      <ul class="nav-menu">
+        <li><a href="#manifesto">01. Manifesto</a></li>
+        <li><a href="#lab">02. Visual Lab</a></li>
+        <li><a href="#audit">03. Audit Engine</a></li>
       </ul>
     </nav>
 
-    <div class="header-actions">
-      <button class="btn-action" id="audioBinauralBtn">GAMMA 40HZ : OFF</button>
-      <button class="btn-action" id="themeSwitchBtn">THEME: LIGHT</button>
-      <a href="#diagnostic" class="btn-action btn-primary" style="text-decoration: none;">START AUDIT →</a>
+    <div class="action-group">
+      <button class="btn-minimal" id="audioToggleBtn">GAMMA 40HZ : OFF</button>
+      <button class="btn-minimal" id="themeToggleBtn">THEME: LIGHT</button>
+      <a href="#lab" class="btn-primary-pill">LAUNCH LAB →</a>
     </div>
   </header>
 
   <!-- HERO SECTION -->
   <section class="hero-container" id="manifesto">
-    <div class="hero-meta-grid">
-      <div>INVESTIGATION // THE METAPROBLEM</div>
-      <div>SAMPLE // 8.1B BIOLOGICAL POPULATION</div>
-      <div>METRIC // PHENOMENAL RESOLUTION GAP</div>
-      <div>PROTOCOL // EMPIRICAL COGNITIVE AUDIT</div>
+    <div class="hero-telemetry-strip">
+      <div>INVESTIGATION // THE ATTENTIONAL BLINDSPOT</div>
+      <div>NEURO-CORRELATES // GNWT, IIT, FEP, HOT</div>
+      <div>VISUAL LAB // 5 INTERACTIVE EXPERIMENTS</div>
+      <div>FREQUENCY // 40 HZ BINDING MATRIX</div>
     </div>
 
     <div class="hero-headline-wrap">
@@ -834,457 +632,249 @@
         <span class="serif-accent">interior</span> OF HUMANITY
       </h1>
       <p class="hero-manifesto">
-        Civilization has mapped 93 billion light-years of cosmic space and decoded 3 billion base pairs of DNA, yet <strong>over 95% of human daily life is conducted in an automated, unexamined trance</strong>. Captured by synthetic dopamine loops, trapped in Default Mode Network rumination, and severed from first-person qualia—we possess the universe's most complex organ, but operate it on factory demo mode.
+        Civilization has decoded 3 billion base pairs of DNA, yet <strong>over 95% of daily human waking life is spent in an automated, unexamined trance</strong>. Captured by synthetic dopamine loops, trapped in Default Mode Network rumination, and severed from first-person qualia—we possess the universe's most complex organ, but operate it on factory demo mode.
       </p>
     </div>
 
-    <div class="crisis-kpi-bar">
-      <div class="kpi-block">
-        <div class="kpi-number">46.9%</div>
-        <div class="kpi-label">Of waking hours spent in involuntary mind-wandering / DMN rumination (Harvard Killingsworth Study)</div>
+    <div class="kpi-strip">
+      <div class="kpi-cell">
+        <div class="kpi-metric">46.9%</div>
+        <div class="kpi-sub">Waking hours spent in involuntary DMN mind-wandering (Harvard Killingsworth Study)</div>
       </div>
-      <div class="kpi-block">
-        <div class="kpi-number">47 sec</div>
-        <div class="kpi-label">Average screen attention span before switching tasks (Mark et al., UCI Cognition Lab)</div>
+      <div class="kpi-cell">
+        <div class="kpi-metric">47 sec</div>
+        <div class="kpi-sub">Average screen attention span before switching tasks (Mark et al., UCI Cognition Lab)</div>
       </div>
-      <div class="kpi-block">
-        <div class="kpi-number">0.02%</div>
-        <div class="kpi-label">Of sensory bandwidth reaches conscious awareness; remainder discarded or hijacked by algorithms</div>
+      <div class="kpi-cell">
+        <div class="kpi-metric">0.02%</div>
+        <div class="kpi-sub">Sensory bandwidth entering conscious workspace; remainder discarded or hijacked</div>
       </div>
-      <div class="kpi-block">
-        <div class="kpi-number">91%</div>
-        <div class="kpi-label">Of adults exhibit Naive Realism: confusing subjective mental simulations for objective truth</div>
+      <div class="kpi-cell">
+        <div class="kpi-metric">91%</div>
+        <div class="kpi-sub">Adults exhibiting Naive Realism: confusing mental simulations for objective truth</div>
       </div>
     </div>
   </section>
 
-  <!-- IN-DEPTH RESEARCH TREATISE -->
-  <section class="investigation-layout" id="investigation">
-    <aside class="investigation-rail">
-      <div>
-        <div class="rail-title">[ Epistemic Coordinates ]</div>
-        <ul class="rail-index-list">
-          <li><a href="#sec-illusion" class="active"><span>01. The Illusion of Awareness</span> <span>§ 1.1</span></a></li>
-          <li><a href="#sec-hijack"><span>02. The Dopaminergic Gating Trap</span> <span>§ 1.2</span></a></li>
-          <li><a href="#sec-functionalism"><span>03. The Functionalist Tyranny</span> <span>§ 1.3</span></a></li>
-          <li><a href="#sec-decentering"><span>04. Metacognitive Deficit</span> <span>§ 1.4</span></a></li>
-        </ul>
+  <!-- ==========================================================================
+       EXPANDED VISUAL AWARENESS & PERCEPTUAL LAB
+       ========================================================================== -->
+  <section class="lab-section" id="lab">
+    <div class="section-tag">[ EMPIRICAL NEURO-PHENOMENOLOGY // SECTION 02 ]</div>
+    <h2 class="section-title">THE VISUAL AWARENESS LAB</h2>
+    <p class="section-desc">
+      Five high-precision interactive experiments demonstrating inattentional blindness, motion-induced qualia disappearance, bistable rivalry switching, flash suppression gating, and saccadic time dilation.
+    </p>
+
+    <!-- EXPERIMENT TAB SWITCHER -->
+    <div class="lab-tab-nav">
+      <button class="lab-tab-btn active" data-exp="flicker">01. Perceptual Flicker & Gating</button>
+      <button class="lab-tab-btn" data-exp="mib">02. Motion-Induced Blindness (MIB)</button>
+      <button class="lab-tab-btn" data-exp="bistable">03. Bistable Necker Rivalry</button>
+      <button class="lab-tab-btn" data-exp="cfs">04. Continuous Flash Suppression</button>
+      <button class="lab-tab-btn" data-exp="chronostasis">05. Chronostasis (Time Dilation)</button>
+    </div>
+
+    <!-- EXPERIMENT INTERACTIVE VIEWPORT -->
+    <div class="experiment-viewport">
+      <div class="canvas-container">
+        <canvas class="exp-canvas" id="mainExperimentCanvas"></canvas>
+        <div class="canvas-hud" id="experimentHud">MODE: 01 // PERCEPTUAL FLICKER & IGNITION</div>
       </div>
 
-      <div style="background: var(--bg-surface); padding: 1rem; border: 1px solid var(--border-hairline);">
-        <div style="color: var(--text-dim); text-transform: uppercase;">Real-Time Attention Entropy</div>
-        <div class="mono" style="font-size: 1.4rem; font-weight: 700; color: var(--accent-crimson); margin: 0.25rem 0;" id="liveEntropyMetric">H = 4.82 bits/s</div>
-        <div style="color: var(--text-muted); font-size: 0.7rem;">STATUS: HIGH DISPERSION // DEFICIT DETECTED</div>
+      <div class="exp-sidebar">
+        <div class="exp-info-card">
+          <h3 class="exp-title" id="expTitle">Perceptual Flicker & Visual Gating</h3>
+          <div class="exp-origin" id="expOrigin">Stanislas Dehaene // Global Workspace Paradigm</div>
+          <p class="exp-instructions" id="expDesc">
+            Observe the rotating concentric dot matrix. Click <strong>'TRIGGER ANOMALY'</strong>. A subtle phase distortion will appear at an unpredictable moment. Click the canvas the instant you consciously register the shift to record your brain's Ignition Latency.
+          </p>
+
+          <div class="exp-controls">
+            <button class="btn-minimal btn-primary-pill" id="expActionBtn" style="padding: 0.65rem; text-align: center;">
+              TRIGGER ANOMALY
+            </button>
+            <button class="btn-minimal" id="expResetBtn">
+              RESET PARAMETERS
+            </button>
+          </div>
+        </div>
+
+        <div class="exp-telemetry-box" id="expTelemetry">
+          <div class="telemetry-row">
+            <span>MEASURED METRIC:</span>
+            <span class="telemetry-val" id="metric1">IGNITION LATENCY</span>
+          </div>
+          <div class="telemetry-row">
+            <span>LAST RECORDED:</span>
+            <span class="telemetry-val" id="metric2">-- ms</span>
+          </div>
+          <div class="telemetry-row">
+            <span>COGNITIVE STATUS:</span>
+            <span class="telemetry-val" id="metric3">STANDBY</span>
+          </div>
+        </div>
       </div>
-    </aside>
+    </div>
+  </section>
 
-    <article class="investigation-article">
-      <div class="article-section-tag">[ INDEPTH RESEARCH & COGNITIVE ANALYSIS ]</div>
-      <h2 class="article-title" id="sec-illusion">Why Consciousness Remains Humanity's Unexplored Frontier</h2>
-      
-      <p class="article-lead">
-        The great paradox of the 21st century is that while neuroscience has cracked the mathematical physics of consciousness, the subjective experience of the average human has never been more degraded, fragmented, and mechanistically unconscious.
-      </p>
+  <!-- ==========================================================================
+       THE PHENOMENAL AUDIT ENGINE
+       ========================================================================== -->
+  <section class="lab-section" id="audit" style="background: var(--bg-surface);">
+    <div class="section-tag">[ ANALYTICAL PRODUCT // SECTION 03 ]</div>
+    <h2 class="section-title">THE PHENOMENAL AUDIT ENGINE</h2>
+    <p class="section-desc">
+      Calibrate your cognitive architecture across 6 core neuro-phenomenological vectors to generate your real-time Consciousness Topology Fingerprint.
+    </p>
 
-      <p class="article-p">
-        We live under the profound cognitive bias of <strong>Naive Realism</strong>—the implicit conviction that we perceive the world as it truly is. In reality, modern cognitive neuroscience, led by Karl Friston's <span class="interactive-term" data-term="Predictive Processing" data-def="The brain is not a passive receiver of sensory input, but an active Bayesian prediction engine that projects top-down generative models onto ambiguous raw sensory signals.">Predictive Processing</span> framework, proves that what you experience as "reality" is merely your brain's top-down controlled hallucination.
-      </p>
+    <div class="diagnostic-layout">
+      <!-- FORM -->
+      <div class="diagnostic-form-box">
+        <!-- V1: Attentional Agency -->
+        <div class="diag-question">
+          <div class="diag-meta">[ VECTOR 01 // ATTENTIONAL SOVEREIGNTY ]</div>
+          <div class="diag-text">Resistance to external algorithmic distraction and internal urge hijack:</div>
+          <div class="diag-slider-wrap">
+            <input type="range" class="minimal-range diag-slider" id="v1" min="1" max="10" value="4">
+            <div class="diag-slider-endpoints">
+              <span>1: Constant Reactivity</span>
+              <span id="v1_val" class="mono" style="color:var(--accent-blue); font-weight:700;">Score: 4/10</span>
+              <span>10: Sovereign Focus</span>
+            </div>
+          </div>
+        </div>
 
-      <div class="highlight-card">
-        <div class="highlight-card-title">[ Epistemological Core Axiom ]</div>
-        <p style="font-weight: 600; font-size: 1.05rem;">
-          "The modern individual does not inhabit the physical world; they inhabit a compressed, low-resolution internal simulation generated by economic incentives, social mimicry, and evolutionary survival heuristics."
+        <!-- V2: Phenomenological Granularity -->
+        <div class="diag-question">
+          <div class="diag-meta">[ VECTOR 02 // PHENOMENOLOGICAL QUALIA RESOLUTION ]</div>
+          <div class="diag-text">Vividness of raw sensory perception without automatic conceptual labeling:</div>
+          <div class="diag-slider-wrap">
+            <input type="range" class="minimal-range diag-slider" id="v2" min="1" max="10" value="5">
+            <div class="diag-slider-endpoints">
+              <span>1: Conceptual Numbness</span>
+              <span id="v2_val" class="mono" style="color:var(--accent-blue); font-weight:700;">Score: 5/10</span>
+              <span>10: High-Definition Qualia</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- V3: Metacognitive Decentering -->
+        <div class="diag-question">
+          <div class="diag-meta">[ VECTOR 03 // METACOGNITIVE MONITORING (HOT) ]</div>
+          <div class="diag-text">Ability to observe emotions as physiological events without 'becoming' them:</div>
+          <div class="diag-slider-wrap">
+            <input type="range" class="minimal-range diag-slider" id="v3" min="1" max="10" value="3">
+            <div class="diag-slider-endpoints">
+              <span>1: Total Psychological Fusion</span>
+              <span id="v3_val" class="mono" style="color:var(--accent-blue); font-weight:700;">Score: 3/10</span>
+              <span>10: Decentered Observer</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- V4: DMN Quiescence -->
+        <div class="diag-question">
+          <div class="diag-meta">[ VECTOR 04 // DMN PLASTICITY & EGO DE-COUPLING ]</div>
+          <div class="diag-text">Ease of voluntarily quieting the internal narrative monologue:</div>
+          <div class="diag-slider-wrap">
+            <input type="range" class="minimal-range diag-slider" id="v4" min="1" max="10" value="3">
+            <div class="diag-slider-endpoints">
+              <span>1: Incessant Rumination</span>
+              <span id="v4_val" class="mono" style="color:var(--accent-blue); font-weight:700;">Score: 3/10</span>
+              <span>10: Voluntary Stillness</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- V5: Predictive Plasticity -->
+        <div class="diag-question">
+          <div class="diag-meta">[ VECTOR 05 // BAYESIAN PREDICTIVE PLASTICITY ]</div>
+          <div class="diag-text">Flexibility in updating core worldview models upon disconfirming evidence:</div>
+          <div class="diag-slider-wrap">
+            <input type="range" class="minimal-range diag-slider" id="v5" min="1" max="10" value="6">
+            <div class="diag-slider-endpoints">
+              <span>1: Defensive Calcification</span>
+              <span id="v5_val" class="mono" style="color:var(--accent-blue); font-weight:700;">Score: 6/10</span>
+              <span>10: Instant Model Updating</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- V6: State Space Range -->
+        <div class="diag-question">
+          <div class="diag-meta">[ VECTOR 06 // STATE-SPACE REPERTOIRE (ENTROPIC DEPTH) ]</div>
+          <div class="diag-text">Frequency of accessing non-ordinary states of consciousness (flow, lucid hypnagogia, awe):</div>
+          <div class="diag-slider-wrap">
+            <input type="range" class="minimal-range diag-slider" id="v6" min="1" max="10" value="4">
+            <div class="diag-slider-endpoints">
+              <span>1: Rigid Monomodal Trance</span>
+              <span id="v6_val" class="mono" style="color:var(--accent-blue); font-weight:700;">Score: 4/10</span>
+              <span>10: Multi-Dimensional Mastery</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RADAR & PROFILE -->
+      <div class="diagnostic-result-panel">
+        <div style="font-family:var(--font-mono); font-size:0.7rem; color:var(--accent-crimson);">[ REAL-TIME COGNITIVE TOPOLOGY ]</div>
+        <h3 id="diagProfileTitle" style="font-size:1.6rem; font-weight:900; margin:0.35rem 0 0.5rem;">AUTOMATED REACTIVE AGENT</h3>
+        <p id="diagProfileDesc" style="font-size:0.88rem; color:var(--text-secondary); line-height:1.5;">
+          High susceptibility to algorithmic capture. DMN dominance suppresses raw qualia. Metacognitive monitoring is dormant during emotional spikes.
         </p>
-      </div>
 
-      <h3 style="font-size: 1.6rem; margin: 2.5rem 0 1rem;" id="sec-hijack">1. The Dopaminergic Gating Collapse</h3>
-      <p class="article-p">
-        In a natural environment, the <span class="interactive-term" data-term="Salience Network" data-def="A neural network anchored in the anterior insula and dorsal anterior cingulate cortex that detects biologically meaningful stimuli and switches between internal rumination and external focus.">Salience Network</span> filters novelty to preserve deep, focused attentional states. In the modern techno-ecosystem, algorithmic architectures specifically engineer variable-reward dopaminergic micro-bursts that perpetually trigger the sensory bottom-up feedforward sweep, systematically preempting the <span class="interactive-term" data-term="Global Neuronal Workspace" data-def="The frontoparietal ignition system required for conscious access, deliberate reflection, long-term memory consolidation, and deep metacognition.">Global Neuronal Workspace</span> from achieving sustained, high-integration states.
-      </p>
-
-      <h3 style="font-size: 1.6rem; margin: 2.5rem 0 1rem;" id="sec-functionalism">2. The Tyranny of the 'Easy Problems'</h3>
-      <p class="article-p">
-        As philosopher David Chalmers noted, cognitive science easily measures functional outputs: reaction times, economic output, problem-solving, and speech. Modern society has optimized humans exclusively for these "Easy Problems"—turning human beings into biological computation engines—while rendering the <span class="interactive-term" data-term="Qualia" data-def="The qualitative first-person textures of conscious existence—the raw sensation of light, grief, wonder, or stillness that has no direct economic utility.">Qualia of Existence</span> completely invisible and uncultivated.
-      </p>
-
-      <h3 style="font-size: 1.6rem; margin: 2.5rem 0 1rem;" id="sec-decentering">3. The Metacognitive Blindness Gap</h3>
-      <p class="article-p">
-        Most individuals spend their entire lifetime fused with their inner monologue. Because the human brain lacks native sensory receptors to feel its own cognitive biases, people mistake their <span class="interactive-term" data-term="Default Mode Network (DMN)" data-def="The midline cortical network responsible for the autobiographical self, self-referential narratives, past regrets, and future anxieties.">Default Mode Network</span> rumination loops for their fundamental identity. Without systematic metacognitive calibration, consciousness remains an unexplored passenger in a runaway vehicle.
-      </p>
-    </article>
-  </section>
-
-  <!-- THE 5 MODERN REALITY TRAPS -->
-  <section class="traps-section" id="traps">
-    <div class="article-section-tag">[ TAXONOMY OF DEGRADATION ]</div>
-    <h2 style="font-size: clamp(2rem, 4vw, 3.5rem); margin-bottom: 0.5rem;">THE 5 MODERN REALITY TRAPS</h2>
-    <p style="max-width: 800px; color: var(--text-muted); font-size: 1.1rem;">
-      The five structural mechanisms causing consciousness to remain unexplored, suppressed, and automated in modern civilization.
-    </p>
-
-    <div class="traps-grid">
-      <!-- TRAP 01 -->
-      <div class="trap-card">
-        <div>
-          <div class="trap-number">[ TRAP 01 // NEURAL CAPTURE ]</div>
-          <h3 class="trap-name">Algorithmic Attentional Fragmentation</h3>
-          <div class="trap-sub">NEUROBIOLOGICAL TARGET: SALIENCE NETWORK & RETICULAR ACTIVATION</div>
-          <p class="trap-desc">
-            Continuous algorithmic interruption fragments the micro-architecture of attention. By preventing frontoparietal gamma synchrony (>300ms ignition), consciousness is forced into chronic sub-threshold subliminal reactivity.
-          </p>
-        </div>
-        <div class="trap-footer">
-          <span>CONSEQUENCE: ATTENTION HYPERTROPHY</span>
-          <span>REVERSIBILITY: MODERATE</span>
-        </div>
-      </div>
-
-      <!-- TRAP 02 -->
-      <div class="trap-card">
-        <div>
-          <div class="trap-number">[ TRAP 02 // DMN LOCK-IN ]</div>
-          <h3 class="trap-name">Autobiographical Narrative Hyper-Rigidity</h3>
-          <div class="trap-sub">NEUROBIOLOGICAL TARGET: DEFAULT MODE NETWORK (PCC / mPFC)</div>
-          <p class="trap-desc">
-            The narrative ego constantly generates anxiety-laden predictive simulations about past mistakes and future threats. This consumes over 60% of metabolic energy, crowding out direct phenomenal experience of the present moment.
-          </p>
-        </div>
-        <div class="trap-footer">
-          <span>CONSEQUENCE: EXISTENTIAL RUMINATION</span>
-          <span>REVERSIBILITY: HIGH</span>
-        </div>
-      </div>
-
-      <!-- TRAP 03 -->
-      <div class="trap-card">
-        <div>
-          <div class="trap-number">[ TRAP 03 // PHENOMENAL ATROPHY ]</div>
-          <h3 class="trap-name">Qualia Blindness & Conceptual Desensitization</h3>
-          <div class="trap-sub">NEUROBIOLOGICAL TARGET: SENSORY-MOTOR RECURRENT FEEDBACK</div>
-          <p class="trap-desc">
-            We replace direct sensation with conceptual labels. Instead of experiencing the rich chromatic depth of light, the brain instantly reduces it to "blue light = screen = notification." Raw qualia are discarded at the gateway.
-          </p>
-        </div>
-        <div class="trap-footer">
-          <span>CONSEQUENCE: EMOTIONAL NUMBING</span>
-          <span>REVERSIBILITY: HIGH</span>
-        </div>
-      </div>
-
-      <!-- TRAP 04 -->
-      <div class="trap-card">
-        <div>
-          <div class="trap-number">[ TRAP 04 // BAYESIAN DOGMATISM ]</div>
-          <h3 class="trap-name">Predictive Prior Calcification</h3>
-          <div class="trap-sub">NEUROBIOLOGICAL TARGET: CANONICAL CORTICAL MICROCIRCUITS</div>
-          <p class="trap-desc">
-            As adults age in predictable routines, top-down Bayesian priors become overwhelmingly rigid. The brain refuses to update its models when confronted with novel sensory anomalies, creating cognitive ossification and echo chambers.
-          </p>
-        </div>
-        <div class="trap-footer">
-          <span>CONSEQUENCE: EPISTEMIC BLINDNESS</span>
-          <span>REVERSIBILITY: LOW-MEDIUM</span>
-        </div>
-      </div>
-
-      <!-- TRAP 05 -->
-      <div class="trap-card">
-        <div>
-          <div class="trap-number">[ TRAP 05 // METAREPRESENTATIONAL VOID ]</div>
-          <h3 class="trap-name">Type-2 Metacognitive Deficit</h3>
-          <div class="trap-sub">NEUROBIOLOGICAL TARGET: ROSTROLATERAL PREFRONTAL CORTEX (BA10)</div>
-          <p class="trap-desc">
-            The complete absence of training in Higher-Order Thought (HOT). Most humans cannot distinguish between an objective sensation, an emotion, and the metacognitive observation of that emotion, creating total psychological fusion.
-          </p>
-        </div>
-        <div class="trap-footer">
-          <span>CONSEQUENCE: ZERO COGNITIVE AGENCY</span>
-          <span>REVERSIBILITY: VERY HIGH</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- THE INTERACTIVE ANALYTICAL PRODUCT / CONSCIOUSNESS AUDIT ENGINE -->
-  <section class="diagnostic-section" id="diagnostic">
-    <div class="diagnostic-container">
-      <div class="diagnostic-header">
-        <div class="article-section-tag">[ ANALYTICAL PRODUCT & DIAGNOSTIC INSTRUMENT ]</div>
-        <h2 style="font-size: clamp(2.2rem, 4.5vw, 4rem); line-height: 1;">THE PHENOMENAL AUDIT ENGINE</h2>
-        <p style="color: var(--text-muted); font-size: 1.15rem; max-width: 850px; margin-top: 0.75rem;">
-          Calibrate your cognitive architecture across 6 core neuro-phenomenological vectors. This analytical tool generates your real-time Consciousness Topology Fingerprint and prescribes precise neuro-cognitive interventions.
-        </p>
-      </div>
-
-      <div class="diagnostic-layout">
-        <!-- FORM / SLIDER INTERFACE -->
-        <div class="diagnostic-form-card">
-          <!-- V1: Attentional Agency -->
-          <div class="question-block">
-            <div class="q-meta">[ VECTOR 01 // ATTENTIONAL AGENCY & RESISTANCE TO CAPTURE ]</div>
-            <div class="q-text">When working or reflecting, how frequently does an external stimulus or internal urge involuntarily hijack your focus?</div>
-            <div class="q-slider-wrap">
-              <input type="range" class="diagnostic-range" id="v1_attention" min="1" max="10" value="4">
-              <div class="q-slider-labels">
-                <span>1: Constant Hijack / Reactivity</span>
-                <span id="v1_val" class="mono" style="color: var(--accent-blue); font-weight: 700;">Score: 4/10</span>
-                <span>10: Unshakeable Sovereign Agency</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- V2: Phenomenological Granularity -->
-          <div class="question-block">
-            <div class="q-meta">[ VECTOR 02 // PHENOMENOLOGICAL QUALIA RESOLUTION ]</div>
-            <div class="q-text">How vividly can you experience raw sensory textures (breathing cadence, subtle light gradients, micro-muscle tensions) without conceptual labeling?</div>
-            <div class="q-slider-wrap">
-              <input type="range" class="diagnostic-range" id="v2_qualia" min="1" max="10" value="5">
-              <div class="q-slider-labels">
-                <span>1: Numb / Pure Conceptual Abstraction</span>
-                <span id="v2_val" class="mono" style="color: var(--accent-blue); font-weight: 700;">Score: 5/10</span>
-                <span>10: Hyper-Vivid High-Definition Qualia</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- V3: Metacognitive Decentering -->
-          <div class="question-block">
-            <div class="q-meta">[ VECTOR 03 // METACOGNITIVE MONITORING (HOT CALIBRATION) ]</div>
-            <div class="q-text">During intense emotions (anger, fear, envy), can you observe the emotional state as a biological event rather than 'becoming' it?</div>
-            <div class="q-slider-wrap">
-              <input type="range" class="diagnostic-range" id="v3_metacog" min="1" max="10" value="3">
-              <div class="q-slider-labels">
-                <span>1: Total Psychological Fusion</span>
-                <span id="v3_val" class="mono" style="color: var(--accent-blue); font-weight: 700;">Score: 3/10</span>
-                <span>10: Seamless Decentered Awareness</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- V4: DMN Fluidity -->
-          <div class="question-block">
-            <div class="q-meta">[ VECTOR 04 // DMN PLASTICITY & EGO DE-COUPLING ]</div>
-            <div class="q-text">How easily can you quiet your internal narrative monologue without sleep, drugs, or distracting media?</div>
-            <div class="q-slider-wrap">
-              <input type="range" class="diagnostic-range" id="v4_dmn" min="1" max="10" value="3">
-              <div class="q-slider-labels">
-                <span>1: Incessant Rumination & Echo</span>
-                <span id="v4_val" class="mono" style="color: var(--accent-blue); font-weight: 700;">Score: 3/10</span>
-                <span>10: Voluntary Profound Stillness</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- V5: Predictive Plasticity -->
-          <div class="question-block">
-            <div class="q-meta">[ VECTOR 05 // BAYESIAN PREDICTIVE PLASTICITY ]</div>
-            <div class="q-text">When presented with evidence that completely contradicts your core worldviews, how flexible are your belief networks?</div>
-            <div class="q-slider-wrap">
-              <input type="range" class="diagnostic-range" id="v5_plasticity" min="1" max="10" value="6">
-              <div class="q-slider-labels">
-                <span>1: Defensive Rejection / Calcification</span>
-                <span id="v5_val" class="mono" style="color: var(--accent-blue); font-weight: 700;">Score: 6/10</span>
-                <span>10: Instant Bayesian Model Update</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- V6: State Space Range -->
-          <div class="question-block">
-            <div class="q-meta">[ VECTOR 06 // STATE-SPACE REPERTOIRE (ENTROPIC DEPTH) ]</div>
-            <div class="q-text">How frequently do you access non-ordinary states of consciousness (deep flow, hypnagogic lucid insights, aesthetic awe)?</div>
-            <div class="q-slider-wrap">
-              <input type="range" class="diagnostic-range" id="v6_states" min="1" max="10" value="4">
-              <div class="q-slider-labels">
-                <span>1: Strictly Rigid Monomodal Trance</span>
-                <span id="v6_val" class="mono" style="color: var(--accent-blue); font-weight: 700;">Score: 4/10</span>
-                <span>10: Multi-Dimensional State Mastery</span>
-              </div>
-            </div>
-          </div>
+        <div class="radar-canvas-wrap">
+          <canvas id="diagnosticRadarCanvas"></canvas>
         </div>
 
-        <!-- REAL-TIME RADAR & CLASSIFICATION OUTPUT -->
-        <div class="diagnostic-results-panel">
-          <div class="results-badge">[ REAL-TIME NEURO-PHENOMENOLOGICAL TOPOLOGY ]</div>
-          <h3 class="profile-title" id="profileType">AUTOMATED REACTIVE AGENT</h3>
-          <p class="profile-summary" id="profileSummary">
-            High susceptibility to algorithmic capture. DMN dominance suppresses raw qualia. Metacognitive monitoring is dormant during emotional spikes.
-          </p>
+        <div class="result-metric-grid">
+          <div>TOTAL SCORE: <strong id="totalScoreVal">25 / 60</strong></div>
+          <div>IGNITION LATENCY: <strong id="latencyVal">420 ms</strong></div>
+          <div>DMN RUMINATION: <strong id="dmnVal">78%</strong></div>
+          <div>INTEGRATED Φ: <strong id="phiVal">0.41 bits</strong></div>
+        </div>
 
-          <div class="radar-canvas-box">
-            <canvas id="radarCanvas"></canvas>
-          </div>
-
-          <div class="score-breakdown-grid">
-            <div><span class="score-item-label">PHENOMENAL SCORE:</span> <span class="score-item-val" id="totalScoreVal">25 / 60</span></div>
-            <div><span class="score-item-label">CONSCIOUS LATENCY:</span> <span class="score-item-val" id="latencyVal">420 ms (Lagged)</span></div>
-            <div><span class="score-item-label">DMN RUMINATION:</span> <span class="score-item-val" id="dmnRatioVal">78% (Hyperactive)</span></div>
-            <div><span class="score-item-label">INTEGRATED Φ (PHI):</span> <span class="score-item-val" id="phiScoreVal">0.41 bits</span></div>
-          </div>
-
-          <div class="prescription-box" id="prescriptionBox">
-            <div class="prescription-title">[ PROTOCOL PRESCRIPTION // LEVEL 1 INTERVENTION ]</div>
-            <div id="prescriptionContent">
-              <strong>Open Monitoring & Predictive Defusion:</strong> Implement 15 minutes of non-judgmental sensory de-labeling. Uncouple sensory input from phone/screen triggers to restore Salience Network autonomy.
-            </div>
+        <div class="prescription-card" id="prescriptionCard">
+          <strong style="color:var(--accent-emerald);">Prescription Protocol:</strong>
+          <div id="rxText" style="margin-top:0.25rem;">
+            Implement 15 mins of non-judgmental sensory de-labeling. Uncouple sensory input from phone/screen triggers to restore Salience Network autonomy.
           </div>
         </div>
       </div>
     </div>
-  </section>
-
-  <!-- EMPIRICAL PROBES & REACTION EXPERIMENT LAB -->
-  <section class="lab-probe-section" id="probes">
-    <div class="article-section-tag">[ EMPIRICAL COGNITIVE TESTING ]</div>
-    <h2 style="font-size: clamp(2rem, 4vw, 3.5rem); margin-bottom: 0.5rem;">CONSCIOUS ACCESS PROBE</h2>
-    <p style="max-width: 800px; color: var(--text-muted); font-size: 1.1rem;">
-      Directly test your brain's ignition latency and inattentional blindness threshold. Measure whether subtle stimulus alterations cross into your conscious workspace.
-    </p>
-
-    <div class="probe-grid">
-      <!-- Visual Gating & Inattention Test -->
-      <div class="probe-card">
-        <div>
-          <div class="q-meta">[ EXPERIMENT 01 // VISUAL GATING & IGNITION THRESHOLD ]</div>
-          <h3 style="font-size: 1.3rem; margin: 0.35rem 0;">Perceptual Flicker & Inattention Probe</h3>
-          <p style="font-size: 0.88rem; color: var(--text-secondary);">
-            Observe the rotating geometric matrix below. When you click <strong>'ACTIVATE ANOMALY'</strong>, a subtle high-order phase distortion will occur. Click the canvas the instant you consciously register the shift.
-          </p>
-        </div>
-
-        <div class="probe-interactive-area">
-          <canvas id="visualGatingCanvas"></canvas>
-        </div>
-
-        <div>
-          <button class="btn-action btn-primary" id="btnTriggerAnomaly" style="width: 100%; padding: 0.6rem;">ACTIVATE PERCEPTUAL ANOMALY</button>
-          <div id="probeResultText" class="mono" style="font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem; text-align: center;">
-            STATUS: STANDBY // CLICK BUTTON TO COMMENCE
-          </div>
-        </div>
-      </div>
-
-      <!-- Metacognitive Confidence Calibration Test -->
-      <div class="probe-card">
-        <div>
-          <div class="q-meta">[ EXPERIMENT 02 // TYPE-2 METACOGNITIVE CALIBRATION ]</div>
-          <h3 style="font-size: 1.3rem; margin: 0.35rem 0;">Metacognitive Sensitivity Index ($d'$)</h3>
-          <p style="font-size: 0.88rem; color: var(--text-secondary);">
-            Determines whether you know what you know. Compare your subjective confidence against empirical discrimination accuracy.
-          </p>
-        </div>
-
-        <div style="background: var(--bg-base); border: 1px solid var(--border-hairline); padding: 1.5rem; margin: 1.25rem 0;">
-          <div id="metaQuizQuestion" style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.75rem;">
-            Question: Which sensory modality possesses the fastest neural transmission to primary cortex?
-          </div>
-          <div style="display: flex; flex-direction: column; gap: 0.5rem;" id="metaQuizOptions">
-            <button class="btn-action quiz-opt" data-correct="false">A. Visual Photoreceptors (Retina to V1)</button>
-            <button class="btn-action quiz-opt" data-correct="true">B. Auditory Hair Cells (Cochlea to A1)</button>
-            <button class="btn-action quiz-opt" data-correct="false">C. Olfactory Receptors (Nasal to Bulb)</button>
-          </div>
-        </div>
-
-        <div id="metaFeedback" class="mono" style="font-size: 0.75rem; color: var(--accent-blue);">
-          SELECT AN ANSWER TO EVALUATE YOUR CALIBRATION
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ATLAS OF CONSCIOUS STATE SPACE -->
-  <section class="atlas-section" id="statespace">
-    <div class="article-section-tag">[ PHENOMENOLOGICAL CARTOGRAPHY ]</div>
-    <h2 style="font-size: clamp(2rem, 4vw, 3.5rem); margin-bottom: 0.5rem;">THE CONSCIOUSNESS STATE-SPACE ATLAS</h2>
-    <p style="max-width: 800px; color: var(--text-muted); font-size: 1.1rem;">
-      Human consciousness is not a binary switch (awake vs. asleep). It is a multi-dimensional topological state-space.
-    </p>
-
-    <table class="atlas-table">
-      <thead>
-        <tr>
-          <th>Conscious State</th>
-          <th>DMN Activity</th>
-          <th>Integrated Φ</th>
-          <th>Subjective Phenomenology</th>
-          <th>Functional Utility</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td style="font-weight: 700; color: var(--accent-crimson);">01. Modern Default Trance</td>
-          <td>Hyperactive (85-95%)</td>
-          <td>Low (0.32 bits)</td>
-          <td>Automated reactivity, continuous internal chatter, low qualia resolution.</td>
-          <td>Routine algorithmic task execution.</td>
-        </tr>
-        <tr>
-          <td style="font-weight: 700; color: var(--accent-blue);">02. Flow State (Absorption)</td>
-          <td>Suppressed (<15%)</td>
-          <td>High (0.88 bits)</td>
-          <td>Time dilation, total task merging, loss of self-referential doubt.</td>
-          <td>Peak performance, creative mastery.</td>
-        </tr>
-        <tr>
-          <td style="font-weight: 700; color: var(--accent-emerald);">03. Open Presence (Non-Dual)</td>
-          <td>De-coupled (20%)</td>
-          <td>Very High (0.94 bits)</td>
-          <td>Boundless awareness, rich raw qualia, complete metacognitive freedom.</td>
-          <td>Deep psychological resilience & clarity.</td>
-        </tr>
-        <tr>
-          <td style="font-weight: 700; color: var(--accent-amber);">04. Hypnagogic Threshold</td>
-          <td>Fragmented (40%)</td>
-          <td>Variable (0.65 bits)</td>
-          <td>Dreamlet intrusions, lateral association spikes, fluid spatial logic.</td>
-          <td>Nonlinear problem solving & insight.</td>
-        </tr>
-        <tr>
-          <td style="font-weight: 700; color: var(--accent-crimson);">05. Chronic Anxiety Rumination</td>
-          <td>Locked-In (99%)</td>
-          <td>Constrained (0.21 bits)</td>
-          <td>Repetitive threat loops, somatic constriction, zero attention agency.</td>
-          <td>Evolutionary threat simulation (maladapted).</td>
-        </tr>
-      </tbody>
-    </table>
   </section>
 
   <!-- FOOTER -->
-  <footer class="footer-bar">
-    <div class="footer-top-grid">
+  <footer class="footer-container">
+    <div class="footer-top">
       <div>
-        <div style="font-weight: 700; font-size: 0.95rem; margin-bottom: 0.35rem;">THE UNEXPLORED INTERIOR // COGNITIVE RECOVERY INITIATIVE</div>
-        <div style="color: var(--text-muted); max-width: 450px;">A public-interest computational platform for metacognitive empowerment, phenomenological literacy, and the reclamation of human consciousness.</div>
+        <div style="font-weight:700; font-size:0.95rem; margin-bottom:0.25rem;">THE UNEXPLORED INTERIOR // VISUAL CONSCIOUSNESS PLATFORM</div>
+        <div style="color:var(--text-muted); max-width:450px;">A high-end analytical platform for metacognitive empowerment, phenomenological literacy, and the reclamation of human consciousness.</div>
       </div>
       <div>
-        <div style="color: var(--text-dim); margin-bottom: 0.35rem;">COMPUTATIONAL STANDARDS</div>
-        <div>PREDICTIVE INFERENCE ENGINE (FRISTON FEP)</div>
+        <div style="color:var(--text-dim); margin-bottom:0.25rem;">STANDARDS</div>
+        <div>GLOBAL WORKSPACE IGNITION (GNWT)</div>
         <div>INTEGRATED INFORMATION THEORY (IIT 4.0)</div>
       </div>
       <div>
-        <div style="color: var(--text-dim); margin-bottom: 0.35rem;">AUDIO SYNTHESIS</div>
+        <div style="color:var(--text-dim); margin-bottom:0.25rem;">AUDIO HARMONICS</div>
         <div>40HZ GAMMA AUDITORY BINDING GENERATOR</div>
       </div>
     </div>
 
-    <div class="footer-bottom-grid">
-      <div>© 2026 CONSCIOUSNESS AUDIT ENGINE. OPEN EMPIRICAL REPOSITORY.</div>
-      <div>TRANSMISSION // 0xCOGNITION_VERIFIED</div>
+    <div class="footer-bottom">
+      <div>© 2026 CONSCIOUSNESS LAB. OPEN EMPIRICAL REPOSITORY.</div>
+      <div>TRANSMISSION // 0xPHENOMENOLOGY_VERIFIED</div>
     </div>
   </footer>
 
-  <!-- FLOATING POPOVER -->
-  <div class="popover-box" id="popoverBox">
-    <div class="popover-title" id="popoverTitle"></div>
-    <div class="popover-text" id="popoverText"></div>
-  </div>
-
-  <!-- JAVASCRIPT LOGIC -->
+  <!-- ==========================================================================
+       JAVASCRIPT: MULTI-EXPERIMENT ENGINE + AUDIT RADAR + AUDIO
+       ========================================================================== -->
   <script>
-    // --- 1. AUDIO BINAURAL ENGINE ---
-    class AudioEngine {
+    // --- 1. AUDIO BINAURAL SYNTHESIZER ---
+    class BinauralAudio {
       constructor() {
         this.ctx = null;
         this.isPlaying = false;
@@ -1300,13 +890,8 @@
       toggle() {
         this.init();
         if (this.ctx.state === 'suspended') this.ctx.resume();
-        if (this.isPlaying) {
-          this.stop();
-          return false;
-        } else {
-          this.start();
-          return true;
-        }
+        if (this.isPlaying) { this.stop(); return false; }
+        else { this.start(); return true; }
       }
       start() {
         this.isPlaying = true;
@@ -1336,15 +921,443 @@
         if (this.oscL) { try { this.oscL.stop(); } catch(e){} this.oscL = null; }
         if (this.oscR) { try { this.oscR.stop(); } catch(e){} this.oscR = null; }
       }
+      playChime(freq = 528) {
+        if (!this.ctx || this.ctx.state === 'suspended') return;
+        try {
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(freq * 1.5, this.ctx.currentTime + 0.25);
+          gain.gain.setValueAtTime(0.05, this.ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 0.35);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start();
+          osc.stop(this.ctx.currentTime + 0.35);
+        } catch(e){}
+      }
     }
 
-    // --- 2. DIAGNOSTIC RADAR CHART ---
-    class DiagnosticRadar {
+    // --- 2. MULTI-EXPERIMENT CANVAS ENGINE ---
+    class VisualAwarenessLabEngine {
+      constructor(canvas) {
+        this.canvas = canvas;
+        this.ctx = canvas.getContext('2d');
+        this.currentExp = 'flicker';
+        this.time = 0;
+        this.running = true;
+
+        // Flicker state
+        this.flickerAngle = 0;
+        this.hasAnomaly = false;
+        this.anomalyStart = 0;
+        this.waitingFlickerResponse = false;
+
+        // MIB state
+        this.mibAngle = 0;
+
+        // Bistable state
+        this.cubeAngleX = 0.5;
+        this.cubeAngleY = 0.5;
+        this.cubeReversals = 0;
+        this.lastSwitchTime = performance.now();
+        this.switchIntervals = [];
+
+        // CFS state
+        this.cfsMondrian = [];
+        this.cfsTargetAlpha = 0;
+        this.cfsTargetVisible = false;
+        this.cfsStartTime = 0;
+        this.initMondrian();
+
+        // Chronostasis state
+        this.clockSeconds = 0;
+        this.clockDialationActive = false;
+        this.clockStartTime = performance.now();
+
+        this.resize();
+        window.addEventListener('resize', () => this.resize());
+        this.loop = this.loop.bind(this);
+        requestAnimationFrame(this.loop);
+      }
+
+      resize() {
+        const dpr = window.devicePixelRatio || 1;
+        const rect = this.canvas.getBoundingClientRect();
+        this.width = rect.width || 600;
+        this.height = rect.height || 380;
+        this.canvas.width = this.width * dpr;
+        this.canvas.height = this.height * dpr;
+        this.ctx.scale(dpr, dpr);
+      }
+
+      initMondrian() {
+        this.cfsMondrian = [];
+        const colors = ['#e02438', '#0077cc', '#d97706', '#059669', '#ffffff', '#000000'];
+        for (let i = 0; i < 45; i++) {
+          this.cfsMondrian.push({
+            x: Math.random() * 400,
+            y: Math.random() * 300,
+            w: 20 + Math.random() * 60,
+            h: 20 + Math.random() * 60,
+            color: colors[Math.floor(Math.random() * colors.length)]
+          });
+        }
+      }
+
+      setExperiment(expKey) {
+        this.currentExp = expKey;
+        const hud = document.getElementById('experimentHud');
+        const title = document.getElementById('expTitle');
+        const origin = document.getElementById('expOrigin');
+        const desc = document.getElementById('expDesc');
+        const m1 = document.getElementById('metric1');
+        const m2 = document.getElementById('metric2');
+        const m3 = document.getElementById('metric3');
+        const actionBtn = document.getElementById('expActionBtn');
+
+        switch (expKey) {
+          case 'flicker':
+            hud.innerText = "MODE: 01 // PERCEPTUAL FLICKER & IGNITION";
+            title.innerText = "Perceptual Flicker & Visual Gating";
+            origin.innerText = "Stanislas Dehaene // Global Workspace Paradigm";
+            desc.innerText = "Observe the rotating concentric dot matrix. Click 'TRIGGER ANOMALY'. A subtle phase distortion will appear at an unpredictable moment. Click the canvas the instant you consciously register the shift to record your Ignition Latency.";
+            m1.innerText = "IGNITION LATENCY";
+            m2.innerText = "-- ms";
+            m3.innerText = "STANDBY";
+            actionBtn.innerText = "TRIGGER ANOMALY";
+            actionBtn.style.display = "block";
+            break;
+
+          case 'mib':
+            hud.innerText = "MODE: 02 // MOTION-INDUCED BLINDNESS";
+            title.innerText = "Motion-Induced Blindness (MIB)";
+            origin.innerText = "Bonneh, Cooperman & Sagi (2001, Nature)";
+            desc.innerText = "Fixate steadily on the blinking green central dot. Do not move your eyes. Within 5-10 seconds, the stationary yellow peripheral dots will completely vanish from your conscious awareness despite remaining on your retina.";
+            m1.innerText = "DISAPPEARANCE INTERVAL";
+            m2.innerText = "ACTIVE";
+            m3.innerText = "QUALIA SUPPRESSED";
+            actionBtn.innerText = "RESET FIXATION POINT";
+            actionBtn.style.display = "block";
+            break;
+
+          case 'bistable':
+            hud.innerText = "MODE: 03 // BISTABLE NECKER RIVALRY";
+            title.innerText = "Bistable Necker Cube & Perceptual Rivalry";
+            origin.innerText = "Louis Albert Necker (1832) // Cortical Competition";
+            desc.innerText = "Look at the wireframe cube below. Your brain automatically flips the front and rear face orientations. Press SPACEBAR or CLICK THE CANVAS every time your conscious perception flips orientation to measure your perceptual switching frequency.";
+            m1.innerText = "PERCEPTUAL REVERSALS";
+            m2.innerText = `${this.cubeReversals} flips`;
+            m3.innerText = "RIVALRY ENGAGED";
+            actionBtn.innerText = "LOG PERCEPTUAL FLIP";
+            actionBtn.style.display = "block";
+            break;
+
+          case 'cfs':
+            hud.innerText = "MODE: 04 // CONTINUOUS FLASH SUPPRESSION";
+            title.innerText = "Continuous Flash Suppression (CFS)";
+            origin.innerText = "Tsuchiya & Koch (2005, Nature Neuroscience)";
+            desc.innerText = "High-frequency dynamic Mondrian patches suppress conscious awareness of a subliminal target image. Click 'INJECT SUBLIMINAL TARGET' to see how long it takes for the invisible target to break through into conscious access.";
+            m1.innerText = "SUPPRESSION BREAKTHROUGH";
+            m2.innerText = "-- ms";
+            m3.innerText = "SUBLIMINAL GATED";
+            actionBtn.innerText = "INJECT SUBLIMINAL TARGET";
+            actionBtn.style.display = "block";
+            break;
+
+          case 'chronostasis':
+            hud.innerText = "MODE: 05 // CHRONOSTASIS (STOPPED CLOCK)";
+            title.innerText = "Chronostasis (Saccadic Time Dilation)";
+            origin.innerText = "Kihlstrom & Yantis // Saccadic Suppression";
+            desc.innerText = "When you rapidly shift your gaze from the left marker to the ticking central needle, subjective time temporarily dilates. Click 'TRIGGER SACCADIC SHIFT' to measure subjective vs objective time dilation.";
+            m1.innerText = "SUBJECTIVE DILATION";
+            m2.innerText = "+180 ms (Estimated)";
+            m3.innerText = "SACCADIC ACTIVE";
+            actionBtn.innerText = "TRIGGER SACCADIC SHIFT";
+            actionBtn.style.display = "block";
+            break;
+        }
+      }
+
+      handleActionClick() {
+        if (this.currentExp === 'flicker') {
+          this.hasAnomaly = false;
+          const delay = 1000 + Math.random() * 2500;
+          document.getElementById('metric3').innerText = "OBSERVE... ANOMALY IMMINENT";
+          document.getElementById('metric3').style.color = "var(--accent-amber)";
+
+          setTimeout(() => {
+            this.hasAnomaly = true;
+            this.anomalyStart = performance.now();
+            this.waitingFlickerResponse = true;
+            document.getElementById('metric3').innerText = "ANOMALY ACTIVE! CLICK CANVAS NOW!";
+            document.getElementById('metric3').style.color = "var(--accent-crimson)";
+          }, delay);
+        } else if (this.currentExp === 'mib') {
+          this.time = 0;
+          document.getElementById('metric3').innerText = "FIXATION RESET // MAINTAIN GAZE";
+          document.getElementById('metric3').style.color = "var(--accent-emerald)";
+        } else if (this.currentExp === 'bistable') {
+          this.cubeReversals++;
+          const now = performance.now();
+          const duration = Math.round(now - this.lastSwitchTime);
+          this.lastSwitchTime = now;
+          document.getElementById('metric2').innerText = `${this.cubeReversals} flips (avg: ${duration}ms)`;
+          document.getElementById('metric3').innerText = "PERCEPTUAL PHASE SHIFT LOGGED";
+        } else if (this.currentExp === 'cfs') {
+          this.cfsTargetVisible = true;
+          this.cfsTargetAlpha = 0.05;
+          this.cfsStartTime = performance.now();
+          document.getElementById('metric3').innerText = "SUBLIMINAL SIGNAL INJECTED... AWAITING ACCESS";
+        } else if (this.currentExp === 'chronostasis') {
+          this.clockDialationActive = true;
+          setTimeout(() => { this.clockDialationActive = false; }, 1400);
+          document.getElementById('metric3').innerText = "SACCADIC SUPPRESSION ENGAGED";
+        }
+      }
+
+      handleCanvasClick() {
+        if (this.currentExp === 'flicker') {
+          if (this.waitingFlickerResponse) {
+            const latency = (performance.now() - this.anomalyStart).toFixed(0);
+            this.waitingFlickerResponse = false;
+            this.hasAnomaly = false;
+            document.getElementById('metric2').innerText = `${latency} ms`;
+            document.getElementById('metric3').innerHTML = `<span style="color:var(--accent-emerald); font-weight:700;">IGNITION DETECTED</span> (${latency < 320 ? 'Optimal Ignition' : 'Lagged Attentional Gating'})`;
+          }
+        } else if (this.currentExp === 'bistable') {
+          this.handleActionClick();
+        } else if (this.currentExp === 'cfs' && this.cfsTargetVisible) {
+          const breakthroughTime = Math.round(performance.now() - this.cfsStartTime);
+          this.cfsTargetVisible = false;
+          this.cfsTargetAlpha = 0;
+          document.getElementById('metric2').innerText = `${breakthroughTime} ms`;
+          document.getElementById('metric3').innerText = `BREAKTHROUGH CONFIRMED (Latency: ${breakthroughTime}ms)`;
+        }
+      }
+
+      // --- RENDERING ROUTINES ---
+      drawFlicker(ctx, w, h) {
+        this.flickerAngle += 0.025;
+        const cx = w / 2;
+        const cy = h / 2;
+
+        for (let r = 25; r <= 100; r += 25) {
+          ctx.beginPath();
+          const count = r / 3.5;
+          for (let i = 0; i < count; i++) {
+            const a = this.flickerAngle * (r % 50 === 0 ? 1 : -1) + (Math.PI * 2 / count) * i;
+            const x = cx + r * Math.cos(a);
+            const y = cy + r * Math.sin(a);
+
+            if (this.hasAnomaly && i === 2 && r === 75) {
+              ctx.fillStyle = "#e02438";
+              ctx.fillRect(x - 5, y - 5, 10, 10);
+            } else {
+              ctx.fillStyle = "rgba(120, 120, 120, 0.75)";
+              ctx.beginPath();
+              ctx.arc(x, y, 3, 0, Math.PI * 2);
+              ctx.fill();
+            }
+          }
+        }
+      }
+
+      drawMIB(ctx, w, h) {
+        this.mibAngle += 0.02;
+        const cx = w / 2;
+        const cy = h / 2;
+
+        // Rotating blue grid distractors
+        ctx.save();
+        ctx.translate(cx, cy);
+        ctx.rotate(this.mibAngle);
+        ctx.strokeStyle = "rgba(0, 119, 204, 0.22)";
+        ctx.lineWidth = 1;
+        for (let x = -140; x <= 140; x += 28) {
+          ctx.beginPath(); ctx.moveTo(x, -140); ctx.lineTo(x, 140); ctx.stroke();
+        }
+        for (let y = -140; y <= 140; y += 28) {
+          ctx.beginPath(); ctx.moveTo(-140, y); ctx.lineTo(140, y); ctx.stroke();
+        }
+        ctx.restore();
+
+        // 3 Peripheral Yellow Dots (Target qualia that disappear)
+        const yellowTargets = [
+          { x: cx - 75, y: cy - 65 },
+          { x: cx + 75, y: cy - 65 },
+          { x: cx, y: cy + 85 }
+        ];
+
+        yellowTargets.forEach(t => {
+          ctx.beginPath();
+          ctx.arc(t.x, t.y, 6.5, 0, Math.PI * 2);
+          ctx.fillStyle = "#ffcc00";
+          ctx.shadowColor = "#ffcc00";
+          ctx.shadowBlur = 8;
+          ctx.fill();
+          ctx.shadowBlur = 0;
+        });
+
+        // Blinking Green Center Fixation Point
+        const blink = Math.sin(this.time * 6) > 0;
+        ctx.beginPath();
+        ctx.arc(cx, cy, 4.5, 0, Math.PI * 2);
+        ctx.fillStyle = blink ? "#059669" : "#000000";
+        ctx.fill();
+      }
+
+      drawBistable(ctx, w, h) {
+        this.cubeAngleX += 0.008;
+        this.cubeAngleY += 0.006;
+        const cx = w / 2;
+        const cy = h / 2;
+        const size = 65;
+
+        // 3D Necker cube vertices
+        const nodes = [
+          [-1, -1, -1], [1, -1, -1], [1, 1, -1], [-1, 1, -1],
+          [-1, -1, 1], [1, -1, 1], [1, 1, 1], [-1, 1, 1]
+        ];
+
+        const edges = [
+          [0, 1], [1, 2], [2, 3], [3, 0],
+          [4, 5], [5, 6], [6, 7], [7, 4],
+          [0, 4], [1, 5], [2, 6], [3, 7]
+        ];
+
+        const projected = nodes.map(n => {
+          // Rotate Y
+          let x1 = n[0] * Math.cos(this.cubeAngleY) + n[2] * Math.sin(this.cubeAngleY);
+          let z1 = -n[0] * Math.sin(this.cubeAngleY) + n[2] * Math.cos(this.cubeAngleY);
+          // Rotate X
+          let y2 = n[1] * Math.cos(this.cubeAngleX) - z1 * Math.sin(this.cubeAngleX);
+          let z2 = n[1] * Math.sin(this.cubeAngleX) + z1 * Math.cos(this.cubeAngleX);
+          return { x: cx + x1 * size, y: cy + y2 * size };
+        });
+
+        ctx.strokeStyle = "var(--text-primary)";
+        ctx.lineWidth = 2;
+        edges.forEach(([a, b]) => {
+          ctx.beginPath();
+          ctx.moveTo(projected[a].x, projected[a].y);
+          ctx.lineTo(projected[b].x, projected[b].y);
+          ctx.stroke();
+        });
+
+        // Center indicator
+        ctx.fillStyle = "var(--accent-blue)";
+        ctx.beginPath();
+        ctx.arc(cx, cy, 3, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      drawCFS(ctx, w, h) {
+        const cx = w / 2;
+        const cy = h / 2;
+
+        // Rapid Mondrian Masking (flashes at ~10Hz)
+        if (Math.random() < 0.35) {
+          this.initMondrian();
+        }
+
+        ctx.save();
+        ctx.beginPath();
+        ctx.rect(cx - 130, cy - 100, 260, 200);
+        ctx.clip();
+
+        this.cfsMondrian.forEach(m => {
+          ctx.fillStyle = m.color;
+          ctx.fillRect(cx - 130 + (m.x % 260), cy - 100 + (m.y % 200), m.w, m.h);
+        });
+
+        // Subliminal Target
+        if (this.cfsTargetVisible) {
+          this.cfsTargetAlpha = Math.min(0.85, this.cfsTargetAlpha + 0.003);
+          ctx.fillStyle = `rgba(0, 0, 0, ${this.cfsTargetAlpha})`;
+          ctx.font = "bold 28px monospace";
+          ctx.textAlign = "center";
+          ctx.fillText("QUALIA", cx, cy + 10);
+        }
+
+        ctx.restore();
+      }
+
+      drawChronostasis(ctx, w, h) {
+        const cx = w / 2;
+        const cy = h / 2;
+        const r = 90;
+
+        // Clock Dial
+        ctx.strokeStyle = "var(--border-medium)";
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.arc(cx, cy, r, 0, Math.PI * 2);
+        ctx.stroke();
+
+        // Left Saccade Target Point
+        ctx.beginPath();
+        ctx.arc(cx - 140, cy, 5, 0, Math.PI * 2);
+        ctx.fillStyle = "var(--accent-crimson)";
+        ctx.fill();
+
+        // Ticking Hand
+        const now = performance.now();
+        let speed = this.clockDialationActive ? 0.0005 : 0.003;
+        const angle = ((now * speed) % (Math.PI * 2)) - Math.PI / 2;
+
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.lineTo(cx + r * 0.85 * Math.cos(angle), cy + r * 0.85 * Math.sin(angle));
+        ctx.strokeStyle = "var(--accent-blue)";
+        ctx.lineWidth = 2.5;
+        ctx.stroke();
+
+        // Center pivot
+        ctx.beginPath();
+        ctx.arc(cx, cy, 4, 0, Math.PI * 2);
+        ctx.fillStyle = "var(--text-primary)";
+        ctx.fill();
+      }
+
+      loop() {
+        if (!this.running) return;
+        this.time += 0.02;
+        const ctx = this.ctx;
+        const w = this.width;
+        const h = this.height;
+
+        ctx.clearRect(0, 0, w, h);
+
+        // Subtle background grid
+        ctx.strokeStyle = "rgba(150, 150, 150, 0.08)";
+        ctx.lineWidth = 1;
+        for (let x = 0; x < w; x += 35) {
+          ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
+        }
+        for (let y = 0; y < h; y += 35) {
+          ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
+        }
+
+        // Render current experiment
+        if (this.currentExp === 'flicker') this.drawFlicker(ctx, w, h);
+        else if (this.currentExp === 'mib') this.drawMIB(ctx, w, h);
+        else if (this.currentExp === 'bistable') this.drawBistable(ctx, w, h);
+        else if (this.currentExp === 'cfs') this.drawCFS(ctx, w, h);
+        else if (this.currentExp === 'chronostasis') this.drawChronostasis(ctx, w, h);
+
+        requestAnimationFrame(this.loop);
+      }
+    }
+
+    // --- 3. DIAGNOSTIC RADAR CHART ---
+    class DiagnosticRadarEngine {
       constructor(canvas) {
         this.canvas = canvas;
         this.ctx = canvas.getContext('2d');
         this.scores = [4, 5, 3, 3, 6, 4];
-        this.labels = ["Agency", "Qualia", "Metacog", "DMN Quiescence", "Plasticity", "State Range"];
+        this.labels = ["Agency", "Qualia", "Metacog", "DMN Stillness", "Plasticity", "State Space"];
         this.resize();
         window.addEventListener('resize', () => this.resize());
       }
@@ -1371,12 +1384,12 @@
         const h = this.height;
         const cx = w / 2;
         const cy = h / 2;
-        const radius = Math.min(cx, cy) - 36;
+        const radius = Math.min(cx, cy) - 34;
         const numAxes = this.labels.length;
 
         ctx.clearRect(0, 0, w, h);
 
-        // Grid webs
+        // Webs
         for (let level = 1; level <= 5; level++) {
           const r = (radius / 5) * level;
           ctx.beginPath();
@@ -1384,18 +1397,16 @@
             const angle = (Math.PI * 2 / numAxes) * i - Math.PI / 2;
             const x = cx + r * Math.cos(angle);
             const y = cy + r * Math.sin(angle);
-            if (i === 0) ctx.moveTo(x, y);
-            else ctx.lineTo(x, y);
+            if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
           }
           ctx.closePath();
           ctx.strokeStyle = "rgba(120, 120, 120, 0.18)";
-          ctx.lineWidth = 1;
           ctx.stroke();
         }
 
-        // Axes and Labels
+        // Axes & Text
         ctx.font = "9px ui-monospace, SFMono-Regular, monospace";
-        ctx.fillStyle = "rgba(100, 100, 100, 0.85)";
+        ctx.fillStyle = "rgba(120, 120, 120, 0.85)";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
 
@@ -1410,147 +1421,55 @@
           ctx.strokeStyle = "rgba(120, 120, 120, 0.2)";
           ctx.stroke();
 
-          // Label
           const lx = cx + (radius + 20) * Math.cos(angle);
-          const ly = cy + (radius + 14) * Math.sin(angle);
+          const ly = cy + (radius + 12) * Math.sin(angle);
           ctx.fillText(this.labels[i], lx, ly);
         }
 
-        // User Data Polygon
+        // Polygon
         ctx.beginPath();
         for (let i = 0; i < numAxes; i++) {
           const angle = (Math.PI * 2 / numAxes) * i - Math.PI / 2;
-          const val = this.scores[i] / 10;
-          const r = radius * val;
+          const r = radius * (this.scores[i] / 10);
           const x = cx + r * Math.cos(angle);
           const y = cy + r * Math.sin(angle);
-
-          if (i === 0) ctx.moveTo(x, y);
-          else ctx.lineTo(x, y);
+          if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
         }
         ctx.closePath();
-
-        ctx.fillStyle = "rgba(0, 136, 204, 0.35)";
+        ctx.fillStyle = "rgba(0, 119, 204, 0.35)";
         ctx.fill();
-        ctx.strokeStyle = "#0088cc";
+        ctx.strokeStyle = "#0077cc";
         ctx.lineWidth = 2;
         ctx.stroke();
 
-        // Node Dots
+        // Dots
         for (let i = 0; i < numAxes; i++) {
           const angle = (Math.PI * 2 / numAxes) * i - Math.PI / 2;
-          const val = this.scores[i] / 10;
-          const r = radius * val;
+          const r = radius * (this.scores[i] / 10);
           const x = cx + r * Math.cos(angle);
           const y = cy + r * Math.sin(angle);
-
           ctx.beginPath();
           ctx.arc(x, y, 4, 0, Math.PI * 2);
-          ctx.fillStyle = "#0088cc";
+          ctx.fillStyle = "#0077cc";
           ctx.fill();
-          ctx.strokeStyle = "#fff";
+          ctx.strokeStyle = "#ffffff";
           ctx.lineWidth = 1.5;
           ctx.stroke();
         }
       }
     }
 
-    // --- 3. VISUAL GATING PROBE SIMULATOR ---
-    class VisualGatingProbe {
-      constructor(canvas) {
-        this.canvas = canvas;
-        this.ctx = canvas.getContext('2d');
-        this.angle = 0;
-        this.hasAnomaly = false;
-        this.anomalyStartTime = 0;
-        this.isWaitingResponse = false;
-        this.resize();
-        window.addEventListener('resize', () => this.resize());
-        this.loop = this.loop.bind(this);
-        requestAnimationFrame(this.loop);
-      }
-
-      resize() {
-        const dpr = window.devicePixelRatio || 1;
-        const rect = this.canvas.getBoundingClientRect();
-        this.width = rect.width || 300;
-        this.height = rect.height || 220;
-        this.canvas.width = this.width * dpr;
-        this.canvas.height = this.height * dpr;
-        this.ctx.scale(dpr, dpr);
-      }
-
-      triggerAnomaly() {
-        this.hasAnomaly = false;
-        const delay = 1200 + Math.random() * 2500;
-        document.getElementById('probeResultText').innerText = "OBSERVE CLOSELY... ANOMALY IMMINENT";
-        document.getElementById('probeResultText').style.color = "var(--accent-amber)";
-
-        setTimeout(() => {
-          this.hasAnomaly = true;
-          this.anomalyStartTime = performance.now();
-          this.isWaitingResponse = true;
-          document.getElementById('probeResultText').innerText = "ANOMALY ACTIVE! CLICK MATRIX NOW!";
-          document.getElementById('probeResultText').style.color = "var(--accent-crimson)";
-        }, delay);
-      }
-
-      registerClick() {
-        if (this.isWaitingResponse) {
-          const latency = (performance.now() - this.anomalyStartTime).toFixed(0);
-          this.isWaitingResponse = false;
-          this.hasAnomaly = false;
-          document.getElementById('probeResultText').innerHTML = `<span style="color:var(--accent-emerald); font-weight:700;">IGNITION DETECTED! LATENCY: ${latency} ms</span> (${latency < 320 ? 'Optimal Ignition' : 'Lagged Attentional Gating'})`;
-        } else {
-          document.getElementById('probeResultText').innerText = "FALSE ALARM // CLICKED BEFORE ANOMALY OCCURRED";
-          document.getElementById('probeResultText').style.color = "var(--accent-crimson)";
-        }
-      }
-
-      loop() {
-        this.angle += 0.025;
-        const ctx = this.ctx;
-        const w = this.width;
-        const h = this.height;
-        const cx = w / 2;
-        const cy = h / 2;
-
-        ctx.clearRect(0, 0, w, h);
-
-        // Draw rotating geometric concentric array
-        for (let r = 20; r <= 80; r += 20) {
-          ctx.beginPath();
-          const count = r / 4;
-          for (let i = 0; i < count; i++) {
-            const a = this.angle * (r % 40 === 0 ? 1 : -1) + (Math.PI * 2 / count) * i;
-            const x = cx + r * Math.cos(a);
-            const y = cy + r * Math.sin(a);
-
-            if (this.hasAnomaly && i === 2 && r === 60) {
-              // Anomaly: Glitched micro-displacement
-              ctx.fillStyle = "#d92534";
-              ctx.fillRect(x - 4, y - 4, 8, 8);
-            } else {
-              ctx.fillStyle = "rgba(100, 100, 100, 0.6)";
-              ctx.beginPath();
-              ctx.arc(x, y, 2.5, 0, Math.PI * 2);
-              ctx.fill();
-            }
-          }
-        }
-
-        requestAnimationFrame(this.loop);
-      }
-    }
-
-    // --- 4. APP INITIALIZATION & BINDINGS ---
+    // --- 4. APP INITIALIZATION ---
     document.addEventListener('DOMContentLoaded', () => {
-      const audio = new AudioEngine();
-      const radarCanvas = document.getElementById('radarCanvas');
-      const radar = new DiagnosticRadar(radarCanvas);
+      const audio = new BinauralAudio();
 
-      const probeCanvas = document.getElementById('visualGatingCanvas');
-      const probe = new VisualGatingProbe(probeCanvas);
+      // Lab Engine
+      const labCanvas = document.getElementById('mainExperimentCanvas');
+      const labEngine = new VisualAwarenessLabEngine(labCanvas);
+
+      // Radar Engine
+      const radarCanvas = document.getElementById('diagnosticRadarCanvas');
+      const radarEngine = new DiagnosticRadarEngine(radarCanvas);
 
       // Session Timer
       const startTime = performance.now();
@@ -1559,11 +1478,34 @@
         const hrs = String(Math.floor(secs / 3600)).padStart(2, '0');
         const mins = String(Math.floor((secs % 3600) / 60)).padStart(2, '0');
         const s = String(secs % 60).padStart(2, '0');
-        document.getElementById('sessionTimer').innerText = `OBSERVATION: ${hrs}:${mins}:${s}`;
+        document.getElementById('sessionTimer').innerText = `OBS: ${hrs}:${mins}:${s}`;
       }, 1000);
 
+      // Tab Switching
+      document.querySelectorAll('.lab-tab-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          document.querySelectorAll('.lab-tab-btn').forEach(b => b.classList.remove('active'));
+          e.target.classList.add('active');
+          const expKey = e.target.getAttribute('data-exp');
+          labEngine.setExperiment(expKey);
+          audio.playChime(660);
+        });
+      });
+
+      // Lab Actions
+      document.getElementById('expActionBtn').addEventListener('click', () => {
+        labEngine.handleActionClick();
+        audio.playChime(440);
+      });
+      document.getElementById('expResetBtn').addEventListener('click', () => {
+        labEngine.setExperiment(labEngine.currentExp);
+      });
+      labCanvas.addEventListener('click', () => {
+        labEngine.handleCanvasClick();
+      });
+
       // Theme toggle
-      const themeBtn = document.getElementById('themeSwitchBtn');
+      const themeBtn = document.getElementById('themeToggleBtn');
       themeBtn.addEventListener('click', () => {
         const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
         if (isDark) {
@@ -1573,120 +1515,70 @@
           document.documentElement.setAttribute('data-theme', 'dark');
           themeBtn.innerText = 'THEME: DARK';
         }
-        radar.draw();
+        radarEngine.draw();
       });
 
       // Audio Toggle
-      const audioBtn = document.getElementById('audioBinauralBtn');
+      const audioBtn = document.getElementById('audioToggleBtn');
       audioBtn.addEventListener('click', () => {
         const on = audio.toggle();
         audioBtn.innerText = on ? 'GAMMA 40HZ: ACTIVE' : 'GAMMA 40HZ: OFF';
         audioBtn.style.color = on ? 'var(--accent-blue)' : '';
       });
 
-      // Diagnostic Slider Updates
-      const sliders = [
-        'v1_attention', 'v2_qualia', 'v3_metacog',
-        'v4_dmn', 'v5_plasticity', 'v6_states'
-      ];
-
-      function evaluateProfile() {
+      // Diagnostic Sliders
+      const sliders = ['v1', 'v2', 'v3', 'v4', 'v5', 'v6'];
+      function updateDiagnostic() {
         const scores = sliders.map(id => parseInt(document.getElementById(id).value));
         scores.forEach((s, idx) => {
           document.getElementById(`v${idx+1}_val`).innerText = `Score: ${s}/10`;
         });
 
-        radar.update(scores);
+        radarEngine.update(scores);
 
         const total = scores.reduce((a, b) => a + b, 0);
         document.getElementById('totalScoreVal').innerText = `${total} / 60`;
 
-        const phiVal = (0.2 + (total / 60) * 0.75).toFixed(2);
-        document.getElementById('phiScoreVal').innerText = `${phiVal} bits`;
+        const phi = (0.2 + (total / 60) * 0.75).toFixed(2);
+        document.getElementById('phiVal').innerText = `${phi} bits`;
 
         const latency = Math.round(520 - (scores[0] * 22 + scores[2] * 18));
-        document.getElementById('latencyVal').innerText = `${latency} ms (${latency < 320 ? 'Optimal' : 'Lagged'})`;
+        document.getElementById('latencyVal').innerText = `${latency} ms`;
 
-        const dmnPercent = Math.round(95 - (scores[3] * 5 + scores[2] * 4));
-        document.getElementById('dmnRatioVal').innerText = `${Math.max(12, dmnPercent)}% (${dmnPercent > 65 ? 'Hyperactive' : 'Calibrated'})`;
+        const dmn = Math.round(95 - (scores[3] * 5 + scores[2] * 4));
+        document.getElementById('dmnVal').innerText = `${Math.max(12, dmn)}%`;
 
-        const typeEl = document.getElementById('profileType');
-        const sumEl = document.getElementById('profileSummary');
-        const rxContent = document.getElementById('prescriptionContent');
+        const titleEl = document.getElementById('diagProfileTitle');
+        const descEl = document.getElementById('diagProfileDesc');
+        const rxEl = document.getElementById('rxText');
 
         if (total <= 24) {
-          typeEl.innerText = "AUTOMATED REACTIVE AGENT";
-          typeEl.style.color = "var(--accent-crimson)";
-          sumEl.innerText = "High susceptibility to algorithmic capture. DMN dominance suppresses raw qualia. Metacognitive monitoring is dormant during emotional spikes.";
-          rxContent.innerHTML = "<strong>Phase 1 Sensory De-Automating:</strong> Implement 15 minutes of non-judgmental sensory de-labeling. Uncouple sensory input from phone/screen triggers to restore Salience Network autonomy.";
+          titleEl.innerText = "AUTOMATED REACTIVE AGENT";
+          titleEl.style.color = "var(--accent-crimson)";
+          descEl.innerText = "High susceptibility to algorithmic capture. DMN dominance suppresses raw qualia. Metacognitive monitoring dormant.";
+          rxEl.innerText = "Implement 15 mins daily sensory de-labeling. Disconnect from synthetic dopamine feeds to restore Salience Network autonomy.";
         } else if (total <= 38) {
-          typeEl.innerText = "NARRATIVE HYPER-LOOP OPERATOR";
-          typeEl.style.color = "var(--accent-amber)";
-          sumEl.innerText = "High intellectual comprehension, but cognitive energy is hijacked by autobiographical rumination and conceptual abstraction.";
-          rxContent.innerHTML = "<strong>Decentering Protocol:</strong> Practice recognizing thoughts as linguistic physical vibrations rather than absolute truths. Cultivate interoceptive somatosensory anchor points.";
+          titleEl.innerText = "NARRATIVE HYPER-LOOP OPERATOR";
+          titleEl.style.color = "var(--accent-amber)";
+          descEl.innerText = "High intellectual comprehension, but cognitive bandwidth is hijacked by autobiographical rumination and conceptual abstraction.";
+          rxEl.innerText = "Cultivate decentering: observe thoughts as linguistic events rather than objective reality. Build interoceptive somatic anchors.";
         } else if (total <= 48) {
-          typeEl.innerText = "CALIBRATED CONSCIOUS OBSERVER";
-          typeEl.style.color = "var(--accent-blue)";
-          sumEl.innerText = "Strong attentional sovereignty and metacognitive monitoring. Capable of decoupling from reactive triggers and accessing sustained flow.";
-          rxContent.innerHTML = "<strong>State-Space Expansion:</strong> Integrate open monitoring meditation with hypnagogic dream-state cultivation to expand entropic depth.";
+          titleEl.innerText = "CALIBRATED CONSCIOUS OBSERVER";
+          titleEl.style.color = "var(--accent-blue)";
+          descEl.innerText = "Strong attentional sovereignty and metacognitive monitoring. Capable of entering sustained deep flow states.";
+          rxEl.innerText = "Integrate open monitoring meditation with hypnagogic dream cultivation to expand state-space repertoire.";
         } else {
-          typeEl.innerText = "SOVEREIGN PHENOMENAL OPERATOR";
-          typeEl.style.color = "var(--accent-emerald)";
-          sumEl.innerText = "Exceptional Type-2 metacognitive resolution, high causal integration Φ, rapid Bayesian updating, and voluntary stillness.";
-          rxContent.innerHTML = "<strong>Mastery Maintenance:</strong> Maintain high-entropy cognitive cross-talk and contribute to collective metacognitive education.";
+          titleEl.innerText = "SOVEREIGN PHENOMENAL OPERATOR";
+          titleEl.style.color = "var(--accent-emerald)";
+          descEl.innerText = "Exceptional Type-2 metacognitive resolution, high causal integration Φ, rapid Bayesian updating, and voluntary stillness.";
+          rxEl.innerText = "Maintain high-entropy cognitive flexibility and mentor others in metacognitive sovereignty.";
         }
       }
 
       sliders.forEach(id => {
-        document.getElementById(id).addEventListener('input', evaluateProfile);
+        document.getElementById(id).addEventListener('input', updateDiagnostic);
       });
-      evaluateProfile();
-
-      // Probe Triggers
-      document.getElementById('btnTriggerAnomaly').addEventListener('click', () => {
-        probe.triggerAnomaly();
-      });
-      probeCanvas.addEventListener('click', () => {
-        probe.registerClick();
-      });
-
-      // Metacognitive Quiz
-      document.querySelectorAll('.quiz-opt').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          const isCorrect = e.target.getAttribute('data-correct') === 'true';
-          const feedback = document.getElementById('metaFeedback');
-          if (isCorrect) {
-            feedback.innerHTML = `<span style="color:var(--accent-emerald); font-weight:700;">CORRECT (Auditory ~10ms vs Visual ~50ms).</span> Auditory processing skips complex photoreceptor cascades, making auditory ignition 5x faster.`;
-          } else {
-            feedback.innerHTML = `<span style="color:var(--accent-crimson); font-weight:700;">INCORRECT CALIBRATION.</span> Auditory signals reach cortex in ~10ms (cochlea to brainstem to A1), whereas retinal phototransduction requires 50-80ms.`;
-          }
-        });
-      });
-
-      // Popover
-      const popover = document.getElementById('popoverBox');
-      const popTitle = document.getElementById('popoverTitle');
-      const popText = document.getElementById('popoverText');
-
-      document.querySelectorAll('.interactive-term').forEach(t => {
-        t.addEventListener('mouseover', (e) => {
-          popTitle.innerText = t.getAttribute('data-term');
-          popText.innerText = t.getAttribute('data-def');
-          popover.classList.add('active');
-
-          const updatePos = (me) => {
-            popover.style.left = `${Math.min(window.innerWidth - 320, me.clientX + 16)}px`;
-            popover.style.top = `${Math.min(window.innerHeight - 160, me.clientY + 16)}px`;
-          };
-          updatePos(e);
-          t.onmousemove = updatePos;
-        });
-
-        t.addEventListener('mouseout', () => {
-          t.onmousemove = null;
-          popover.classList.remove('active');
-        });
-      });
+      updateDiagnostic();
     });
   </script>
 </body>
