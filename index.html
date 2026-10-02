@@ -1588,7 +1588,7 @@
       cursor: pointer;
       text-transform: uppercase;
       font-weight: 700;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.06em;
       transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
       display: inline-flex;
       align-items: center;
@@ -1604,6 +1604,17 @@
       background: var(--text-primary);
       color: var(--bg-base);
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    }
+
+    .tab-hotkey {
+      display: inline-block;
+      font-size: 0.65rem;
+      padding: 1px 5px;
+      border-radius: 4px;
+      border: 1px solid currentColor;
+      opacity: 0.6;
+      font-weight: 600;
+      letter-spacing: 0;
     }
 
     .experiment-viewport {
@@ -2929,13 +2940,13 @@
       Experience 5 direct empirical demonstrations of inattentional blindness, qualia disappearance, and cortical rivalry.
     </p>
 
-    <!-- TABS -->
-    <div class="lab-tab-nav">
-      <button class="lab-tab-btn active" data-exp="flicker">01. Perceptual Flicker & Gating</button>
-      <button class="lab-tab-btn" data-exp="mib">02. Motion-Induced Blindness (MIB)</button>
-      <button class="lab-tab-btn" data-exp="bistable">03. Bistable Necker Rivalry</button>
-      <button class="lab-tab-btn" data-exp="cfs">04. Continuous Flash Suppression</button>
-      <button class="lab-tab-btn" data-exp="chronostasis">05. Chronostasis (Time Dilation)</button>
+    <!-- TABS WITH HOTKEY AFFORDANCES -->
+    <div class="lab-tab-nav" role="tablist" aria-label="Visual awareness experiments">
+      <button class="lab-tab-btn active" data-exp="flicker" title="Press 1 on keyboard">01. Flicker Gating <span class="tab-hotkey">1</span></button>
+      <button class="lab-tab-btn" data-exp="mib" title="Press 2 on keyboard">02. Motion Blindness (MIB) <span class="tab-hotkey">2</span></button>
+      <button class="lab-tab-btn" data-exp="bistable" title="Press 3 on keyboard">03. Bistable Necker <span class="tab-hotkey">3</span></button>
+      <button class="lab-tab-btn" data-exp="cfs" title="Press 4 on keyboard">04. Flash Suppression <span class="tab-hotkey">4</span></button>
+      <button class="lab-tab-btn" data-exp="chronostasis" title="Press 5 on keyboard">05. Chronostasis <span class="tab-hotkey">5</span></button>
     </div>
 
     <div class="experiment-viewport">
@@ -3329,19 +3340,39 @@
         if (this.oscR) { try { this.oscR.stop(); } catch(e){} this.oscR = null; }
       }
       playChime(freq = 528) {
+        this.init();
         if (!this.ctx || this.ctx.state === 'suspended') return;
         try {
-          const osc = this.ctx.createOscillator();
-          const gain = this.ctx.createGain();
-          osc.type = 'triangle';
-          osc.frequency.setValueAtTime(freq, this.ctx.currentTime);
-          osc.frequency.exponentialRampToValueAtTime(freq * 1.5, this.ctx.currentTime + 0.25);
-          gain.gain.setValueAtTime(0.06, this.ctx.currentTime);
-          gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 0.35);
-          osc.connect(gain);
-          gain.connect(this.ctx.destination);
-          osc.start();
-          osc.stop(this.ctx.currentTime + 0.35);
+          const now = this.ctx.currentTime;
+          
+          // Master Gain with Exponential Acoustic Decay
+          const masterGain = this.ctx.createGain();
+          masterGain.gain.setValueAtTime(0.0001, now);
+          masterGain.gain.exponentialRampToValueAtTime(0.08, now + 0.02); // 20ms click-free attack
+          masterGain.gain.exponentialRampToValueAtTime(0.0001, now + 1.6); // 1.6s rich resonant decay
+          masterGain.connect(this.ctx.destination);
+
+          // Fundamental Solfeggio Tone
+          const oscFund = this.ctx.createOscillator();
+          oscFund.type = 'sine';
+          oscFund.frequency.setValueAtTime(freq, now);
+
+          // Warm Upper Harmonic Tone
+          const oscHarm = this.ctx.createOscillator();
+          oscHarm.type = 'sine';
+          oscHarm.frequency.setValueAtTime(freq * 2.0, now);
+
+          const harmGain = this.ctx.createGain();
+          harmGain.gain.setValueAtTime(0.2, now);
+          oscHarm.connect(harmGain);
+          harmGain.connect(masterGain);
+
+          oscFund.connect(masterGain);
+
+          oscFund.start(now);
+          oscHarm.start(now);
+          oscFund.stop(now + 1.65);
+          oscHarm.stop(now + 1.65);
         } catch(e){}
       }
     }
@@ -5307,6 +5338,52 @@
         navigator.clipboard.writeText("https://aigroupchathq.github.io/consciousness-mechanism/");
         e.target.innerText = "✓ LINK COPIED TO CLIPBOARD!";
         setTimeout(() => { e.target.innerText = "📋 COPY SHAREABLE LINK"; }, 2500);
+      });
+
+      // --- 11. GLOBAL KEYBOARD NAVIGATION CONTROLLER ---
+      window.addEventListener('keydown', (e) => {
+        // Bypass if user is actively focused on an editable input
+        if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement?.tagName)) {
+          if (e.key === 'Escape') document.activeElement.blur();
+          return;
+        }
+
+        // Hotkeys 1-5: Instant experiment switching
+        const expKeyMap = {
+          '1': 'flicker',
+          '2': 'mib',
+          '3': 'bistable',
+          '4': 'cfs',
+          '5': 'chronostasis'
+        };
+
+        if (expKeyMap[e.key]) {
+          const targetExp = expKeyMap[e.key];
+          const targetBtn = document.querySelector(`.lab-tab-btn[data-exp="${targetExp}"]`);
+          if (targetBtn) {
+            document.querySelectorAll('.lab-tab-btn').forEach(b => b.classList.remove('active'));
+            targetBtn.classList.add('active');
+            labEngine.setExperiment(targetExp);
+            audio.playChime(528);
+          }
+          return;
+        }
+
+        // Escape: Dismiss all active overlays and modals
+        if (e.key === 'Escape') {
+          // 1. Splash screen
+          const splash = document.getElementById('splashGateway');
+          if (splash && !splash.classList.contains('dismissed')) {
+            splash.classList.add('dismissed');
+            audio.init();
+            audio.playChime(528);
+            return;
+          }
+
+          // 2. Modals (Attention Pause, Fellowship Application, etc.)
+          const activeOverlays = document.querySelectorAll('.apply-modal-backdrop.active, .wake-up-modal-backdrop.active');
+          activeOverlays.forEach(m => m.classList.remove('active'));
+        }
       });
     });
   </script>
