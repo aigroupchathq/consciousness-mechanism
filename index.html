@@ -1758,18 +1758,20 @@
     }
 
     /* ==========================================================================
-       DANGEROUS UX: WAKE-UP EMERGENCY WARNING MODAL
+       MINDFUL ATTENTION RESET & PAUSE REFLECTION MODAL
        ========================================================================== */
     .wake-up-modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.88);
-      backdrop-filter: blur(12px);
-      z-index: 600;
+      background: rgba(2, 4, 8, 0.82);
+      backdrop-filter: blur(20px) saturate(160%);
+      -webkit-backdrop-filter: blur(20px);
+      z-index: 1500;
       display: none;
       align-items: center;
       justify-content: center;
       padding: 1.5rem;
+      transition: opacity 0.35s ease;
     }
 
     .wake-up-modal-backdrop.active {
@@ -1777,28 +1779,59 @@
     }
 
     .wake-up-card {
-      max-width: 580px;
-      background: #0a0a0a;
-      border: 2px solid var(--accent-crimson);
-      box-shadow: 0 0 50px rgba(235, 47, 69, 0.4);
+      max-width: 540px;
+      width: 100%;
+      background: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.08) 0%, rgba(10, 15, 26, 0.95) 75%);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      border-radius: 16px;
+      box-shadow: 
+        inset 0 1px 1px rgba(255, 255, 255, 0.2),
+        0 24px 70px rgba(0, 0, 0, 0.7),
+        0 0 45px rgba(16, 185, 129, 0.12);
       color: #ffffff;
-      padding: 2.5rem;
+      padding: 2.75rem 2.25rem;
       text-align: center;
       position: relative;
+      animation: modalSlideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes modalSlideUp {
+      from { transform: translateY(16px) scale(0.97); opacity: 0; }
+      to { transform: translateY(0) scale(1); opacity: 1; }
+    }
+
+    .calm-breath-indicator {
+      width: 44px;
+      height: 44px;
+      margin: 0 auto 1.25rem;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.35) 0%, rgba(0, 210, 255, 0.05) 70%);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+      animation: breathPulse 4s infinite ease-in-out;
+    }
+
+    @keyframes breathPulse {
+      0%, 100% { transform: scale(1); opacity: 0.8; }
+      50% { transform: scale(1.18); opacity: 1; box-shadow: 0 0 30px rgba(16, 185, 129, 0.55); }
     }
 
     .wake-up-title {
-      font-size: 2rem;
-      font-weight: 900;
-      color: var(--accent-crimson);
-      margin-bottom: 1rem;
+      font-size: 1.65rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 0.75rem;
       letter-spacing: -0.02em;
+      line-height: 1.2;
     }
 
     .wake-up-p {
-      font-size: 0.95rem;
-      color: #d1d5db;
-      line-height: 1.6;
+      font-size: 0.92rem;
+      color: #94a3b8;
+      line-height: 1.65;
       margin-bottom: 2rem;
     }
 
@@ -3177,23 +3210,30 @@
   </div>
 
   <!-- ==========================================================================
-       DANGEROUS UX: WAKE-UP EMERGENCY WARNING MODAL
+       MINDFUL ATTENTION RESET & PAUSE REFLECTION MODAL
        ========================================================================== -->
   <div class="wake-up-modal-backdrop" id="wakeUpDrawer">
     <div class="wake-up-card">
-      <div style="font-family:var(--font-mono); font-size:0.75rem; color:var(--accent-crimson); margin-bottom:0.75rem; letter-spacing:0.08em;">
-        [ CRITICAL ATTENTIONAL ALARM ]
+      <div class="calm-breath-indicator">
+        <span style="font-size:1.1rem;">🌿</span>
       </div>
-      <h2 class="wake-up-title">DO NOT SLIP BACK INTO THE DEFAULT TRANCE.</h2>
+
+      <div style="font-family:var(--font-mono); font-size:0.7rem; color:var(--accent-emerald); margin-bottom:0.6rem; letter-spacing:0.08em; text-transform:uppercase;">
+        [ MINDFUL ATTENTION RESET // 40HZ HARMONIC ]
+      </div>
+
+      <h2 class="wake-up-title">Pause for a conscious breath.</h2>
+
       <p class="wake-up-p">
-        Every time you leave an intentional environment, algorithmic feeds harvest your remaining conscious timeline. You only have an estimated <strong>8.1 years of true conscious experience remaining</strong>.
+        Before you step away into automated browsing, take a gentle breath. Feel your physical grounding, notice the subtle qualitative texture of this moment, and preserve your attentional clarity.
       </p>
-      <div style="display:flex; flex-direction:column; gap:0.85rem;">
-        <button class="btn-cta-hype" id="btnStayConscious" style="padding:0.85rem; font-size:0.8rem;">
-          ⚡ STAY CONSCIOUS & COMPLETE BENCHMARK
+
+      <div style="display:flex; flex-direction:column; gap:0.75rem;">
+        <button class="btn-pricing-action btn-pricing-primary" id="btnStayConscious" style="background:linear-gradient(135deg, #10b981 0%, #059669 100%); border-color:#10b981; box-shadow:0 8px 24px rgba(16, 185, 129, 0.35); text-decoration:none;">
+          🌿 RESUME PHENOMENOLOGICAL LAB →
         </button>
-        <button class="btn-minimal" id="btnCloseWakeUp" style="color:#888; border-color:rgba(255,255,255,0.15);">
-          I ACCEPT THE DEFAULT AUTOMATED TRANCE [ CLOSE ]
+        <button class="btn-minimal" id="btnCloseWakeUp" style="color:#94a3b8; border-color:rgba(255,255,255,0.12); padding:0.6rem; font-size:0.75rem;">
+          Continue session [ Close ]
         </button>
       </div>
     </div>
@@ -4734,7 +4774,7 @@
       recalculate();
     }
 
-    // --- 10. WAKE-UP EMERGENCY MODAL & EXIT INTENT ---
+    // --- 10. MINDFUL ATTENTION RESET & PAUSE MODAL ---
     function initWakeUpModal(audio) {
       const modal = document.getElementById('wakeUpDrawer');
       const btnStay = document.getElementById('btnStayConscious');
@@ -4745,7 +4785,7 @@
         if (triggered) return;
         triggered = true;
         modal.classList.add('active');
-        if (audio) audio.playChime(320);
+        if (audio) audio.playChime(528);
       }
 
       document.addEventListener('mouseleave', (e) => {
@@ -4754,15 +4794,11 @@
         }
       });
 
-      setTimeout(() => {
-        if (!triggered) triggerModal();
-      }, 55000);
-
       btnStay.addEventListener('click', () => {
         modal.classList.remove('active');
         const benchEl = document.getElementById('benchmark');
         if (benchEl) benchEl.scrollIntoView({ behavior: 'smooth' });
-        if (audio) audio.playChime(780);
+        if (audio) audio.playChime(660);
       });
 
       btnClose.addEventListener('click', () => {
