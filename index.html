@@ -83,12 +83,12 @@
     }
 
     /* ==========================================================================
-       00. CYBERNETIC SPLASH SCREEN / MINIMALIST VOLUMETRIC GATEWAY
+       00. CYBERNETIC SPLASH SCREEN / ARCHITECTURAL MONOCHROME GATEWAY
        ========================================================================== */
     .splash-overlay {
       position: fixed;
       inset: 0;
-      background: radial-gradient(circle at 50% 50%, #080c18 0%, #020306 100%);
+      background: #030305;
       color: #ffffff;
       z-index: 10000;
       display: flex;
@@ -104,7 +104,7 @@
     .splash-overlay.dismissed {
       opacity: 0;
       visibility: hidden;
-      transform: scale(1.06);
+      transform: scale(1.05);
       pointer-events: none;
     }
 
@@ -132,26 +132,26 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.14);
       border-radius: 999px;
-      padding: 0.3rem 0.85rem;
+      padding: 0.35rem 0.95rem;
       font-family: var(--font-mono);
       font-size: 0.65rem;
-      color: var(--accent-cyan);
-      letter-spacing: 0.1em;
+      color: #f1f5f9;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
       backdrop-filter: blur(16px);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     }
 
     .splash-pulse-dot {
       width: 5px;
       height: 5px;
-      background: var(--accent-cyan);
+      background: #ffffff;
       border-radius: 50%;
-      box-shadow: 0 0 8px var(--accent-cyan);
-      animation: pulseDot 2s infinite ease-in-out;
+      box-shadow: 0 0 6px #ffffff;
+      animation: pulseDot 2.2s infinite ease-in-out;
     }
 
     .splash-monolith-title {
@@ -160,17 +160,17 @@
       letter-spacing: -0.04em;
       line-height: 1.0;
       margin: 0;
-      background: linear-gradient(180deg, #ffffff 40%, rgba(255, 255, 255, 0.6) 100%);
+      background: linear-gradient(180deg, #ffffff 40%, #cbd5e1 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      text-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      text-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
     }
 
     .splash-monolith-title .serif-italic {
       font-family: var(--font-serif);
       font-weight: 400;
       font-style: italic;
-      background: linear-gradient(180deg, #00d2ff 0%, #3291ff 100%);
+      background: linear-gradient(180deg, #ffffff 0%, #94a3b8 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       letter-spacing: -0.01em;
@@ -179,34 +179,34 @@
     .splash-impact-statement {
       font-size: clamp(0.92rem, 1.6vw, 1.08rem);
       color: #94a3b8;
-      line-height: 1.5;
+      line-height: 1.55;
       max-width: 480px;
       font-weight: 400;
       margin: 0;
       letter-spacing: -0.01em;
     }
 
-    /* VOLUMETRIC LUXURY GLASS BUTTON */
+    /* ARCHITECTURAL FROSTED GLASS BUTTON */
     .btn-splash-portal {
       position: relative;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.04) 100%);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.03) 100%);
       color: #ffffff;
-      border: 1px solid rgba(255, 255, 255, 0.28);
-      padding: 1.05rem 2.75rem;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 1.05rem 2.85rem;
       border-radius: 999px;
       font-family: var(--font-mono);
       font-size: 0.76rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.15em;
       cursor: pointer;
-      backdrop-filter: blur(28px) saturate(200%);
-      -webkit-backdrop-filter: blur(28px) saturate(200%);
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px);
       box-shadow: 
-        inset 0 1px 1.5px rgba(255, 255, 255, 0.8),
-        inset 0 -2px 4px rgba(0, 0, 0, 0.45),
-        0 14px 40px -10px rgba(0, 210, 255, 0.38),
-        0 0 0 1px rgba(255, 255, 255, 0.1);
+        inset 0 1px 1.5px rgba(255, 255, 255, 0.75),
+        inset 0 -2px 4px rgba(0, 0, 0, 0.5),
+        0 14px 40px -10px rgba(0, 0, 0, 0.7),
+        0 0 0 1px rgba(255, 255, 255, 0.08);
       transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.18s cubic-bezier(0.16, 1, 0.3, 1);
       display: inline-flex;
       align-items: center;
@@ -219,21 +219,21 @@
       position: absolute;
       inset: 0;
       border-radius: 999px;
-      background: radial-gradient(circle at var(--btn-light-x, 50%) var(--btn-light-y, 50%), rgba(0, 210, 255, 0.35) 0%, transparent 65%);
+      background: radial-gradient(circle at var(--btn-light-x, 50%) var(--btn-light-y, 50%), rgba(255, 255, 255, 0.22) 0%, transparent 65%);
       opacity: 0;
       transition: opacity 0.35s ease;
       pointer-events: none;
     }
 
     .btn-splash-portal:hover {
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.08) 100%);
-      border-color: rgba(0, 210, 255, 0.7);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.06) 100%);
+      border-color: rgba(255, 255, 255, 0.5);
       color: #ffffff;
       box-shadow: 
-        inset 0 1px 2px rgba(255, 255, 255, 1),
-        inset 0 -2px 6px rgba(0, 0, 0, 0.5),
-        0 20px 50px -5px rgba(0, 210, 255, 0.6),
-        0 0 30px rgba(50, 145, 255, 0.4);
+        inset 0 1px 2px rgba(255, 255, 255, 0.95),
+        inset 0 -2px 6px rgba(0, 0, 0, 0.55),
+        0 20px 50px -5px rgba(0, 0, 0, 0.8),
+        0 0 25px rgba(255, 255, 255, 0.18);
     }
 
     .btn-splash-portal:hover .btn-portal-glow {
@@ -243,22 +243,22 @@
     .btn-splash-portal:active {
       transform: translateY(1px) scale(0.98) !important;
       box-shadow: 
-        inset 0 2px 5px rgba(0, 0, 0, 0.6),
-        0 6px 20px rgba(0, 210, 255, 0.3);
+        inset 0 2px 5px rgba(0, 0, 0, 0.7),
+        0 6px 20px rgba(0, 0, 0, 0.4);
     }
 
     .btn-portal-text {
       position: relative;
       z-index: 1;
       font-weight: 800;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.15em;
     }
 
     .btn-portal-arrow {
       position: relative;
       z-index: 1;
       transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      color: var(--accent-cyan);
+      color: #ffffff;
       font-size: 0.9rem;
       font-weight: 700;
     }
@@ -3346,7 +3346,7 @@
       }
     }
 
-    // --- 00. SPLASH GATEWAY VOLUMETRIC CONSCIOUSNESS MANIFOLD ---
+    // --- 00. SPLASH GATEWAY 3D GYROSCOPIC CHRONOMETER & CRYSTALLINE CORE ---
     class SplashGatewayEngine {
       constructor(canvas, eegCanvas, overlayEl, audio) {
         this.canvas = canvas;
@@ -3354,62 +3354,33 @@
         this.audio = audio;
         this.ctx = canvas ? canvas.getContext('2d') : null;
         this.active = true;
-        this.nodes = [];
         this.mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
         this.rotX = 0;
         this.rotY = 0;
         this.targetRotX = 0;
         this.targetRotY = 0;
         this.time = 0;
+        this.particles = [];
         
-        this.initManifold();
+        this.initElements();
         this.bindEvents();
         this.animate = this.animate.bind(this);
         requestAnimationFrame(this.animate);
       }
 
-      initManifold() {
+      initElements() {
         if (!this.canvas) return;
         this.resize();
         window.addEventListener('resize', () => this.resize());
         
-        this.nodes = [];
-        const baseRadius = Math.min(window.innerWidth, window.innerHeight) * 0.36;
-        
-        // 1. Toroidal Manifold Shell (140 nodes)
-        const torusCount = 140;
-        const R = baseRadius * 0.78; // Major radius
-        const r = baseRadius * 0.38; // Minor tube radius
-        for (let i = 0; i < torusCount; i++) {
-          const u = (i / torusCount) * Math.PI * 2 * 3; // Multi-turn winding
-          const v = Math.random() * Math.PI * 2;
-          this.nodes.push({
-            type: 'torus',
-            u: u,
-            v: v,
-            R: R,
-            r: r + (Math.random() - 0.5) * 20,
-            uSpeed: 0.0018 + Math.random() * 0.0012,
-            vSpeed: 0.004 + Math.random() * 0.003,
-            pulseOffset: Math.random() * Math.PI * 2,
-            baseHue: Math.random() > 0.4 ? '#00d2ff' : (Math.random() > 0.2 ? '#3291ff' : '#7928ca')
-          });
-        }
-
-        // 2. Quantum Core Fibonacci Sphere (90 nodes)
-        const coreCount = 90;
-        const coreRadius = baseRadius * 0.42;
-        for (let i = 0; i < coreCount; i++) {
-          const phi = Math.acos(1 - 2 * (i + 0.5) / coreCount);
-          const theta = Math.PI * (1 + Math.sqrt(5)) * i;
-          this.nodes.push({
-            type: 'core',
-            theta: theta,
-            phi: phi,
-            baseR: coreRadius * (0.4 + Math.random() * 0.6),
-            orbitSpeed: 0.002 + Math.random() * 0.0025,
-            pulseOffset: Math.random() * Math.PI * 2,
-            baseHue: Math.random() > 0.5 ? '#00d2ff' : '#ffffff'
+        // 60 Starlight orbital nodes traveling along gyroscopic paths
+        this.particles = [];
+        for (let i = 0; i < 60; i++) {
+          this.particles.push({
+            ringIndex: i % 3,
+            angle: (i / 60) * Math.PI * 2,
+            speed: (0.008 + (i % 5) * 0.003) * (i % 2 === 0 ? 1 : -1),
+            size: (i % 3 === 0) ? 2.4 : 1.6
           });
         }
       }
@@ -3426,10 +3397,10 @@
         window.addEventListener('mousemove', (e) => {
           this.mouse.x = e.clientX;
           this.mouse.y = e.clientY;
-          this.targetRotY = (e.clientX - window.innerWidth / 2) * 0.0006;
-          this.targetRotX = (e.clientY - window.innerHeight / 2) * 0.0006;
+          this.targetRotY = (e.clientX - window.innerWidth / 2) * 0.0005;
+          this.targetRotX = (e.clientY - window.innerHeight / 2) * 0.0005;
 
-          // Magnetic button physics
+          // Magnetic button micro-interaction
           if (btnEnter && this.active) {
             const rect = btnEnter.getBoundingClientRect();
             const btnCenterX = rect.left + rect.width / 2;
@@ -3437,13 +3408,12 @@
             const dist = Math.hypot(e.clientX - btnCenterX, e.clientY - btnCenterY);
 
             if (dist < 140) {
-              const pull = (1 - dist / 140) * 12;
+              const pull = (1 - dist / 140) * 10;
               const angle = Math.atan2(e.clientY - btnCenterY, e.clientX - btnCenterX);
               const tx = Math.cos(angle) * pull;
               const ty = Math.sin(angle) * pull;
-              btnEnter.style.transform = `translate(${tx.toFixed(1)}px, ${ty.toFixed(1)}px) scale(1.025)`;
+              btnEnter.style.transform = `translate(${tx.toFixed(1)}px, ${ty.toFixed(1)}px) scale(1.02)`;
 
-              // Relative light sheen
               const rx = ((e.clientX - rect.left) / rect.width) * 100;
               const ry = ((e.clientY - rect.top) / rect.height) * 100;
               btnEnter.style.setProperty('--btn-light-x', `${rx}%`);
@@ -3490,12 +3460,33 @@
         }
       }
 
+      project3D(x, y, z, cx, cy, rotX, rotY) {
+        // 3D Matrix Rotation (Yaw & Pitch)
+        const cosY = Math.cos(rotY), sinY = Math.sin(rotY);
+        const cosX = Math.cos(rotX), sinX = Math.sin(rotX);
+
+        const x1 = x * cosY - z * sinY;
+        const z1 = x * sinY + z * cosY;
+
+        const y2 = y * cosX - z1 * sinX;
+        const z2 = y * sinX + z1 * cosX;
+
+        const fov = 750;
+        const scale = fov / (fov + z2 + 450);
+        return {
+          px: cx + x1 * scale,
+          py: cy + y2 * scale,
+          z: z2,
+          scale: scale
+        };
+      }
+
       animate() {
         if (!this.active) return;
         const ctx = this.ctx;
         if (!ctx) return;
 
-        this.time += 0.016;
+        this.time += 0.014;
 
         // Smooth spring gimbal camera damping
         this.rotX += (this.targetRotX - this.rotX) * 0.045;
@@ -3503,120 +3494,151 @@
 
         const cx = this.canvas.width / 2;
         const cy = this.canvas.height / 2;
+        const baseRadius = Math.min(this.canvas.width, this.canvas.height) * 0.32;
 
-        // Dark brushed frame clearing
-        ctx.fillStyle = "rgba(2, 3, 6, 0.45)";
+        // Pure clean frame clearing (no volumetric color foggy blobs)
+        ctx.fillStyle = "rgba(3, 3, 5, 0.4)";
         ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 
-        // Volumetric 40Hz Central Core Glow
-        const breathe = Math.sin(this.time * 2.5) * 0.15 + 0.85; // 40Hz harmonic envelope
-        const coreBloom = ctx.createRadialGradient(cx, cy, 0, cx, cy, 280 * breathe);
-        coreBloom.addColorStop(0, 'rgba(0, 210, 255, 0.14)');
-        coreBloom.addColorStop(0.35, 'rgba(50, 145, 255, 0.06)');
-        coreBloom.addColorStop(0.7, 'rgba(121, 40, 202, 0.02)');
-        coreBloom.addColorStop(1, 'rgba(0, 0, 0, 0)');
-        ctx.fillStyle = coreBloom;
-        ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+        const globalRotY = this.time * 0.12 + this.rotY;
+        const globalRotX = Math.sin(this.time * 0.06) * 0.08 + this.rotX;
 
-        const curRotY = this.time * 0.15 + this.rotY;
-        const curRotX = Math.sin(this.time * 0.08) * 0.12 + this.rotX;
+        // 1. THREE PRECISION GYROSCOPIC ORBITAL RINGS
+        const rings = [
+          { r: baseRadius * 1.0, tiltX: 0.2, tiltZ: 0.0, speed: 0.15 },
+          { r: baseRadius * 0.88, tiltX: 1.05, tiltZ: 0.6, speed: -0.18 },
+          { r: baseRadius * 0.76, tiltX: -0.85, tiltZ: -0.7, speed: 0.22 }
+        ];
 
-        // Calculate 3D Coordinates & Perspective Projection
-        const projected = [];
+        rings.forEach((ring, rIdx) => {
+          const segments = 64;
+          const points = [];
+          const ringAngle = this.time * ring.speed;
 
-        for (let i = 0; i < this.nodes.length; i++) {
-          const n = this.nodes[i];
-          let x, y, z;
+          for (let s = 0; s <= segments; s++) {
+            const theta = (s / segments) * Math.PI * 2;
+            // Parametric circle in 3D with local ring tilt
+            let lx = ring.r * Math.cos(theta);
+            let ly = 0;
+            let lz = ring.r * Math.sin(theta);
 
-          if (n.type === 'torus') {
-            n.u += n.uSpeed;
-            n.v += n.vSpeed;
-            const currentR = n.R + Math.sin(this.time * 2 + n.pulseOffset) * 12;
-            x = (currentR + n.r * Math.cos(n.v)) * Math.cos(n.u);
-            y = (currentR + n.r * Math.cos(n.v)) * Math.sin(n.u);
-            z = n.r * Math.sin(n.v);
-          } else {
-            // Core Fibonacci node
-            n.theta += n.orbitSpeed;
-            const curR = n.baseR * (1 + Math.sin(this.time * 3 + n.pulseOffset) * 0.1);
-            x = curR * Math.sin(n.phi) * Math.cos(n.theta);
-            y = curR * Math.sin(n.phi) * Math.sin(n.theta);
-            z = curR * Math.cos(n.phi);
-          }
+            // Ring local pitch/roll
+            const cosTx = Math.cos(ring.tiltX), sinTx = Math.sin(ring.tiltX);
+            const cosTz = Math.cos(ring.tiltZ), sinTz = Math.sin(ring.tiltZ);
 
-          // 3D Matrix Rotation (Yaw then Pitch)
-          let x1 = x * Math.cos(curRotY) - z * Math.sin(curRotY);
-          let z1 = x * Math.sin(curRotY) + z * Math.cos(curRotY);
+            let y1 = ly * cosTx - lz * sinTx;
+            let z1 = ly * sinTx + lz * cosTx;
+            let x2 = lx * cosTz - y1 * sinTz;
+            let y2 = lx * sinTz + y1 * cosTz;
 
-          let y2 = y * Math.cos(curRotX) - z1 * Math.sin(curRotX);
-          let z2 = y * Math.sin(curRotX) + z1 * Math.cos(curRotX);
+            // Global project
+            const pt = this.project3D(x2, y2, z1, cx, cy, globalRotX, globalRotY);
+            points.push(pt);
 
-          const fov = 720;
-          const scale = fov / (fov + z2 + 450);
-          const px = cx + x1 * scale;
-          const py = cy + y2 * scale;
+            // Precision vernier tick marks every 4 segments
+            if (s % 4 === 0 && s < segments) {
+              const tickLen = 7 * (rIdx === 0 ? 1.4 : 1.0);
+              let tx = (ring.r + tickLen) * Math.cos(theta);
+              let ty1 = 0 * cosTx - ((ring.r + tickLen) * Math.sin(theta)) * sinTx;
+              let tz1 = 0 * sinTx + ((ring.r + tickLen) * Math.sin(theta)) * cosTx;
+              let tx2 = tx * cosTz - ty1 * sinTz;
+              let ty2 = tx * sinTz + ty1 * cosTz;
+              const tickEnd = this.project3D(tx2, ty2, tz1, cx, cy, globalRotX, globalRotY);
 
-          projected.push({
-            x: px,
-            y: py,
-            z: z2,
-            scale: scale,
-            hue: n.baseHue,
-            isCore: n.type === 'core'
-          });
-        }
-
-        // Back-to-front depth sorting (Z-buffer)
-        projected.sort((a, b) => a.z - b.z);
-
-        // Volumetric Synaptic Filaments
-        ctx.lineWidth = 0.8;
-        const connectThreshold = 78;
-        for (let i = 0; i < projected.length; i++) {
-          const p1 = projected[i];
-          if (p1.z < -180) continue; // Skip deep background filaments for clean visual hierarchy
-
-          for (let j = i + 1; j < projected.length; j++) {
-            const p2 = projected[j];
-            const dist = Math.hypot(p1.x - p2.x, p1.y - p2.y);
-            
-            if (dist < connectThreshold) {
-              const depthFactor = ((p1.scale + p2.scale) / 2);
-              const alpha = (1 - dist / connectThreshold) * 0.42 * depthFactor;
-              
-              if (alpha > 0.02) {
-                ctx.strokeStyle = `rgba(0, 210, 255, ${alpha})`;
-                ctx.beginPath();
-                ctx.moveTo(p1.x, p1.y);
-                ctx.lineTo(p2.x, p2.y);
-                ctx.stroke();
-              }
+              const tickAlpha = Math.max(0.12, (pt.z + 280) / 450);
+              ctx.strokeStyle = `rgba(255, 255, 255, ${tickAlpha * 0.45})`;
+              ctx.lineWidth = 0.8;
+              ctx.beginPath();
+              ctx.moveTo(pt.px, pt.py);
+              ctx.lineTo(tickEnd.px, tickEnd.py);
+              ctx.stroke();
             }
           }
-        }
 
-        // Volumetric Luminescent Nodes
-        for (let i = 0; i < projected.length; i++) {
-          const p = projected[i];
-          const radius = Math.max(0.8, (p.isCore ? 3.2 : 2.4) * p.scale);
-          const alpha = Math.min(1, Math.max(0.2, (p.z + 300) / 450));
-
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
-
-          if (p.z > 0) {
-            // Foreground glowing nodes
-            ctx.fillStyle = p.hue;
-            ctx.shadowColor = p.hue;
-            ctx.shadowBlur = 10 * p.scale;
-            ctx.fill();
-            ctx.shadowBlur = 0;
-          } else {
-            // Background atmospheric nodes
-            ctx.fillStyle = `rgba(50, 145, 255, ${alpha * 0.6})`;
-            ctx.fill();
+          // Draw the ring spline
+          for (let i = 0; i < points.length - 1; i++) {
+            const p1 = points[i];
+            const p2 = points[i + 1];
+            const segAlpha = Math.max(0.12, Math.min(0.85, (p1.z + 280) / 450));
+            ctx.strokeStyle = `rgba(255, 255, 255, ${segAlpha * (rIdx === 0 ? 0.45 : 0.3)})`;
+            ctx.lineWidth = rIdx === 0 ? 1.2 : 0.8;
+            ctx.beginPath();
+            ctx.moveTo(p1.px, p1.py);
+            ctx.lineTo(p2.px, p2.py);
+            ctx.stroke();
           }
-        }
+        });
+
+        // 2. CENTRAL 3D CRYSTALLINE OCTAHEDRON CORE
+        const coreSize = 36 + Math.sin(this.time * 2.5) * 4; // 40Hz breathing harmonic
+        const coreVertsLocal = [
+          { x: 0, y: -coreSize * 1.35, z: 0 },
+          { x: 0, y: coreSize * 1.35, z: 0 },
+          { x: -coreSize, y: 0, z: -coreSize },
+          { x: coreSize, y: 0, z: -coreSize },
+          { x: coreSize, y: 0, z: coreSize },
+          { x: -coreSize, y: 0, z: coreSize }
+        ];
+
+        const coreRotY = globalRotY + this.time * 0.4;
+        const coreRotX = globalRotX + this.time * 0.2;
+
+        const coreProjected = coreVertsLocal.map(v => 
+          this.project3D(v.x, v.y, v.z, cx, cy, coreRotX, coreRotY)
+        );
+
+        // Core Edges
+        const coreEdges = [
+          [0, 2], [0, 3], [0, 4], [0, 5],
+          [1, 2], [1, 3], [1, 4], [1, 5],
+          [2, 3], [3, 4], [4, 5], [5, 2]
+        ];
+
+        ctx.lineWidth = 1.0;
+        coreEdges.forEach(([i, j]) => {
+          const p1 = coreProjected[i];
+          const p2 = coreProjected[j];
+          const edgeAlpha = Math.max(0.2, (p1.z + 280) / 450);
+          ctx.strokeStyle = `rgba(255, 255, 255, ${edgeAlpha * 0.75})`;
+          ctx.beginPath();
+          ctx.moveTo(p1.px, p1.py);
+          ctx.lineTo(p2.px, p2.py);
+          ctx.stroke();
+        });
+
+        // Core Vertices (Diamond Micro-Sparkles)
+        coreProjected.forEach(p => {
+          ctx.fillStyle = "#ffffff";
+          ctx.beginPath();
+          ctx.arc(p.px, p.py, Math.max(1, 2.2 * p.scale), 0, Math.PI * 2);
+          ctx.fill();
+        });
+
+        // 3. STARLIGHT ORBITAL NODES
+        this.particles.forEach(p => {
+          p.angle += p.speed;
+          const ring = rings[p.ringIndex];
+          
+          let lx = ring.r * Math.cos(p.angle);
+          let ly = 0;
+          let lz = ring.r * Math.sin(p.angle);
+
+          const cosTx = Math.cos(ring.tiltX), sinTx = Math.sin(ring.tiltX);
+          const cosTz = Math.cos(ring.tiltZ), sinTz = Math.sin(ring.tiltZ);
+
+          let y1 = ly * cosTx - lz * sinTx;
+          let z1 = ly * sinTx + lz * cosTx;
+          let x2 = lx * cosTz - y1 * sinTz;
+          let y2 = lx * sinTz + y1 * cosTz;
+
+          const pt = this.project3D(x2, y2, z1, cx, cy, globalRotX, globalRotY);
+          const alpha = Math.max(0.15, Math.min(1, (pt.z + 280) / 450));
+
+          ctx.fillStyle = `rgba(255, 255, 255, ${alpha * 0.9})`;
+          ctx.beginPath();
+          ctx.arc(pt.px, pt.py, Math.max(0.8, p.size * pt.scale), 0, Math.PI * 2);
+          ctx.fill();
+        });
 
         requestAnimationFrame(this.animate);
       }
