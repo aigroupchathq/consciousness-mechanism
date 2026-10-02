@@ -277,96 +277,6 @@
       transition: opacity 0.2s;
     }
 
-    /* GYRO VELOCITY CONTROLLER PILL */
-    .splash-gyro-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.85rem;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      border-radius: 999px;
-      padding: 0.35rem 1rem;
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      color: #e2e8f0;
-      backdrop-filter: blur(20px);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .splash-gyro-slider {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 58px;
-      height: 3px;
-      background: rgba(255, 255, 255, 0.25);
-      border-radius: 999px;
-      outline: none;
-      cursor: pointer;
-    }
-
-    .splash-gyro-slider::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #ffffff;
-      box-shadow: 0 0 6px rgba(255, 255, 255, 0.9);
-      cursor: pointer;
-      transition: transform 0.15s ease;
-    }
-
-    .splash-gyro-slider::-webkit-slider-thumb:hover {
-      transform: scale(1.3);
-    }
-
-    .splash-gyro-slider::-moz-range-thumb {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #ffffff;
-      border: none;
-      box-shadow: 0 0 6px rgba(255, 255, 255, 0.9);
-      cursor: pointer;
-    }
-
-    .splash-gyro-readout {
-      font-weight: 700;
-      color: #f1f5f9;
-      font-size: 0.68rem;
-      min-width: 165px;
-      text-align: center;
-    }
-
-    .splash-gyro-reset {
-      background: transparent;
-      border: none;
-      color: #94a3b8;
-      font-size: 0.85rem;
-      cursor: pointer;
-      padding: 0;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-    }
-
-    .splash-gyro-reset:hover {
-      color: #ffffff;
-      transform: rotate(180deg);
-    }
-
-    .splash-gyro-hint {
-      font-family: var(--font-mono);
-      font-size: 0.62rem;
-      color: #4b5563;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-top: -0.5rem;
-    }
-
     /* TOP ANNOUNCEMENT BANNER */
     .announcement-bar {
       background: var(--text-primary);
@@ -2337,17 +2247,6 @@
         <span class="btn-portal-arrow">→</span>
       </button>
 
-      <!-- INTERACTIVE GYRO VELOCITY ATTENUATOR -->
-      <div class="splash-gyro-pill">
-        <input type="range" id="splashGyroSlider" min="0.2" max="3.0" step="0.1" value="1.0" class="splash-gyro-slider">
-        <span class="splash-gyro-readout" id="splashGyroReadout">GYRO VELOCITY: 40 RPM [ 1.0X ]</span>
-        <button class="splash-gyro-reset" id="splashGyroReset" title="Reset Velocity">⟳</button>
-      </div>
-
-      <div class="splash-gyro-hint">
-        START THE ENGINE TO INITIALIZE // OR ADJUST VELOCITY ABOVE
-      </div>
-
       <div class="splash-whisper-footer">
         PRESS ANY KEY OR CLICK TO ENTER
       </div>
@@ -3495,29 +3394,6 @@
 
       bindEvents() {
         const btnEnter = document.getElementById('btnEnterPlatform');
-        const gyroSlider = document.getElementById('splashGyroSlider');
-        const gyroReadout = document.getElementById('splashGyroReadout');
-        const gyroReset = document.getElementById('splashGyroReset');
-
-        if (gyroSlider && gyroReadout) {
-          gyroSlider.addEventListener('input', (e) => {
-            e.stopPropagation();
-            this.speedMultiplier = parseFloat(e.target.value);
-            const rpm = Math.round(40 * this.speedMultiplier);
-            gyroReadout.innerText = `GYRO VELOCITY: ${rpm} RPM [ ${this.speedMultiplier.toFixed(1)}X ]`;
-          });
-          gyroSlider.addEventListener('click', (e) => e.stopPropagation());
-        }
-
-        if (gyroReset && gyroSlider && gyroReadout) {
-          gyroReset.addEventListener('click', (e) => {
-            e.stopPropagation();
-            this.speedMultiplier = 1.0;
-            gyroSlider.value = "1.0";
-            gyroReadout.innerText = `GYRO VELOCITY: 40 RPM [ 1.0X ]`;
-            if (this.audio) this.audio.playChime(640);
-          });
-        }
 
         window.addEventListener('mousemove', (e) => {
           this.mouse.x = e.clientX;
