@@ -83,47 +83,89 @@
     }
 
     /* ==========================================================================
-       00. CYBERNETIC SPLASH SCREEN / BOOT GATEWAY
+       00. CYBERNETIC SPLASH SCREEN / NEURAL CALIBRATION GATEWAY (AAA ENGINE)
        ========================================================================== */
     .splash-overlay {
       position: fixed;
       inset: 0;
-      background: #050505;
+      background: radial-gradient(circle at center, #0a0c14 0%, #030407 100%);
       color: #ffffff;
-      z-index: 9999;
+      z-index: 10000;
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 2rem;
-      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.6s ease;
+      padding: 1.5rem;
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.8s ease;
+      overflow: hidden;
     }
 
     .splash-overlay.dismissed {
       opacity: 0;
       visibility: hidden;
+      transform: scale(1.08);
       pointer-events: none;
     }
 
-    .splash-box {
-      max-width: 680px;
+    .splash-canvas-bg {
+      position: absolute;
+      inset: 0;
       width: 100%;
-      background: #0d0d0d;
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      box-shadow: 0 30px 100px rgba(0, 0, 0, 0.95);
-      padding: 3rem 2.5rem;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Ambient HUD Corner Telemetry */
+    .splash-hud-corner {
+      position: absolute;
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: rgba(255, 255, 255, 0.4);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .splash-hud-tl { top: 1.5rem; left: 2rem; }
+    .splash-hud-tr { top: 1.5rem; right: 2rem; text-align: right; }
+    .splash-hud-bl { bottom: 1.5rem; left: 2rem; }
+    .splash-hud-br { bottom: 1.5rem; right: 2rem; text-align: right; }
+
+    /* Central Cockpit */
+    .splash-box {
+      max-width: 820px;
+      width: 100%;
+      background: rgba(12, 14, 20, 0.88);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 12px;
+      box-shadow: 0 35px 120px rgba(0, 0, 0, 0.95), 0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+      backdrop-filter: blur(36px);
+      -webkit-backdrop-filter: blur(36px);
+      padding: 2.5rem;
       position: relative;
-      overflow: hidden;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 1.35rem;
     }
 
     .splash-box::before {
       content: "";
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan), var(--accent-emerald));
+      top: -1px;
+      left: 10%;
+      right: 10%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--accent-cyan), var(--accent-blue), transparent);
+    }
+
+    .splash-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 0.85rem;
     }
 
     .splash-badge {
@@ -135,7 +177,6 @@
       color: var(--accent-cyan);
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      margin-bottom: 1.5rem;
     }
 
     .splash-pulse-dot {
@@ -147,53 +188,209 @@
       animation: pulseDot 1.5s infinite ease-in-out;
     }
 
-    .splash-title {
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      font-weight: 900;
-      letter-spacing: -0.03em;
-      line-height: 1.05;
-      margin-bottom: 1rem;
+    /* Live Mini EEG Waveform inside Header */
+    .splash-eeg-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--font-mono);
+      font-size: 0.64rem;
+      color: #9ca3af;
     }
 
-    .splash-log-terminal {
-      background: #050505;
+    .splash-eeg-canvas {
+      width: 140px;
+      height: 24px;
+      background: rgba(0, 0, 0, 0.5);
       border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 1rem 1.25rem;
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
+      border-radius: 4px;
+    }
+
+    .splash-headline-wrap {
+      text-align: left;
+    }
+
+    .splash-title {
+      font-size: clamp(2rem, 4.2vw, 3.4rem);
+      font-weight: 900;
+      letter-spacing: -0.035em;
+      line-height: 1.05;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(180deg, #ffffff 40%, #9ca3af 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .splash-subtext {
       color: #9ca3af;
-      margin: 1.5rem 0 2rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+      max-width: 680px;
+    }
+
+    /* 4-Column Live Calibration Gauges */
+    .splash-gauges-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+    }
+
+    @media (max-width: 720px) {
+      .splash-gauges-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .splash-gauge-card {
+      background: rgba(0, 0, 0, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 6px;
+      padding: 0.75rem;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+    }
+
+    .splash-gauge-label {
+      color: #6b7280;
+      text-transform: uppercase;
+      font-size: 0.58rem;
+      margin-bottom: 0.35rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .splash-gauge-val {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--accent-cyan);
+    }
+
+    .splash-gauge-status {
+      font-size: 0.58rem;
+      color: var(--accent-emerald);
+      margin-top: 0.2rem;
+    }
+
+    /* Interactive Streaming Terminal Log */
+    .splash-log-terminal {
+      background: #040508;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 6px;
+      padding: 0.85rem 1.15rem;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: #9ca3af;
       display: flex;
       flex-direction: column;
       gap: 0.35rem;
       line-height: 1.45;
+      min-height: 80px;
     }
 
-    .splash-log-line {
+    .splash-log-stream-line {
       display: flex;
       justify-content: space-between;
     }
 
+    .splash-log-stream-line.highlight {
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    /* Boot Calibration Progress Bar */
+    .splash-progress-container {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: #6b7280;
+    }
+
+    .splash-progress-track {
+      width: 100%;
+      height: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 999px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .splash-progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan), var(--accent-emerald));
+      border-radius: 999px;
+      transition: width 0.1s linear;
+      box-shadow: 0 0 12px var(--accent-cyan);
+    }
+
+    /* Interactive Biometric Launch Trigger */
     .btn-splash-enter {
       width: 100%;
-      background: var(--accent-blue);
+      background: linear-gradient(135deg, var(--accent-blue) 0%, #005bb5 100%);
       color: #ffffff;
-      border: 1px solid var(--accent-blue);
-      padding: 1rem;
+      border: 1px solid var(--accent-cyan);
+      padding: 1.1rem;
+      border-radius: 8px;
       font-family: var(--font-mono);
-      font-size: 0.8rem;
+      font-size: 0.84rem;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.08em;
       cursor: pointer;
-      box-shadow: 0 0 25px rgba(0, 112, 243, 0.4);
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 0 35px rgba(0, 112, 243, 0.5), 0 0 0 1px rgba(0, 210, 255, 0.4) inset;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-splash-enter::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+      transform: skewX(-25deg);
+      animation: btnShimmer 3s infinite;
+    }
+
+    @keyframes btnShimmer {
+      0% { left: -100%; }
+      50%, 100% { left: 200%; }
     }
 
     .btn-splash-enter:hover {
-      background: #005bb5;
-      box-shadow: 0 0 35px rgba(0, 112, 243, 0.7);
+      background: linear-gradient(135deg, #005bb5 0%, #004285 100%);
+      box-shadow: 0 0 50px rgba(0, 210, 255, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.6) inset;
       transform: translateY(-2px);
+    }
+
+    .splash-footer-notes {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: #6b7280;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .splash-bypass-link {
+      color: #9ca3af;
+      cursor: pointer;
+      text-decoration: underline;
+      transition: color 0.15s;
+    }
+
+    .splash-bypass-link:hover {
+      color: #ffffff;
     }
 
     /* TOP ANNOUNCEMENT BANNER */
@@ -1758,29 +1955,110 @@
 <body>
 
   <!-- ==========================================================================
-       00. CYBERNETIC SPLASH SCREEN / BOOT GATEWAY
+       00. CYBERNETIC SPLASH SCREEN / NEURAL CALIBRATION GATEWAY (AAA ENGINE)
        ========================================================================== -->
   <div class="splash-overlay" id="splashScreen">
+    <canvas class="splash-canvas-bg" id="splashCanvas"></canvas>
+
+    <!-- Corner Ambient HUD Telemetry -->
+    <div class="splash-hud-corner splash-hud-tl">
+      <div>[LOC: 47.3769° N // 8.5417° E]</div>
+      <div style="color: var(--accent-cyan);">IIT 4.0 // PHENOMENAL FIELD GENERATOR</div>
+    </div>
+    <div class="splash-hud-corner splash-hud-tr">
+      <div>QUANTUM CAUSAL DENSITY: 0.94 BITS</div>
+      <div style="color: var(--accent-emerald);">● THALAMIC COHERENCE: OPTIMAL</div>
+    </div>
+    <div class="splash-hud-corner splash-hud-bl">
+      <div>ARCHIVE SERIAL: 0xSOVEREIGN-MIND</div>
+      <div>CORE FREQUENCY: 40.00 HZ GAMMA</div>
+    </div>
+    <div class="splash-hud-corner splash-hud-br">
+      <div>SECURITY: ZERO TRACKING / ENCRYPTED</div>
+      <div>AWWWARDS SOTD NOMINEE ARCHIVE</div>
+    </div>
+
+    <!-- Central Cockpit Card -->
     <div class="splash-box">
-      <div class="splash-badge">
-        <span class="splash-pulse-dot"></span>
-        <span>NEURO-DIAGNOSTIC CALIBRATION GATEWAY // VER 4.0</span>
+      <div class="splash-top-row">
+        <div class="splash-badge">
+          <span class="splash-pulse-dot"></span>
+          <span>NEURO-DIAGNOSTIC CALIBRATION GATEWAY // VER 4.2</span>
+        </div>
+        <div class="splash-eeg-wrap">
+          <span>40Hz EEG:</span>
+          <canvas class="splash-eeg-canvas" id="splashEegCanvas"></canvas>
+        </div>
       </div>
 
-      <h1 class="splash-title">THE UNEXPLORED INTERIOR</h1>
-      <p style="color: #d1d5db; font-size: 1rem; line-height: 1.6;">
-        You are about to initiate an empirical phenomenological audit of your attentional sovereignty, qualia resolution, and cognitive gating.
-      </p>
-
-      <div class="splash-log-terminal">
-        <div class="splash-log-line"><span>[STATUS] THALAMIC GATE SAMPLING</span><span style="color:var(--accent-emerald);">ONLINE (1000 HZ)</span></div>
-        <div class="splash-log-line"><span>[DIAGNOSTIC] DEFAULT MODE NETWORK</span><span style="color:var(--accent-amber);">HYPER-REACTIVE (46.9%)</span></div>
-        <div class="splash-log-line"><span>[SECURITY] ATTENTIONAL SOVEREIGNTY</span><span style="color:var(--accent-crimson);">UNVERIFIED</span></div>
+      <div class="splash-headline-wrap">
+        <h1 class="splash-title">THE UNEXPLORED INTERIOR</h1>
+        <p class="splash-subtext">
+          Initiating high-resolution phenomenological audit engine. Calibrating first-person qualia resolution, P3b ignition latency, and Default Mode Network decoupling.
+        </p>
       </div>
 
+      <!-- Live 4-Column Calibration Gauges -->
+      <div class="splash-gauges-grid">
+        <div class="splash-gauge-card">
+          <div class="splash-gauge-label"><span>⚡</span> P3b IGNITION</div>
+          <div class="splash-gauge-val" id="splashG1">312 ms</div>
+          <div class="splash-gauge-status">CALIBRATING</div>
+        </div>
+        <div class="splash-gauge-card">
+          <div class="splash-gauge-label"><span>🧠</span> DMN HYPER-LOOP</div>
+          <div class="splash-gauge-val" id="splashG2" style="color:var(--accent-amber);">88.4%</div>
+          <div class="splash-gauge-status" style="color:var(--accent-amber);">CAPTURED</div>
+        </div>
+        <div class="splash-gauge-card">
+          <div class="splash-gauge-label"><span>🔮</span> INTEGRATED Φ</div>
+          <div class="splash-gauge-val" id="splashG3">0.74 bits</div>
+          <div class="splash-gauge-status">ACTIVE</div>
+        </div>
+        <div class="splash-gauge-card">
+          <div class="splash-gauge-label"><span>👁</span> QUALIA SAMPLING</div>
+          <div class="splash-gauge-val" id="splashG4" style="color:var(--accent-emerald);">1,000 Hz</div>
+          <div class="splash-gauge-status">SYNCHRONIZED</div>
+        </div>
+      </div>
+
+      <!-- Live Streaming Terminal Diagnostic -->
+      <div class="splash-log-terminal" id="splashLogTerminal">
+        <div class="splash-log-stream-line">
+          <span>&gt;&gt; [0.12s] Engaging thalamocortical reverberation loop...</span>
+          <span style="color:var(--accent-emerald);">[ONLINE]</span>
+        </div>
+        <div class="splash-log-stream-line">
+          <span>&gt;&gt; [0.38s] Isolating Default Mode Network autobiographical trance...</span>
+          <span style="color:var(--accent-cyan);">[SYNCED]</span>
+        </div>
+        <div class="splash-log-stream-line highlight" id="splashDynamicLog">
+          <span>&gt;&gt; [0.65s] Establishing 40Hz binaural harmonic field...</span>
+          <span style="color:var(--accent-amber);">[CALIBRATING]</span>
+        </div>
+      </div>
+
+      <!-- Boot Loader Progress Bar -->
+      <div class="splash-progress-container">
+        <div style="display: flex; justify-content: space-between;">
+          <span id="splashProgressLabel">SYSTEM CALIBRATION IN PROGRESS...</span>
+          <span id="splashProgressPct" style="color: var(--accent-cyan); font-weight: 700;">88%</span>
+        </div>
+        <div class="splash-progress-track">
+          <div class="splash-progress-fill" id="splashProgressFill" style="width: 88%;"></div>
+        </div>
+      </div>
+
+      <!-- Biometric Launch Trigger Button -->
       <button class="btn-splash-enter" id="btnEnterPlatform">
-        ⚡ INITIALIZE CONSCIOUSNESS DIAGNOSTIC →
+        <span>⚡</span> INITIALIZE CONSCIOUSNESS AUDIT ENGINE →
       </button>
+
+      <!-- Footer Micro Bar -->
+      <div class="splash-footer-notes">
+        <span>HEADPHONES RECOMMENDED // 40HZ GAMMA CHORD READY</span>
+        <span class="splash-bypass-link" id="btnSplashBypass">[PRESS SPACEBAR OR ESC TO BYPASS]</span>
+      </div>
     </div>
   </div>
 
@@ -2611,6 +2889,239 @@
           osc.start();
           osc.stop(this.ctx.currentTime + 0.35);
         } catch(e){}
+      }
+    }
+
+    // --- 00. SPLASH GATEWAY 3D QUANTUM NEURAL ENGINE & TELEMETRY ---
+    class SplashGatewayEngine {
+      constructor(canvas, eegCanvas, overlayEl, audio) {
+        this.canvas = canvas;
+        this.eegCanvas = eegCanvas;
+        this.overlay = overlayEl;
+        this.audio = audio;
+        this.ctx = canvas ? canvas.getContext('2d') : null;
+        this.eegCtx = eegCanvas ? eegCanvas.getContext('2d') : null;
+        this.active = true;
+        this.nodes = [];
+        this.mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+        this.angleX = 0;
+        this.angleY = 0;
+        this.progress = 12;
+        this.eegPoints = [];
+        
+        this.initNodes();
+        this.initEeg();
+        this.bindEvents();
+        this.startTelemetry();
+        this.animate = this.animate.bind(this);
+        requestAnimationFrame(this.animate);
+      }
+
+      initNodes() {
+        if (!this.canvas) return;
+        this.resize();
+        window.addEventListener('resize', () => this.resize());
+        
+        const count = 160;
+        const radius = Math.min(window.innerWidth, window.innerHeight) * 0.38;
+        this.nodes = [];
+        for (let i = 0; i < count; i++) {
+          const theta = Math.random() * Math.PI * 2;
+          const phi = Math.acos((Math.random() * 2) - 1);
+          const r = radius * (0.6 + Math.random() * 0.6);
+          this.nodes.push({
+            x: r * Math.sin(phi) * Math.cos(theta),
+            y: r * Math.sin(phi) * Math.sin(theta),
+            z: r * Math.cos(phi),
+            baseR: r,
+            speed: 0.002 + Math.random() * 0.003,
+            pulse: Math.random() * Math.PI * 2,
+            hue: Math.random() > 0.6 ? '#00d2ff' : (Math.random() > 0.3 ? '#0070f3' : '#10b981')
+          });
+        }
+      }
+
+      resize() {
+        if (!this.canvas) return;
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+        if (this.eegCanvas) {
+          this.eegCanvas.width = 140;
+          this.eegCanvas.height = 24;
+        }
+      }
+
+      initEeg() {
+        for (let i = 0; i < 70; i++) {
+          this.eegPoints.push(0);
+        }
+      }
+
+      bindEvents() {
+        window.addEventListener('mousemove', (e) => {
+          this.mouse.x = e.clientX;
+          this.mouse.y = e.clientY;
+          this.angleY = (e.clientX - window.innerWidth / 2) * 0.0003;
+          this.angleX = (e.clientY - window.innerHeight / 2) * 0.0003;
+        });
+
+        // Key shortcuts to enter
+        window.addEventListener('keydown', (e) => {
+          if (!this.active) return;
+          if (e.code === 'Space' || e.code === 'Escape' || e.code === 'Enter') {
+            e.preventDefault();
+            this.dismiss();
+          }
+        });
+
+        const btnEnter = document.getElementById('btnEnterPlatform');
+        if (btnEnter) btnEnter.addEventListener('click', () => this.dismiss());
+
+        const btnBypass = document.getElementById('btnSplashBypass');
+        if (btnBypass) btnBypass.addEventListener('click', () => this.dismiss());
+      }
+
+      startTelemetry() {
+        const logLines = [
+          ">> [0.12s] Engaging thalamocortical reverberation loop... [ONLINE]",
+          ">> [0.38s] Isolating Default Mode Network autobiographical trance... [SYNCED]",
+          ">> [0.65s] Establishing 40Hz binaural harmonic field... [CALIBRATED]",
+          ">> [0.89s] Quantizing first-person qualia resolution... [1,000 HZ]",
+          ">> [1.14s] Metacognitive monitoring decoupler... [ACTIVE]",
+          ">> [1.42s] CONSCIOUS PHENOMENAL STATE: SOVEREIGN RECEPTIVITY VERIFIED"
+        ];
+        let lineIdx = 2;
+        const dynamicLogEl = document.getElementById('splashDynamicLog');
+
+        const logInterval = setInterval(() => {
+          if (!this.active) { clearInterval(logInterval); return; }
+          lineIdx = (lineIdx + 1) % logLines.length;
+          if (dynamicLogEl) {
+            dynamicLogEl.innerHTML = `<span>${logLines[lineIdx]}</span><span style="color:var(--accent-cyan);">[VERIFIED]</span>`;
+          }
+        }, 1800);
+
+        const progressInterval = setInterval(() => {
+          if (!this.active) { clearInterval(progressInterval); return; }
+          if (this.progress < 100) {
+            this.progress += Math.floor(Math.random() * 7) + 3;
+            if (this.progress > 100) this.progress = 100;
+            const fillEl = document.getElementById('splashProgressFill');
+            const pctEl = document.getElementById('splashProgressPct');
+            const lblEl = document.getElementById('splashProgressLabel');
+            if (fillEl) fillEl.style.width = `${this.progress}%`;
+            if (pctEl) pctEl.innerText = `${this.progress}%`;
+            if (this.progress === 100 && lblEl) {
+              lblEl.innerText = "✓ NEURO-CALIBRATION COMPLETE // READY FOR SOVEREIGN ACCESS";
+              lblEl.style.color = "var(--accent-emerald)";
+            }
+          }
+
+          const g1 = document.getElementById('splashG1');
+          if (g1) g1.innerText = `${Math.round(300 + Math.sin(Date.now() * 0.003) * 18)} ms`;
+          const g3 = document.getElementById('splashG3');
+          if (g3) g3.innerText = `${(0.72 + Math.sin(Date.now() * 0.002) * 0.08).toFixed(2)} bits`;
+        }, 300);
+      }
+
+      dismiss() {
+        if (!this.active) return;
+        this.active = false;
+        if (this.overlay) {
+          this.overlay.classList.add('dismissed');
+        }
+        if (this.audio) {
+          this.audio.init();
+          this.audio.playChime(720);
+        }
+      }
+
+      animate() {
+        if (!this.active) return;
+        const ctx = this.ctx;
+        if (!ctx) return;
+
+        ctx.fillStyle = "rgba(3, 4, 7, 0.35)";
+        ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+
+        const cx = this.canvas.width / 2;
+        const cy = this.canvas.height / 2;
+
+        const rotY = Date.now() * 0.0004 + this.angleY;
+        const rotX = Date.now() * 0.0002 + this.angleX;
+
+        const projected = [];
+
+        for (let i = 0; i < this.nodes.length; i++) {
+          const n = this.nodes[i];
+          
+          let x1 = n.x * Math.cos(rotY) - n.z * Math.sin(rotY);
+          let z1 = n.x * Math.sin(rotY) + n.z * Math.cos(rotY);
+
+          let y2 = n.y * Math.cos(rotX) - z1 * Math.sin(rotX);
+          let z2 = n.y * Math.sin(rotX) + z1 * Math.cos(rotX);
+
+          const fov = 650;
+          const scale = fov / (fov + z2 + 400);
+          const px = cx + x1 * scale;
+          const py = cy + y2 * scale;
+
+          projected.push({ x: px, y: py, scale, z: z2, hue: n.hue });
+        }
+
+        ctx.lineWidth = 0.75;
+        for (let i = 0; i < projected.length; i++) {
+          for (let j = i + 1; j < projected.length; j++) {
+            const p1 = projected[i];
+            const p2 = projected[j];
+            const dist = Math.hypot(p1.x - p2.x, p1.y - p2.y);
+            if (dist < 85) {
+              const alpha = (1 - dist / 85) * 0.45 * Math.min(p1.scale, p2.scale);
+              ctx.strokeStyle = `rgba(0, 210, 255, ${alpha})`;
+              ctx.beginPath();
+              ctx.moveTo(p1.x, p1.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.stroke();
+            }
+          }
+        }
+
+        for (let i = 0; i < projected.length; i++) {
+          const p = projected[i];
+          const radius = Math.max(1, 2.8 * p.scale);
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
+          ctx.fillStyle = p.hue;
+          ctx.shadowColor = p.hue;
+          ctx.shadowBlur = 8 * p.scale;
+          ctx.fill();
+          ctx.shadowBlur = 0;
+        }
+
+        if (this.eegCtx) {
+          const ectx = this.eegCtx;
+          ectx.fillStyle = "rgba(0, 0, 0, 0.4)";
+          ectx.fillRect(0, 0, 140, 24);
+
+          this.eegPoints.shift();
+          const t = Date.now() * 0.04;
+          const noise = (Math.random() - 0.5) * 4;
+          const val = Math.sin(t) * 7 + Math.sin(t * 0.5) * 3 + noise;
+          this.eegPoints.push(val);
+
+          ectx.beginPath();
+          ectx.strokeStyle = "#00d2ff";
+          ectx.lineWidth = 1.5;
+          for (let k = 0; k < this.eegPoints.length; k++) {
+            const ex = (k / this.eegPoints.length) * 140;
+            const ey = 12 + this.eegPoints[k];
+            if (k === 0) ectx.moveTo(ex, ey);
+            else ectx.lineTo(ex, ey);
+          }
+          ectx.stroke();
+        }
+
+        requestAnimationFrame(this.animate);
       }
     }
 
@@ -3843,16 +4354,11 @@
     document.addEventListener('DOMContentLoaded', () => {
       const audio = new BinauralAudio();
 
-      // Splash Screen Handler
-      const splash = document.getElementById('splashScreen');
-      const btnEnter = document.getElementById('btnEnterPlatform');
-      if (btnEnter) {
-        btnEnter.addEventListener('click', () => {
-          splash.classList.add('dismissed');
-          audio.init();
-          audio.playChime(720);
-        });
-      }
+      // Splash Screen Cybernetic Gateway Engine
+      const splashCanvas = document.getElementById('splashCanvas');
+      const splashEegCanvas = document.getElementById('splashEegCanvas');
+      const splashOverlay = document.getElementById('splashScreen');
+      const splashGateway = new SplashGatewayEngine(splashCanvas, splashEegCanvas, splashOverlay, audio);
 
       const heroCanvas = document.getElementById('heroSynapseCanvas');
       if (heroCanvas) new HeroSynapseEngine(heroCanvas);
