@@ -1,0 +1,26 @@
+{
+  "name": "the-unexplored-interior",
+  "version": "1.0.0",
+  "description": "Cognitive Phenomenological Benchmark & Neuro-Diagnostic Engine",
+  "main": "index.html",
+  "scripts": {
+    "audit": "node scripts/audit_protocol.js",
+    "test": "node scripts/audit_protocol.js",
+    "precommit": "node scripts/audit_protocol.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aigroupchathq/consciousness-mechanism.git"
+  },
+  "keywords": [
+    "consciousness",
+    "neuroscience",
+    "iit-4.0",
+    "global-neuronal-workspace",
+    "phenomenology",
+    "binaural-synthesis",
+    "visual-awareness"
+  ],
+  "author": "aigroupchathq",
+  "license": "MIT"
+}
