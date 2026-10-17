@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>THE UNEXPLORED INTERIOR // Reclaim Your Conscious Sovereignty</title>
-  <meta name="description" content="The world's first interactive neuro-phenomenological audit engine and visual awareness laboratory. Benchmark your attentional sovereignty, ignition latency, and integrated causal density.">
+  <title>DatumIntelligence // Empirical Cognitive Architecture & Psychophysics Laboratory</title>
+  <meta name="description" content="DatumIntelligence: Empirical neuro-performance instrument and visual psychophysics benchmark engine calibrated against 14,250 normative baselines.">
   
   <!-- OpenGraph / Social Sharing -->
-  <meta property="og:title" content="The Unexplored Interior // Consciousness Benchmark & Visual Lab">
-  <meta property="og:description" content="Are you operating your brain on factory demo mode? Benchmark your attentional sovereignty, Phi integration, and visual gating latency.">
+  <meta property="og:title" content="DatumIntelligence // Empirical Cognitive Architecture & Psychophysics Laboratory">
+  <meta property="og:description" content="DatumIntelligence: Benchmark your attentional sovereignty, P3b ignition latency, and Tononi IIT 4.0 integrated causal density.">
   <meta property="og:image" content="https://aigroupchathq.github.io/consciousness-mechanism/assets/banner.jpg">
   <meta property="og:url" content="https://aigroupchathq.github.io/consciousness-mechanism/">
   <meta name="twitter:card" content="summary_large_image">
@@ -1963,14 +1963,37 @@
 
     .pricing-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
       margin-top: 3.5rem;
       align-items: stretch;
     }
 
-    @media (max-width: 1020px) {
-      .pricing-grid { grid-template-columns: 1fr; }
+    .pricing-guarantee-bar {
+      margin-top: 2.25rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-medium);
+      border-radius: 8px;
+      padding: 1.25rem 1.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .pricing-guarantee-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      color: var(--text-secondary);
+    }
+
+    .pricing-guarantee-item span.icon {
+      color: var(--accent-emerald);
+      font-weight: 800;
     }
 
     .pricing-card {
@@ -2679,6 +2702,156 @@
       border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
 
+    /* ==========================================================================
+       15. TERMS & PRIVACY MODAL & SUPPORT DESK STYLING
+       ========================================================================== */
+    .terms-modal-card {
+      max-width: 820px;
+      width: 100%;
+      background: #090a0d;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 8px;
+      padding: 2.2rem;
+      box-shadow: 0 35px 90px rgba(0, 0, 0, 0.9);
+      position: relative;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .terms-tab-row {
+      display: flex;
+      gap: 0.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 0.75rem;
+      margin: 1rem 0;
+      overflow-x: auto;
+    }
+
+    .terms-tab-btn {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      padding: 0.45rem 0.85rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    .terms-tab-btn.active {
+      background: rgba(0, 112, 243, 0.12);
+      border-color: var(--accent-blue);
+      color: #3291ff;
+      font-weight: 700;
+    }
+
+    .terms-content-pane {
+      overflow-y: auto;
+      max-height: 55vh;
+      font-family: var(--font-sans);
+      font-size: 0.84rem;
+      line-height: 1.7;
+      color: var(--text-secondary);
+      padding-right: 0.75rem;
+    }
+
+    .terms-content-pane h4 {
+      color: #ffffff;
+      font-size: 0.96rem;
+      font-weight: 700;
+      margin: 1.25rem 0 0.4rem;
+    }
+
+    /* FLOATING SUPPORT BUTTON & DRAWER */
+    .support-floating-btn {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 1050;
+      background: #0d0e12;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--text-primary);
+      font-family: var(--font-mono);
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      padding: 0.65rem 1.1rem;
+      border-radius: 999px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+      transition: all 0.2s ease;
+    }
+
+    .support-floating-btn:hover {
+      background: #14161c;
+      border-color: var(--accent-blue);
+      color: #3291ff;
+      transform: translateY(-2px);
+    }
+
+    .support-status-ping {
+      width: 7px;
+      height: 7px;
+      background: #30d158;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #30d158;
+    }
+
+    .support-modal-card {
+      max-width: 640px;
+      width: 100%;
+      background: #0a0b0e;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 8px;
+      padding: 2rem;
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.9);
+      position: relative;
+      max-height: 92vh;
+      overflow-y: auto;
+    }
+
+    .faq-item {
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+      background: rgba(255, 255, 255, 0.02);
+      overflow: hidden;
+    }
+
+    .faq-question {
+      padding: 0.75rem 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-question:hover {
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .faq-answer {
+      padding: 0 1rem 0.85rem;
+      font-size: 0.8rem;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      display: none;
+    }
+
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+
     /* FOOTER */
     .footer-container {
       padding: 5rem 2.25rem 2.5rem;
@@ -2689,13 +2862,13 @@
 
     .footer-grid {
       display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 3rem;
+      grid-template-columns: 1.8fr 1fr 1fr 1fr;
+      gap: 2.5rem;
       margin-bottom: 3.5rem;
     }
 
-    @media (max-width: 800px) {
-      .footer-grid { grid-template-columns: 1fr; }
+    @media (max-width: 900px) {
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
     }
 
     .footer-bottom {
@@ -2754,7 +2927,7 @@
       <span class="live-indicator">
         <span class="live-dot"></span> LIVE
       </span>
-      <span class="brand-title">THE UNEXPLORED INTERIOR</span>
+      <span class="brand-title">DATUM INTELLIGENCE</span>
       <span class="session-badge">
         <span>TIME:</span> <span id="sessionTimer">00:00:00</span>
       </span>
@@ -2768,8 +2941,9 @@
       <a href="#split-simulator" class="nav-tab-pill" data-nav="split-simulator"><span class="nav-num">05</span> Dual State</a>
       <a href="#benchmark" class="nav-tab-pill" data-nav="benchmark"><span class="nav-num">06</span> Benchmark</a>
       <a href="#lab" class="nav-tab-pill" data-nav="lab"><span class="nav-num">07</span> Visual Lab</a>
-      <a href="#fellowship" class="nav-tab-pill" data-nav="fellowship"><span class="nav-num">08</span> Fellowship</a>
+      <a href="#fellowship" class="nav-tab-pill" data-nav="fellowship"><span class="nav-num">08</span> Pricing</a>
       <a href="#research-archive" class="nav-tab-pill" data-nav="research-archive"><span class="nav-num">09</span> Science</a>
+      <a href="#" id="navSupportBtn" class="nav-tab-pill"><span class="nav-num">10</span> Support</a>
     </nav>
 
     <div class="action-group">
@@ -3571,10 +3745,10 @@
        ========================================================================== -->
   <section class="fellowship-section" id="fellowship">
     <div style="text-align:center; max-width:820px; margin:0 auto;">
-      <div class="section-header-badge">[ COGNITIVE DEFENSE ECOSYSTEM // MEMBERSHIP TIERS ]</div>
-      <h2 class="section-main-title">SCALE YOUR CONSCIOUS AGENCY</h2>
+      <div class="section-header-badge">[ COGNITIVE DEFENSE ECOSYSTEM // ACCESSIBLE RESEARCH TIERS ]</div>
+      <h2 class="section-main-title">MATHEMATICALLY CALIBRATED TIERS</h2>
       <p class="section-subtitle" style="margin:0 auto;">
-        From open-source self-auditing to high-touch executive cognitive defense cohorts. Choose your level of engagement with the consciousness mechanism:
+        Groundbreaking neuroscience should not be gatekept behind corporate retainers. Built on mathematically pure micro-tiers rooted in powers of 3 ($3^2, 3^3, 3^4)—each reducing to numerological 9 (Universal Completion & Mastery). One-time lifetime access with an unconditional 30-day money-back guarantee:
       </p>
     </div>
 
@@ -3582,78 +3756,113 @@
       <!-- TIER 1 -->
       <div class="pricing-card">
         <div>
-          <div class="pricing-tier-name">TIER 01 // OPEN RESEARCH</div>
+          <div class="pricing-tier-name">TIER 01 // OPEN ACCESS</div>
           <div class="pricing-price-val">$0</div>
-          <div class="pricing-price-sub">FOREVER OPEN ACCESS // MIT LICENSE</div>
+          <div class="pricing-price-sub">PERPETUAL PUBLIC ACCESS // MIT LICENSE</div>
 
           <ul class="pricing-feature-list">
-            <li><span class="check">✓</span> 6-Axis Consciousness Phenotype Benchmark</li>
-            <li><span class="check">✓</span> 5 Visual Awareness Empirical Experiments</li>
-            <li><span class="check">✓</span> 40Hz Gamma Auditory Synthesizer</li>
-            <li><span class="check">✓</span> Lifetime Cognitive Debt Calculator</li>
-            <li><span class="check">✓</span> Downloadable Cryptographic Diagnostic Report</li>
+            <li><span class="check">✓</span> 90-Second Rapid Psychophysics Diagnostic</li>
+            <li><span class="check">✓</span> 5 Millisecond Visual Awareness Experiments</li>
+            <li><span class="check">✓</span> 6-Axis Consciousness Phenotype Radar</li>
+            <li><span class="check">✓</span> 528Hz Solfeggio & 40Hz Audio Synthesizer</li>
+            <li><span class="check">✓</span> 100% Client-Side Hardware Compute</li>
           </ul>
         </div>
-        <a href="#benchmark" class="btn-pricing-action btn-pricing-secondary">START SELF-AUDIT FREE →</a>
+        <a href="#benchmark" class="btn-pricing-action btn-pricing-secondary">START FREE DIAGNOSTIC →</a>
       </div>
 
       <!-- TIER 2 -->
-      <div class="pricing-card featured">
-        <div class="featured-pill">MOST POPULAR // SELECTIVE COHORT</div>
+      <div class="pricing-card">
         <div>
-          <div class="pricing-tier-name">TIER 02 // SOVEREIGN FELLOWSHIP</div>
-          <div class="pricing-price-val">$490</div>
-          <div class="pricing-price-sub">8-WEEK INTENSIVE FELLOWSHIP COHORT</div>
+          <div class="pricing-tier-name">TIER 02 // STARTER OPERATOR</div>
+          <div class="pricing-price-val">$9</div>
+          <div class="pricing-price-sub">ONE-TIME (3²) // INDIVIDUAL OPERATOR PASS</div>
 
           <ul class="pricing-feature-list">
             <li><span class="check">✓</span> <strong>Everything in Tier 01, plus:</strong></li>
-            <li><span class="check">✓</span> 8-Week Live Neuro-Phenomenology Masterclasses</li>
-            <li><span class="check">✓</span> Weekly 1-on-1 Metacognitive Hot-Seat Drills</li>
-            <li><span class="check">✓</span> Custom 40Hz EEG Hardware Interfacing Protocol</li>
-            <li><span class="check">✓</span> Private Discord Community of High-Tier Operators</li>
-            <li><span class="check">✓</span> Verified Sovereign Operator Physical ID Credential</li>
+            <li><span class="check">✓</span> Full 5-Paradigm Raw CSV Telemetry Export</li>
+            <li><span class="check">✓</span> Certified SHA-256 Cryptographic Report (PNG)</li>
+            <li><span class="check">✓</span> Unlocked Calibration vs 14,250 Subject Norms</li>
+            <li><span class="check">✓</span> Priority Client Support Desk Ticket Routing</li>
+            <li><span class="check">✓</span> 30-Day 100% Unconditional Money-Back Guarantee</li>
           </ul>
         </div>
-        <button class="btn-pricing-action btn-pricing-primary" id="btnOpenApplyFellowship">APPLY FOR NEXT COHORT →</button>
+        <button class="btn-pricing-action btn-pricing-secondary" id="btnTierStarter">GET OPERATOR PASS ($9) →</button>
       </div>
 
       <!-- TIER 3 -->
-      <div class="pricing-card">
+      <div class="pricing-card featured">
+        <div class="featured-pill">MOST POPULAR // FULL RESEARCH ACCESS</div>
         <div>
-          <div class="pricing-tier-name">TIER 03 // ENTERPRISE DEFENSE</div>
-          <div class="pricing-price-val">$4,800+</div>
-          <div class="pricing-price-sub">FOR FOUNDER, TRADING & ENG TEAMS</div>
+          <div class="pricing-tier-name">TIER 03 // RESEARCHER LIFETIME</div>
+          <div class="pricing-price-val">$27</div>
+          <div class="pricing-price-sub">ONE-TIME (3³) // COMPLETE RESEARCH PASS</div>
 
           <ul class="pricing-feature-list">
-            <li><span class="check">✓</span> <strong>Custom Team Attention Audits & Telemetry</strong></li>
-            <li><span class="check">✓</span> On-Site / Remote Executive Cognitive Workshops</li>
-            <li><span class="check">✓</span> Custom Company Cognitive Operating Manual</li>
-            <li><span class="check">✓</span> P3b Ignition Latency Benchmarking Dashboard</li>
-            <li><span class="check">✓</span> Direct Access to Lead Neuro-Philosophers</li>
-            <li><span class="check">✓</span> SLA & Dedicated Corporate Account Support</li>
+            <li><span class="check">✓</span> <strong>Everything in Tier 02, plus:</strong></li>
+            <li><span class="check">✓</span> Complete 8-Week Neuro-Phenomenology Syllabus</li>
+            <li><span class="check">✓</span> 16-Page Turnkey Enterprise Attention Dossier</li>
+            <li><span class="check">✓</span> Tononi IIT 4.0 Dual-Engine Tensor (WebGPU + CPU)</li>
+            <li><span class="check">✓</span> Monastic Morning Focus Protocol SLA Guides</li>
+            <li><span class="check">✓</span> Uncapped Lifetime Platform Updates & Models</li>
+            <li><span class="check">✓</span> 30-Day 100% Unconditional Money-Back Guarantee</li>
           </ul>
         </div>
-        <button class="btn-pricing-action btn-pricing-secondary" id="btnOpenApplyEnterprise">BOOK ENTERPRISE AUDIT →</button>
-        <button class="btn-pricing-action btn-pricing-secondary" id="btnOpenEnterpriseDossierPricing" style="margin-top:0.5rem; font-size:0.75rem;">INSPECT 16-PAGE SAMPLE AUDIT DOSSIER →</button>
+        <button class="btn-pricing-action btn-pricing-primary" id="btnTierResearcher">UNLOCK RESEARCHER PASS ($27) →</button>
+      </div>
+
+      <!-- TIER 4 -->
+      <div class="pricing-card">
+        <div>
+          <div class="pricing-tier-name">TIER 04 // LAB & TEAM PACK</div>
+          <div class="pricing-price-val">$81</div>
+          <div class="pricing-price-sub">ONE-TIME (3⁴) // 10 SEATS FOR LABS & TEAMS</div>
+
+          <ul class="pricing-feature-list">
+            <li><span class="check">✓</span> <strong>Everything in Tier 03 for up to 10 Seats</strong></li>
+            <li><span class="check">✓</span> Team Attention Fragmentation Calculator Model</li>
+            <li><span class="check">✓</span> Institutional License for Labs & Engineering Teams</li>
+            <li><span class="check">✓</span> Multi-Seat Cryptographic Verification & Export</li>
+            <li><span class="check">✓</span> Direct Technical & Protocol Integration SLA</li>
+            <li><span class="check">✓</span> 30-Day 100% Unconditional Money-Back Guarantee</li>
+          </ul>
+        </div>
+        <button class="btn-pricing-action btn-pricing-secondary" id="btnTierLab">GET LAB TEAM PACK ($81) →</button>
+      </div>
+    </div>
+
+    <!-- 30-DAY MONEY BACK GUARANTEE & TRUST BAR -->
+    <div class="pricing-guarantee-bar">
+      <div class="pricing-guarantee-item">
+        <span class="icon">✓</span>
+        <span><strong>30-Day 100% Money-Back Guarantee:</strong> Zero risk. Full refund upon ticket or email request, no questions asked.</span>
+      </div>
+      <div class="pricing-guarantee-item">
+        <span class="icon">✓</span>
+        <span><strong>100% Client-Side Privacy:</strong> Zero surveillance, zero telemetry tracking, zero marketing cookies.</span>
+      </div>
+      <div class="pricing-guarantee-item">
+        <span class="icon">✓</span>
+        <span><strong>Numerological Pricing:</strong> Powers of 3 ($3^2=9, 3^3=27, 3^4=81$) reducing to 9 (Universal Completion & Sovereignty).</span>
       </div>
     </div>
 
     <!-- ==========================================================================
-         A. 8-WEEK SOVEREIGN FELLOWSHIP MASTERCLASS SYLLABUS ($490 COHORT VALUE)
+         A. 8-WEEK SOVEREIGN RESEARCH MASTERCLASS SYLLABUS (INCLUDED IN TIER 03 $27 PASS)
          ========================================================================== -->
     <div class="syllabus-wrapper" id="curriculum">
       <div class="syllabus-header-row">
         <div>
-          <div class="section-header-badge">[ COHORT ADMISSIONS // 8-WEEK RIGOROUS SYLLABUS ]</div>
+          <div class="section-header-badge">[ RESEARCH SYLLABUS // 8-WEEK RIGOROUS CURRICULUM ]</div>
           <h3 style="font-size: clamp(1.6rem, 2.5vw, 2.2rem); font-weight:900; letter-spacing:-0.025em; margin:0.4rem 0 0.5rem;">
-            THE NEURO-PHENOMENOLOGY FELLOWSHIP SYLLABUS
+            THE NEURO-PHENOMENOLOGY RESEARCH SYLLABUS
           </h3>
           <p style="color:var(--text-secondary); font-size:0.88rem; max-width:680px; line-height:1.6;">
-            A rigorous 8-week immersion into computational neuroscience, mathematical integrated information theory, and radical attentional defense. Each module couples peer-reviewed foundational literature with active laboratory compute.
+            A rigorous 8-week immersion into computational neuroscience, mathematical integrated information theory, and radical attentional defense. Included with the $27 Researcher Lifetime Pass.
           </p>
         </div>
         <div style="font-family:var(--font-mono); font-size:0.7rem; color:var(--accent-blue); letter-spacing:0.06em;">
-          [ LIMITED TO 12 FELLOWS PER COHORT ]
+          [ INCLUDED IN $27 RESEARCHER PASS ]
         </div>
       </div>
 
@@ -4298,40 +4507,297 @@
             DOWNLOAD SAMPLE MEMO (PNG) ↓
           </button>
           <button class="btn-pricing-action btn-pricing-primary" id="btnBookFromDossier" style="padding:0.55rem 1.25rem; font-size:0.76rem;">
-            BOOK 30-SEAT ENTERPRISE AUDIT ($4,800) →
+            INQUIRE FOR LAB TEAM PACK ($81) OR CUSTOM AUDIT →
           </button>
         </div>
       </div>
     </div>
   </div>
 
+  <!-- ==========================================================================
+       15. COMPREHENSIVE LEGAL & SCIENTIFIC TERMS MODAL
+       ========================================================================== -->
+  <div class="apply-modal-backdrop" id="termsModal">
+    <div class="terms-modal-card">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <div>
+          <div class="section-header-badge">[ GOVERNANCE // LEGAL & SCIENTIFIC INTEGRITY ]</div>
+          <h3 style="font-size:1.35rem; font-weight:900; margin:0.3rem 0 0.15rem;">DatumIntelligence Governance & Policies</h3>
+          <p style="font-size:0.78rem; color:var(--text-secondary); margin:0;">
+            100% offline client-side computation · Transparent non-clinical empirical research standards
+          </p>
+        </div>
+        <button class="btn-minimal" id="btnCloseTermsModal" style="padding:0.35rem 0.75rem; font-family:var(--font-mono); font-size:0.75rem;">✕ [ESC]</button>
+      </div>
+
+      <!-- TABS -->
+      <div class="terms-tab-row">
+        <button class="terms-tab-btn active" data-tab="terms">TERMS OF SERVICE</button>
+        <button class="terms-tab-btn" data-tab="privacy">OFFLINE PRIVACY POLICY</button>
+        <button class="terms-tab-btn" data-tab="disclaimer">SCIENTIFIC & NON-CLINICAL DISCLAIMER</button>
+        <button class="terms-tab-btn" data-tab="refund">30-DAY MONEY-BACK GUARANTEE</button>
+      </div>
+
+      <!-- CONTENT PANES -->
+      <div class="terms-content-pane" id="termsContentPane">
+        <!-- 1. TERMS OF SERVICE -->
+        <div class="terms-pane-item" id="pane-terms">
+          <h4>1. Acceptance of Terms & Open Research Mandate</h4>
+          <p>
+            By accessing or utilizing DatumIntelligence ("the Platform", "we", "us"), you agree to be bound by these Terms of Service. DatumIntelligence is an empirical cognitive neuroscience and psychophysics self-auditing tool created to advance phenomenological literacy, human attentional defense, and open computational neuroscience.
+          </p>
+          <h4>2. Permissible Use & Intellectual Property</h4>
+          <p>
+            The core psychophysics paradigms, experimental visual scripts, and baseline mathematical formulas are licensed under the MIT Open Source License. Proprietary pedagogical monographs, custom syllabus curriculum, and structured 16-page audit templates provided in paid passes ($9 Starter Operator, $27 Researcher Lifetime, $81 Lab Team Pack) are licensed for personal, educational, and internal laboratory research use. Commercial re-distribution or deceptive repackaging as clinical medical software is strictly prohibited.
+          </p>
+          <h4>3. Computational Integrity & Local Execution</h4>
+          <p>
+            All computations (including WebGPU/WGSL tensor cuts, 1,000Hz millisecond reaction telemetry, and Tononi IIT 4.0 bipartitions) execute purely on the user's local hardware. You agree not to reverse-engineer client protection keys for malicious exploitation or disrupt the platform's distributed integrity.
+          </p>
+          <h4>4. Limitation of Liability</h4>
+          <p>
+            DatumIntelligence and its contributors shall not be held liable for any damages, whether direct, indirect, incidental, or consequential, resulting from your use of the platform, your personal cognitive self-evaluations, or your implementation of attentional lifestyle adjustments.
+          </p>
+        </div>
+
+        <!-- 2. OFFLINE PRIVACY POLICY -->
+        <div class="terms-pane-item" id="pane-privacy" style="display:none;">
+          <h4>1. Radical 100% Client-Side Privacy Standard</h4>
+          <p>
+            We believe mental sovereignty begins with computational privacy. DatumIntelligence does NOT transmit your psychometric scores, visual reaction times, eye gaze fixations, or cognitive phenotype telemetry to any external server, cloud database, analytics engine, or marketing vendor.
+          </p>
+          <h4>2. Zero Tracking Cookies & Zero Telemetry Beacons</h4>
+          <p>
+            This website deploys zero tracking pixels, zero Google/Meta/TikTok ad tags, zero user fingerprinting beacons, and zero surveillance cookies. All session state is ephemeral and retained purely inside your browser's local memory (localStorage and volatile RAM) on your machine.
+          </p>
+          <h4>3. Local Export Verification</h4>
+          <p>
+            When you export your diagnostic reports or CSV datasets, the files are synthesized on-the-fly using HTML5 Canvas (toDataURL) and Blob APIs on your GPU/CPU. The resulting cryptographic SHA-256 signatures are generated locally to confirm timestamp integrity without external data sharing.
+          </p>
+          <h4>4. Contact Inquiries</h4>
+          <p>
+            If you submit a support ticket via our Client Support Desk, only the information you explicitly provide (your name, email, and inquiry text) is transmitted solely for the purpose of answering your inquiry. We never sell, rent, or monetize inquiry information.
+          </p>
+        </div>
+
+        <!-- 3. SCIENTIFIC & NON-CLINICAL DISCLAIMER -->
+        <div class="terms-pane-item" id="pane-disclaimer" style="display:none;">
+          <h4>1. Empirical Cognitive Research Instrument Only</h4>
+          <p>
+            DatumIntelligence is an educational, philosophical, and empirical psychophysics self-investigation platform. It implements classic peer-reviewed visual awareness paradigms (including Rensink Flicker, Troxler Foveal Fading, Motion-Induced Blindness, Continuous Flash Suppression, and Chronostasis) alongside mathematical formulations from Tononi IIT 4.0 and Dehaene Global Neuronal Workspace.
+          </p>
+          <h4>2. Not Medical, Clinical, or Psychiatric Advice</h4>
+          <p>
+            THE PLATFORM, TESTS, METRICS, PHENOTYPIC CLASSIFICATIONS, AND PROTOCOLS DO NOT CONSTITUTE MEDICAL ADVICE, CLINICAL DIAGNOSES, OR NEUROPSYCHIATRIC EVALUATIONS. They are not cleared by the FDA or any medical regulatory authority to diagnose, prevent, monitor, or treat ADHD, anxiety disorders, clinical depression, traumatic brain injury, or visual-neurological pathologies.
+          </p>
+          <h4>3. Sensory Precaution Notice (Photosensitivity Warning)</h4>
+          <p>
+            Certain visual awareness experiments feature alternating flicker, motion patterns, and high-contrast luminance shifts. Individuals with photosensitive epilepsy, history of seizures, or severe migraines should exercise caution or avoid high-frequency visual paradigms.
+          </p>
+          <h4>4. Professional Consultation Mandate</h4>
+          <p>
+            If you are experiencing severe cognitive impairment, chronic attention deficits, sleep disturbances, or psychological distress, please consult a licensed physician, clinical neurologist, or qualified mental healthcare professional.
+          </p>
+        </div>
+
+        <!-- 4. 30-DAY MONEY-BACK GUARANTEE -->
+        <div class="terms-pane-item" id="pane-refund" style="display:none;">
+          <h4>1. 30-Day 100% Unconditional Money-Back Guarantee</h4>
+          <p>
+            We stand completely behind the scientific depth, mathematical rigor, and tangible utility of DatumIntelligence. If within 30 calendar days of purchasing any paid pass ($9 Starter Operator, $27 Researcher Lifetime, or $81 Lab Team Pack) you feel the materials did not deliver exceptional value, we will issue a 100% full refund.
+          </p>
+          <h4>2. No Interrogation, No Friction</h4>
+          <p>
+            You are not required to provide exhaustive justification, jump through bureaucratic hoops, or complete exit surveys. Simply open our Support Desk (or email support@datumintelligence.com) with your transaction email or ticket ID, and our team will immediately process your refund.
+          </p>
+          <h4>3. Reversal Processing Time</h4>
+          <p>
+            Refunds are credited back to the original method of payment within 3 to 5 business days, subject to your banking institution's standard settlement timelines.
+          </p>
+          <h4>4. Continued Access to Open Research</h4>
+          <p>
+            Even after receiving a refund, you retain full, permanent access to Tier 01 Open Research, the 90-second psychophysics diagnostic engine, all 5 visual experiments, and our public scientific archive.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       16. CLIENT SUPPORT & INQUIRY DESK MODAL
+       ========================================================================== -->
+  <div class="apply-modal-backdrop" id="supportModal">
+    <div class="support-modal-card">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1.25rem;">
+        <div>
+          <div class="section-header-badge">[ CLIENT DESK // SUPPORT & SCIENTIFIC INQUIRY ]</div>
+          <h3 style="font-size:1.35rem; font-weight:900; margin:0.3rem 0 0.15rem;">DatumIntelligence Client Desk</h3>
+          <p style="font-size:0.78rem; color:var(--text-secondary); margin:0;">
+            Direct technical assistance, 30-day refund requests, and academic laboratory licensing
+          </p>
+        </div>
+        <button class="btn-minimal" id="btnCloseSupportModal" style="padding:0.35rem 0.75rem; font-family:var(--font-mono); font-size:0.75rem;">✕ [ESC]</button>
+      </div>
+
+      <!-- FREQUENTLY ASKED QUESTIONS ACCORDION -->
+      <div style="margin-bottom:1.5rem;">
+        <div style="font-family:var(--font-mono); font-size:0.68rem; color:var(--accent-blue); letter-spacing:0.06em; margin-bottom:0.75rem;">
+          [ FREQUENTLY ASKED QUESTIONS // VERIFIED STANDARDS ]
+        </div>
+
+        <div class="faq-item open">
+          <div class="faq-question">
+            <span>01. How does DatumIntelligence guarantee 100% data privacy?</span>
+            <span class="faq-toggle">−</span>
+          </div>
+          <div class="faq-answer">
+            Every visual awareness test, reaction time telemetry, and IIT 4.0 tensor calculation runs exclusively in your browser via local JavaScript and WebGPU. Zero telemetry is sent to any cloud server, and zero tracking cookies exist on this platform.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>02. What is the scientific basis of the 90-second psychophysics diagnostic?</span>
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            The diagnostic directly measures millisecond sensory-motor thresholds (saccadic temporal blanking, foveal Troxler fading, and motor response time variability) calibrated against empirical normative baselines (N=14,250) from published literature (Rensink, Posner, Troxler).
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>03. What is the numerology rationale behind $9 / $27 / $81?</span>
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            Pricing is calibrated on powers of 3 ($3^2=9, 3^3=27, 3^4=81$). In classical numerology, every tier reduces to digital root 9 (Universal Completion & Mental Sovereignty), eliminating predatory enterprise markups while providing accessible one-time lifetime access.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>04. How do I claim the 30-Day 100% Money-Back Guarantee?</span>
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            You can claim an immediate, unconditional 100% refund within 30 days by submitting a ticket below (selecting "Billing & 30-Day Refund") or emailing support@datumintelligence.com. We require no justification and process reversals within 24 business hours.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <span>05. Can university labs or engineering teams integrate DatumIntelligence?</span>
+            <span class="faq-toggle">+</span>
+          </div>
+          <div class="faq-answer">
+            Yes. The Tier 04 Lab Team Pack ($81) grants 10 team seats, the 16-page attention fragmentation audit framework, and raw CSV telemetry export capabilities for group psychophysics and engineering cognitive defense.
+          </div>
+        </div>
+      </div>
+
+      <!-- INQUIRY / TICKET SUBMISSION FORM -->
+      <div style="border-top:1px solid rgba(255,255,255,0.1); padding-top:1.25rem;">
+        <div style="font-family:var(--font-mono); font-size:0.68rem; color:var(--accent-blue); letter-spacing:0.06em; margin-bottom:0.75rem;">
+          [ SUBMIT DIRECT CLIENT INQUIRY // SLA &lt; 24H ]
+        </div>
+
+        <form id="supportTicketForm">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.75rem; margin-bottom:0.75rem;">
+            <div>
+              <label style="font-family:var(--font-mono); font-size:0.65rem; color:var(--text-muted); text-transform:uppercase;">FULL NAME</label>
+              <input type="text" id="ticketName" class="apply-input" placeholder="e.g. Dr. Jordan Vance" required style="margin:0.25rem 0 0;">
+            </div>
+            <div>
+              <label style="font-family:var(--font-mono); font-size:0.65rem; color:var(--text-muted); text-transform:uppercase;">EMAIL ADDRESS</label>
+              <input type="email" id="ticketEmail" class="apply-input" placeholder="e.g. j.vance@lab.edu" required style="margin:0.25rem 0 0;">
+            </div>
+          </div>
+
+          <div style="margin-bottom:0.75rem;">
+            <label style="font-family:var(--font-mono); font-size:0.65rem; color:var(--text-muted); text-transform:uppercase;">INQUIRY CATEGORY</label>
+            <select id="ticketCategory" class="apply-input" style="margin:0.25rem 0 0; background:#0d0e12; color:var(--text-primary);">
+              <option value="technical">Technical & Hardware Calibration Support</option>
+              <option value="billing">Billing & 30-Day Money-Back Refund Request</option>
+              <option value="lab">Academic Laboratory & Engineering Team Integration ($81)</option>
+              <option value="methodology">Scientific Verification & Research Methodology</option>
+            </select>
+          </div>
+
+          <div style="margin-bottom:1rem;">
+            <label style="font-family:var(--font-mono); font-size:0.65rem; color:var(--text-muted); text-transform:uppercase;">MESSAGE / INQUIRY DETAILS</label>
+            <textarea id="ticketMessage" class="apply-input" rows="3" placeholder="Describe your question or provide transaction details..." required style="margin:0.25rem 0 0; resize:vertical;"></textarea>
+          </div>
+
+          <button type="submit" class="btn-pricing-action btn-pricing-primary" style="width:100%; padding:0.8rem; font-size:0.76rem;">
+            SUBMIT SUPPORT TICKET →
+          </button>
+        </form>
+
+        <div id="supportSuccessCard" style="display:none; background:rgba(48,209,88,0.06); border:1px solid rgba(48,209,88,0.3); border-radius:6px; padding:1.25rem; margin-top:1rem;">
+          <div style="font-family:var(--font-mono); font-size:0.68rem; color:#30d158; font-weight:800; margin-bottom:0.35rem;">
+            ✓ TICKET SUBMITTED SUCCESSFULLY // SLA ACTIVE
+          </div>
+          <div style="font-size:0.86rem; color:var(--text-primary); margin-bottom:0.5rem;">
+            Ticket Reference: <strong id="supportTicketRef" style="font-family:var(--font-mono); color:#3291ff;">DI-TICKET-8X4N9</strong>
+          </div>
+          <p style="font-size:0.78rem; color:var(--text-secondary); line-height:1.5; margin:0 0 0.75rem;">
+            A confirmation receipt has been dispatched. Our scientific and customer support team responds within 24 business hours. If immediate follow-up is required, contact us directly at <a href="mailto:support@datumintelligence.com" style="color:var(--accent-blue); text-decoration:underline;">support@datumintelligence.com</a>.
+          </p>
+          <button class="btn-minimal" id="btnResetSupportForm" style="font-size:0.72rem; padding:0.35rem 0.75rem;">
+            ← SUBMIT ANOTHER INQUIRY
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLOATING SUPPORT BUTTON -->
+  <button class="support-floating-btn" id="btnFloatingSupport" aria-label="Open Client Support Desk">
+    <span class="support-status-ping"></span>
+    <span>[?] SUPPORT DESK</span>
+  </button>
+
   <!-- FOOTER -->
   <footer class="footer-container">
     <div class="footer-grid">
       <div>
-        <div style="font-weight:900; font-size:1.1rem; margin-bottom:0.5rem;">THE UNEXPLORED INTERIOR</div>
-        <p style="color:var(--text-muted); line-height:1.6; max-width:480px;">
-          An open-access cognitive neuroscience platform and visual diagnostic engine created to reclaim human attentional sovereignty and phenomenological literacy.
+        <div style="font-weight:900; font-size:1.1rem; margin-bottom:0.5rem; letter-spacing:-0.02em;">DATUM INTELLIGENCE</div>
+        <p style="color:var(--text-muted); line-height:1.6; max-width:440px; margin-bottom:1rem;">
+          An open-access cognitive neuroscience platform and visual diagnostic engine created to reclaim human attentional sovereignty, empirical psychophysics calibration, and phenomenological literacy.
         </p>
+        <div style="font-size:0.7rem; color:var(--accent-emerald);">
+          ✓ 100% Client-Side Hardware Compute · Zero Tracking Cookies · MIT Licensed
+        </div>
       </div>
       <div>
-        <div style="color:var(--text-dim); margin-bottom:0.5rem;">COGNITIVE FRAMEWORKS</div>
-        <div>GLOBAL WORKSPACE THEORY</div>
-        <div>INTEGRATED INFORMATION THEORY</div>
-        <div>PREDICTIVE PROCESSING & FEP</div>
-        <div>HIGHER-ORDER THOUGHT THEORY</div>
+        <div style="color:var(--text-dim); margin-bottom:0.75rem; font-weight:700;">COGNITIVE FRAMEWORKS</div>
+        <div style="margin-bottom:0.4rem;">GLOBAL WORKSPACE THEORY (GNW)</div>
+        <div style="margin-bottom:0.4rem;">INTEGRATED INFORMATION THEORY (IIT 4.0)</div>
+        <div style="margin-bottom:0.4rem;">PREDICTIVE PROCESSING & FEP</div>
+        <div style="margin-bottom:0.4rem;">HIGHER-ORDER THOUGHT THEORY</div>
+        <div>MILLISECOND PSYCHOPHYSICS NORMS</div>
       </div>
       <div>
-        <div style="color:var(--text-dim); margin-bottom:0.5rem;">COMMUNITY & RESEARCH</div>
-        <div><a href="https://github.com/aigroupchathq/consciousness-mechanism" style="color:var(--text-primary); text-decoration:underline;">GITHUB REPOSITORY</a></div>
-        <div><a href="https://aigroupchathq.github.io/consciousness-mechanism/" style="color:var(--text-primary); text-decoration:underline;">LIVE WEB APP</a></div>
-        <div>OPEN ACCESS MIT LICENSE</div>
+        <div style="color:var(--text-dim); margin-bottom:0.75rem; font-weight:700;">GOVERNANCE & TRUST</div>
+        <div style="margin-bottom:0.4rem;"><a href="#terms" id="linkFooterTerms" style="color:var(--text-primary); text-decoration:none;">TERMS OF SERVICE →</a></div>
+        <div style="margin-bottom:0.4rem;"><a href="#privacy" id="linkFooterPrivacy" style="color:var(--text-primary); text-decoration:none;">OFFLINE PRIVACY POLICY →</a></div>
+        <div style="margin-bottom:0.4rem;"><a href="#disclaimer" id="linkFooterDisclaimer" style="color:var(--text-primary); text-decoration:none;">SCIENTIFIC DISCLAIMER →</a></div>
+        <div style="margin-bottom:0.4rem;"><a href="#refund" id="linkFooterRefund" style="color:var(--accent-emerald); text-decoration:none;">30-DAY REFUND GUARANTEE →</a></div>
+        <div><a href="#support" id="linkFooterSupport" style="color:var(--accent-blue); text-decoration:none;">CLIENT SUPPORT DESK →</a></div>
+      </div>
+      <div>
+        <div style="color:var(--text-dim); margin-bottom:0.75rem; font-weight:700;">COMMUNITY & CODE</div>
+        <div style="margin-bottom:0.4rem;"><a href="https://github.com/aigroupchathq/consciousness-mechanism" target="_blank" rel="noopener noreferrer" style="color:var(--text-primary); text-decoration:underline;">GITHUB REPOSITORY</a></div>
+        <div style="margin-bottom:0.4rem;"><a href="https://aigroupchathq.github.io/consciousness-mechanism/" target="_blank" rel="noopener noreferrer" style="color:var(--text-primary); text-decoration:underline;">LIVE PRODUCTION WEB APP</a></div>
+        <div style="margin-bottom:0.4rem;">OPEN ACCESS MIT LICENSE</div>
+        <div>SHA-256 INTEGRITY RATIFIED</div>
       </div>
     </div>
 
     <div class="footer-bottom">
-      <div>© 2026 THE UNEXPLORED INTERIOR. ALL COGNITIVE METRICS OPEN SOURCE.</div>
-      <div>TRANSMISSION VERIFIED // 0xSOVEREIGNTY</div>
+      <div>© 2026 DATUM INTELLIGENCE. ALL COGNITIVE METRICS OPEN SOURCE & CLIENT-SIDE CERTIFIED.</div>
+      <div>TRANSMISSION VERIFIED // 0xSOVEREIGNTY // NUMEROLOGICAL HARMONY 9</div>
     </div>
   </footer>
 
@@ -5083,7 +5549,7 @@
     }
 
     // ==========================================================================
-    // THE UNEXPLORED INTERIOR // REAL-TIME IIT 4.0 WEBGPU & WORKER TENSOR ENGINE
+    // DATUM INTELLIGENCE // REAL-TIME IIT 4.0 WEBGPU & WORKER TENSOR ENGINE
     // Tononi & Albantakis Earth Mover's Distance (Wasserstein-1) over Hamming Space
     // ==========================================================================
     const IIT4_WGSL_SOURCE = `
@@ -6796,7 +7262,7 @@ self.onmessage = function(e) {
 
           ctx.fillStyle = "#ffffff";
           ctx.font = "900 44px sans-serif";
-          ctx.fillText("THE UNEXPLORED INTERIOR", cx, cy - 10);
+          ctx.fillText("DATUM INTELLIGENCE", cx, cy - 10);
 
           ctx.fillStyle = "#a8a29e";
           ctx.font = "italic 19px serif";
@@ -7462,27 +7928,38 @@ self.onmessage = function(e) {
         });
       });
 
-      // Fellowship & Enterprise Application Modal Handlers
+      // Membership Tier Modal Handlers ($9, $27, $81)
       const applyModal = document.getElementById('applyModal');
-      const btnOpenFellowship = document.getElementById('btnOpenApplyFellowship');
-      const btnOpenEnterprise = document.getElementById('btnOpenApplyEnterprise');
+      const btnTierStarter = document.getElementById('btnTierStarter');
+      const btnTierResearcher = document.getElementById('btnTierResearcher');
+      const btnTierLab = document.getElementById('btnTierLab');
       const btnCloseApply = document.getElementById('btnCloseApplyModal');
 
-      if (btnOpenFellowship) {
-        btnOpenFellowship.addEventListener('click', () => {
-          document.getElementById('modalTierBadge').innerText = "[ FELLOWSHIP ADMISSION // COHORT 08 ]";
-          document.getElementById('modalTierTitle').innerText = "Apply for Sovereign Mind Fellowship ($490)";
-          document.getElementById('modalTierDesc').innerText = "Join an elite 8-week cohort of founders, researchers, and high-agency operators reclaiming their attentional sovereignty.";
+      if (btnTierStarter) {
+        btnTierStarter.addEventListener('click', () => {
+          document.getElementById('modalTierBadge').innerText = "[ OPERATOR PASS // ONE-TIME $9 (3²) ]";
+          document.getElementById('modalTierTitle').innerText = "Activate Starter Operator Pass ($9)";
+          document.getElementById('modalTierDesc').innerText = "One-time $9 license (numerological 9). Full 5-paradigm CSV telemetry export, certified SHA-256 report, and unlocked 14,250 normative database access. 30-day money-back guarantee.";
           applyModal.classList.add('active');
           audio.playChime(700);
         });
       }
 
-      if (btnOpenEnterprise) {
-        btnOpenEnterprise.addEventListener('click', () => {
-          document.getElementById('modalTierBadge').innerText = "[ ENTERPRISE INQUIRY // COGNITIVE DEFENSE ]";
-          document.getElementById('modalTierTitle').innerText = "Book Enterprise Cognitive Defense Audit ($4,800+)";
-          document.getElementById('modalTierDesc').innerText = "Custom team attentional audits, executive workshops, and latency benchmarking dashboards for technical leadership teams.";
+      if (btnTierResearcher) {
+        btnTierResearcher.addEventListener('click', () => {
+          document.getElementById('modalTierBadge').innerText = "[ RESEARCHER PASS // ONE-TIME $27 (3³) ]";
+          document.getElementById('modalTierTitle').innerText = "Unlock Researcher Lifetime Pass ($27)";
+          document.getElementById('modalTierDesc').innerText = "One-time $27 license (numerological 9). Full 8-week syllabus, 16-page enterprise dossier, Tononi IIT 4.0 dual-engine tensor access, and 30-day money-back guarantee.";
+          applyModal.classList.add('active');
+          audio.playChime(700);
+        });
+      }
+
+      if (btnTierLab) {
+        btnTierLab.addEventListener('click', () => {
+          document.getElementById('modalTierBadge').innerText = "[ LAB & TEAM PACK // ONE-TIME $81 (3⁴) ]";
+          document.getElementById('modalTierTitle').innerText = "Activate Lab & Team Pack ($81)";
+          document.getElementById('modalTierDesc').innerText = "One-time $81 license (numerological 9) for up to 10 team seats, team attention fragmentation calculator, and institutional SLA. 30-day money-back guarantee.";
           applyModal.classList.add('active');
           audio.playChime(700);
         });
@@ -7599,7 +8076,7 @@ self.onmessage = function(e) {
         badgeEl.innerText = percentileTxt;
 
         // Twitter Share Link
-        const shareTxt = encodeURIComponent(`I just calibrated my consciousness architecture on The Unexplored Interior.\n\nPhenotype: ${phenotypeName}\nIntegrated Φ: ${phi} bits\nP3b Ignition: ${latency}ms\n\nRun your neural calibration benchmark: https://aigroupchathq.github.io/consciousness-mechanism/`);
+        const shareTxt = encodeURIComponent(`I just calibrated my consciousness architecture on DatumIntelligence.\n\nPhenotype: ${phenotypeName}\nIntegrated Φ: ${phi} bits\nP3b Ignition: ${latency}ms\n\nRun your neural calibration benchmark: https://aigroupchathq.github.io/consciousness-mechanism/`);
         document.getElementById('btnShareTwitter').href = `https://twitter.com/intent/tweet?text=${shareTxt}`;
       }
 
@@ -7668,7 +8145,7 @@ self.onmessage = function(e) {
 
         octx.fillStyle = "#ffffff";
         octx.font = "900 34px sans-serif";
-        octx.fillText("THE UNEXPLORED INTERIOR", 60, 120);
+        octx.fillText("DATUM INTELLIGENCE", 60, 120);
 
         octx.fillStyle = "rgba(255, 255, 255, 0.45)";
         octx.font = "12px ui-monospace, SFMono-Regular, monospace";
@@ -8096,9 +8573,9 @@ self.onmessage = function(e) {
           closeDossierModal();
           const appModal = document.getElementById('applyModal');
           if (appModal) {
-            document.getElementById('modalTierBadge').innerText = "[ ENTERPRISE INQUIRY // COGNITIVE DEFENSE ]";
-            document.getElementById('modalTierTitle').innerText = "Book Enterprise Cognitive Defense Audit ($4,800+)";
-            document.getElementById('modalTierDesc').innerText = "Custom team attentional audits, executive workshops, and latency benchmarking dashboards for technical leadership teams.";
+            document.getElementById('modalTierBadge').innerText = "[ LAB & TEAM INQUIRY // TIER 04 ]";
+            document.getElementById('modalTierTitle').innerText = "Inquire for Lab Team Pack ($81) or Custom Audit";
+            document.getElementById('modalTierDesc').innerText = "Multi-seat cognitive calibration, team attention fragmentation audit, and institutional integration.";
             appModal.classList.add('active');
           }
         });
@@ -8138,12 +8615,129 @@ self.onmessage = function(e) {
 
           octx.fillStyle = "#3291ff";
           octx.font = "bold 12px ui-monospace, SFMono-Regular, monospace";
-          octx.fillText("TURNKEY 30-SEAT AUDIT & ENGAGEMENT FEE: $4,800 USD", 60, 370);
+          octx.fillText("TURNKEY LAB TEAM PACK: $81 USD (10 SEATS) // CUSTOM AUDIT ON REQUEST", 60, 370);
 
           const link = document.createElement('a');
           link.download = `SAMPLE_ATTENTION_DOSSIER_MEMO_${Date.now()}.png`;
           link.href = offCanvas.toDataURL('image/png');
           link.click();
+        });
+      }
+
+      // ==========================================================================
+      // 15. TERMS & POLICIES MODAL CONTROLLER
+      // ==========================================================================
+      const termsModal = document.getElementById('termsModal');
+      const btnCloseTerms = document.getElementById('btnCloseTermsModal');
+
+      function openTermsModal(tabName = 'terms') {
+        if (!termsModal) return;
+        termsModal.classList.add('active');
+        switchTermsTab(tabName);
+        audio.playChime(528);
+      }
+
+      function closeTermsModal() {
+        if (termsModal) termsModal.classList.remove('active');
+      }
+
+      function switchTermsTab(tabName) {
+        document.querySelectorAll('.terms-tab-btn').forEach(btn => {
+          if (btn.getAttribute('data-tab') === tabName) btn.classList.add('active');
+          else btn.classList.remove('active');
+        });
+
+        document.querySelectorAll('.terms-pane-item').forEach(pane => {
+          if (pane.id === `pane-${tabName}`) pane.style.display = 'block';
+          else pane.style.display = 'none';
+        });
+      }
+
+      document.querySelectorAll('.terms-tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const tab = btn.getAttribute('data-tab');
+          switchTermsTab(tab);
+          audio.playChime(480);
+        });
+      });
+
+      if (btnCloseTerms) btnCloseTerms.addEventListener('click', closeTermsModal);
+
+      const linkFooterTerms = document.getElementById('linkFooterTerms');
+      if (linkFooterTerms) linkFooterTerms.addEventListener('click', (e) => { e.preventDefault(); openTermsModal('terms'); });
+
+      const linkFooterPrivacy = document.getElementById('linkFooterPrivacy');
+      if (linkFooterPrivacy) linkFooterPrivacy.addEventListener('click', (e) => { e.preventDefault(); openTermsModal('privacy'); });
+
+      const linkFooterDisclaimer = document.getElementById('linkFooterDisclaimer');
+      if (linkFooterDisclaimer) linkFooterDisclaimer.addEventListener('click', (e) => { e.preventDefault(); openTermsModal('disclaimer'); });
+
+      const linkFooterRefund = document.getElementById('linkFooterRefund');
+      if (linkFooterRefund) linkFooterRefund.addEventListener('click', (e) => { e.preventDefault(); openTermsModal('refund'); });
+
+      // ==========================================================================
+      // 16. CLIENT SUPPORT & INQUIRY DESK CONTROLLER
+      // ==========================================================================
+      const supportModal = document.getElementById('supportModal');
+      const btnCloseSupport = document.getElementById('btnCloseSupportModal');
+      const btnFloatingSupport = document.getElementById('btnFloatingSupport');
+      const navSupportBtn = document.getElementById('navSupportBtn');
+      const linkFooterSupport = document.getElementById('linkFooterSupport');
+
+      function openSupportModal() {
+        if (!supportModal) return;
+        supportModal.classList.add('active');
+        audio.playChime(560);
+      }
+
+      function closeSupportModal() {
+        if (supportModal) supportModal.classList.remove('active');
+      }
+
+      if (btnFloatingSupport) btnFloatingSupport.addEventListener('click', openSupportModal);
+      if (navSupportBtn) navSupportBtn.addEventListener('click', (e) => { e.preventDefault(); openSupportModal(); });
+      if (linkFooterSupport) linkFooterSupport.addEventListener('click', (e) => { e.preventDefault(); openSupportModal(); });
+      if (btnCloseSupport) btnCloseSupport.addEventListener('click', closeSupportModal);
+
+      // Support FAQ Accordion
+      document.querySelectorAll('.faq-question').forEach(q => {
+        q.addEventListener('click', () => {
+          const item = q.closest('.faq-item');
+          if (!item) return;
+          const isOpen = item.classList.contains('open');
+          item.classList.toggle('open');
+          const toggleSpan = q.querySelector('.faq-toggle');
+          if (toggleSpan) toggleSpan.innerText = isOpen ? '+' : '−';
+          audio.playChime(isOpen ? 400 : 480);
+        });
+      });
+
+      // Support Ticket Form Submission
+      const supportTicketForm = document.getElementById('supportTicketForm');
+      const supportSuccessCard = document.getElementById('supportSuccessCard');
+      const supportTicketRef = document.getElementById('supportTicketRef');
+      const btnResetSupportForm = document.getElementById('btnResetSupportForm');
+
+      if (supportTicketForm) {
+        supportTicketForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const randSuffix = Math.random().toString(36).substring(2, 7).toUpperCase();
+          const ticketId = `DI-TICKET-${randSuffix}`;
+          if (supportTicketRef) supportTicketRef.innerText = ticketId;
+          supportTicketForm.style.display = 'none';
+          if (supportSuccessCard) supportSuccessCard.style.display = 'block';
+          audio.playChime(660);
+        });
+      }
+
+      if (btnResetSupportForm) {
+        btnResetSupportForm.addEventListener('click', () => {
+          if (supportSuccessCard) supportSuccessCard.style.display = 'none';
+          if (supportTicketForm) {
+            supportTicketForm.reset();
+            supportTicketForm.style.display = 'block';
+          }
+          audio.playChime(500);
         });
       }
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * THE UNEXPLORED INTERIOR // IIT 4.0 MATHEMATICAL RIGOR VERIFICATION SUITE
+ * DATUM INTELLIGENCE // IIT 4.0 MATHEMATICAL RIGOR VERIFICATION SUITE
  * Validates Tononi & Albantakis Integrated Information Theory calculations
  * against analytical benchmarks and theoretical edge cases.
  */
@@ -23,7 +23,7 @@ function assert(condition, testName, details = '') {
 }
 
 console.log('\n\x1b[1m\x1b[37m========================================================================\x1b[0m');
-console.log('\x1b[1m\x1b[36m  THE UNEXPLORED INTERIOR // IIT 4.0 MATHEMATICAL VALIDATION\x1b[0m');
+console.log('\x1b[1m\x1b[36m  DATUM INTELLIGENCE // IIT 4.0 MATHEMATICAL VALIDATION\x1b[0m');
 console.log('\x1b[90m  Tononi & Albantakis Earth Mover\'s Distance (Wasserstein-1) Checks\x1b[0m');
 console.log('\x1b[1m\x1b[37m========================================================================\x1b[0m\n');
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * THE UNEXPLORED INTERIOR // AUTOMATED PROTOCOL AUDITOR
+ * DATUM INTELLIGENCE // AUTOMATED PROTOCOL AUDITOR
  * Validates repository files against the AGENTS.md Constitution & Quality Canon.
  */
 
@@ -31,7 +31,7 @@ function fail(rule, issue) {
 }
 
 console.log('\n\x1b[1m\x1b[37m========================================================================\x1b[0m');
-console.log('\x1b[1m\x1b[36m  THE UNEXPLORED INTERIOR // EXECUTIVE DESIGN & CODE AUDITOR\x1b[0m');
+console.log('\x1b[1m\x1b[36m  DATUM INTELLIGENCE // EXECUTIVE DESIGN & CODE AUDITOR\x1b[0m');
 console.log('\x1b[90m  Enforcing AGENTS.md Constitutional Canon & LoveFrom Standards\x1b[0m');
 console.log('\x1b[1m\x1b[37m========================================================================\x1b[0m\n');
 

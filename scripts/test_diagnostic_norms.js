@@ -1,5 +1,5 @@
 /**
- * THE UNEXPLORED INTERIOR // PSYCHOMETRIC NORMS & DIAGNOSTIC VERIFICATION
+ * DATUM INTELLIGENCE // PSYCHOMETRIC NORMS & DIAGNOSTIC VERIFICATION
  * Automated verification of rapid diagnostic math, z-scores, and open-science norm lookup
  */
 
@@ -8,7 +8,7 @@ const path = require('path');
 const { RapidDiagnosticEngine } = require('../src/engine/rapid_diagnostic.js');
 
 console.log('\n========================================================================');
-console.log('  THE UNEXPLORED INTERIOR // PSYCHOPHYSICS NORMS VALIDATION');
+console.log('  DATUM INTELLIGENCE // PSYCHOPHYSICS NORMS VALIDATION');
 console.log('  Verification of Empirical Latency Mapping & Cumulative Distribution CDF');
 console.log('========================================================================\n');
 

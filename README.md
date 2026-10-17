@@ -1,17 +1,17 @@
-# THE UNEXPLORED INTERIOR // Consciousness Mechanism & Empirical Visual Lab
+# DATUM INTELLIGENCE // Consciousness Mechanism & Empirical Visual Lab
 
 <div align="center">
 
 ```
-  ██████╗ ██████╗ ███╗   ██╗███████╗ ██████╗██╗ ██████╗ ██╗   ██╗███████╗███╗   ██╗███████╗███████╗
- ██╔════╝██╔═══██╗████╗  ██║██╔════╝██╔════╝██║██╔═══██╗██║   ██║██╔════╝████╗  ██║██╔════╝██╔════╝
- ██║     ██║   ██║██╔██╗ ██║███████╗██║     ██║██║   ██║██║   ██║███████╗██╔██╗ ██║█████╗  ███████╗
- ██║     ██║   ██║██║╚██╗██║╚════██║██║     ██║██║   ██║██║   ██║╚════██║██║╚██╗██║██╔══╝  ╚════██║
- ╚██████╗╚██████╔╝██║ ╚████║███████║╚██████╗██║╚██████╔╝╚██████╔╝███████║██║ ╚████║███████╗███████║
-  ╚═════╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝ ╚═════╝╚═╝ ╚═════╝  ╚═════╝ ╚══════╝╚═╝  ╚═══╝╚══════╝╚══════╝
+  ██████╗  █████╗ ████████╗██╗   ██╗███╗   ███╗
+  ██╔══██╗██╔══██╗╚══██╔══╝██║   ██║████╗ ████║
+  ██║  ██║███████║   ██║   ██║   ██║██╔████╔██║
+  ██║  ██║██╔══██║   ██║   ██║   ██║██║╚██╔╝██║
+  ██████╔╝██║  ██║   ██║   ╚██████╔╝██║ ╚═╝ ██║
+  ╚═════╝ ╚═╝  ╚═╝   ╚═╝    ╚═════╝ ╚═╝     ╚═╝
 ```
 
-### *A Cognitive Neuroscience Instrument, Analytical Audit Engine & Visual Awareness Laboratory*
+### *An Empirical Cognitive Neuroscience Instrument, Analytical Audit Engine & Visual Awareness Laboratory*
 
 [![GitHub Pages](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-0077cc?style=for-the-badge&logo=github)](https://aigroupchathq.github.io/consciousness-mechanism/)
 [![Aesthetic](https://img.shields.io/badge/Design-Swiss%20Brutalist%20(sleutelaar.xyz)-0a0a0a?style=for-the-badge)](https://aigroupchathq.github.io/consciousness-mechanism/)
@@ -47,7 +47,7 @@ Captured by algorithmic dopamine loops, overwhelmed by Default Mode Network (DMN
 └────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
-**The Unexplored Interior** translates high-level theoretical neuroscience into a museum-grade, interactive Swiss-editorial digital instrument inspired by the minimalist aesthetic of [`sleutelaar.xyz`](https://sleutelaar.xyz).
+**DatumIntelligence** translates high-level theoretical neuroscience into a museum-grade, interactive Swiss-editorial digital instrument inspired by the minimalist aesthetic of [`sleutelaar.xyz`](https://sleutelaar.xyz).
 
 ---
 
@@ -141,9 +141,9 @@ Visit [`http://localhost:8000`](http://localhost:8000).
 If you use this software or conceptual framework in your research, please cite:
 
 ```bibtex
-@misc{consciousness_mechanism_2026,
+@misc{datum_intelligence_2026,
   author = {AI Group Chat HQ},
-  title = {The Unexplored Interior: A Cognitive Instrument & Visual Awareness Laboratory},
+  title = {DatumIntelligence: A Cognitive Instrument & Visual Awareness Laboratory},
   year = {2026},
   publisher = {GitHub},
   journal = {GitHub Repository},

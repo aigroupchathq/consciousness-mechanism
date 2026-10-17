@@ -1,9 +1,9 @@
-# THE UNEXPLORED INTERIOR // STUDIO CONSTITUTION & AGENT GOVERNANCE
+# DATUM INTELLIGENCE // STUDIO CONSTITUTION & AGENT GOVERNANCE
 
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
 │  GOVERNING ENTITY:      LoveFrom × Antigravity Executive Design Studio │
-│  PROJECT:               The Unexplored Interior (Consciousness Lab)    │
+│  PROJECT:               DatumIntelligence (Consciousness Lab)          │
 │  DOCUMENT TYPE:         Constitutional Instruction & Quality Canon     │
 │  SECURITY / REVISION:   RESTRICTED // TIER-1 DESIGN & SCIENCE STANDARDS │
 └────────────────────────────────────────────────────────────────────────┘

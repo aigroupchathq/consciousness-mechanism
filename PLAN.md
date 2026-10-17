@@ -1,4 +1,4 @@
-# THE UNEXPLORED INTERIOR // 18-MONTH MASTER DEVELOPMENT PLAN
+# DATUM INTELLIGENCE // 18-MONTH MASTER DEVELOPMENT PLAN
 
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
@@ -126,4 +126,5 @@
 | **2026-10-16** | Governance Architecture | Antigravity Lead | **APPROVED** | `AGENTS.md` and `PLAN.md` codified. Phase 1 active. |
 | **2026-10-17** | Milestone 1.1 (WebGPU $\Phi$) | Autonomous Studio Squad | **APPROVED** | WebGPU WGSL kernel, typed Web Worker fallback, 8-node constellation, and MIP cleavage plane verified. 10/10 audit, 5/5 math tests. |
 | **2026-10-17** | Empirical Psychophysics & Enterprise Dossier | Antigravity Lead | **APPROVED** | 90-Second 3-trial psychophysics engine (Saccade, Troxler, Motor RTV) coupled to 14,250 open-science norms, 16-page interactive enterprise attention dossier, 10/10 audit, 5/5 math, 9/9 norms. |
+| **2026-10-17** | Brand Rebrand & Accessible Micro-Pricing | Antigravity Lead | **APPROVED** | Rebranded to DatumIntelligence. Ratified numerological micro-pricing ($0, $9, $27, $81 rooted in powers of 3, digital root 9), comprehensive 4-tab legal terms modal, offline privacy policy, non-clinical disclaimer, 30-day money-back guarantee, and operational client support desk with automated ticket generator. 10/10 audit, 5/5 math, 9/9 norms passing. |
 | — | Milestone 1.2 (macOS Native) | — | QUEUED | Scheduled for Month 2. |
