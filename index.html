@@ -2875,7 +2875,7 @@
       <div class="benchmark-result-card">
         <div class="result-badge">
           <span>[ CONSCIOUSNESS PHENOTYPE ]</span>
-          <span style="color:var(--accent-blue); font-size:0.64rem;">IIT 4.0 // PHI</span>
+          <span id="iitBackendBadge" style="color:var(--accent-blue); font-size:0.64rem;">[ IIT 4.0 // INITIALIZING ]</span>
         </div>
         <h3 class="phenotype-title" id="phenoTitle">AUTOMATED REACTIVE AGENT</h3>
         <div class="percentile-badge" id="percentileBadge">TOP 84% ATTENTION CAPTURE RISK</div>
@@ -2910,7 +2910,15 @@
           </div>
           <div class="metric-cell">
             <div class="metric-cell-label">INTEGRATED Φ (PHI) DENSITY</div>
-            <div class="metric-cell-val" id="phiVal">0.41 bits</div>
+            <div class="metric-cell-val" id="phiVal">0.4100 bits</div>
+          </div>
+          <div class="metric-cell">
+            <div class="metric-cell-label">MIN INFO PARTITION (MIP)</div>
+            <div class="metric-cell-val" id="mipVal" style="font-size:0.76rem; letter-spacing:0.02em;">{0,1,2,3} | {4,5,6,7}</div>
+          </div>
+          <div class="metric-cell">
+            <div class="metric-cell-label">TENSOR COMPUTE LATENCY</div>
+            <div class="metric-cell-val" id="computeLatencyVal">0.060 ms</div>
           </div>
         </div>
 
@@ -4034,11 +4042,488 @@
       }
     }
 
-    // --- 3. DUAL-POLYGON HOLOGRAPHIC RADAR ENGINE WITH PHOSPHOR SCAN ---
+    // ==========================================================================
+    // THE UNEXPLORED INTERIOR // REAL-TIME IIT 4.0 WEBGPU & WORKER TENSOR ENGINE
+    // Tononi & Albantakis Earth Mover's Distance (Wasserstein-1) over Hamming Space
+    // ==========================================================================
+    const IIT4_WGSL_SOURCE = `
+struct SystemUniforms {
+    node_count: u32,
+    num_bipartitions: u32,
+    active_state_mask: u32,
+    coupling_strength: f32,
+};
+@group(0) @binding(0) var<uniform> uniforms: SystemUniforms;
+@group(0) @binding(1) var<storage, read> weights: array<f32>;
+@group(0) @binding(2) var<storage, read> thresholds: array<f32>;
+@group(0) @binding(3) var<storage, read_write> partition_divergences: array<f32>;
+@group(0) @binding(4) var<storage, read_write> reduction_result: array<f32, 2>;
+
+fn sigmoid(z: f32) -> f32 {
+    return 1.0 / (1.0 + exp(-z));
+}
+
+fn compute_unpartitioned_prob(i: u32, state: u32) -> f32 {
+    var sum: f32 = 0.0;
+    for (var j: u32 = 0u; j < 8u; j = j + 1u) {
+        let bit_j: f32 = f32((state >> j) & 1u);
+        sum = sum + weights[i * 8u + j] * bit_j;
+    }
+    return sigmoid(sum * uniforms.coupling_strength - thresholds[i]);
+}
+
+fn compute_partitioned_prob(i: u32, state: u32, mask: u32) -> f32 {
+    let part_i: u32 = (mask >> i) & 1u;
+    var sum: f32 = 0.0;
+    for (var j: u32 = 0u; j < 8u; j = j + 1u) {
+        let part_j: u32 = (mask >> j) & 1u;
+        if (part_i == part_j) {
+            let bit_j: f32 = f32((state >> j) & 1u);
+            sum = sum + weights[i * 8u + j] * bit_j;
+        }
+    }
+    return sigmoid(sum * uniforms.coupling_strength - thresholds[i]);
+}
+
+@compute @workgroup_size(128)
+fn main_compute_divergences(
+    @builtin(global_invocation_id) global_id: vec3<u32>
+) {
+    let index: u32 = global_id.x;
+    if (index >= 127u) { return; }
+    let mask: u32 = (index << 1u) | 1u;
+    var total_divergence: f32 = 0.0;
+    let state: u32 = uniforms.active_state_mask;
+    for (var i: u32 = 0u; i < 8u; i = i + 1u) {
+        let p_i: f32 = compute_unpartitioned_prob(i, state);
+        let q_i: f32 = compute_partitioned_prob(i, state, mask);
+        total_divergence = total_divergence + abs(p_i - q_i);
+    }
+    partition_divergences[index] = total_divergence;
+}
+
+var<workgroup> s_phi: array<f32, 128>;
+var<workgroup> s_mask: array<u32, 128>;
+
+@compute @workgroup_size(128)
+fn main_find_minimum(
+    @builtin(local_invocation_id) local_id: vec3<u32>
+) {
+    let tid: u32 = local_id.x;
+    if (tid < 127u) {
+        s_phi[tid] = partition_divergences[tid];
+        s_mask[tid] = (tid << 1u) | 1u;
+    } else {
+        s_phi[tid] = 1e9;
+        s_mask[tid] = 0u;
+    }
+    workgroupBarrier();
+
+    for (var s: u32 = 64u; s > 0u; s = s >> 1u) {
+        if (tid < s) {
+            if (s_phi[tid + s] < s_phi[tid]) {
+                s_phi[tid] = s_phi[tid + s];
+                s_mask[tid] = s_mask[tid + s];
+            }
+        }
+        workgroupBarrier();
+    }
+
+    if (tid == 0u) {
+        reduction_result[0] = s_phi[0];
+        reduction_result[1] = f32(s_mask[0]);
+    }
+}
+`;
+
+    const IIT4_WORKER_BLOB_CODE = `
+const NUM_NODES = 8;
+const NUM_BIPARTITIONS = 127;
+const weightsBuffer = new Float32Array(64);
+const thresholdsBuffer = new Float32Array(8);
+const unpartitionedProbBuffer = new Float32Array(8);
+const candidateMasks = new Uint8Array(NUM_BIPARTITIONS);
+for (let i = 0; i < NUM_BIPARTITIONS; i++) candidateMasks[i] = (i << 1) | 1;
+
+function sigmoid(z) { return 1 / (1 + Math.exp(-z)); }
+
+self.onmessage = function(e) {
+  const data = e.data;
+  if (!data) return;
+  if (data.type === 'INIT') {
+    if (data.weights) weightsBuffer.set(data.weights);
+    if (data.thresholds) thresholdsBuffer.set(data.thresholds);
+    self.postMessage({ type: 'READY' });
+    return;
+  }
+  if (data.type === 'COMPUTE') {
+    if (data.weights) weightsBuffer.set(data.weights);
+    if (data.thresholds) thresholdsBuffer.set(data.thresholds);
+    const t0 = performance.now();
+    const stateMask = data.stateMask !== undefined ? data.stateMask : 0;
+    const coupling = data.couplingStrength !== undefined ? data.couplingStrength : 1.0;
+
+    for (let i = 0; i < NUM_NODES; i++) {
+      let sum = 0;
+      const rowOffset = i * NUM_NODES;
+      for (let j = 0; j < NUM_NODES; j++) {
+        if ((stateMask >> j) & 1) sum += weightsBuffer[rowOffset + j];
+      }
+      unpartitionedProbBuffer[i] = sigmoid(sum * coupling - thresholdsBuffer[i]);
+    }
+
+    let minPhi = Infinity;
+    let bestMipMask = 1;
+
+    for (let b = 0; b < NUM_BIPARTITIONS; b++) {
+      const mask = candidateMasks[b];
+      let divergence = 0;
+      for (let i = 0; i < NUM_NODES; i++) {
+        const part_i = (mask >> i) & 1;
+        let sum = 0;
+        const rowOffset = i * NUM_NODES;
+        for (let j = 0; j < NUM_NODES; j++) {
+          if (part_i === ((mask >> j) & 1)) {
+            if ((stateMask >> j) & 1) sum += weightsBuffer[rowOffset + j];
+          }
+        }
+        const q_i = sigmoid(sum * coupling - thresholdsBuffer[i]);
+        divergence += Math.abs(unpartitionedProbBuffer[i] - q_i);
+      }
+      if (divergence < minPhi) {
+        minPhi = divergence;
+        bestMipMask = mask;
+      }
+    }
+    const dt = performance.now() - t0;
+    self.postMessage({
+      type: 'RESULT',
+      id: data.id,
+      phi: minPhi,
+      mipMask: bestMipMask,
+      computationTimeMs: dt
+    });
+  }
+};
+`;
+
+    class IIT4Engine {
+      constructor(options = {}) {
+        this.numNodes = 8;
+        this.numBipartitions = 127;
+        this.weights = new Float32Array(64);
+        this.thresholds = new Float32Array(8);
+        this.stateMask = 0b00000001;
+        this.couplingStrength = 1.0;
+
+        this.phi = 0.0;
+        this.mipMask = 1;
+        this.computationTimeMs = 0.0;
+        this.backend = 'INITIALIZING';
+        this.isComputing = false;
+        this.onUpdate = options.onUpdate || null;
+
+        this.nodePositions = [];
+        for (let i = 0; i < this.numNodes; i++) {
+          const angle = (i / this.numNodes) * Math.PI * 2;
+          this.nodePositions.push({
+            id: i,
+            name: i < 4 ? `S${i}` : `E${i - 4}`,
+            subsystem: i < 4 ? 'SENSORY' : 'EXECUTIVE',
+            angle: angle,
+            x: Math.cos(angle),
+            y: Math.sin(angle),
+            activation: 0.0
+          });
+        }
+        this._initDefaultConnectivity();
+      }
+
+      _initDefaultConnectivity() {
+        for (let i = 0; i < 64; i++) this.weights[i] = 0;
+        for (let i = 0; i < 8; i++) this.thresholds[i] = 0.5;
+
+        this.weights[0 * 8 + 1] = 1.8;
+        this.weights[1 * 8 + 2] = 1.8;
+        this.weights[2 * 8 + 3] = 1.8;
+        this.weights[3 * 8 + 0] = 1.8;
+
+        this.weights[4 * 8 + 5] = 2.0;
+        this.weights[5 * 8 + 6] = 2.0;
+        this.weights[6 * 8 + 7] = 2.0;
+        this.weights[7 * 8 + 4] = 2.0;
+
+        this.weights[0 * 8 + 4] = 1.2;
+        this.weights[4 * 8 + 0] = 1.2;
+        this.weights[2 * 8 + 6] = 1.4;
+        this.weights[6 * 8 + 2] = 1.4;
+        this.weights[1 * 8 + 5] = 0.9;
+        this.weights[3 * 8 + 7] = 0.9;
+      }
+
+      async init(wgslSource, workerBlobUrl) {
+        if (typeof navigator !== 'undefined' && navigator.gpu) {
+          try {
+            const adapter = await navigator.gpu.requestAdapter({ powerPreference: 'high-performance' });
+            if (adapter) {
+              const device = await adapter.requestDevice();
+              if (device && wgslSource) {
+                await this._initWebGPU(device, wgslSource);
+                this.backend = 'WEBGPU';
+                if (this.onUpdate) this.onUpdate(this.getMetrics());
+                return;
+              }
+            }
+          } catch (err) {
+            console.warn('[IIT4Engine] WebGPU init fallback:', err);
+          }
+        }
+        this._initWorker(workerBlobUrl);
+      }
+
+      async _initWebGPU(device, wgslSource) {
+        this.gpuDevice = device;
+        const module = device.createShaderModule({ code: wgslSource });
+        this.computePipeline = device.createComputePipeline({
+          layout: 'auto',
+          compute: { module, entryPoint: 'main_compute_divergences' }
+        });
+        this.reducePipeline = device.createComputePipeline({
+          layout: 'auto',
+          compute: { module, entryPoint: 'main_find_minimum' }
+        });
+        this.uniformBuffer = device.createBuffer({ size: 16, usage: GPUBufferUsage.UNIFORM | GPUBufferUsage.COPY_DST });
+        this.weightsBuffer = device.createBuffer({ size: 64 * 4, usage: GPUBufferUsage.STORAGE | GPUBufferUsage.COPY_DST });
+        this.thresholdsBuffer = device.createBuffer({ size: 8 * 4, usage: GPUBufferUsage.STORAGE | GPUBufferUsage.COPY_DST });
+        this.divergencesBuffer = device.createBuffer({ size: 128 * 4, usage: GPUBufferUsage.STORAGE });
+        this.reductionBuffer = device.createBuffer({ size: 8, usage: GPUBufferUsage.STORAGE | GPUBufferUsage.COPY_SRC });
+        this.readbackBuffer = device.createBuffer({ size: 8, usage: GPUBufferUsage.MAP_READ | GPUBufferUsage.COPY_DST });
+
+        this.bindGroup = device.createBindGroup({
+          layout: this.computePipeline.getBindGroupLayout(0),
+          entries: [
+            { binding: 0, resource: { buffer: this.uniformBuffer } },
+            { binding: 1, resource: { buffer: this.weightsBuffer } },
+            { binding: 2, resource: { buffer: this.thresholdsBuffer } },
+            { binding: 3, resource: { buffer: this.divergencesBuffer } },
+            { binding: 4, resource: { buffer: this.reductionBuffer } }
+          ]
+        });
+      }
+
+      _initWorker(workerBlobUrl) {
+        if (typeof Worker === 'undefined') {
+          this.backend = 'CPU_SYNC';
+          return;
+        }
+        try {
+          this.worker = workerBlobUrl ? new Worker(workerBlobUrl) : null;
+          if (this.worker) {
+            this.backend = 'WORKER';
+            this.worker.onmessage = (e) => {
+              const data = e.data;
+              if (!data) return;
+              if (data.type === 'RESULT') {
+                this.phi = data.phi;
+                this.mipMask = data.mipMask;
+                this.computationTimeMs = data.computationTimeMs;
+                this.isComputing = false;
+                if (this.onUpdate) this.onUpdate(this.getMetrics());
+              }
+            };
+            this.worker.postMessage({ type: 'INIT', weights: this.weights, thresholds: this.thresholds });
+          } else {
+            this.backend = 'CPU_SYNC';
+          }
+        } catch (err) {
+          this.backend = 'CPU_SYNC';
+        }
+      }
+
+      updateDynamicCoupling(telemetry = {}) {
+        const sensory = telemetry.sensory || 0.5;
+        const temporal = telemetry.temporal || 0.5;
+        const somatic = telemetry.somatic || 0.5;
+        const pointerEntropy = telemetry.pointerEntropy || 0.5;
+
+        this.nodePositions[0].activation = telemetry.flickerPhase || sensory;
+        this.nodePositions[1].activation = telemetry.troxlerFade || sensory;
+        this.nodePositions[2].activation = telemetry.neckerRate || 0.5;
+        this.nodePositions[3].activation = telemetry.cfsSuppression || sensory;
+
+        this.nodePositions[4].activation = sensory;
+        this.nodePositions[5].activation = temporal;
+        this.nodePositions[6].activation = somatic;
+        this.nodePositions[7].activation = pointerEntropy;
+
+        let mask = 0;
+        for (let i = 0; i < 8; i++) {
+          if (this.nodePositions[i].activation > 0.42) mask |= (1 << i);
+        }
+        this.stateMask = mask || 1;
+
+        const crossBridgeStrength = 1.0 + (somatic + temporal) * 0.8;
+        this.weights[0 * 8 + 4] = crossBridgeStrength;
+        this.weights[4 * 8 + 0] = crossBridgeStrength;
+        this.weights[2 * 8 + 6] = crossBridgeStrength * 1.1;
+        this.weights[6 * 8 + 2] = crossBridgeStrength * 1.1;
+        this.couplingStrength = 0.8 + pointerEntropy * 0.6;
+      }
+
+      async computeStep() {
+        if (this.isComputing) return;
+        this.isComputing = true;
+
+        if (this.backend === 'WEBGPU' && this.gpuDevice) {
+          await this._computeWebGPU();
+        } else if (this.backend === 'WORKER' && this.worker) {
+          this.worker.postMessage({
+            type: 'COMPUTE',
+            weights: this.weights,
+            thresholds: this.thresholds,
+            stateMask: this.stateMask,
+            couplingStrength: this.couplingStrength
+          });
+        } else {
+          this._computeCPUSync();
+        }
+      }
+
+      async _computeWebGPU() {
+        const t0 = performance.now();
+        const device = this.gpuDevice;
+
+        const uniformArray = new ArrayBuffer(16);
+        const u32View = new Uint32Array(uniformArray);
+        const f32View = new Float32Array(uniformArray);
+        u32View[0] = 8;
+        u32View[1] = 127;
+        u32View[2] = this.stateMask;
+        f32View[3] = this.couplingStrength;
+
+        device.queue.writeBuffer(this.uniformBuffer, 0, uniformArray);
+        device.queue.writeBuffer(this.weightsBuffer, 0, this.weights);
+        device.queue.writeBuffer(this.thresholdsBuffer, 0, this.thresholds);
+
+        const commandEncoder = device.createCommandEncoder();
+        const pass1 = commandEncoder.beginComputePass();
+        pass1.setPipeline(this.computePipeline);
+        pass1.setBindGroup(0, this.bindGroup);
+        pass1.dispatchWorkgroups(1);
+        pass1.end();
+
+        const pass2 = commandEncoder.beginComputePass();
+        pass2.setPipeline(this.reducePipeline);
+        pass2.setBindGroup(0, this.bindGroup);
+        pass2.dispatchWorkgroups(1);
+        pass2.end();
+
+        commandEncoder.copyBufferToBuffer(this.reductionBuffer, 0, this.readbackBuffer, 0, 8);
+        device.queue.submit([commandEncoder.finish()]);
+
+        await this.readbackBuffer.mapAsync(GPUMapMode.READ);
+        const resultView = new Float32Array(this.readbackBuffer.getMappedRange().slice(0, 8));
+        this.readbackBuffer.unmap();
+
+        this.phi = resultView[0];
+        this.mipMask = Math.round(resultView[1]);
+        this.computationTimeMs = performance.now() - t0;
+        this.isComputing = false;
+
+        if (this.onUpdate) this.onUpdate(this.getMetrics());
+      }
+
+      _computeCPUSync() {
+        const t0 = performance.now();
+        const unpartitionedProb = new Float32Array(8);
+
+        for (let i = 0; i < 8; i++) {
+          let sum = 0;
+          for (let j = 0; j < 8; j++) {
+            if ((this.stateMask >> j) & 1) sum += this.weights[i * 8 + j];
+          }
+          unpartitionedProb[i] = 1 / (1 + Math.exp(-(sum * this.couplingStrength - this.thresholds[i])));
+        }
+
+        let minPhi = Infinity;
+        let bestMipMask = 1;
+
+        for (let b = 0; b < 127; b++) {
+          const mask = (b << 1) | 1;
+          let divergence = 0;
+          for (let i = 0; i < 8; i++) {
+            const part_i = (mask >> i) & 1;
+            let sum = 0;
+            for (let j = 0; j < 8; j++) {
+              if (part_i === ((mask >> j) & 1)) {
+                if ((this.stateMask >> j) & 1) sum += this.weights[i * 8 + j];
+              }
+            }
+            const q_i = 1 / (1 + Math.exp(-(sum * this.couplingStrength - this.thresholds[i])));
+            divergence += Math.abs(unpartitionedProb[i] - q_i);
+          }
+          if (divergence < minPhi) {
+            minPhi = divergence;
+            bestMipMask = mask;
+          }
+        }
+
+        this.phi = minPhi;
+        this.mipMask = bestMipMask;
+        this.computationTimeMs = performance.now() - t0;
+        this.isComputing = false;
+
+        if (this.onUpdate) this.onUpdate(this.getMetrics());
+      }
+
+      getMetrics() {
+        const partA = [];
+        const partB = [];
+        for (let i = 0; i < 8; i++) {
+          if ((this.mipMask >> i) & 1) partA.push(i);
+          else partB.push(i);
+        }
+
+        let ax = 0, ay = 0, bx = 0, by = 0;
+        partA.forEach(idx => {
+          ax += this.nodePositions[idx].x;
+          ay += this.nodePositions[idx].y;
+        });
+        partB.forEach(idx => {
+          bx += this.nodePositions[idx].x;
+          by += this.nodePositions[idx].y;
+        });
+
+        ax /= Math.max(1, partA.length);
+        ay /= Math.max(1, partA.length);
+        bx /= Math.max(1, partB.length);
+        by /= Math.max(1, partB.length);
+
+        const dx = bx - ax;
+        const dy = by - ay;
+        const cleavageAngle = Math.atan2(dy, dx) + Math.PI / 2;
+
+        return {
+          phi: this.phi,
+          mipMask: this.mipMask,
+          partA,
+          partB,
+          partitionText: `{${partA.join(',')}} | {${partB.join(',')}}`,
+          cleavageAngle,
+          computationTimeMs: this.computationTimeMs,
+          backend: this.backend,
+          stateMask: this.stateMask,
+          nodes: this.nodePositions
+        };
+      }
+    }
+
+    // --- 3. DUAL-POLYGON HOLOGRAPHIC RADAR ENGINE WITH PHOSPHOR SCAN & IIT 4.0 MIP CLEAVAGE ---
     class DiagnosticRadarEngine {
-      constructor(canvas) {
+      constructor(canvas, iitEngine = null) {
         this.canvas = canvas;
         this.ctx = canvas.getContext('2d');
+        this.iitEngine = iitEngine;
         this.scores = [4, 5, 3, 3, 6, 4];
         this.medianScores = [3.8, 4.2, 3.1, 2.9, 4.0, 3.5];
         this.labels = [
@@ -4082,7 +4567,7 @@
         const h = this.height;
         const cx = w / 2;
         const cy = h / 2;
-        const radius = Math.min(cx, cy) - 44;
+        const radius = Math.min(cx, cy) - 48;
         const numAxes = this.labels.length;
 
         ctx.clearRect(0, 0, w, h);
@@ -4117,8 +4602,8 @@
         ctx.restore();
 
         // Radial Axis Spokes & Axis Labels
-        ctx.font = "8.5px ui-monospace, SFMono-Regular, monospace";
-        ctx.fillStyle = "rgba(130, 130, 130, 0.9)";
+        ctx.font = "8px ui-monospace, SFMono-Regular, monospace";
+        ctx.fillStyle = "rgba(130, 130, 130, 0.85)";
         ctx.textAlign = "center";
         ctx.textBaseline = "middle";
 
@@ -4133,8 +4618,8 @@
           ctx.strokeStyle = "rgba(120, 120, 120, 0.16)";
           ctx.stroke();
 
-          const lx = cx + (radius + 26) * Math.cos(angle);
-          const ly = cy + (radius + 14) * Math.sin(angle);
+          const lx = cx + (radius + 24) * Math.cos(angle);
+          const ly = cy + (radius + 12) * Math.sin(angle);
           ctx.fillText(this.labels[i], lx, ly);
         }
 
@@ -4148,9 +4633,9 @@
           if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
         }
         ctx.closePath();
-        ctx.fillStyle = "rgba(150, 150, 150, 0.12)";
+        ctx.fillStyle = "rgba(150, 150, 150, 0.10)";
         ctx.fill();
-        ctx.strokeStyle = "rgba(150, 150, 150, 0.45)";
+        ctx.strokeStyle = "rgba(150, 150, 150, 0.40)";
         ctx.setLineDash([3, 3]);
         ctx.lineWidth = 1.2;
         ctx.stroke();
@@ -4175,22 +4660,98 @@
         ctx.fill();
 
         ctx.strokeStyle = "#0070f3";
-        ctx.lineWidth = 2.2;
+        ctx.lineWidth = 2.0;
         ctx.shadowColor = "#00d2ff";
-        ctx.shadowBlur = 8;
+        ctx.shadowBlur = 6;
         ctx.stroke();
         ctx.shadowBlur = 0;
 
-        // User Coordinate Node Points
         userNodes.forEach((n) => {
           ctx.beginPath();
-          ctx.arc(n.x, n.y, 4, 0, Math.PI * 2);
+          ctx.arc(n.x, n.y, 3.5, 0, Math.PI * 2);
           ctx.fillStyle = "#ffffff";
           ctx.fill();
           ctx.strokeStyle = "#0070f3";
-          ctx.lineWidth = 2;
+          ctx.lineWidth = 1.8;
           ctx.stroke();
         });
+
+        // 3. IIT 4.0 // 8-NODE VECTOR CONSTELLATION & MIP CLEAVAGE PLANE
+        if (this.iitEngine) {
+          const metrics = this.iitEngine.getMetrics();
+          const nodeRadius = radius + 32;
+
+          // Draw inter-node synaptic connectivity
+          ctx.lineWidth = 0.8;
+          for (let i = 0; i < 8; i++) {
+            const a1 = (i / 8) * Math.PI * 2 - Math.PI / 2;
+            const x1 = cx + nodeRadius * Math.cos(a1);
+            const y1 = cy + nodeRadius * Math.sin(a1);
+
+            for (let j = i + 1; j < 8; j++) {
+              const weight = this.iitEngine.weights[i * 8 + j] + this.iitEngine.weights[j * 8 + i];
+              if (weight > 0.4) {
+                const a2 = (j / 8) * Math.PI * 2 - Math.PI / 2;
+                const x2 = cx + nodeRadius * Math.cos(a2);
+                const y2 = cy + nodeRadius * Math.sin(a2);
+
+                const samePartition = ((metrics.mipMask >> i) & 1) === ((metrics.mipMask >> j) & 1);
+                ctx.beginPath();
+                ctx.moveTo(x1, y1);
+                ctx.lineTo(x2, y2);
+                ctx.strokeStyle = samePartition ? "rgba(0, 210, 255, 0.22)" : "rgba(220, 50, 50, 0.15)";
+                ctx.stroke();
+              }
+            }
+          }
+
+          // Draw the 8 Nodes
+          for (let i = 0; i < 8; i++) {
+            const angle = (i / 8) * Math.PI * 2 - Math.PI / 2;
+            const nx = cx + nodeRadius * Math.cos(angle);
+            const ny = cy + nodeRadius * Math.sin(angle);
+            const inPartA = (metrics.mipMask >> i) & 1;
+
+            ctx.beginPath();
+            ctx.arc(nx, ny, inPartA ? 4 : 3, 0, Math.PI * 2);
+            ctx.fillStyle = inPartA ? "#00d2ff" : "rgba(200, 200, 200, 0.7)";
+            ctx.fill();
+            ctx.strokeStyle = inPartA ? "#ffffff" : "rgba(80, 80, 80, 0.5)";
+            ctx.lineWidth = 1;
+            ctx.stroke();
+
+            ctx.font = "7.5px ui-monospace, SFMono-Regular, monospace";
+            ctx.fillStyle = inPartA ? "#00d2ff" : "rgba(160, 160, 160, 0.8)";
+            ctx.textAlign = "center";
+            ctx.textBaseline = "middle";
+            const lx = cx + (nodeRadius + 11) * Math.cos(angle);
+            const ly = cy + (nodeRadius + 11) * Math.sin(angle);
+            ctx.fillText(i < 4 ? `S${i}` : `E${i - 4}`, lx, ly);
+          }
+
+          // Draw the MIP Cleavage Plane (Titanium dashed cleavage cut)
+          const cAngle = metrics.cleavageAngle;
+          const planeLen = radius + 46;
+          const px1 = cx - Math.cos(cAngle) * planeLen;
+          const py1 = cy - Math.sin(cAngle) * planeLen;
+          const px2 = cx + Math.cos(cAngle) * planeLen;
+          const py2 = cy + Math.sin(cAngle) * planeLen;
+
+          ctx.beginPath();
+          ctx.moveTo(px1, py1);
+          ctx.lineTo(px2, py2);
+          ctx.strokeStyle = "rgba(255, 255, 255, 0.85)";
+          ctx.lineWidth = 1.4;
+          ctx.setLineDash([4, 4]);
+          ctx.stroke();
+          ctx.setLineDash([]);
+
+          // Monospace Cleavage Plane HUD tag
+          ctx.font = "7px ui-monospace, SFMono-Regular, monospace";
+          ctx.fillStyle = "rgba(255, 255, 255, 0.75)";
+          ctx.textAlign = "right";
+          ctx.fillText("MIP CLEAVAGE", px2 - 4, py2 - 4);
+        }
       }
     }
 
@@ -4920,8 +5481,31 @@
       const labCanvas = document.getElementById('mainExperimentCanvas');
       const labEngine = new VisualAwarenessLabEngine(labCanvas);
 
+      // Initialize Real-Time IIT 4.0 Dual-Engine Bridge
+      const iitEngine = new IIT4Engine({
+        onUpdate: (metrics) => {
+          const phiEl = document.getElementById('phiVal');
+          if (phiEl) phiEl.innerText = `${metrics.phi.toFixed(4)} bits`;
+          const mipEl = document.getElementById('mipVal');
+          if (mipEl) mipEl.innerText = metrics.partitionText;
+          const latEl = document.getElementById('computeLatencyVal');
+          if (latEl) latEl.innerText = `${metrics.computationTimeMs.toFixed(3)} ms`;
+          const badgeEl = document.getElementById('iitBackendBadge');
+          if (badgeEl) badgeEl.innerText = `[ IIT 4.0 // ${metrics.backend} ACTIVE ]`;
+        }
+      });
+
+      try {
+        const workerBlob = new Blob([IIT4_WORKER_BLOB_CODE], { type: 'application/javascript' });
+        const workerBlobUrl = URL.createObjectURL(workerBlob);
+        iitEngine.init(IIT4_WGSL_SOURCE, workerBlobUrl);
+      } catch (err) {
+        console.warn('[IIT 4.0] Blob worker initialization exception:', err);
+        iitEngine.init(IIT4_WGSL_SOURCE, null);
+      }
+
       const radarCanvas = document.getElementById('benchmarkRadarCanvas');
-      const radarEngine = new DiagnosticRadarEngine(radarCanvas);
+      const radarEngine = new DiagnosticRadarEngine(radarCanvas, iitEngine);
 
       const sparklines = new SparklineManager();
 
@@ -5191,8 +5775,15 @@
         const total = scores.reduce((a, b) => a + b, 0);
         document.getElementById('scoreVal').innerText = `${total} / 60`;
 
-        const phi = (0.2 + (total / 60) * 0.75).toFixed(2);
-        document.getElementById('phiVal').innerText = `${phi} bits`;
+        if (iitEngine) {
+          iitEngine.updateDynamicCoupling({
+            sensory: (scores[0] + scores[1]) / 20,
+            temporal: (scores[2] + scores[3]) / 20,
+            somatic: (scores[4] + scores[5]) / 20,
+            pointerEntropy: total / 60
+          });
+          iitEngine.computeStep();
+        }
 
         const latency = Math.round(520 - (scores[0] * 22 + scores[2] * 18));
         document.getElementById('latencyVal').innerText = `${latency} ms`;
@@ -5243,6 +5834,13 @@
 
       renderLedMeters();
       updateBenchmark();
+
+      // Continuous IIT 4.0 background compute heartbeat
+      setInterval(() => {
+        if (iitEngine && !iitEngine.isComputing) {
+          iitEngine.computeStep();
+        }
+      }, 1500);
 
       // Benchmark Mode Switcher
       const btnModeAttenuators = document.getElementById('btnModeAttenuators');
