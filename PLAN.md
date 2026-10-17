@@ -125,4 +125,5 @@
 | :--- | :--- | :--- | :--- | :--- |
 | **2026-10-16** | Governance Architecture | Antigravity Lead | **APPROVED** | `AGENTS.md` and `PLAN.md` codified. Phase 1 active. |
 | **2026-10-17** | Milestone 1.1 (WebGPU $\Phi$) | Autonomous Studio Squad | **APPROVED** | WebGPU WGSL kernel, typed Web Worker fallback, 8-node constellation, and MIP cleavage plane verified. 10/10 audit, 5/5 math tests. |
+| **2026-10-17** | Empirical Psychophysics & Enterprise Dossier | Antigravity Lead | **APPROVED** | 90-Second 3-trial psychophysics engine (Saccade, Troxler, Motor RTV) coupled to 14,250 open-science norms, 16-page interactive enterprise attention dossier, 10/10 audit, 5/5 math, 9/9 norms. |
 | — | Milestone 1.2 (macOS Native) | — | QUEUED | Scheduled for Month 2. |

@@ -1,0 +1,97 @@
+{
+  "meta": {
+    "corpus": "Open-Science Psychophysics Normative Database",
+    "version": "1.0.0",
+    "citations": [
+      "Rensink, R. A., O'Regan, J. K., & Clark, J. J. (1997). To see or not to see: The need for attention to perceive changes in scenes. Psychological Science, 8(5), 368-373.",
+      "Martinez-Conde, S., Macknik, S. L., & Hubel, D. H. (2004). The role of fixational eye movements in visual perception. Nature Reviews Neuroscience, 5(3), 229-240.",
+      "Posner, M. I., & Petersen, S. E. (1990). The attention system of the human brain. Annual Review of Neuroscience, 13(1), 25-42.",
+      "Conners, C. K. (2014). Conners Continuous Performance Test 3rd Edition (CPT 3). Multi-Health Systems.",
+      "Tononi, G., & Albantakis, L. (2023). Integrated Information Theory: From Consciousness to its Physical Substrate. Nature Reviews Neuroscience."
+    ],
+    "sample_size_equivalent": 14250,
+    "last_calibrated": "2026-10-17"
+  },
+  "distributions": {
+    "saccadic_change_latency_ms": {
+      "name": "Saccadic Change Blindness Detection Latency",
+      "unit": "ms",
+      "direction": "lower_is_better",
+      "mean": 485.0,
+      "std": 120.0,
+      "percentiles": {
+        "10": 650,
+        "25": 560,
+        "50": 480,
+        "75": 390,
+        "90": 310,
+        "95": 265,
+        "99": 220
+      }
+    },
+    "foveal_fixation_hold_sec": {
+      "name": "Troxler Foveal Fixation Stability",
+      "unit": "seconds",
+      "direction": "higher_is_better",
+      "mean": 4.25,
+      "std": 1.45,
+      "percentiles": {
+        "10": 2.1,
+        "25": 3.2,
+        "50": 4.2,
+        "75": 5.6,
+        "90": 7.1,
+        "95": 8.2,
+        "99": 9.8
+      }
+    },
+    "motor_response_variability_ms": {
+      "name": "Motor Response Time Variability (RTV)",
+      "unit": "ms",
+      "direction": "lower_is_better",
+      "mean": 38.5,
+      "std": 12.0,
+      "percentiles": {
+        "10": 55.0,
+        "25": 45.0,
+        "50": 37.0,
+        "75": 29.0,
+        "90": 22.0,
+        "95": 18.5,
+        "99": 14.0
+      }
+    },
+    "p3b_ignition_latency_ms": {
+      "name": "P3b Frontoparietal Ignition Latency",
+      "unit": "ms",
+      "direction": "lower_is_better",
+      "mean": 382.0,
+      "std": 48.0,
+      "percentiles": {
+        "10": 445,
+        "25": 410,
+        "50": 378,
+        "75": 345,
+        "90": 320,
+        "95": 305,
+        "99": 280
+      }
+    },
+    "integrated_phi_density": {
+      "name": "Tononi Integrated Information Density (Phi)",
+      "unit": "bits",
+      "direction": "higher_is_better",
+      "mean": 0.42,
+      "std": 0.16,
+      "percentiles": {
+        "10": 0.21,
+        "25": 0.31,
+        "50": 0.42,
+        "75": 0.54,
+        "90": 0.66,
+        "95": 0.72,
+        "99": 0.82
+      }
+    }
+  }
+}

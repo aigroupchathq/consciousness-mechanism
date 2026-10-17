@@ -6,8 +6,9 @@
   "scripts": {
     "audit": "node scripts/audit_protocol.js",
     "test:math": "node scripts/test_iit_math.js",
-    "test": "node scripts/audit_protocol.js && node scripts/test_iit_math.js",
-    "precommit": "node scripts/audit_protocol.js && node scripts/test_iit_math.js"
+    "test:norms": "node scripts/test_diagnostic_norms.js",
+    "test": "node scripts/audit_protocol.js && node scripts/test_iit_math.js && node scripts/test_diagnostic_norms.js",
+    "precommit": "node scripts/audit_protocol.js && node scripts/test_iit_math.js && node scripts/test_diagnostic_norms.js"
   },
   "repository": {
     "type": "git",
