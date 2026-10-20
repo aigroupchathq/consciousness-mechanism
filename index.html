@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>DatumIntelligence // Empirical Cognitive Architecture & Psychophysics Laboratory</title>
   <meta name="description" content="DatumIntelligence: Empirical neuro-performance instrument and visual psychophysics benchmark engine calibrated against 14,250 normative baselines.">
   
@@ -542,26 +542,86 @@
       box-shadow: 0 6px 22px rgba(0, 112, 243, 0.55);
     }
 
+    /* FAST-PATH TOUCH DISCIPLINE & ERGONOMIC ACTION BUTTONS */
+    button, .btn-minimal, .btn-pricing-action, .mobile-dock-btn, .mobile-canvas-tap-btn, .exp-canvas, canvas {
+      touch-action: manipulation;
+    }
+
+    .bottom-sheet-notch {
+      display: none;
+    }
+
+    .mobile-canvas-tap-btn {
+      display: none;
+      width: 100%;
+      min-height: 52px;
+      margin-top: 0.75rem;
+      background: rgba(0, 112, 243, 0.14);
+      border: 1px solid rgba(0, 112, 243, 0.5);
+      color: #ffffff;
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      border-radius: 6px;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      transition: all 0.15s ease;
+    }
+
+    .mobile-canvas-tap-btn:active {
+      background: rgba(0, 112, 243, 0.35);
+      transform: scale(0.985);
+    }
+
+    .mobile-distance-badge {
+      display: none;
+      font-family: var(--font-mono);
+      font-size: 0.62rem;
+      color: var(--text-dim);
+      letter-spacing: 0.05em;
+      text-align: center;
+      margin-top: 0.45rem;
+    }
+
+    .tab-badge-mono {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 0.58rem;
+      color: var(--accent-blue);
+      letter-spacing: 0.04em;
+      margin-top: 0.2rem;
+    }
+
+    .tab-header-row {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
     /* MOBILE FLOATING BOTTOM QUICK-DOCK */
     .mobile-bottom-dock {
       display: none;
       position: fixed;
-      bottom: 1.25rem;
+      bottom: calc(0.85rem + env(safe-area-inset-bottom, 0px));
       left: 50%;
       transform: translateX(-50%);
-      width: min(520px, calc(100% - 1.5rem));
+      width: min(500px, calc(100% - 1.25rem));
       z-index: 1000;
-      background: rgba(14, 15, 20, 0.88);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(10, 11, 14, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.16);
       border-radius: 999px;
       backdrop-filter: blur(28px) saturate(180%);
       -webkit-backdrop-filter: blur(28px);
-      padding: 0.45rem 0.65rem;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+      padding: 0.35rem 0.5rem;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(255, 255, 255, 0.08) inset;
       justify-content: space-around;
       align-items: center;
       font-family: var(--font-mono);
-      font-size: 0.68rem;
     }
 
     @media (max-width: 1100px) {
@@ -574,28 +634,38 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.2rem;
+      justify-content: center;
+      gap: 0.15rem;
       color: #9ca3af;
       text-decoration: none;
-      padding: 0.3rem 0.65rem;
+      padding: 0.35rem 0.5rem;
+      min-width: 48px;
+      min-height: 44px;
+      border: none;
+      background: transparent;
       border-radius: 999px;
+      cursor: pointer;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
       transition: all 0.2s;
     }
 
-    .mobile-dock-btn:hover, .mobile-dock-btn.active {
+    .mobile-dock-btn:hover, .mobile-dock-btn:active, .mobile-dock-btn.active {
       color: #ffffff;
       background: rgba(255, 255, 255, 0.12);
     }
 
     .mobile-dock-btn .dock-icon {
-      font-size: 0.95rem;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
     }
 
     .mobile-dock-btn .dock-label {
       font-size: 0.58rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.04em;
     }
 
     /* ==========================================================================
@@ -2631,7 +2701,33 @@
     }
 
     @media (max-width: 860px) {
-      .dossier-layout { grid-template-columns: 1fr; }
+      .dossier-layout {
+        grid-template-columns: 1fr !important;
+        min-height: auto !important;
+        gap: 1rem !important;
+      }
+      .dossier-toc-pane {
+        border-right: none !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+        padding-right: 0 !important;
+        padding-bottom: 0.75rem !important;
+        max-height: 120px !important;
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        gap: 0.5rem !important;
+        -webkit-overflow-scrolling: touch;
+      }
+      .dossier-toc-btn {
+        width: auto !important;
+        flex-shrink: 0 !important;
+        margin-bottom: 0 !important;
+        white-space: nowrap !important;
+      }
+      .dossier-sheet-pane {
+        max-height: 50vh !important;
+        padding: 1.25rem !important;
+      }
     }
 
     .dossier-toc-pane {
@@ -2878,6 +2974,117 @@
       justify-content: space-between;
       color: var(--text-dim);
     }
+
+    /* ==========================================================================
+       NATIVE BOTTOM SHEET DRAWERS & SMARTPHONE VIEWPORT ERGONOMICS (<768px)
+       ========================================================================== */
+    @media (max-width: 768px) {
+      /* Bottom Sheet Modal Transform */
+      .apply-modal-backdrop {
+        align-items: flex-end !important;
+        justify-content: center !important;
+        padding: 0 !important;
+      }
+
+      .terms-modal-card,
+      .support-modal-card,
+      .diagnostic-modal-card,
+      .dossier-modal-card,
+      .apply-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        border-radius: 20px 20px 0 0 !important;
+        position: relative !important;
+        bottom: 0 !important;
+        top: auto !important;
+        max-height: 90vh !important;
+        margin: 0 !important;
+        padding: 1.25rem 1.25rem calc(1.75rem + env(safe-area-inset-bottom, 0px)) !important;
+        box-shadow: 0 -15px 50px rgba(0, 0, 0, 0.9) !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .bottom-sheet-notch {
+        display: block !important;
+        width: 40px;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.28);
+        border-radius: 2px;
+        margin: 0 auto 1.25rem;
+      }
+
+      /* Mobile Header Hygiene */
+      .top-header {
+        padding: 0.5rem 1rem !important;
+      }
+      .session-badge,
+      .btn-nav-cinema,
+      .btn-nav-primary {
+        display: none !important;
+      }
+
+      /* Hide floating support button on mobile to avoid bottom dock collision */
+      .support-floating-btn {
+        display: none !important;
+      }
+
+      /* Prevent iOS Safari 16px auto-zoom bug on focus */
+      input, select, textarea, .apply-input, .calc-select, .calc-input {
+        font-size: 16px !important;
+      }
+
+      /* Vertical Single-Column Pricing Stack */
+      .pricing-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.25rem !important;
+      }
+      .pricing-guarantee-bar {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 0.75rem !important;
+      }
+
+      /* Mobile Lab Layout & Scrollable Tabs */
+      .lab-tab-nav {
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        border-radius: 12px !important;
+        width: 100% !important;
+        padding: 0.4rem !important;
+        -webkit-overflow-scrolling: touch;
+      }
+      .lab-tab-btn {
+        flex-shrink: 0 !important;
+        white-space: nowrap !important;
+        border-radius: 8px !important;
+        padding: 0.5rem 0.85rem !important;
+      }
+      .experiment-viewport {
+        padding: 1.25rem 1rem !important;
+        gap: 1.25rem !important;
+      }
+      .canvas-container {
+        min-height: 280px !important;
+        flex-direction: column !important;
+      }
+
+      /* Mobile Rapid Diagnostic Reticle & Canvas */
+      .diagnostic-step-row {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 0.35rem !important;
+      }
+      .diagnostic-step-tab {
+        padding: 0.4rem 0.45rem !important;
+        font-size: 0.6rem !important;
+      }
+      .diagnostic-step-tab div:last-child {
+        display: none;
+      }
+      .diagnostic-canvas-container {
+        flex-direction: column !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -2964,30 +3171,26 @@
 
   <!-- MOBILE FLOATING QUICK DOCK (<1100px) -->
   <div class="mobile-bottom-dock">
-    <a href="#personas" class="mobile-dock-btn">
+    <a href="#personas" class="mobile-dock-btn" aria-label="Cognitive Vectors">
       <span class="dock-icon">01</span>
       <span class="dock-label">Vectors</span>
     </a>
-    <a href="#theater" class="mobile-dock-btn">
+    <a href="#theater" class="mobile-dock-btn" aria-label="Attentional Cinema">
       <span class="dock-icon">02</span>
       <span class="dock-label">Cinema</span>
     </a>
-    <a href="#calculator" class="mobile-dock-btn">
+    <a href="#lab" class="mobile-dock-btn" aria-label="Visual Awareness Lab">
       <span class="dock-icon">03</span>
-      <span class="dock-label">Debt</span>
-    </a>
-    <a href="#benchmark" class="mobile-dock-btn">
-      <span class="dock-icon">04</span>
-      <span class="dock-label">Benchmark</span>
-    </a>
-    <a href="#lab" class="mobile-dock-btn">
-      <span class="dock-icon">05</span>
       <span class="dock-label">Lab</span>
     </a>
-    <a href="#fellowship" class="mobile-dock-btn">
-      <span class="dock-icon">06</span>
-      <span class="dock-label">Cohort</span>
-    </a>
+    <button class="mobile-dock-btn" id="mobileDockAuditBtn" type="button" aria-label="Open 90-Second Rapid Audit">
+      <span class="dock-icon">04</span>
+      <span class="dock-label">Audit</span>
+    </button>
+    <button class="mobile-dock-btn" id="mobileDockSupportBtn" type="button" aria-label="Open Client Support Desk">
+      <span class="dock-icon">05</span>
+      <span class="dock-label">Help</span>
+    </button>
   </div>
 
   <!-- ==========================================================================
@@ -3620,19 +3823,54 @@
       Experience 5 direct empirical demonstrations of inattentional blindness, qualia disappearance, and cortical rivalry.
     </p>
 
-    <!-- TABS WITH HOTKEY AFFORDANCES -->
+    <!-- TABS WITH HOTKEY AFFORDANCES & DUAL-LAYER LEXICON -->
     <div class="lab-tab-nav" role="tablist" aria-label="Visual awareness experiments">
-      <button class="lab-tab-btn active" data-exp="flicker" title="Press 1 on keyboard">01. Flicker Gating <span class="tab-hotkey">1</span></button>
-      <button class="lab-tab-btn" data-exp="mib" title="Press 2 on keyboard">02. Motion Blindness (MIB) <span class="tab-hotkey">2</span></button>
-      <button class="lab-tab-btn" data-exp="bistable" title="Press 3 on keyboard">03. Bistable Necker <span class="tab-hotkey">3</span></button>
-      <button class="lab-tab-btn" data-exp="cfs" title="Press 4 on keyboard">04. Flash Suppression <span class="tab-hotkey">4</span></button>
-      <button class="lab-tab-btn" data-exp="chronostasis" title="Press 5 on keyboard">05. Chronostasis <span class="tab-hotkey">5</span></button>
+      <button class="lab-tab-btn active" data-exp="flicker" title="Change Blindness Test">
+        <span class="tab-header-row">
+          <span class="tab-title">01. Change Blindness</span>
+          <span class="tab-hotkey">1</span>
+        </span>
+        <span class="tab-badge-mono">[ GNW: 240MS BLANKING ]</span>
+      </button>
+      <button class="lab-tab-btn" data-exp="mib" title="Vanishing Dot Illusion">
+        <span class="tab-header-row">
+          <span class="tab-title">02. Vanishing Dot Illusion</span>
+          <span class="tab-hotkey">2</span>
+        </span>
+        <span class="tab-badge-mono">[ V1/V4: MIB ]</span>
+      </button>
+      <button class="lab-tab-btn" data-exp="bistable" title="Cube Perspective Flip">
+        <span class="tab-header-row">
+          <span class="tab-title">03. Cube Perspective Flip</span>
+          <span class="tab-hotkey">3</span>
+        </span>
+        <span class="tab-badge-mono">[ BISTABLE NECKER ]</span>
+      </button>
+      <button class="lab-tab-btn" data-exp="cfs" title="Subconscious Breakthrough">
+        <span class="tab-header-row">
+          <span class="tab-title">04. Subconscious Breakthrough</span>
+          <span class="tab-hotkey">4</span>
+        </span>
+        <span class="tab-badge-mono">[ CFS SUPPRESSION ]</span>
+      </button>
+      <button class="lab-tab-btn" data-exp="chronostasis" title="Time Dilation Gaze">
+        <span class="tab-header-row">
+          <span class="tab-title">05. Time Dilation Gaze</span>
+          <span class="tab-hotkey">5</span>
+        </span>
+        <span class="tab-badge-mono">[ CHRONOSTASIS ]</span>
+      </button>
     </div>
 
     <div class="experiment-viewport">
       <div class="canvas-container">
         <canvas class="exp-canvas" id="mainExperimentCanvas"></canvas>
-        <div class="canvas-hud" id="experimentHud">MODE: 01 // PERCEPTUAL FLICKER & IGNITION</div>
+        <div class="canvas-hud" id="experimentHud">MODE: 01 // CHANGE BLINDNESS & SACCADIC GATING</div>
+        <div class="mobile-distance-badge">[ CALIBRATED VIEWING DISTANCE: 25-30CM ]</div>
+        <button class="mobile-canvas-tap-btn" id="btnLabMobileTap" type="button" aria-label="Tap upon conscious perception">
+          <span class="tap-btn-icon">▶</span>
+          <span id="btnLabMobileTapText">TRIGGER ANOMALY</span>
+        </button>
       </div>
 
       <div class="exp-sidebar">
@@ -4294,6 +4532,7 @@
        ========================================================================== -->
   <div class="apply-modal-backdrop" id="applyModal">
     <div class="apply-card">
+      <div class="bottom-sheet-notch"></div>
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
         <div class="section-header-badge" id="modalTierBadge">[ FELLOWSHIP ADMISSION // COHORT 08 ]</div>
         <button class="btn-minimal" id="btnCloseApplyModal" style="padding:0.2rem 0.6rem;">✕</button>
@@ -4361,6 +4600,7 @@
        ========================================================================== -->
   <div class="apply-modal-backdrop" id="rapidDiagnosticModal">
     <div class="diagnostic-modal-card">
+      <div class="bottom-sheet-notch"></div>
       <div style="display:flex; justify-content:space-between; align-items:center;">
         <div>
           <div class="section-header-badge">[ EMPIRICAL NEURO-SAMPLING // 1000HZ TELEMETRY ]</div>
@@ -4391,6 +4631,11 @@
       <!-- INTERACTIVE RETICLE CANVAS -->
       <div class="diagnostic-canvas-container" id="diagnosticCanvasContainer">
         <canvas id="rapidDiagnosticCanvas" width="800" height="420" style="width:100%; height:auto; display:block;"></canvas>
+        <div class="mobile-distance-badge">[ CALIBRATED VIEWING DISTANCE: 25-30CM ]</div>
+        <button class="mobile-canvas-tap-btn" id="btnRapidMobileTap" type="button" aria-label="Tap upon target perception">
+          <span class="tap-btn-icon">▶</span>
+          <span id="btnRapidMobileTapText">TAP TO RESPOND (FAST-PATH TELEMETRY)</span>
+        </button>
       </div>
 
       <!-- DYNAMIC TRIAL INSTRUCTION BANNER -->
@@ -4451,6 +4696,7 @@
        ========================================================================== -->
   <div class="apply-modal-backdrop" id="enterpriseDossierModal">
     <div class="dossier-modal-card">
+      <div class="bottom-sheet-notch"></div>
       <div style="display:flex; justify-content:space-between; align-items:flex-start; border-bottom:1px solid rgba(255,255,255,0.1); padding-bottom:1rem;">
         <div>
           <div class="section-header-badge">[ ARCHIVAL ARTIFACT // TIER 03 ENTERPRISE DELIVERABLE ]</div>
@@ -4519,6 +4765,7 @@
        ========================================================================== -->
   <div class="apply-modal-backdrop" id="termsModal">
     <div class="terms-modal-card">
+      <div class="bottom-sheet-notch"></div>
       <div style="display:flex; justify-content:space-between; align-items:center;">
         <div>
           <div class="section-header-badge">[ GOVERNANCE // LEGAL & SCIENTIFIC INTEGRITY ]</div>
@@ -4628,6 +4875,7 @@
        ========================================================================== -->
   <div class="apply-modal-backdrop" id="supportModal">
     <div class="support-modal-card">
+      <div class="bottom-sheet-notch"></div>
       <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1.25rem;">
         <div>
           <div class="section-header-badge">[ CLIENT DESK // SUPPORT & SCIENTIFIC INQUIRY ]</div>
@@ -5259,61 +5507,67 @@
         const m2 = document.getElementById('metric2');
         const m3 = document.getElementById('metric3');
         const actionBtn = document.getElementById('expActionBtn');
+        const mobileTapText = document.getElementById('btnLabMobileTapText');
 
         switch (expKey) {
           case 'flicker':
-            hud.innerText = "MODE: 01 // PERCEPTUAL FLICKER & IGNITION";
-            title.innerText = "Perceptual Flicker & Visual Gating";
-            origin.innerText = "Stanislas Dehaene // Global Workspace Paradigm";
-            desc.innerText = "Observe the rotating concentric dot matrix. Click 'TRIGGER ANOMALY'. A subtle phase distortion will appear at an unpredictable moment. Click the canvas the instant you consciously register the shift to record your Ignition Latency.";
+            hud.innerText = "MODE: 01 // CHANGE BLINDNESS & SACCADIC GATING";
+            title.innerText = "Change Blindness Test";
+            origin.innerText = "Stanislas Dehaene // Global Neuronal Workspace [ GNW: 240MS SACCADIC BLANKING ]";
+            desc.innerText = "Observe the rotating concentric dot matrix. Tap 'TRIGGER ANOMALY' or the action bar below. A subtle phase distortion will appear at an unpredictable moment behind 240ms saccadic blanking masks. Tap the canvas or action bar the instant you consciously register the shift to record your Ignition Latency.";
             m1.innerText = "IGNITION LATENCY";
             m2.innerText = "-- ms";
             m3.innerText = "STANDBY";
             actionBtn.innerText = "TRIGGER ANOMALY";
+            if (mobileTapText) mobileTapText.innerText = "TRIGGER ANOMALY / TAP UPON PERCEPTION";
             break;
 
           case 'mib':
             hud.innerText = "MODE: 02 // MOTION-INDUCED BLINDNESS";
-            title.innerText = "Motion-Induced Blindness (MIB)";
-            origin.innerText = "Bonneh, Cooperman & Sagi (2001, Nature)";
-            desc.innerText = "Fixate steadily on the blinking green central dot. Do not move your eyes. Within 5-10 seconds, the stationary yellow peripheral dots will completely vanish from your conscious awareness despite remaining on your retina.";
+            title.innerText = "Vanishing Dot Illusion";
+            origin.innerText = "Bonneh, Cooperman & Sagi (2001, Nature) // [ V1/V4: MOTION-INDUCED BLINDNESS ]";
+            desc.innerText = "Fixate steadily on the blinking green central dot. Do not move your eyes. Within 5-10 seconds, the high-contrast rotating distractor causes stationary yellow peripheral dots to completely vanish from conscious awareness despite remaining on your retina.";
             m1.innerText = "DISAPPEARANCE INTERVAL";
             m2.innerText = "ACTIVE";
             m3.innerText = "QUALIA SUPPRESSED";
             actionBtn.innerText = "RESET FIXATION POINT";
+            if (mobileTapText) mobileTapText.innerText = "RESET FIXATION POINT";
             break;
 
           case 'bistable':
             hud.innerText = "MODE: 03 // BISTABLE NECKER RIVALRY";
-            title.innerText = "Bistable Necker Cube & Perceptual Rivalry";
-            origin.innerText = "Louis Albert Necker (1832) // Cortical Competition";
-            desc.innerText = "Look at the wireframe cube below. Your brain automatically flips the front and rear face orientations. Press SPACEBAR or CLICK THE CANVAS every time your conscious perception flips orientation to measure your perceptual switching frequency.";
+            title.innerText = "Cube Perspective Flip";
+            origin.innerText = "Louis Albert Necker (1832) // [ BISTABLE NECKER RIVALRY // CORTICAL COMPETITION ]";
+            desc.innerText = "Look at the wireframe cube below. Your brain automatically flips the front and rear face orientations. Press SPACEBAR or TAP THE CANVAS / ACTION BAR every time your conscious perception flips orientation to log your perceptual switching frequency.";
             m1.innerText = "PERCEPTUAL REVERSALS";
             m2.innerText = `${this.cubeReversals} flips`;
             m3.innerText = "RIVALRY ENGAGED";
             actionBtn.innerText = "LOG PERCEPTUAL FLIP";
+            if (mobileTapText) mobileTapText.innerText = "LOG PERCEPTUAL FLIP";
             break;
 
           case 'cfs':
             hud.innerText = "MODE: 04 // CONTINUOUS FLASH SUPPRESSION";
-            title.innerText = "Continuous Flash Suppression (CFS)";
-            origin.innerText = "Tsuchiya & Koch (2005, Nature Neuroscience)";
-            desc.innerText = "High-frequency dynamic Mondrian patches suppress conscious awareness of a subliminal target image. Click 'INJECT SUBLIMINAL TARGET' to see how long it takes for the invisible target to break through into conscious access.";
+            title.innerText = "Subconscious Breakthrough";
+            origin.innerText = "Tsuchiya & Koch (2005, Nature Neuroscience) // [ CFS: CONTINUOUS FLASH SUPPRESSION ]";
+            desc.innerText = "High-frequency dynamic 10Hz Mondrian patches suppress conscious awareness of a subliminal target. Tap 'INJECT SUBLIMINAL TARGET' and observe how many milliseconds it takes for the suppressed target to break through into conscious awareness.";
             m1.innerText = "SUPPRESSION BREAKTHROUGH";
             m2.innerText = "-- ms";
             m3.innerText = "SUBLIMINAL GATED";
             actionBtn.innerText = "INJECT SUBLIMINAL TARGET";
+            if (mobileTapText) mobileTapText.innerText = "INJECT SUBLIMINAL TARGET / TAP BREAKTHROUGH";
             break;
 
           case 'chronostasis':
             hud.innerText = "MODE: 05 // CHRONOSTASIS (STOPPED CLOCK)";
-            title.innerText = "Chronostasis (Saccadic Time Dilation)";
-            origin.innerText = "Kihlstrom & Yantis // Saccadic Suppression";
-            desc.innerText = "When you rapidly shift your gaze from the left marker to the ticking central needle, subjective time temporarily dilates. Click 'TRIGGER SACCADIC SHIFT' to measure subjective vs objective time dilation.";
+            title.innerText = "Time Dilation Gaze";
+            origin.innerText = "Kihlstrom & Yantis // [ SACCADIC CHRONOSTASIS CHRONOMETRY ]";
+            desc.innerText = "When you rapidly shift your gaze from the left marker to the ticking central needle, subjective time temporarily dilates. Tap 'TRIGGER SACCADIC SHIFT' to measure subjective vs objective time dilation.";
             m1.innerText = "SUBJECTIVE DILATION";
             m2.innerText = "+180 ms (Estimated)";
             m3.innerText = "SACCADIC ACTIVE";
             actionBtn.innerText = "TRIGGER SACCADIC SHIFT";
+            if (mobileTapText) mobileTapText.innerText = "TRIGGER SACCADIC SHIFT";
             break;
         }
       }
@@ -5324,6 +5578,8 @@
           const delay = 1000 + Math.random() * 2500;
           document.getElementById('metric3').innerText = "OBSERVE... ANOMALY IMMINENT";
           document.getElementById('metric3').style.color = "var(--accent-amber)";
+          const mobileTapText = document.getElementById('btnLabMobileTapText');
+          if (mobileTapText) mobileTapText.innerText = "OBSERVE CAREFULLY... IMMINENT";
 
           setTimeout(() => {
             this.hasAnomaly = true;
@@ -5331,6 +5587,8 @@
             this.waitingFlickerResponse = true;
             document.getElementById('metric3').innerText = "ANOMALY ACTIVE! CLICK CANVAS NOW!";
             document.getElementById('metric3').style.color = "var(--accent-crimson)";
+            const tapText = document.getElementById('btnLabMobileTapText');
+            if (tapText) tapText.innerText = "ANOMALY ACTIVE! TAP HERE NOW!";
           }, delay);
         } else if (this.currentExp === 'mib') {
           this.time = 0;
@@ -5348,6 +5606,8 @@
           this.cfsTargetAlpha = 0.05;
           this.cfsStartTime = performance.now();
           document.getElementById('metric3').innerText = "SUBLIMINAL SIGNAL INJECTED... AWAITING ACCESS";
+          const mobileTapText = document.getElementById('btnLabMobileTapText');
+          if (mobileTapText) mobileTapText.innerText = "AWAITING ACCESS... TAP ON PERCEPTION";
         } else if (this.currentExp === 'chronostasis') {
           this.clockDialationActive = true;
           setTimeout(() => { this.clockDialationActive = false; }, 1400);
@@ -5362,6 +5622,8 @@
           this.hasAnomaly = false;
           document.getElementById('metric2').innerText = `${latency} ms`;
           document.getElementById('metric3').innerHTML = `<span style="color:var(--accent-emerald); font-weight:700;">IGNITION DETECTED</span> (${latency < 320 ? 'Optimal Ignition' : 'Lagged Attentional Gating'})`;
+          const mobileTapText = document.getElementById('btnLabMobileTapText');
+          if (mobileTapText) mobileTapText.innerText = "TRIGGER ANOMALY / TAP UPON PERCEPTION";
         } else if (this.currentExp === 'bistable') {
           this.handleActionClick();
         } else if (this.currentExp === 'cfs' && this.cfsTargetVisible) {
@@ -5370,6 +5632,8 @@
           this.cfsTargetAlpha = 0;
           document.getElementById('metric2').innerText = `${breakthroughTime} ms`;
           document.getElementById('metric3').innerText = `BREAKTHROUGH CONFIRMED (Latency: ${breakthroughTime}ms)`;
+          const mobileTapText = document.getElementById('btnLabMobileTapText');
+          if (mobileTapText) mobileTapText.innerText = "INJECT SUBLIMINAL TARGET / TAP BREAKTHROUGH";
         }
       }
 
@@ -7792,12 +8056,12 @@ self.onmessage = function(e) {
         document.getElementById('sessionTimer').innerText = `${hrs}:${mins}:${s}`;
       }, 1000);
 
-      // Lab Tab Switching
+      // Lab Tab Switching with child-element safe resolution
       document.querySelectorAll('.lab-tab-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
+        btn.addEventListener('click', () => {
           document.querySelectorAll('.lab-tab-btn').forEach(b => b.classList.remove('active'));
-          e.target.classList.add('active');
-          const expKey = e.target.getAttribute('data-exp');
+          btn.classList.add('active');
+          const expKey = btn.getAttribute('data-exp');
           labEngine.setExperiment(expKey);
           audio.playChime(660);
         });
@@ -7810,7 +8074,51 @@ self.onmessage = function(e) {
       document.getElementById('expResetBtn').addEventListener('click', () => {
         labEngine.setExperiment(labEngine.currentExp);
       });
+
+      // Fast-Path Mobile Hybrid Tap & Reticle Input for Visual Lab
+      let lastLabActionTime = 0;
+      const handleLabMobileTap = (e) => {
+        const now = performance.now();
+        if (now - lastLabActionTime < 280) return;
+        lastLabActionTime = now;
+
+        if (labEngine.currentExp === 'flicker') {
+          if (labEngine.waitingFlickerResponse) {
+            labEngine.handleCanvasClick();
+          } else {
+            labEngine.handleActionClick();
+          }
+        } else if (labEngine.currentExp === 'cfs') {
+          if (labEngine.cfsTargetVisible) {
+            labEngine.handleCanvasClick();
+          } else {
+            labEngine.handleActionClick();
+          }
+        } else {
+          labEngine.handleActionClick();
+        }
+        if (navigator.vibrate) navigator.vibrate(15);
+        audio.playChime(528);
+      };
+
+      const btnLabMobileTap = document.getElementById('btnLabMobileTap');
+      if (btnLabMobileTap) {
+        btnLabMobileTap.addEventListener('pointerdown', handleLabMobileTap, { passive: true });
+        btnLabMobileTap.addEventListener('click', handleLabMobileTap);
+      }
+
+      labCanvas.addEventListener('pointerdown', (e) => {
+        const now = performance.now();
+        if (now - lastLabActionTime < 280) return;
+        lastLabActionTime = now;
+        labEngine.handleCanvasClick();
+        if (navigator.vibrate) navigator.vibrate(15);
+      }, { passive: true });
+
       labCanvas.addEventListener('click', () => {
+        const now = performance.now();
+        if (now - lastLabActionTime < 280) return;
+        lastLabActionTime = now;
         labEngine.handleCanvasClick();
       });
 
@@ -8417,9 +8725,21 @@ self.onmessage = function(e) {
         }
       });
 
+      function resizeDiagnosticCanvas() {
+        if (!diagCanvasEl) return;
+        const container = diagCanvasEl.parentElement;
+        if (!container) return;
+        const rect = container.getBoundingClientRect();
+        const width = Math.min(800, Math.max(300, Math.floor(rect.width) || 360));
+        const height = Math.min(420, Math.max(220, Math.floor(width * 0.525)));
+        diagCanvasEl.width = width;
+        diagCanvasEl.height = height;
+      }
+
       function openRapidDiagnosticModal() {
         if (rapidModal) {
           rapidModal.classList.add('active');
+          resizeDiagnosticCanvas();
           const resultsCard = document.getElementById('diagResultsCard');
           if (resultsCard) resultsCard.style.display = 'none';
           rapidDiagnostic.start(diagCanvasEl);
@@ -8448,15 +8768,44 @@ self.onmessage = function(e) {
         btnRestartDiag.addEventListener('click', () => {
           const resultsCard = document.getElementById('diagResultsCard');
           if (resultsCard) resultsCard.style.display = 'none';
+          resizeDiagnosticCanvas();
           rapidDiagnostic.start(diagCanvasEl);
           audio.playChime(528);
         });
       }
 
+      let lastDiagInputTime = 0;
+      const handleRapidDiagnosticInput = (e) => {
+        const now = performance.now();
+        if (now - lastDiagInputTime < 280) return;
+        lastDiagInputTime = now;
+        rapidDiagnostic.handleInput('click');
+        if (navigator.vibrate) navigator.vibrate(15);
+        audio.playChime(660);
+      };
+
       if (diagCanvasEl) {
-        diagCanvasEl.addEventListener('click', () => {
-          rapidDiagnostic.handleInput('click');
-          audio.playChime(660);
+        diagCanvasEl.addEventListener('pointerdown', handleRapidDiagnosticInput, { passive: true });
+        diagCanvasEl.addEventListener('click', handleRapidDiagnosticInput);
+      }
+
+      const btnRapidMobileTap = document.getElementById('btnRapidMobileTap');
+      if (btnRapidMobileTap) {
+        btnRapidMobileTap.addEventListener('pointerdown', handleRapidDiagnosticInput, { passive: true });
+        btnRapidMobileTap.addEventListener('click', handleRapidDiagnosticInput);
+      }
+
+      const mobileDockAuditBtn = document.getElementById('mobileDockAuditBtn');
+      if (mobileDockAuditBtn) {
+        mobileDockAuditBtn.addEventListener('click', () => {
+          openRapidDiagnosticModal();
+        });
+      }
+
+      const mobileDockSupportBtn = document.getElementById('mobileDockSupportBtn');
+      if (mobileDockSupportBtn) {
+        mobileDockSupportBtn.addEventListener('click', () => {
+          openSupportModal();
         });
       }
 
