@@ -114,7 +114,7 @@ class RapidDiagnosticEngine {
         trial: 1,
         phase: this.phase,
         name: this.phase === 'VERIFICATION' ? 'Verification: Saccadic Detection' : 'Baseline: Saccadic Change Detection',
-        instruction: 'AN OPTICAL TARGET IS SHIFTING BEHIND 240MS SACCADE MASKS. CLICK OR HIT [SPACE] THE INSTANT YOU DETECT THE CHANGE.'
+        instruction: 'AN OPTICAL TARGET IS SHIFTING. PRESS [SPACE] OR TAP THE INSTANT YOU SPOT THE CHANGE.'
       });
     }
 
@@ -152,7 +152,7 @@ class RapidDiagnosticEngine {
         trial: 2,
         phase: this.phase,
         name: this.phase === 'VERIFICATION' ? 'Verification: Foveal Fixation' : 'Baseline: Foveal Fixation & Troxler Gating',
-        instruction: 'FIXATE STEADILY ON THE CENTRAL RED CROSS WITHOUT MOVING YOUR EYES. PRESS [SPACE] WHEN THE PERIPHERAL DISKS COMPLETELY DISSOLVE.'
+        instruction: 'REST GAZE ON THE CENTER CROSS. TAP OR PRESS [SPACE] WHEN THE PERIPHERAL YELLOW DOTS FADE FROM VIEW.'
       });
     }
   }
@@ -188,7 +188,7 @@ class RapidDiagnosticEngine {
         trial: 3,
         phase: this.phase,
         name: this.phase === 'VERIFICATION' ? 'Verification: Motor RTV & Gating' : 'Baseline: Motor Response Variability & Inhibition',
-        instruction: 'WHEN A CYAN TARGET IGNITES, HIT [SPACE] AS FAST AS POSSIBLE. DO NOT RESPOND IF THE TARGET IS CHARCOAL.'
+        instruction: 'WHEN A CYAN TARGET IGNITES, HIT [SPACE] RAPIDLY. DO NOT RESPOND IF CHARCOAL.'
       });
     }
 
@@ -278,8 +278,8 @@ class RapidDiagnosticEngine {
       this.onTrialStart({
         trial: 0,
         phase: 'INTERVENTION',
-        name: 'Dual Sensory Phase-Lock Protocol',
-        instruction: 'MAINTAIN STEADY FOVEAL GAZE ON CENTRAL CROSS · 40HZ BINAURAL BINDING ACTIVE · OBSERVE RETINOCORTICAL QUIETING'
+        name: 'Dual Sensory Focus Reset',
+        instruction: 'REST GAZE GENTLY ON THE CENTRAL CROSS · 40HZ HARMONIC AUDIO ACTIVE · BREATHE WITH THE RHYTHM'
       });
     }
   }
@@ -467,7 +467,7 @@ class RapidDiagnosticEngine {
     // Header Monospace Metadata
     ctx.font = "bold 13px ui-monospace, SFMono-Regular, monospace";
     ctx.fillStyle = "#3291ff";
-    ctx.fillText("[ EMPIRICAL NEUROLOGICAL ATTESTATION // VERIFIED BIOLOGICAL PROOF ]", 72, 92);
+    ctx.fillText("[ EMPIRICAL FOCUS BENCHMARK // ATTENTIONAL RESET REPORT ]", 72, 92);
 
     ctx.font = "11px ui-monospace, SFMono-Regular, monospace";
     ctx.fillStyle = "#888888";
@@ -478,11 +478,11 @@ class RapidDiagnosticEngine {
     // Certificate Title
     ctx.font = "900 34px sans-serif";
     ctx.fillStyle = "#ffffff";
-    ctx.fillText("CERTIFICATE OF NEURAL SOVEREIGNTY", 72, 145);
+    ctx.fillText("ATTENTIONAL RECOVERY & FOCUS REPORT", 72, 145);
 
     ctx.font = "14px sans-serif";
     ctx.fillStyle = "#9ca3af";
-    ctx.fillText("Objective before-and-after psychophysics benchmarking calibrated against N=14,250 normative baselines.", 72, 178);
+    ctx.fillText("Objective before-and-after psychomotor reaction benchmarking · Educational open-science focus calibration.", 72, 178);
 
     // Comparative Metric Cards
     // Left: Baseline
@@ -493,7 +493,7 @@ class RapidDiagnosticEngine {
 
     ctx.font = "bold 11px ui-monospace, SFMono-Regular, monospace";
     ctx.fillStyle = "#9ca3af";
-    ctx.fillText("[ PHASE 01: UNCALIBRATED BASELINE ]", 92, 252);
+    ctx.fillText("[ PHASE 01: BEFORE RESET ]", 92, 252);
 
     ctx.font = "900 42px ui-monospace, SFMono-Regular, monospace";
     ctx.fillStyle = "#ffffff";
@@ -501,9 +501,9 @@ class RapidDiagnosticEngine {
 
     ctx.font = "12px ui-monospace, SFMono-Regular, monospace";
     ctx.fillStyle = "#888888";
-    ctx.fillText(`Saccadic Temporal Latency`, 92, 335);
+    ctx.fillText(`Saccadic Detection Latency`, 92, 335);
     ctx.fillText(`Percentile: ${base.overallPercentile}th`, 92, 360);
-    ctx.fillText(`State: Uncalibrated`, 92, 385);
+    ctx.fillText(`State: Pre-Calibration Baseline`, 92, 385);
 
     // Center: Acceleration Arrow & Delta Callout
     ctx.fillStyle = "rgba(0, 112, 243, 0.08)";
@@ -513,7 +513,7 @@ class RapidDiagnosticEngine {
 
     ctx.font = "bold 11px ui-monospace, SFMono-Regular, monospace";
     ctx.fillStyle = "#00d2ff";
-    ctx.fillText("[ VERIFIED BIOLOGICAL ACCELERATION ]", 446, 252);
+    ctx.fillText("[ MEASURED REACTION GAIN ]", 446, 252);
 
     ctx.font = "900 48px ui-monospace, SFMono-Regular, monospace";
     ctx.fillStyle = "#30d158";
@@ -521,12 +521,12 @@ class RapidDiagnosticEngine {
 
     ctx.font = "bold 15px ui-monospace, SFMono-Regular, monospace";
     ctx.fillStyle = "#ffffff";
-    ctx.fillText(`+${delta.accelerationPct}% Neural Ignition Speed`, 446, 350);
+    ctx.fillText(`+${delta.accelerationPct}% Reaction Speed Gain`, 446, 350);
 
     ctx.font = "12px ui-monospace, SFMono-Regular, monospace";
     ctx.fillStyle = "#9ca3af";
-    ctx.fillText(`Percentile Jump: +${Math.max(0, delta.percentileDelta || 25)} points`, 446, 385);
-    ctx.fillText(`Protocol: 60s Dual-Sensory 40Hz Phase-Lock`, 446, 410);
+    ctx.fillText(`Percentile Gain: +${Math.max(0, delta.percentileDelta || 25)} points`, 446, 385);
+    ctx.fillText(`Intervention: 60s Dual-Sensory 40Hz Audio Reset`, 446, 410);
 
     // Right: Calibrated Sovereign State
     ctx.fillStyle = "rgba(48, 209, 88, 0.04)";
@@ -536,7 +536,7 @@ class RapidDiagnosticEngine {
 
     ctx.font = "bold 11px ui-monospace, SFMono-Regular, monospace";
     ctx.fillStyle = "#30d158";
-    ctx.fillText("[ PHASE 02: SOVEREIGN OPERATOR ]", 858, 252);
+    ctx.fillText("[ PHASE 02: CALIBRATED FOCUS ]", 858, 252);
 
     ctx.font = "900 42px ui-monospace, SFMono-Regular, monospace";
     ctx.fillStyle = "#30d158";
@@ -546,7 +546,7 @@ class RapidDiagnosticEngine {
     ctx.fillStyle = "#888888";
     ctx.fillText(`Post-Intervention Latency`, 858, 335);
     ctx.fillText(`Percentile: ${cal.overallPercentile}th`, 858, 360);
-    ctx.fillText(`Phenotype: ${cal.phenotype || 'SOVEREIGN OPERATOR'}`, 858, 385);
+    ctx.fillText(`Focus State: Calibrated & Grounded`, 858, 385);
 
     // Methodology & Cryptographic Attestation Block
     ctx.fillStyle = "rgba(255, 255, 255, 0.02)";
@@ -556,30 +556,30 @@ class RapidDiagnosticEngine {
 
     ctx.font = "bold 11px ui-monospace, SFMono-Regular, monospace";
     ctx.fillStyle = "#3291ff";
-    ctx.fillText("[ PEER-REVIEWED CORPUS & COMPUTATIONAL INTEGRITY ]", 92, 540);
+    ctx.fillText("[ OPEN-SCIENCE PSYCHOPHYSICS & LOCAL COMPUTATION INTEGRITY ]", 92, 540);
 
     ctx.font = "12px sans-serif";
     ctx.fillStyle = "#9ca3af";
-    ctx.fillText("Stimulus engine calibrated to Stanislas Dehaene Global Neuronal Workspace (240ms temporal blanking) and Giulio Tononi IIT 4.0 causal density.", 92, 570);
-    ctx.fillText("Hardware input captured via sub-16ms fast-path pointerdown dispatch. Zero cloud transmission; 100% computed inside local client memory.", 92, 595);
+    ctx.fillText("Visual stimulus engine based on standard change-blindness flicker paradigms and sustained foveal fixation gating.", 92, 570);
+    ctx.fillText("Educational demonstration tool. Hardware timing captured via sub-16ms fast-path pointer events. 100% computed inside local client memory.", 92, 595);
 
     ctx.font = "11px ui-monospace, SFMono-Regular, monospace";
     ctx.fillStyle = "#555555";
     const pseudoHash = Array.from(certId + dateStr + delta.accelerationPct)
       .map(c => c.charCodeAt(0).toString(16)).join('').padEnd(64, 'a').substring(0, 64);
-    ctx.fillText(`SHA-256 SIGNATURE: ${pseudoHash}`, 92, 640);
+    ctx.fillText(`VERIFICATION HASH: ${pseudoHash}`, 92, 640);
 
     // Footer Watermark
     ctx.font = "bold 11px ui-monospace, SFMono-Regular, monospace";
     ctx.fillStyle = "#666666";
-    ctx.fillText("DATUM INTELLIGENCE // LABORATORY ATTESTATION ENGINE", 72, 730);
+    ctx.fillText("DATUM INTELLIGENCE // COGNITIVE RECOVERY & FOCUS SANCTUARY", 72, 730);
 
     ctx.textAlign = "right";
-    ctx.fillText("100% LOCAL CLIENT-SIDE COMPUTATION · ZERO SURVEILLANCE BEACONS", 1168, 730);
+    ctx.fillText("EDUCATIONAL PSYCHOPHYSICS DEMO · ZERO DATA COLLECTED OR TRANSMITTED", 1168, 730);
 
     return {
       dataUrl: canvas.toDataURL('image/png'),
-      filename: `DatumIntelligence_Sovereignty_${certId}.png`,
+      filename: `DatumIntelligence_Focus_${certId}.png`,
       certId
     };
   }
@@ -615,10 +615,10 @@ class RapidDiagnosticEngine {
         const elapsedSec = (now - this.interventionStartTime) / 1000;
         const remaining = Math.max(0, Math.ceil(this.interventionDurationSec - elapsedSec));
 
-        ctx.fillText(`[ 60S DUAL SENSORY PHASE-LOCK // 40HZ BINAURAL BINDING ]`, 36, 44);
+        ctx.fillText(`[ 60S ATTENTIONAL RESET // 40HZ HARMONIC AUDIO ]`, 36, 44);
         ctx.fillStyle = "#30d158";
         ctx.textAlign = "right";
-        ctx.fillText(`REMAINING: ${remaining}s · FOCUS RETICLE ACTIVE`, w - 36, 44);
+        ctx.fillText(`REMAINING: ${remaining}s · FOCUS RESET ACTIVE`, w - 36, 44);
         ctx.textAlign = "left";
 
         // Draw breathing concentric coherence rings
@@ -659,11 +659,11 @@ class RapidDiagnosticEngine {
         ctx.font = "11px ui-monospace, SFMono-Regular, monospace";
         ctx.fillStyle = "rgba(255, 255, 255, 0.65)";
         ctx.textAlign = "center";
-        ctx.fillText("MAINTAIN CONTINUOUS FOVEAL GAZE ON RED CROSS · DAMPEN MICRO-SACCADES", cx, h - 50);
+        ctx.fillText("KEEP GENTLE FOCUS ON RED CROSS · LET PERIPHERAL DISTRACTION FADE", cx, h - 50);
 
         ctx.font = "10px ui-monospace, SFMono-Regular, monospace";
         ctx.fillStyle = "rgba(50, 145, 255, 0.8)";
-        ctx.fillText("TAP CANVAS OR ACTION BAR TO ADVANCE TO VERIFICATION RE-TEST →", cx, h - 30);
+        ctx.fillText("TAP CANVAS OR ACTION BAR TO ADVANCE TO VERIFICATION CHECK →", cx, h - 30);
 
         if (elapsedSec >= this.interventionDurationSec) {
           this._startVerificationPhase();
@@ -675,7 +675,7 @@ class RapidDiagnosticEngine {
         const elapsedSec = ((now - this.trialStartTime) / 1000).toFixed(2);
         ctx.fillStyle = "rgba(255, 255, 255, 0.7)";
         ctx.textAlign = "right";
-        ctx.fillText(`ELAPSED: ${elapsedSec}s · SAMPLING: 1000HZ`, w - 36, 44);
+        ctx.fillText(`ELAPSED: ${elapsedSec}s · SUB-16MS FAST PATH`, w - 36, 44);
         ctx.textAlign = "left";
 
         if (this.state === 'T1_SACCADE') {

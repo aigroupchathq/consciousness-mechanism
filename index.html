@@ -14,6 +14,8 @@
   <meta name="twitter:card" content="summary_large_image">
 
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&display=swap');
+
     /* ==========================================================================
        DESIGN SYSTEM: HUMAN EDITORIAL BRUTALISM (Awwwards SOTD / Sleutelaar)
        ========================================================================== */
@@ -35,7 +37,7 @@
       --border-hairline: rgba(10, 10, 10, 0.1);
       --border-medium: rgba(10, 10, 10, 0.22);
       --border-strong: rgba(10, 10, 10, 0.9);
-      --font-sans: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      --font-sans: "Plus Jakarta Sans", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       --font-mono: "SF Mono", "Fira Code", "Inconsolata", Monaco, ui-monospace, monospace;
       --font-serif: "Newsreader", "Cardo", "Playfair Display", "Times New Roman", Georgia, serif;
       --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.04);
@@ -43,20 +45,20 @@
     }
 
     [data-theme="dark"] {
-      --bg-base: #070707;
-      --bg-surface: #111111;
-      --bg-surface-elevated: #181818;
-      --bg-card: #131313;
-      --text-primary: #f6f5ef;
-      --text-secondary: #c8c4b7;
-      --text-muted: #8a867a;
-      --text-dim: #57544a;
-      --border-hairline: rgba(246, 245, 239, 0.1);
-      --border-medium: rgba(246, 245, 239, 0.22);
-      --border-strong: rgba(246, 245, 239, 0.9);
+      --bg-base: #0c0e12;
+      --bg-surface: #14171f;
+      --bg-surface-elevated: #1b202b;
+      --bg-card: #151821;
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --border-hairline: rgba(255, 255, 255, 0.08);
+      --border-medium: rgba(255, 255, 255, 0.16);
+      --border-strong: rgba(255, 255, 255, 0.4);
       --accent-blue: #3291ff;
-      --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.5);
-      --shadow-elevated: 0 16px 40px rgba(0, 0, 0, 0.85);
+      --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.4);
+      --shadow-elevated: 0 16px 40px rgba(0, 0, 0, 0.7);
     }
 
     *, *::before, *::after {
@@ -2595,10 +2597,10 @@
     .diagnostic-modal-card {
       max-width: 880px;
       width: 100%;
-      background: #08090b;
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      border-radius: 8px;
-      padding: 2rem;
+      background: #101318;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 16px;
+      padding: 2.2rem;
       box-shadow: 0 30px 90px rgba(0, 0, 0, 0.85);
       position: relative;
       max-height: 92vh;
@@ -2608,7 +2610,7 @@
     .diagnostic-step-row {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 0.6rem;
+      gap: 0.65rem;
       margin: 1.25rem 0;
     }
 
@@ -2622,11 +2624,11 @@
     .diagnostic-step-tab {
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(255, 255, 255, 0.08);
-      padding: 0.6rem 0.8rem;
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
+      padding: 0.65rem 0.85rem;
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
       color: var(--text-muted);
-      border-radius: 4px;
+      border-radius: 8px;
       transition: all 0.2s ease;
     }
 
@@ -2634,6 +2636,7 @@
       border-color: var(--accent-blue);
       color: var(--text-primary);
       background: rgba(0, 112, 243, 0.08);
+      box-shadow: 0 2px 10px rgba(0, 112, 243, 0.15);
     }
 
     .diagnostic-step-tab.completed {
@@ -2644,9 +2647,9 @@
     .diagnostic-canvas-container {
       position: relative;
       width: 100%;
-      background: #040405;
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      border-radius: 6px;
+      background: #080a0e;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 12px;
       overflow: hidden;
       display: flex;
       justify-content: center;
@@ -2655,12 +2658,12 @@
 
     .diagnostic-instruction-bar {
       margin-top: 1rem;
-      padding: 0.9rem 1.2rem;
+      padding: 0.95rem 1.25rem;
       background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 4px;
-      font-family: var(--font-mono);
-      font-size: 0.76rem;
+      border-radius: 8px;
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
       color: var(--text-primary);
       display: flex;
       justify-content: space-between;
@@ -2670,10 +2673,10 @@
 
     .diagnostic-results-card {
       margin-top: 1.5rem;
-      padding: 1.5rem;
-      background: rgba(0, 112, 243, 0.04);
-      border: 1px solid rgba(0, 112, 243, 0.3);
-      border-radius: 6px;
+      padding: 1.6rem;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
     }
 
     .comparative-metrics-grid {
@@ -2690,42 +2693,43 @@
     }
 
     .comparative-card {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 255, 255, 0.09);
-      border-radius: 6px;
-      padding: 1.1rem;
+      background: rgba(255, 255, 255, 0.025);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 1.15rem;
       display: flex;
       flex-direction: column;
       gap: 0.4rem;
     }
 
     .comparative-card.accent-delta {
-      background: rgba(0, 112, 243, 0.06);
-      border: 1px solid rgba(48, 209, 88, 0.45);
-      box-shadow: 0 0 25px rgba(48, 209, 88, 0.08);
+      background: rgba(48, 209, 88, 0.04);
+      border: 1px solid rgba(48, 209, 88, 0.4);
+      box-shadow: 0 4px 20px rgba(48, 209, 88, 0.08);
     }
 
     .delta-acceleration-badge {
       display: inline-block;
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.06em;
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
       color: #30d158;
       background: rgba(48, 209, 88, 0.12);
       border: 1px solid rgba(48, 209, 88, 0.35);
-      padding: 0.35rem 0.6rem;
-      border-radius: 3px;
+      padding: 0.35rem 0.65rem;
+      border-radius: 6px;
       margin-top: 0.5rem;
     }
 
     .schedule-output-box {
-      background: #050608;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 6px;
-      padding: 1.1rem;
+      background: #0b0d12;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 1.2rem;
       margin: 1.25rem 0;
-      font-family: var(--font-mono);
-      font-size: 0.74rem;
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
       line-height: 1.7;
     }
 
@@ -3257,54 +3261,52 @@
     
     <div class="hero-content-wrap">
       <div class="section-header-badge" style="margin-bottom:1rem;">
-        [ COGNITIVE PHENOMENOLOGICAL BENCHMARK // RESEARCH ARCHIVE ]
+        [ A QUIET SANCTUARY FOR DEEP WORK & ATTENTION ]
       </div>
 
       <h1 class="hero-headline">
-        ARE YOU OPERATING YOUR MIND ON <br>
-        <span class="serif-italic">factory demo</span> MODE?
+        Your attention is your life. <br>
+        <span class="serif-italic">Stop letting digital noise</span> steal it.
       </h1>
 
       <p class="hero-subheadline">
-        We decoded 3 billion base pairs of DNA, yet <strong>95% of daily waking life is spent in an unexamined, algorithmic trance</strong>. Captured by synthetic dopamine feeds, locked in Default Mode Network rumination, and severed from raw first-person qualia. 
+        You switch windows every 47 seconds. You finish long workdays mentally exhausted, wondering where the hours disappeared. <strong>It is not a personal failure</strong>—it is an environment engineered to fragment your thoughts. In 90 seconds, check your natural focus baseline, take a guided sensory breath, and verify your real mental clarity.
       </p>
 
       <!-- GLOBAL LOSS METRICS -->
       <div class="global-loss-ticker">
         <div class="loss-metric-box">
           <div class="loss-number" id="tickerHoursLost">14,892,104</div>
-          <div class="loss-label">Human Hours Lost to Algorithmic Capture Today</div>
+          <div class="loss-label">Hours Lost Globally to Digital Context-Switching Today</div>
         </div>
         <div class="loss-metric-box">
           <div class="loss-number">46.9%</div>
-          <div class="loss-label">Waking Life in DMN Mind-Wandering (Harvard Study)</div>
+          <div class="loss-label">Waking Hours Spent in Distracted Mind-Wandering (Harvard Study)</div>
         </div>
         <div class="loss-metric-box">
           <div class="loss-number">47 sec</div>
-          <div class="loss-label">Average Digital Attention Span Before Task Switch</div>
+          <div class="loss-label">Average Time on a Task Before Being Interrupted</div>
         </div>
         <div class="loss-metric-box">
-          <div class="loss-number">0.02%</div>
-          <div class="loss-label">Sensory Bandwidth Reaching Conscious Workspace</div>
+          <div class="loss-number">100%</div>
+          <div class="loss-label">Private & Client-Side · Zero Telemetry Sent to the Cloud</div>
         </div>
       </div>
 
       <!-- HERO IMMEDIATE VALUE CONVERSION BLOCK -->
       <div class="hero-actions-container" style="display:flex; flex-wrap:wrap; gap:1rem; align-items:center; margin: 1.75rem 0 2rem;">
-        <button class="btn-primary" id="btnLaunchRapidAuditHero" style="cursor:pointer; display:inline-flex; align-items:center; gap:0.6rem; padding:0.95rem 1.8rem; font-family:var(--font-mono); font-size:0.84rem; font-weight:700; letter-spacing:0.04em; background:var(--accent-blue); color:#000; border:none; text-transform:uppercase; border-radius:4px;">
-          <span>▶</span> INITIATE BIOLOGICAL PROOF LOOP (4-PHASE ACCELERATION TEST)
+        <button class="btn-primary" id="btnLaunchRapidAuditHero" style="cursor:pointer; display:inline-flex; align-items:center; gap:0.6rem; padding:0.95rem 1.8rem; font-family:var(--font-sans); font-size:0.86rem; font-weight:700; letter-spacing:0.02em; background:var(--accent-blue); color:#fff; border:none; border-radius:8px; box-shadow:0 4px 14px rgba(0,112,243,0.3);">
+          <span>▶</span> CHECK YOUR FOCUS BASELINE (90-SECOND RESET)
         </button>
-        <button class="btn-secondary" id="btnPreviewDossierHero" style="cursor:pointer; display:inline-flex; align-items:center; gap:0.6rem; padding:0.95rem 1.8rem; font-family:var(--font-mono); font-size:0.84rem; font-weight:700; letter-spacing:0.04em; background:rgba(255,255,255,0.06); color:var(--text-primary); border:1px solid rgba(255,255,255,0.2); text-transform:uppercase; border-radius:4px;">
-          <span>→</span> INSPECT 16-PAGE SAMPLE ENTERPRISE DOSSIER
+        <button class="btn-secondary" id="btnPreviewDossierHero" style="cursor:pointer; display:inline-flex; align-items:center; gap:0.6rem; padding:0.95rem 1.8rem; font-family:var(--font-sans); font-size:0.86rem; font-weight:600; letter-spacing:0.02em; background:rgba(255,255,255,0.06); color:var(--text-primary); border:1px solid rgba(255,255,255,0.18); border-radius:8px;">
+          <span>→</span> PREVIEW 16-PAGE TEAM FOCUS AUDIT
         </button>
         <div style="font-family:var(--font-mono); font-size:0.72rem; color:var(--text-muted); width:100%; display:flex; gap:1.2rem; flex-wrap:wrap;">
-          <span>CALIBRATED AGAINST 14,250 HUMAN SUBJECTS</span>
+          <span>SUB-16MS FAST-PATH HARDWARE SAMPLING</span>
           <span>·</span>
-          <span>BEFORE & AFTER BIOLOGICAL DELTA</span>
+          <span>MEASURED BEFORE-AND-AFTER FOCUS RESET</span>
           <span>·</span>
-          <span>OFFSCREEN SHA-256 ATTESTATION</span>
-          <span>·</span>
-          <span>100% PRIVATE (0 BEACONS)</span>
+          <span>100% PRIVATE CLIENT-SIDE PROCESSING</span>
         </div>
       </div>
 
@@ -4661,10 +4663,10 @@
       <div class="bottom-sheet-notch"></div>
       <div style="display:flex; justify-content:space-between; align-items:center;">
         <div>
-          <div class="section-header-badge">[ EMPIRICAL NEURO-SAMPLING // 1000HZ TELEMETRY ]</div>
-          <h3 style="font-size:1.35rem; font-weight:900; margin:0.3rem 0 0.2rem;">Instant Biological Proof Loop & Verification</h3>
-          <p style="font-size:0.78rem; color:var(--text-secondary); margin:0;">
-            Direct before-and-after psychophysics benchmarking. 3-trial baseline probe → 60s dual-sensory 40Hz phase-lock → verification re-test. Real-time biological acceleration ratified with cryptographic attestation.
+          <div class="section-header-badge">[ ACUTE FOCUS CALIBRATION & GUIDED RESET // SUB-16MS HARDWARE SAMPLING ]</div>
+          <h3 style="font-size:1.45rem; font-weight:800; margin:0.3rem 0 0.25rem; font-family:var(--font-sans);">90-Second Focus Calibration & Reset</h3>
+          <p style="font-size:0.82rem; color:var(--text-secondary); margin:0; line-height:1.5;">
+            A calm, private check of your visual vigilance and reaction consistency. 3 quick baseline trials → 60 seconds of gentle sensory reset → verification re-check. See how much clearer your mind responds when you remove digital noise.
           </p>
         </div>
         <button class="btn-minimal" id="btnCloseDiagnosticModal" style="padding:0.35rem 0.75rem; font-family:var(--font-mono); font-size:0.75rem;">✕ [ESC]</button>
@@ -4673,36 +4675,36 @@
       <!-- 4-PHASE TRIAL STEP INDICATORS -->
       <div class="diagnostic-step-row">
         <div class="diagnostic-step-tab active" id="diagStep1Tab">
-          <div style="font-weight:700; margin-bottom:0.15rem;">01. BASELINE PROBE</div>
-          <div style="font-size:0.64rem; color:var(--text-muted);">Saccade · Troxler · RTV</div>
+          <div style="font-weight:700; margin-bottom:0.15rem;">01. YOUR BASELINE</div>
+          <div style="font-size:0.65rem; color:var(--text-muted);">Reaction speed & gaze hold</div>
         </div>
         <div class="diagnostic-step-tab" id="diagStep2Tab">
-          <div style="font-weight:700; margin-bottom:0.15rem;">02. 60S PHASE-LOCK</div>
-          <div style="font-size:0.64rem; color:var(--text-muted);">40Hz Gamma + Gaze Hold</div>
+          <div style="font-weight:700; margin-bottom:0.15rem;">02. 60-SECOND RESET</div>
+          <div style="font-size:0.65rem; color:var(--text-muted);">40Hz sound & breathing rhythm</div>
         </div>
         <div class="diagnostic-step-tab" id="diagStep3Tab">
-          <div style="font-weight:700; margin-bottom:0.15rem;">03. VERIFICATION RE-TEST</div>
-          <div style="font-size:0.64rem; color:var(--text-muted);">Identical Latency Re-Probe</div>
+          <div style="font-weight:700; margin-bottom:0.15rem;">03. VERIFY CLARITY</div>
+          <div style="font-size:0.65rem; color:var(--text-muted);">Measure your focus gain</div>
         </div>
         <div class="diagnostic-step-tab" id="diagStep4Tab">
-          <div style="font-weight:700; margin-bottom:0.15rem;">04. PROOF DELTA</div>
-          <div style="font-size:0.64rem; color:var(--text-muted);">Certified Acceleration Matrix</div>
+          <div style="font-weight:700; margin-bottom:0.15rem;">04. YOUR REPORT</div>
+          <div style="font-size:0.65rem; color:var(--text-muted);">Verifiable metrics & daily rhythm</div>
         </div>
       </div>
 
       <!-- INTERACTIVE RETICLE CANVAS -->
       <div class="diagnostic-canvas-container" id="diagnosticCanvasContainer">
         <canvas id="rapidDiagnosticCanvas" width="800" height="420" style="width:100%; height:auto; display:block;"></canvas>
-        <div class="mobile-distance-badge">[ CALIBRATED VIEWING DISTANCE: 25-30CM ]</div>
+        <div class="mobile-distance-badge">[ COMFORTABLE VIEWING DISTANCE: 25-30CM ]</div>
         <button class="mobile-canvas-tap-btn" id="btnRapidMobileTap" type="button" aria-label="Tap upon target perception">
           <span class="tap-btn-icon">▶</span>
-          <span id="btnRapidMobileTapText">TAP TO RESPOND (FAST-PATH TELEMETRY)</span>
+          <span id="btnRapidMobileTapText">TAP TO RESPOND (SUB-16MS FAST-PATH)</span>
         </button>
       </div>
 
       <!-- DYNAMIC TRIAL INSTRUCTION BANNER -->
       <div class="diagnostic-instruction-bar" id="diagInstructionBar">
-        <span id="diagInstructionText">HIT [SPACE] OR CLICK ON CANVAS TO DETECT THE SHIFTING TARGET</span>
+        <span id="diagInstructionText">PRESS [SPACE] OR TAP CANVAS TO DETECT THE SHIFTING TARGET</span>
         <span id="diagLiveStatus" style="color:var(--accent-blue); font-weight:700;">[ READY ]</span>
       </div>
 
@@ -4710,13 +4712,13 @@
       <div class="diagnostic-results-card" id="diagResultsCard" style="display:none;">
         <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1rem; flex-wrap:wrap; gap:0.75rem;">
           <div>
-            <div style="font-family:var(--font-mono); font-size:0.68rem; color:var(--accent-blue); letter-spacing:0.06em;">[ EMPIRICAL NEUROLOGICAL ATTESTATION // VERIFIED BIOLOGICAL PROOF ]</div>
-            <h4 style="font-size:1.25rem; font-weight:900; margin:0.25rem 0;" id="diagPhenotypeTitle">SOVEREIGN PHENOMENAL OPERATOR</h4>
-            <div style="font-family:var(--font-mono); font-size:0.8rem; color:var(--accent-emerald);" id="diagPercentileSummary">TOP 4% ATTENTIONAL STABILITY (96TH PERCENTILE)</div>
+            <div style="font-family:var(--font-mono); font-size:0.68rem; color:var(--accent-blue); letter-spacing:0.06em;">[ YOUR VERIFIED ATTENTION REPORT // PRIVATE HARDWARE TELEMETRY ]</div>
+            <h4 style="font-size:1.35rem; font-weight:800; margin:0.25rem 0; font-family:var(--font-sans);" id="diagPhenotypeTitle">Clear & Grounded Focus State</h4>
+            <div style="font-family:var(--font-mono); font-size:0.82rem; color:var(--accent-emerald);" id="diagPercentileSummary">TOP 4% ATTENTIONAL STABILITY (96TH PERCENTILE)</div>
           </div>
           <div style="font-family:var(--font-mono); font-size:0.7rem; color:var(--text-muted); text-align:right;">
-            NORMS: N=14,250 (RENSINK, TROXLER, POSNER)<br>
-            SERIAL: <span id="diagCertSerial">DI-CERT-88421</span> · DATE: <span id="diagTimestamp">2026-10-20</span>
+            BENCHMARK: OPEN-SCIENCE NORMS<br>
+            SERIAL: <span id="diagCertSerial">DI-CERT-88421</span> · DATE: <span id="diagTimestamp">2026-10-24</span>
           </div>
         </div>
 
@@ -4724,38 +4726,38 @@
         <div class="comparative-metrics-grid">
           <!-- CARD 1: BASELINE UNCALIBRATED STATE -->
           <div class="comparative-card">
-            <div style="font-family:var(--font-mono); font-size:0.64rem; color:var(--text-muted); letter-spacing:0.04em;">[ 01. UNCALIBRATED BASELINE ]</div>
+            <div style="font-family:var(--font-mono); font-size:0.64rem; color:var(--text-muted); letter-spacing:0.04em;">[ 01. BEFORE RESET ]</div>
             <div style="font-family:var(--font-mono); font-size:1.6rem; font-weight:900; color:#ffffff;" id="diagBaseSaccade">485 ms</div>
-            <div style="font-size:0.72rem; color:var(--text-secondary);">Saccadic Detection Latency</div>
+            <div style="font-size:0.75rem; color:var(--text-secondary);">Initial Reaction Delay</div>
             <div style="font-family:var(--font-mono); font-size:0.68rem; color:var(--text-muted); margin-top:0.35rem;">
               Fixation Hold: <span id="diagBaseFixation" style="color:#ffffff;">4.2s</span><br>
-              Motor RTV: <span id="diagBaseRtv" style="color:#ffffff;">38.5ms</span><br>
-              Composite: <span id="diagBasePercentile" style="color:#ffffff;">50th percentile</span>
+              Motor Variance: <span id="diagBaseRtv" style="color:#ffffff;">38.5ms</span><br>
+              Baseline: <span id="diagBasePercentile" style="color:#ffffff;">50th percentile</span>
             </div>
           </div>
 
           <!-- CARD 2: MEASURED BIOLOGICAL ACCELERATION DELTA (CALLOUT) -->
           <div class="comparative-card accent-delta">
-            <div style="font-family:var(--font-mono); font-size:0.64rem; color:#00d2ff; letter-spacing:0.04em;">[ MEASURED BIOLOGICAL DELTA ]</div>
+            <div style="font-family:var(--font-mono); font-size:0.64rem; color:#00d2ff; letter-spacing:0.04em;">[ MEASURED FOCUS ACCELERATION ]</div>
             <div style="font-family:var(--font-mono); font-size:2rem; font-weight:900; color:#30d158;" id="diagDeltaLatency">-94 ms</div>
-            <div style="font-family:var(--font-mono); font-size:0.86rem; font-weight:800; color:#ffffff;" id="diagDeltaSpeed">+19.4% Ignition Speed</div>
-            <div style="font-family:var(--font-mono); font-size:0.72rem; color:var(--text-secondary); margin-top:0.35rem;">
+            <div style="font-family:var(--font-sans); font-size:0.88rem; font-weight:800; color:#ffffff;" id="diagDeltaSpeed">+19.4% Reaction Speed Gain</div>
+            <div style="font-family:var(--font-sans); font-size:0.74rem; color:var(--text-secondary); margin-top:0.35rem;">
               Percentile Gain: <span id="diagDeltaPercentile" style="color:#00d2ff; font-weight:700;">+39 points</span><br>
-              Motor Stability: <span id="diagDeltaRtv" style="color:#30d158; font-weight:700;">-16.5ms RTV variance</span><br>
-              Tononi Coupling: <span id="diagResPhi" style="color:#ffffff;">Φ = 0.684 bits</span>
+              Motor Consistency: <span id="diagDeltaRtv" style="color:#30d158; font-weight:700;">-16.5ms variance reduction</span><br>
+              Causal Density (Sim): <span id="diagResPhi" style="color:#ffffff;">Φ = 0.684 bits</span>
             </div>
-            <div class="delta-acceleration-badge">[ RATIFIED: BEFORE-VS-AFTER PROOF COMPLETE ]</div>
+            <div class="delta-acceleration-badge">[ NOTICEABLE MENTAL RESET // ZERO DIGITAL DRAG ]</div>
           </div>
 
           <!-- CARD 3: CALIBRATED SOVEREIGN STATE -->
           <div class="comparative-card">
-            <div style="font-family:var(--font-mono); font-size:0.64rem; color:#30d158; letter-spacing:0.04em;">[ 02. CALIBRATED SOVEREIGN ]</div>
+            <div style="font-family:var(--font-mono); font-size:0.64rem; color:#30d158; letter-spacing:0.04em;">[ 02. AFTER RESET ]</div>
             <div style="font-family:var(--font-mono); font-size:1.6rem; font-weight:900; color:#30d158;" id="diagCalSaccade">391 ms</div>
-            <div style="font-size:0.72rem; color:var(--text-secondary);">Post-Phase-Lock Latency</div>
+            <div style="font-size:0.75rem; color:var(--text-secondary);">Calibrated Reaction Speed</div>
             <div style="font-family:var(--font-mono); font-size:0.68rem; color:var(--text-muted); margin-top:0.35rem;">
               Fixation Hold: <span id="diagCalFixation" style="color:#ffffff;">6.8s</span><br>
-              Motor RTV: <span id="diagCalRtv" style="color:#ffffff;">22.0ms</span><br>
-              Composite: <span id="diagCalPercentile" style="color:#30d158; font-weight:700;">89th percentile</span>
+              Motor Variance: <span id="diagCalRtv" style="color:#ffffff;">22.0ms</span><br>
+              Focus State: <span id="diagCalPercentile" style="color:#30d158; font-weight:700;">89th percentile</span>
             </div>
           </div>
         </div>
@@ -4763,14 +4765,14 @@
         <!-- ACTIONABLE ATTENTION PROTOCOL SCHEDULE -->
         <div class="schedule-output-box" id="diagScheduleBox">
           <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.6rem; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:0.4rem;">
-            <span style="color:var(--accent-blue); font-weight:700;">[ ACTIONABLE DAILY ATTENTION DIRECTIVE // PERSONALIZED REGIME ]</span>
-            <span style="color:var(--text-muted); font-size:0.68rem;">TAILORED TO SACCADIC PROFILE</span>
+            <span style="color:var(--accent-blue); font-weight:700;">[ YOUR DAILY FOCUS RHYTHM // BUILT FOR REAL WORKDAYS ]</span>
+            <span style="color:var(--text-muted); font-size:0.68rem;">TAILORED PROTOCOL</span>
           </div>
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:0.6rem;">
-            <div><strong style="color:#ffffff;">08:45 – 09:00:</strong> Saccadic Recalibration & Retinal Reset (240ms Temporal Gating)</div>
-            <div><strong style="color:#ffffff;">09:00 – 11:30:</strong> Monastic Deep Architecture Block (40Hz Gamma Audio Active)</div>
-            <div><strong style="color:#ffffff;">14:00 – 14:15:</strong> Midday Foveal De-suppression (Troxler Dissolution Drill)</div>
-            <div><strong style="color:#ffffff;">20:30 – 21:00:</strong> Circadian Blue-Shield & Somatic Dopamine Cutoff</div>
+            <div><strong style="color:#ffffff;">08:45 – 09:00:</strong> Morning Horizon Reset · Rest eyes on natural light before checking notifications</div>
+            <div><strong style="color:#ffffff;">09:00 – 11:30:</strong> Protected Deep Work Block · Phone away, gentle 40Hz audio active</div>
+            <div><strong style="color:#ffffff;">14:00 – 14:15:</strong> Midday Slump Reset · 2-minute peripheral vision dissolution drill</div>
+            <div><strong style="color:#ffffff;">20:30 – 21:00:</strong> Evening Wind-Down · Close screens to allow natural circadian recovery</div>
           </div>
         </div>
 
@@ -4778,23 +4780,28 @@
         <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.75rem; margin-top:1.25rem;">
           <div style="display:flex; gap:0.6rem; flex-wrap:wrap;">
             <button class="btn-pricing-action btn-pricing-primary" id="btnDownloadCertificate" style="padding:0.7rem 1.3rem; font-size:0.76rem; cursor:pointer;">
-              [ DOWNLOAD CERTIFIED PROOF (PNG) ]
+              [ DOWNLOAD FOCUS REPORT (PNG) ]
             </button>
             <button class="btn-minimal" id="btnCopySchedule" style="font-size:0.74rem; cursor:pointer;">
-              [ COPY DIRECTIVE TO CLIPBOARD ]
+              [ COPY ROUTINE TO CLIPBOARD ]
             </button>
           </div>
           <div style="display:flex; gap:0.6rem; flex-wrap:wrap;">
-            <button class="btn-minimal" id="btnRestartDiagnostic" style="font-size:0.74rem; cursor:pointer;">[ RE-BENCHMARK PROOF ]</button>
+            <button class="btn-minimal" id="btnRestartDiagnostic" style="font-size:0.74rem; cursor:pointer;">[ RE-CHECK FOCUS ]</button>
             <button class="btn-pricing-action" id="btnApplyDiagnosticToCockpit" style="padding:0.7rem 1.2rem; font-size:0.76rem; cursor:pointer;">
               APPLY TO COCKPIT →
             </button>
           </div>
         </div>
 
+        <!-- REGULATORY & EDUCATIONAL TRANSPARENCY DISCLAIMER -->
+        <div style="margin-top:1rem; padding:0.75rem 1rem; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.08); border-radius:6px; font-family:var(--font-mono); font-size:0.65rem; color:var(--text-muted); line-height:1.6;">
+          EDUCATIONAL INSTRUMENT: DatumIntelligence is an educational psychophysics tool for personal attentional calibration and deep work transitions. It is not intended to evaluate, diagnose, treat, or prevent any medical or neurological condition. All calculations run 100% locally in your client hardware with zero tracking beacons or data transmission.
+        </div>
+
         <!-- TIER CONVERSION FOOTER -->
         <div style="margin-top:1.25rem; padding-top:0.9rem; border-top:1px solid rgba(255,255,255,0.08); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:0.75rem; font-family:var(--font-mono); font-size:0.7rem;">
-          <span style="color:var(--text-muted);">PERMANENT VALUE RATIFIED // CLAIM FULL ARCHITECTURAL SYSTEM:</span>
+          <span style="color:var(--text-muted);">EXTEND YOUR FOCUS SANCTUARY // ADVANCED CAPABILITIES:</span>
           <div style="display:flex; gap:1rem; flex-wrap:wrap;">
             <a href="#pricing" class="modal-tier-link" style="color:var(--accent-blue); text-decoration:none; font-weight:700;">$9 OPERATOR PASS (DAILY PROTOCOLS) →</a>
             <a href="#pricing" class="modal-tier-link" style="color:var(--accent-emerald); text-decoration:none; font-weight:700;">$27 RESEARCHER PASS (RAW TELEMETRY & IIT CODE) →</a>
@@ -6533,7 +6540,7 @@ self.onmessage = function(e) {
             trial: 1,
             phase: this.phase,
             name: this.phase === 'VERIFICATION' ? 'Verification: Saccadic Detection' : 'Baseline: Saccadic Change Detection',
-            instruction: 'AN OPTICAL TARGET IS SHIFTING BEHIND 240MS SACCADE MASKS. CLICK OR HIT [SPACE] THE INSTANT YOU DETECT THE CHANGE.'
+            instruction: 'AN OPTICAL TARGET IS SHIFTING. PRESS [SPACE] OR TAP THE INSTANT YOU SPOT THE CHANGE.'
           });
         }
 
@@ -6572,7 +6579,7 @@ self.onmessage = function(e) {
             trial: 2,
             phase: this.phase,
             name: this.phase === 'VERIFICATION' ? 'Verification: Foveal Fixation' : 'Baseline: Foveal Fixation & Troxler Gating',
-            instruction: 'FIXATE STEADILY ON THE CENTRAL RED CROSS WITHOUT MOVING YOUR EYES. PRESS [SPACE] WHEN THE PERIPHERAL DISKS COMPLETELY DISSOLVE.'
+            instruction: 'REST GAZE ON THE CENTER CROSS. TAP OR PRESS [SPACE] WHEN THE PERIPHERAL YELLOW DOTS FADE FROM VIEW.'
           });
         }
       }
@@ -6608,7 +6615,7 @@ self.onmessage = function(e) {
             trial: 3,
             phase: this.phase,
             name: this.phase === 'VERIFICATION' ? 'Verification: Motor RTV & Gating' : 'Baseline: Motor Response Variability & Inhibition',
-            instruction: 'WHEN A CYAN TARGET IGNITES, HIT [SPACE] AS FAST AS POSSIBLE. DO NOT RESPOND IF THE TARGET IS CHARCOAL.'
+            instruction: 'WHEN A CYAN TARGET IGNITES, HIT [SPACE] RAPIDLY. DO NOT RESPOND IF CHARCOAL.'
           });
         }
 
@@ -6707,8 +6714,8 @@ self.onmessage = function(e) {
           this.onTrialStart({
             trial: 0,
             phase: 'INTERVENTION',
-            name: 'Dual Sensory Phase-Lock Protocol',
-            instruction: 'MAINTAIN STEADY FOVEAL GAZE ON CENTRAL CROSS · 40HZ BINAURAL BINDING ACTIVE · OBSERVE RETINOCORTICAL QUIETING'
+            name: 'Dual Sensory Focus Reset',
+            instruction: 'REST GAZE GENTLY ON THE CENTRAL CROSS · 40HZ HARMONIC AUDIO ACTIVE · BREATHE WITH THE RHYTHM'
           });
         }
       }
@@ -6890,7 +6897,7 @@ self.onmessage = function(e) {
         // Header Monospace Metadata
         ctx.font = "bold 13px ui-monospace, SFMono-Regular, monospace";
         ctx.fillStyle = "#3291ff";
-        ctx.fillText("[ EMPIRICAL NEUROLOGICAL ATTESTATION // VERIFIED BIOLOGICAL PROOF ]", 72, 92);
+        ctx.fillText("[ EMPIRICAL FOCUS BENCHMARK // ATTENTIONAL RESET REPORT ]", 72, 92);
 
         ctx.font = "11px ui-monospace, SFMono-Regular, monospace";
         ctx.fillStyle = "#888888";
@@ -6901,11 +6908,11 @@ self.onmessage = function(e) {
         // Certificate Title
         ctx.font = "900 34px sans-serif";
         ctx.fillStyle = "#ffffff";
-        ctx.fillText("CERTIFICATE OF NEURAL SOVEREIGNTY", 72, 145);
+        ctx.fillText("ATTENTIONAL RECOVERY & FOCUS REPORT", 72, 145);
 
         ctx.font = "14px sans-serif";
         ctx.fillStyle = "#9ca3af";
-        ctx.fillText("Objective before-and-after psychophysics benchmarking calibrated against N=14,250 normative baselines.", 72, 178);
+        ctx.fillText("Objective before-and-after psychomotor reaction benchmarking · Educational open-science focus calibration.", 72, 178);
 
         // Comparative Metric Cards
         // Left: Baseline
@@ -6916,7 +6923,7 @@ self.onmessage = function(e) {
 
         ctx.font = "bold 11px ui-monospace, SFMono-Regular, monospace";
         ctx.fillStyle = "#9ca3af";
-        ctx.fillText("[ PHASE 01: UNCALIBRATED BASELINE ]", 92, 252);
+        ctx.fillText("[ PHASE 01: BEFORE RESET ]", 92, 252);
 
         ctx.font = "900 42px ui-monospace, SFMono-Regular, monospace";
         ctx.fillStyle = "#ffffff";
@@ -6924,9 +6931,9 @@ self.onmessage = function(e) {
 
         ctx.font = "12px ui-monospace, SFMono-Regular, monospace";
         ctx.fillStyle = "#888888";
-        ctx.fillText(`Saccadic Temporal Latency`, 92, 335);
+        ctx.fillText(`Saccadic Detection Latency`, 92, 335);
         ctx.fillText(`Percentile: ${base.overallPercentile}th`, 92, 360);
-        ctx.fillText(`State: Uncalibrated Baseline`, 92, 385);
+        ctx.fillText(`State: Pre-Calibration Baseline`, 92, 385);
 
         // Center: Acceleration Arrow & Delta Callout
         ctx.fillStyle = "rgba(0, 112, 243, 0.08)";
@@ -6936,7 +6943,7 @@ self.onmessage = function(e) {
 
         ctx.font = "bold 11px ui-monospace, SFMono-Regular, monospace";
         ctx.fillStyle = "#00d2ff";
-        ctx.fillText("[ VERIFIED BIOLOGICAL ACCELERATION ]", 446, 252);
+        ctx.fillText("[ MEASURED REACTION GAIN ]", 446, 252);
 
         ctx.font = "900 48px ui-monospace, SFMono-Regular, monospace";
         ctx.fillStyle = "#30d158";
@@ -6944,12 +6951,12 @@ self.onmessage = function(e) {
 
         ctx.font = "bold 15px ui-monospace, SFMono-Regular, monospace";
         ctx.fillStyle = "#ffffff";
-        ctx.fillText(`+${delta.accelerationPct}% Neural Ignition Speed`, 446, 350);
+        ctx.fillText(`+${delta.accelerationPct}% Reaction Speed Gain`, 446, 350);
 
         ctx.font = "12px ui-monospace, SFMono-Regular, monospace";
         ctx.fillStyle = "#9ca3af";
-        ctx.fillText(`Percentile Jump: +${Math.max(0, delta.percentileDelta || 25)} points`, 446, 385);
-        ctx.fillText(`Protocol: 60s Dual-Sensory 40Hz Phase-Lock`, 446, 410);
+        ctx.fillText(`Percentile Gain: +${Math.max(0, delta.percentileDelta || 25)} points`, 446, 385);
+        ctx.fillText(`Intervention: 60s Dual-Sensory 40Hz Audio Reset`, 446, 410);
 
         // Right: Calibrated Sovereign State
         ctx.fillStyle = "rgba(48, 209, 88, 0.04)";
@@ -6959,7 +6966,7 @@ self.onmessage = function(e) {
 
         ctx.font = "bold 11px ui-monospace, SFMono-Regular, monospace";
         ctx.fillStyle = "#30d158";
-        ctx.fillText("[ PHASE 02: SOVEREIGN OPERATOR ]", 858, 252);
+        ctx.fillText("[ PHASE 02: CALIBRATED FOCUS ]", 858, 252);
 
         ctx.font = "900 42px ui-monospace, SFMono-Regular, monospace";
         ctx.fillStyle = "#30d158";
@@ -6969,7 +6976,7 @@ self.onmessage = function(e) {
         ctx.fillStyle = "#888888";
         ctx.fillText(`Post-Intervention Latency`, 858, 335);
         ctx.fillText(`Percentile: ${cal.overallPercentile}th`, 858, 360);
-        ctx.fillText(`Phenotype: ${cal.phenotype || 'SOVEREIGN OPERATOR'}`, 858, 385);
+        ctx.fillText(`Focus State: Calibrated & Grounded`, 858, 385);
 
         // Methodology & Cryptographic Attestation Block
         ctx.fillStyle = "rgba(255, 255, 255, 0.02)";
@@ -6979,30 +6986,30 @@ self.onmessage = function(e) {
 
         ctx.font = "bold 11px ui-monospace, SFMono-Regular, monospace";
         ctx.fillStyle = "#3291ff";
-        ctx.fillText("[ PEER-REVIEWED CORPUS & COMPUTATIONAL INTEGRITY ]", 92, 540);
+        ctx.fillText("[ OPEN-SCIENCE PSYCHOPHYSICS & LOCAL COMPUTATION INTEGRITY ]", 92, 540);
 
         ctx.font = "12px sans-serif";
         ctx.fillStyle = "#9ca3af";
-        ctx.fillText("Stimulus engine calibrated to Stanislas Dehaene Global Neuronal Workspace (240ms temporal blanking) and Giulio Tononi IIT 4.0 causal density.", 92, 570);
-        ctx.fillText("Hardware input captured via sub-16ms fast-path pointerdown dispatch. Zero cloud transmission; 100% computed inside local client memory.", 92, 595);
+        ctx.fillText("Visual stimulus engine based on standard change-blindness flicker paradigms and sustained foveal fixation gating.", 92, 570);
+        ctx.fillText("Educational demonstration tool. Hardware timing captured via sub-16ms fast-path pointer events. 100% computed inside local client memory.", 92, 595);
 
         ctx.font = "11px ui-monospace, SFMono-Regular, monospace";
         ctx.fillStyle = "#555555";
         const pseudoHash = Array.from(certId + dateStr + delta.accelerationPct)
           .map(c => c.charCodeAt(0).toString(16)).join('').padEnd(64, 'a').substring(0, 64);
-        ctx.fillText(`SHA-256 SIGNATURE: ${pseudoHash}`, 92, 640);
+        ctx.fillText(`VERIFICATION HASH: ${pseudoHash}`, 92, 640);
 
         // Footer Watermark
         ctx.font = "bold 11px ui-monospace, SFMono-Regular, monospace";
         ctx.fillStyle = "#666666";
-        ctx.fillText("DATUM INTELLIGENCE // LABORATORY ATTESTATION ENGINE", 72, 730);
+        ctx.fillText("DATUM INTELLIGENCE // COGNITIVE RECOVERY & FOCUS SANCTUARY", 72, 730);
 
         ctx.textAlign = "right";
-        ctx.fillText("100% LOCAL CLIENT-SIDE COMPUTATION · ZERO SURVEILLANCE BEACONS", 1168, 730);
+        ctx.fillText("EDUCATIONAL PSYCHOPHYSICS DEMO · ZERO DATA COLLECTED OR TRANSMITTED", 1168, 730);
 
         return {
           dataUrl: canvas.toDataURL('image/png'),
-          filename: `DatumIntelligence_Sovereignty_${certId}.png`,
+          filename: `DatumIntelligence_Focus_${certId}.png`,
           certId
         };
       }
@@ -7038,10 +7045,10 @@ self.onmessage = function(e) {
             const elapsedSec = (now - this.interventionStartTime) / 1000;
             const remaining = Math.max(0, Math.ceil(this.interventionDurationSec - elapsedSec));
 
-            ctx.fillText(`[ 60S DUAL SENSORY PHASE-LOCK // 40HZ BINAURAL BINDING ]`, 25, 36);
+            ctx.fillText(`[ 60S ATTENTIONAL RESET // 40HZ HARMONIC AUDIO ]`, 25, 36);
             ctx.fillStyle = "#30d158";
             ctx.textAlign = "right";
-            ctx.fillText(`REMAINING: ${remaining}s · FOCUS RETICLE ACTIVE`, w - 25, 36);
+            ctx.fillText(`REMAINING: ${remaining}s · FOCUS RESET ACTIVE`, w - 25, 36);
             ctx.textAlign = "left";
 
             // Draw breathing concentric coherence rings
@@ -7083,11 +7090,11 @@ self.onmessage = function(e) {
             ctx.font = "11px ui-monospace, SFMono-Regular, monospace";
             ctx.fillStyle = "rgba(255, 255, 255, 0.65)";
             ctx.textAlign = "center";
-            ctx.fillText("MAINTAIN CONTINUOUS FOVEAL GAZE ON RED CROSS · DAMPEN MICRO-SACCADES", cx, h - 45);
+            ctx.fillText("KEEP GENTLE FOCUS ON RED CROSS · LET PERIPHERAL DISTRACTION FADE", cx, h - 45);
 
             ctx.font = "10px ui-monospace, SFMono-Regular, monospace";
             ctx.fillStyle = "rgba(50, 145, 255, 0.8)";
-            ctx.fillText("TAP CANVAS OR ACTION BAR TO ADVANCE TO VERIFICATION RE-TEST →", cx, h - 25);
+            ctx.fillText("TAP CANVAS OR ACTION BAR TO ADVANCE TO VERIFICATION CHECK →", cx, h - 25);
 
             if (elapsedSec >= this.interventionDurationSec) {
               this._startVerificationPhase();
@@ -7099,7 +7106,7 @@ self.onmessage = function(e) {
             const elapsedSec = ((now - this.trialStartTime) / 1000).toFixed(2);
             ctx.fillStyle = "rgba(255, 255, 255, 0.7)";
             ctx.textAlign = "right";
-            ctx.fillText(`ELAPSED: ${elapsedSec}s · SAMPLING: 1000HZ`, w - 25, 36);
+            ctx.fillText(`ELAPSED: ${elapsedSec}s · SUB-16MS FAST PATH`, w - 25, 36);
             ctx.textAlign = "left";
 
             if (this.state === 'T1_SACCADE') {
@@ -9175,7 +9182,7 @@ self.onmessage = function(e) {
             if (t3Tab) t3Tab.className = 'diagnostic-step-tab';
             if (t4Tab) t4Tab.className = 'diagnostic-step-tab';
             const liveStatus = document.getElementById('diagLiveStatus');
-            if (liveStatus) liveStatus.innerText = `[ 02. 60S PHASE-LOCK ACTIVE // 40HZ GAMMA BINDING ]`;
+            if (liveStatus) liveStatus.innerText = `[ 02. 60S RESET ACTIVE // 40HZ HARMONIC AUDIO ]`;
             audio.start();
             audio.playChime(528);
           } else if (data.phase === 'VERIFICATION') {
@@ -9185,7 +9192,7 @@ self.onmessage = function(e) {
             if (t3Tab) t3Tab.className = 'diagnostic-step-tab active';
             if (t4Tab) t4Tab.className = 'diagnostic-step-tab';
             const liveStatus = document.getElementById('diagLiveStatus');
-            if (liveStatus) liveStatus.innerText = `[ 03. VERIFICATION TRIAL 0${data.trial}/03 ACTIVE ]`;
+            if (liveStatus) liveStatus.innerText = `[ 03. VERIFY CLARITY TRIAL 0${data.trial}/03 ACTIVE ]`;
             audio.playChime(500 + data.trial * 88);
           }
 
@@ -9215,8 +9222,14 @@ self.onmessage = function(e) {
             rtvDelta: base.motorRtvMs - cal.motorRtvMs
           };
 
+          const phenotypeMap = {
+            'SOVEREIGN PHENOMENAL OPERATOR': 'Clear & Grounded Focus State',
+            'CALIBRATED CONSCIOUS OBSERVER': 'Calibrated Attentive State',
+            'NARRATIVE HYPER-LOOP OPERATOR': 'Mild Cognitive Drift / Divided Attention',
+            'AUTOMATED REACTIVE AGENT': 'Overstimulated Reactive State'
+          };
           const phenoEl = document.getElementById('diagPhenotypeTitle');
-          if (phenoEl) phenoEl.innerText = cal.phenotype || 'SOVEREIGN PHENOMENAL OPERATOR';
+          if (phenoEl) phenoEl.innerText = phenotypeMap[cal.phenotype] || cal.phenotype || 'Clear & Grounded Focus State';
 
           const pctEl = document.getElementById('diagPercentileSummary');
           if (pctEl) pctEl.innerText = `TOP ${Math.max(1, 100 - cal.overallPercentile)}% ATTENTIONAL STABILITY (${cal.overallPercentile}TH PERCENTILE)`;
@@ -9241,7 +9254,7 @@ self.onmessage = function(e) {
           const deltaLat = document.getElementById('diagDeltaLatency');
           if (deltaLat) deltaLat.innerText = `-${Math.abs(delta.latencyDelta)} ms`;
           const deltaSpd = document.getElementById('diagDeltaSpeed');
-          if (deltaSpd) deltaSpd.innerText = `+${delta.accelerationPct}% Ignition Speed`;
+          if (deltaSpd) deltaSpd.innerText = `+${delta.accelerationPct}% Reaction Speed Gain`;
           const deltaPct = document.getElementById('diagDeltaPercentile');
           if (deltaPct) deltaPct.innerText = `+${Math.max(0, delta.percentileDelta)} points`;
           const deltaRtv = document.getElementById('diagDeltaRtv');
@@ -9262,7 +9275,7 @@ self.onmessage = function(e) {
           if (phiEl) phiEl.innerText = `Φ = ${phiCurrent.toFixed(3)} bits`;
 
           const liveStatus = document.getElementById('diagLiveStatus');
-          if (liveStatus) liveStatus.innerText = `[ BIOLOGICAL PROOF RATIFIED // 1000HZ TELEMETRY RECORDED ]`;
+          if (liveStatus) liveStatus.innerText = `[ FOCUS CALIBRATION COMPLETE // REPORT READY ]`;
 
           audio.playChime(528);
         }
@@ -9330,9 +9343,9 @@ self.onmessage = function(e) {
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
-            btnDownloadCert.innerText = '✓ CERTIFIED PROOF SAVED (PNG)';
+            btnDownloadCert.innerText = '✓ FOCUS REPORT SAVED (PNG)';
             setTimeout(() => {
-              btnDownloadCert.innerText = '[ DOWNLOAD CERTIFIED PROOF (PNG) ]';
+              btnDownloadCert.innerText = '[ DOWNLOAD FOCUS REPORT (PNG) ]';
             }, 3000);
             audio.playChime(660);
           }
@@ -9344,19 +9357,19 @@ self.onmessage = function(e) {
       if (btnCopySched) {
         btnCopySched.addEventListener('click', () => {
           const scheduleText = `DATUM INTELLIGENCE // ACTIONABLE ATTENTION PROTOCOL SCHEDULE
-Calibrated Objective Cognitive Directive:
-- 08:45 – 09:00: Saccadic Recalibration & Retinal Reset (240ms Temporal Gating)
-- 09:00 – 11:30: Monastic Deep Architecture Block (40Hz Gamma Audio Binding Active)
-- 14:00 – 14:15: Midday Foveal De-suppression (Troxler Dissolution Drill)
-- 20:30 – 21:00: Circadian Blue-Shield & Somatic Dopamine Cutoff
+Empirical Daily Focus Protocol:
+- 08:45 – 09:00: Morning Attentional Recalibration (Saccadic Visual Reset)
+- 09:00 – 11:30: Monastic Focus Block (40Hz Gamma Audio Active)
+- 14:00 – 14:15: Midday Visual Reset (Troxler Fixation Grounding)
+- 20:30 – 21:00: Evening Screen Wind-Down & Dopamine Cutoff
 Timestamp: ${new Date().toISOString()} | Serial: ${document.getElementById('diagCertSerial')?.innerText || 'DI-CERT-SOVEREIGN'}
-Attestation: Computed locally in client hardware via sub-16ms fast-path telemetry.`;
+Attestation: Computed locally in client hardware via sub-16ms fast-path telemetry. Educational instrument.`;
 
           if (navigator.clipboard && navigator.clipboard.writeText) {
             navigator.clipboard.writeText(scheduleText).then(() => {
-              btnCopySched.innerText = '✓ DIRECTIVE COPIED TO CLIPBOARD';
+              btnCopySched.innerText = '✓ SCHEDULE COPIED TO CLIPBOARD';
               setTimeout(() => {
-                btnCopySched.innerText = '[ COPY DIRECTIVE TO CLIPBOARD ]';
+                btnCopySched.innerText = '[ COPY DAILY SCHEDULE TO CLIPBOARD ]';
               }, 3000);
             });
           }
